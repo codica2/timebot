@@ -10,18 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160807154431) do
+ActiveRecord::Schema.define(version: 20160807174332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "time_entries", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "date"
+    t.string   "time"
+    t.string   "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "uid"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.boolean  "needs_asking", default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "conversation_stage", default: 0
     t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
 
+  add_foreign_key "time_entries", "users"
 end

@@ -18,5 +18,13 @@ namespace :slack do
     user = User.find_by(uid: 'U0L1X3Q4D')
 
     client.chat_postMessage(channel: user.uid, text: 'Йоу старичок, сколько ты сегодня поработал?', as_user: true)
+    user.update(conversation_stage: :hours)
+  end
+
+  desc "Dev task"
+  task dev: :environment do
+    %x(rake db:schema:load)
+    %x(rake slack:fetch_users)
+    %x(rake slack:start_conversation)
   end
 end
