@@ -21,6 +21,18 @@ namespace :slack do
     user.update(conversation_stage: :hours)
   end
 
+  desc "Greet"
+  task greet: :environment do
+    client = Slack::Web::Client.new
+
+    User.find_each do |user|
+      message = "Привет, #{user.name}! :smiley: Приятно познакомиться! Меня зовут Timebot. " +
+          'Моя цель - помочь Вам в таком важном и полезном (и довольно скучном) деле, как заполнение тайм-шита. ' +
+          'Я очень полезный бот :sunglasses:, и скоро Вы в этом убедитесь! До встречи! :simple_smile: '
+      client.chat_postMessage(channel: user.uid, text: message, as_user: true)
+    end
+  end
+
   desc "Dev task"
   task dev: :environment do
     %x(rake db:schema:load)

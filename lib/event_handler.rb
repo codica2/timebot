@@ -8,6 +8,7 @@ class EventHandler
   end
 
   def handle_message
+    puts "Handling message: #{data.text}"
     return if data.bot_id
     @user = User.find_by(uid: data.user)
     return if user.no_conversation?
