@@ -8,7 +8,7 @@ class User < ApplicationRecord
   def add_time_entry(project_id, time, details)
     date_uid = "#{Time.now.day}.#{Time.now.month}"
 
-    entry = self.time_entries.find_by(project_id: project_id, date: date_uid) || self.entry.build(project_id: project_id, date: date_uid)
+    entry = self.time_entries.find_by(project_id: project_id, date: date_uid) || self.time_entries.build(project_id: project_id, date: date_uid)
     entry.time    = time
     entry.details = details
     entry.save!

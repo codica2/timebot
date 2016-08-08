@@ -21,7 +21,9 @@ class EventHandler
     else
       handle_unknown_message
     end
-  rescue
+  rescue => e
+    puts e
+    puts e.backtrace.join("\n\t")
     send_message('Sorry. An error occurred.')
   end
 
