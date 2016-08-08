@@ -17,8 +17,8 @@ namespace :slack do
 
     user = User.find_by(uid: 'U0L1X3Q4D')
 
-    client.chat_postMessage(channel: user.uid, text: 'Йоу старичок, сколько ты сегодня поработал?', as_user: true)
-    user.update(conversation_stage: :hours)
+    client.chat_postMessage(channel: user.uid, text: 'Hey mate, what did you do today?', as_user: true)
+    user.update(is_speaking: true)
   end
 
   desc "Greet"
