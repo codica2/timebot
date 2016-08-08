@@ -2,7 +2,7 @@ class CreateTimeEntries < ActiveRecord::Migration[5.0]
   def change
     create_table :time_entries do |t|
       t.integer :user_id
-      t.string :date
+      t.date :date
       t.string :time
       t.string :details
 

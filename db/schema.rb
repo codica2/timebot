@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20160808110903) do
 
   create_table "time_entries", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "date"
+    t.date     "date"
     t.string   "time"
     t.string   "details"
     t.datetime "created_at", null: false

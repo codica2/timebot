@@ -15,7 +15,7 @@ namespace :slack do
   task start_conversation: :environment do
     client = Slack::Web::Client.new
 
-    user = User.find_by(uid: 'U0L1X3Q4D')
+    user = User.find_by(uid: 'U1CLQL5JN')
 
     client.chat_postMessage(channel: user.uid, text: 'Hey mate, what did you do today?', as_user: true)
     user.update(is_speaking: true)
