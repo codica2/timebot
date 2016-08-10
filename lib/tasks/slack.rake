@@ -34,4 +34,15 @@ namespace :slack do
     client.chat_postMessage(channel: user.uid, text: START_CONVERSATION_MESSAGE, as_user: true)
     user.update(is_speaking: true)
   end
+
+  desc 'Canteen'
+  task canteen: :environment do
+    client = Slack::Web::Client.new
+
+    users = ['U0L1X3Q4D', 'U0D8LDKL6', 'U1CLQL5JN', 'U0UP0JVAP']
+
+    text = File::open(Rails.root.join('public', 'messages', 'canteen.txt').to_s, 'r').read
+
+    users.each { |user| client.chat_postMessage(channel: user, text: text, as_user: true) }
+  end
 end
