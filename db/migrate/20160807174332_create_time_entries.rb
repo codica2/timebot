@@ -4,6 +4,7 @@ class CreateTimeEntries < ActiveRecord::Migration[5.0]
       t.integer :user_id
       t.date :date
       t.string :time
+      t.integer :minutes
       t.string :details
 
       t.timestamps

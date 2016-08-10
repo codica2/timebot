@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160808110903) do
     t.integer  "user_id"
     t.date     "date"
     t.string   "time"
+    t.integer  "minutes"
     t.string   "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
