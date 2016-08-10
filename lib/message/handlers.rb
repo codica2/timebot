@@ -17,12 +17,7 @@ module Message::Handlers
   end
 
   def handle_message_show_help
-    message = "> `help` - prints help.\n\n" +
-              "> `projects` - prints all available projects projects\n\n" +
-              "> `update DAY.MONTH.YEAR PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)` - updates or creates if doesn't " +
-              "exist a timesheet entry.\n> For example, `update 25.07.2016 fame and partners 8:00 a nice comment`.\n\n" +
-              "> To enter time when I ask you, write `PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`\n>" +
-              'For example, `fame and partners 8:00 some comment`'
+    message = File.open(Rails.root.join('public', 'commands', 'help.txt').to_s, 'r').read
     send_message(message)
   end
 
@@ -87,7 +82,37 @@ module Message::Handlers
     send_message('Please add entry in following format: `PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`')
   end
 
+  def handle_add_project
+    project_name = data.text.match(Message::Conditions::ADD_PROJECT_REGEXP)[1]
+    project = find_project_by_name(project_name)
+
+    if project
+      handle_project_exists(project)
+      return
+    end
+
+    if project_name.length < Project::MINIMUM_PROJECT_NAME_LENGTH
+      handle_project_name_too_short
+      return
+    end
+
+    project = Project.create!(name: project_name)
+    handle_project_created(project)
+  end
+
+  def handle_project_exists(project)
+    send_message("Project with name #{project.name} already exists.")
+  end
+
+  def handle_project_name_too_short
+    send_message("Project name is too short - must be at least #{Project::MINIMUM_PROJECT_NAME_LENGTH} characters.")
+  end
+
+  def handle_project_created(project)
+    send_message("Project with name #{project.name} is created.")
+  end
+
   def find_project_by_name(project_name)
-    Project.where(['lower(name) = ?', project_name]).first
+    Project.where(['lower(name) = ?', project_name.downcase]).first
   end
 end

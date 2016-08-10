@@ -2,6 +2,7 @@ module Message::Conditions
 
   ENTER_TIME_FOR_DAY_REGEXP = / *update (\d?\d)\.(\d?\d).(\d?\d?\d\d) (.*) (\d?\d:[0-5]\d)(?: ((?:.|\n)*))?$/
   ENTER_TIME_REGEXP = / *(.*) (\d?\d:[0-5]\d)(?:((?:.|\n)*))?$$/
+  ADD_PROJECT_REGEXP = /^ *add project (\w.*?) *$/
 
   private
 
@@ -19,5 +20,9 @@ module Message::Conditions
 
   def message_is_enter_time_for_day
     data.text =~ ENTER_TIME_FOR_DAY_REGEXP && !user.is_speaking
+  end
+
+  def message_is_add_project
+    data.text =~ ADD_PROJECT_REGEXP
   end
 end

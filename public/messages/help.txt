@@ -1,0 +1,12 @@
+> `help` - prints help.
+
+>`projects` - prints all available projects projects
+
+> To update or create entry at specific date, write `update DAY.MONTH.YEAR PROJECT_NAME HOURS:MINUTESCOMMENT(OPTIONAL)`
+> For example, `update 25.07.2016 fame and partners 8:00 a nice comment`.
+
+> To enter time when I ask you, write `PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`
+> For example, `fame and partners 8:00 some comment`
+
+> To add new project, write `add project PROJECT_NAME`.
+> For example, `add project Fame and partners`
