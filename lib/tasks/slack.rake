@@ -1,5 +1,9 @@
 namespace :slack do
 
+  START_CONVERSATION_MESSAGE = "Hey mate, what did you do today?\nAnswer in the following format:" +
+                               "`PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`\n For example, `fame and partners 8:00 " +
+                               'some comment`'
+
   desc "Fetch users from slack"
   task fetch_users: :environment do
     client = Slack::Web::Client.new
@@ -23,8 +27,11 @@ namespace :slack do
 
   desc "Dev task"
   task dev: :environment do
-    %x(rake db:schema:load)
-    %x(rake slack:fetch_users)
-    %x(rake slack:start_conversation)
+    client = Slack::Web::Client.new
+
+    user = User.find_by(uid: 'U0L1X3Q4D')
+
+    client.chat_postMessage(channel: user.uid, text: START_CONVERSATION_MESSAGE, as_user: true)
+    user.update(is_speaking: true)
   end
 end

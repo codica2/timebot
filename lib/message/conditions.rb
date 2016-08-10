@@ -14,7 +14,7 @@ module Message::Conditions
   end
 
   def message_is_over
-    data.text.downcase == 'over' && user.is_speaking
+    data.text.downcase == 'finish' && user.is_speaking
   end
 
   def message_is_enter_time_for_day

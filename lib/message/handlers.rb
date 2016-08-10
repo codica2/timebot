@@ -20,9 +20,9 @@ module Message::Handlers
     message = "> `help` - prints help.\n\n" +
               "> `projects` - prints all available projects projects\n\n" +
               "> `update DAY.MONTH.YEAR PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)` - updates or creates if doesn't " +
-              "exist a timesheet entry.\n> For example, `update 25.07.2016 Fame 8:00 a nice comment`.\n\n" +
+              "exist a timesheet entry.\n> For example, `update 25.07.2016 fame and partners 8:00 a nice comment`.\n\n" +
               "> To enter time when I ask you, write `PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`\n>" +
-              'For example, `Fame 8:00 some comment`'
+              'For example, `fame and partners 8:00 some comment`'
     send_message(message)
   end
 
@@ -80,11 +80,11 @@ module Message::Handlers
     end
 
     user.add_time_entry(project_id: project.id, time: time, details: details)
-    send_message('Do you have any other projects to log? Write `over` to finish logging time.')
+    send_message('Do you have any other projects to log? Write `finish` to finish logging time.')
   end
 
   def handle_invalid_timesheet_entry
-    send_message('Please add entry in following format: `1. 12:00 - A lot of useful stuff`')
+    send_message('Please add entry in following format: `PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`')
   end
 
   def find_project_by_name(project_name)
