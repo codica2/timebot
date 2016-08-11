@@ -112,6 +112,27 @@ module Message::Handlers
     send_message("Project with name #{project.name} is created.")
   end
 
+  def handle_show_week
+    list = (1.week.ago.to_date...Date.today).to_a.map do |date|
+      if date.saturday? || date.sunday?
+        [date.to_s, 'Weekend']
+      else
+        entries = user.time_entries.where(date: date)
+        if entries.empty?
+          [date.to_s, 'No entries']
+        else
+          [date.to_s, entries.map(&:description).join("\n")]
+        end
+      end
+    end
+
+    strings = []
+
+    list.each { |date, entries| strings << "`#{date.to_s}`: #{entries}" }
+
+    send_message(strings.join("\n"))
+  end
+
   def find_project_by_name(project_name)
     Project.where(['lower(name) = ?', project_name.downcase]).first
   end

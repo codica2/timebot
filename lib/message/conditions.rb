@@ -25,4 +25,8 @@ module Message::Conditions
   def message_is_add_project
     data.text =~ ADD_PROJECT_REGEXP
   end
+
+  def message_is_show_week
+    data.text =~ /^ *show week *$/
+  end
 end

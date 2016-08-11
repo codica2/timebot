@@ -19,6 +19,8 @@ class EventHandler
       handle_message_show_projects
     elsif message_is_request_for_help
       handle_message_show_help
+    elsif message_is_show_week
+      handle_show_week
     elsif message_is_enter_time_for_day
       handle_message_time_for_other_day
     elsif message_is_add_project
