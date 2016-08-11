@@ -35,6 +35,9 @@ gem 'eventmachine'
 gem 'faye-websocket'
 gem 'resque'
 gem 'whenever', :require => false
+gem 'activeadmin', github: 'activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
