@@ -8,7 +8,7 @@ class TimeEntry < ApplicationRecord
   validates :user_id, presence: true
 
   def description
-    if self.details
+    if self.details.present?
       "*#{self.project.name}* - #{self.time} - #{self.details}"
     else
       "*#{self.project.name}* - #{self.time}"

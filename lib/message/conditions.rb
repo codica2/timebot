@@ -29,4 +29,8 @@ module Message::Conditions
   def message_is_show_week
     data.text =~ /^ *show week *$/
   end
+
+  def message_is_show_month
+    data.text =~ /^ *show month *$/
+  end
 end

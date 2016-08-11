@@ -113,23 +113,32 @@ module Message::Handlers
   end
 
   def handle_show_week
-    list = (1.week.ago.to_date...Date.today).to_a.map do |date|
-      if date.saturday? || date.sunday?
-        [date.to_s, 'Weekend']
+    handle_report(1.week.ago.to_date, Date.today)
+  end
+
+  def handle_show_month
+    list = handle_report(Date.new(Date.today.year, Date.today.month, 1), Date.today)
+  end
+
+  def handle_report(start_date, end_date)
+    list = (start_date..end_date).to_a.map do |date|
+      if date.sunday?
+        [date, 'Sunday']
       else
         entries = user.time_entries.where(date: date)
-        if entries.empty?
-          [date.to_s, 'No entries']
+        if entries.empty? && date.saturday?
+          [date, 'Saturday']
+        elsif entries.empty?
+          [date, 'No entries']
         else
-          [date.to_s, entries.map(&:description).join("\n")]
+          [date, entries.map(&:description).join('; ')]
         end
       end
     end
 
     strings = []
-
-    list.each { |date, entries| strings << "`#{date.to_s}`: #{entries}" }
-
+    list.each { |date, entries| strings << "`#{date.strftime('%d.%m.%y')}`: #{entries}" }
+    strings << "*Total*: #{user.total_time_for_range(start_date, end_date)}."
     send_message(strings.join("\n"))
   end
 
