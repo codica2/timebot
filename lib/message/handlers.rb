@@ -17,7 +17,7 @@ module Message::Handlers
   end
 
   def handle_message_show_help
-    message = File.open(Rails.root.join('public', 'commands', 'help.txt').to_s, 'r').read
+    message = File.open(Rails.root.join('public', 'messages', 'help.txt').to_s, 'r').read
     send_message(message)
   end
 
@@ -31,7 +31,7 @@ module Message::Handlers
 
     day          = match_data[1].to_i
     month        = match_data[2].to_i
-    year         = match_data[3].to_i < 2000 ? match_data[3].to_i + 2000 : match_data[3]
+    year         = match_data[3].to_i < 2000 ? match_data[3].to_i + 2000 : match_data[3].to_i
     project_name = match_data[4]
     time         = match_data[5]
     details      = match_data[6]

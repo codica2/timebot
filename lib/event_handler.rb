@@ -19,10 +19,10 @@ class EventHandler
       handle_message_show_projects
     elsif message_is_request_for_help
       handle_message_show_help
-    elsif message_is_add_project
-      handle_add_project
     elsif message_is_enter_time_for_day
       handle_message_time_for_other_day
+    elsif message_is_add_project
+      handle_add_project
     elsif message_is_over
       handle_message_over
     elsif user.is_speaking
