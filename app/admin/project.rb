@@ -17,9 +17,7 @@ ActiveAdmin.register Project do
 
     f.actions
   end
-
-
+  
   permit_params :name
-
 
 end

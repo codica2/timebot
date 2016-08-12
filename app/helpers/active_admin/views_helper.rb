@@ -1,17 +1,29 @@
 module ActiveAdmin::ViewsHelper
 
-  def week_params(date_begin, date_end)
-    "time_entries?utf8=✓&q[date_gteq_date]=#{date_begin}" +
-          "&q[date_lteq_date]=#{date_end}"
-  end
+ def projects_info(user_id, scope, start_time, end_time)
+   user = User.find(user_id)
+   project_ids = user.time_entries.map(&:project_id).uniq
+   arr = []
+   total = 0
+   project_ids.each do |project_id|
+     params_checking = TimeEntry.where(user_id: user.id).where(project_id: project_id)
+     params_checking = if scope && !start_time && !end_time
+                         params_checking.send(scope)
+                       elsif !scope && start_time && end_time
+                         params_checking.where(date: (start_time..end_time))
+                       elsif scope && start_time && end_time
+                         params_checking.send(scope).where(date: (start_time..end_time))
+                       else
+                         params_checking
+                       end
+     if params_checking.present?
+       hours_at_project = params_checking.map(&:minutes).inject(:+)/60
+       arr << "#{Project.find(project_id).name} - #{hours_at_project} h" if params_checking.present?
+       total += hours_at_project
+     end
+   end
+   arr << "Total time - #{total} h"
+   arr
+ end
 
-  def total_time
-    "Total time: #{User.find(params[:q][:user_id_eq].to_i).time_entries.map(&:minutes).inject(:+)/60} h"
-  end
-
-  def total_time_by_date
-    "Total time by date: #{User.find(params[:q][:user_id_eq].to_i).time_entries
-                               .where(date: (params[:q][:date_gteq_date]..params[:q][:date_lteq_date]))
-                               .map(&:minutes).inject(:+)/60} h"
-  end
 end

@@ -2,19 +2,27 @@ ActiveAdmin.register TimeEntry do
 
   menu priority: 4
 
+  scope :current_week
+  scope :last_week
+  scope :last_month
+
+  filter :user, as: :select
+  filter :project, as: :select
+  filter :date, as: :date_range
+
   index do
-    columns do
-      column do
-        link_to('curren week', week_params(Date.beginning_of_week,
-                                           Time.now.to_date))
-      end
-      column do
-        link_to('last week', week_params(1.week.ago.beginning_of_week.to_date,
-                                         1.week.ago.end_of_week.to_date))
-      end
-      column do
-        link_to('current month', week_params(Time.now.beginning_of_month.to_date,
-                                             Time.now.to_date))
+
+    if params[:q].present? && params[:q][:user_id_eq].present?
+      projects = projects_info(params[:q][:user_id_eq],
+                               params[:scope],
+                               params[:q][:date_gteq_date],
+                               params[:q][:date_lteq_date])
+      panel "Projects" do
+        ul do
+          projects.each do |project_info|
+            li project_info
+          end
+        end
       end
     end
 
@@ -27,41 +35,9 @@ ActiveAdmin.register TimeEntry do
     column :date
     column :time
     column :details
-    if params[:q].present?
-      columns do
-        if params[:q][:user_id_eq].present?
-          column do
-            total_time
-          end
-          if params[:q][:date_gteq_date].present? && params[:q][:date_lteq_date].present?
-            column do
-              total_time_by_date
-            end
-            column do
-
-            end
-          end
-        end
-      end
-    end
     actions
   end
 
-
   permit_params :user_id, :date, :time, :minutes, :details, :project_id, :id
-
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
-
 
 end
