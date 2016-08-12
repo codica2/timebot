@@ -6,6 +6,7 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :name
+    column :is_speaking
     actions
   end
 
