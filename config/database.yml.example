@@ -1,0 +1,17 @@
+defaults: &defaults
+  adapter: postgresql
+  username: postgres
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *defaults
+  database: timebot_development
+
+test:
+  <<: *defaults
+  database: timebot_test
+
+production:
+  <<: *defaults
+  database: timebot_production
