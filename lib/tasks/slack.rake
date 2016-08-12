@@ -16,10 +16,11 @@ namespace :slack do
   end
 
   desc "Start conversation"
-  task start_conversation: :environment do
+  task ask: :environment do
     client = Slack::Web::Client.new
 
     User.find_each do |user|
+      next if user.time_entries.where(date: Date.today).present?
       client.chat_postMessage(channel: user.uid, text: 'Hey mate, what did you do today?', as_user: true)
       user.update(is_speaking: true)
     end
