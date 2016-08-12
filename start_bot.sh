@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-echo 'Resque.enqueue(Listener)' | rails c
-QUEUE=listener rake resque:work
+nohup rake start_bot > log/bot.log & echo $! > tmp/bot.pid

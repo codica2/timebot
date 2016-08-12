@@ -46,3 +46,17 @@ namespace :slack do
     users.each { |user| client.chat_postMessage(channel: user, text: text, as_user: true) }
   end
 end
+
+task start_bot: :environment do
+  client = Slack::RealTime::Client.new
+
+  client.on :message do |data|
+    EventHandler.new(client, data).handle_message
+  end
+
+  client.on :hello do
+    puts 'Successfully connected to Slack'
+  end
+
+  client.start!
+end

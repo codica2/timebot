@@ -33,7 +33,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'slack-ruby-client'
 gem 'eventmachine'
 gem 'faye-websocket'
-gem 'resque'
 gem 'whenever', :require => false
 gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
