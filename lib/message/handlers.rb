@@ -75,7 +75,7 @@ module Message::Handlers
     end
 
     user.add_time_entry(project_id: project.id, time: time, details: details)
-    send_message('Do you have any other projects to log? Write `finish` to finish logging time.')
+    send_message('Do you have any other projects to log? Write `no` to finish logging time.')
   end
 
   def handle_invalid_timesheet_entry
@@ -122,22 +122,12 @@ module Message::Handlers
 
   def handle_report(start_date, end_date)
     list = (start_date..end_date).to_a.map do |date|
-      if date.sunday?
-        [date, 'Sunday']
-      else
-        entries = user.time_entries.where(date: date)
-        if entries.empty? && date.saturday?
-          [date, 'Saturday']
-        elsif entries.empty?
-          [date, 'No entries']
-        else
-          [date, entries.map(&:description).join('; ')]
-        end
-      end
+      entries = user.time_entries.where(date: date)
+      entries.empty? ? [date, 'No entries'] : [date, entries.map(&:description).join('; ')]
     end
 
     strings = []
-    list.each { |date, entries| strings << "`#{date.strftime('%d.%m.%y')}`: #{entries}" }
+    list.each { |date, entries| strings << "`#{date.strftime('%d.%m.%y (%A)')}`: #{entries}" }
     strings << "*Total*: #{user.total_time_for_range(start_date, end_date)}."
     send_message(strings.join("\n"))
   end

@@ -10,3 +10,7 @@
 
 > To add new project, write `add project PROJECT_NAME`.
 > For example, `add project Fame and partners`
+
+> To get report for a week, write `show week`
+
+> To get report since the beginning of the month, write `show month`
