@@ -123,7 +123,7 @@ module Message::Handlers
     end
 
     strings = []
-    list.each { |date, entries| strings << "`#{date.strftime('%d.%m.%y (%A)')}`: #{entries}" }
+    list.each { |date, entries| strings << "`#{date.strftime('%d.%m.%y` (%A)')}: #{entries}" }
     strings << "*Total*: #{user.total_time_for_range(start_date, end_date)}."
     send_message(strings.join("\n"))
   end
