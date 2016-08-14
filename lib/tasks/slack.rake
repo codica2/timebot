@@ -46,6 +46,20 @@ namespace :slack do
 
     users.each { |user| client.chat_postMessage(channel: user, text: text, as_user: true) }
   end
+
+  desc 'Remind of setting timesheet'
+  task remind: :environment do
+    client = Slack::Web::Client.new
+
+    text = "Hey mate! Please don't forget to fill in the timesheet!"
+
+    User.find_each { |user| client.chat_postMessage(channel: user, text: text, as_user: true) if user.is_speaking }
+  end
+
+  desc 'Set is_speaking to false on all users'
+  task reset_is_speaking: :environment do
+    User.find_each { |user| user.update(is_speaking: false) }
+  end
 end
 
 task start_bot: :environment do
