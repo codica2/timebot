@@ -24,4 +24,4 @@
 .ruby-version
 dump.rdb
 config/database.yml
-config/secrets.yml
+public/assets
