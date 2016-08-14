@@ -3,12 +3,8 @@ module Message::Handlers
   private
 
   def handle_message_show_projects
-    projects = Project.all
-    text = if projects.empty?
-             "No projects added yet."
-           else
-             projects.map { |project| "#{project.id}. #{project.name}" }.join("\n")
-           end
+    projects = Project.order(:id)
+    text = projects.empty? ? 'No projects added yet.' : projects.map { |project| project.to_s }.join("\n")
     send_message(text)
   end
 
@@ -117,7 +113,7 @@ module Message::Handlers
   end
 
   def handle_show_month
-    list = handle_report(Date.new(Date.today.year, Date.today.month, 1), Date.today)
+    handle_report(Date.new(Date.today.year, Date.today.month, 1), Date.today)
   end
 
   def handle_report(start_date, end_date)
@@ -133,6 +129,6 @@ module Message::Handlers
   end
 
   def find_project_by_name(project_name)
-    Project.where(['lower(name) = ?', project_name.downcase]).first
+    Project.where(['lower(name) = ? OR lower(alias) = ?', project_name.downcase, project_name.downcase]).first
   end
 end
