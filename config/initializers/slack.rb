@@ -1,3 +1,3 @@
 Slack.configure do |config|
-  config.token = 'xoxb-67017834884-mfcxyvSzadpuGonUd320QzYz'
+  config.token = ENV['SLACK_TOKEN']
 end
