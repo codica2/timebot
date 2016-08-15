@@ -20,6 +20,5 @@ ActiveAdmin.register Project do
     f.actions
   end
   
-  permit_params :name
-  permit_params :alias
+  permit_params :name, :alias
 end

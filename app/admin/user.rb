@@ -13,12 +13,13 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :name
+      f.input :is_speaking
     end
 
     f.actions
   end
 
-  permit_params :name
+  permit_params :name, :is_speaking
 
   collection_action :sync_users, method: :post do
     SlackClient.new.sync_users
