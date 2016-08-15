@@ -39,4 +39,19 @@ namespace :cron do
   task reset_is_speaking: :environment do
     User.find_each { |user| user.update(is_speaking: false) }
   end
+
+  desc 'Reminds to fill timesheet for blank days'
+  task remind_about_blank_entries: :environment do
+    client = Slack::Web::Client.new
+
+    dates = (Date.new(Date.today.year, Date.today.month, 1)...Date.today).to_a
+
+    User.find_each do |user|
+      user_dates = dates.select { |date| user.time_entries.where(date: date).empty? && date.cwday >= 1 && date.cwday < 6 }
+      if user_dates
+        text = "Hi mate! Please fill in timesheet for #{user_dates.map { |date| date.strftime('*%d.%m.%y (%A)*') }.join(', ')}."
+        client.chat_postMessage(channel: user.uid, text: text, as_user: true)
+      end
+    end
+  end
 end
