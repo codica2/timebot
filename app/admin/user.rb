@@ -20,5 +20,12 @@ ActiveAdmin.register User do
 
   permit_params :name
 
+  collection_action :sync_users, method: :post do
+    SlackClient.new.sync_users
+    redirect_to admin_users_path
+  end
 
+  sidebar :additional_actions, only: :index do
+    link_to 'Sync users with Slack', sync_users_admin_users_path, method: :post, class: 'button'
+  end
 end

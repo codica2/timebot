@@ -1,14 +1,8 @@
 namespace :slack do
 
-  desc "Fetch users from slack"
-  task fetch_users: :environment do
-    client = Slack::Web::Client.new
-
-    users = client.users_list
-
-    users.members.each do |user|
-      User.create(name: user.real_name, uid: user.id) unless User.find_by(uid: user.id)
-    end
+  desc 'Sync users with slack'
+  task sync_users: :environment do
+    SlackClient.new.sync_users
   end
 end
 
