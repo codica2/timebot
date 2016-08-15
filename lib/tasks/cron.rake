@@ -19,7 +19,7 @@ namespace :cron do
   task canteen: :environment do
     client = Slack::Web::Client.new
 
-    users = ['U0L1X3Q4D', 'U0D8LDKL6', 'U1CLQL5JN', 'U0UP0JVAP']
+    users = ['U0D8LDKL6', 'U1CLQL5JN', 'U0UP0JVAP', 'U0D8LCBD4']
 
     text = File::open(Rails.root.join('public', 'messages', 'canteen.txt').to_s, 'r').read
 
