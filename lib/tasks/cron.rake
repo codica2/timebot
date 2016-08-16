@@ -32,7 +32,7 @@ namespace :cron do
 
     text = "Hey mate! Please don't forget to fill in the timesheet!"
 
-    User.find_each { |user| client.chat_postMessage(channel: user, text: text, as_user: true) if user.is_speaking }
+    User.find_each { |user| client.chat_postMessage(channel: user.uid, text: text, as_user: true) if user.is_speaking }
   end
 
   desc 'Set is_speaking to false on all users'
