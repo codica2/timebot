@@ -9,7 +9,8 @@ module Message::Handlers
   end
 
   def handle_unknown_message
-    send_message('I don\'t understand you.')
+    client.web_client.chat_postMessage(channel: user.uid, text: 'I don\'t understand you.', as_user: true, attachments: [title: '', image_url: 'http://bestanimations.com/Sci-Fi/StarWars/R2D2/r2d2-c3po-animated-gif-3.gif'])
+    puts "#{Time.now.strftime('%H:%M:%S %d.%m.%Y')} - Send message: I don't understand you."
   end
 
   def handle_message_show_help
