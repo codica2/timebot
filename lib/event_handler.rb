@@ -12,7 +12,7 @@ class EventHandler
 
   def handle_message
     return if data.bot_id
-    puts "Handling message: #{data.text}"
+    log_message
     @user = User.find_by(uid: data.user)
 
     if message_is_request_for_project
@@ -44,6 +44,10 @@ class EventHandler
 
   def send_message(text)
     client.web_client.chat_postMessage(channel: user.uid, text: text, as_user: true)
-    puts "Send message with text: #{text}"
+    puts "#{Time.now.strftime('%H:%M:%S %d.%m.%Y')} - Send message: #{text.gsub(/\n/, '\n')}"
+  end
+
+  def log_message
+    puts "#{Time.now.strftime('%H:%M:%S %d.%m.%Y')} - Receive message: #{data.text.gsub(/\n/, '\n')}"
   end
 end

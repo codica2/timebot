@@ -70,5 +70,5 @@ namespace :cron do
 end
 
 def log(message)
-  puts "#{Time.now.strftime('%H:%M:%S %d.%m.%Y')} - #{message.gsub(/\n/, ' ')}"
+  puts "#{Time.now.strftime('%H:%M:%S %d.%m.%Y')} - #{message.gsub(/\n/, '\n')}"
 end
