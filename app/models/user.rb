@@ -8,8 +8,8 @@ class User < ApplicationRecord
   def add_time_entry(project_id:, time:, details:, date: Date.today)
     raise 'Invalid date' if date > Date.today
     entry = self.time_entries.find_by(project_id: project_id, date: date) || self.time_entries.build(project_id: project_id, date: date)
-    entry.time    = time
     entry.minutes = parse_time(time)
+    entry.time = '%2d:%02d' % entry.minutes.divmod(60)
     entry.details = details
     entry.save!
   end
