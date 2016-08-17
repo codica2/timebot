@@ -2,6 +2,7 @@ ActiveAdmin.register TimeEntry do
 
   menu priority: 4
 
+  scope :today
   scope :current_week
   scope :last_week
   scope :last_month
@@ -28,10 +29,8 @@ ActiveAdmin.register TimeEntry do
 
     selectable_column
     id_column
-    column :user
-    column :project do |time|
-      Project.find(time.project_id).name
-    end
+    column :user, sortable: "users.name"
+    column :project, sortable: "projects.name"
     column :date
     column :time
     column :details
@@ -39,5 +38,11 @@ ActiveAdmin.register TimeEntry do
   end
 
   permit_params :user_id, :date, :time, :minutes, :details, :project_id, :id
+
+  controller do
+    def scoped_collection
+      super.includes :user, :project
+    end
+  end
 
 end
