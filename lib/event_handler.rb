@@ -11,7 +11,7 @@ class EventHandler
   end
 
   def handle_message
-    return if data.bot_id
+    return if data.bot_id || data.message || data.previous_message || data.channel == ENV['SLACK_RANDOM_CHANNEL']
     log_message
     @user = User.find_by(uid: data.user)
 
