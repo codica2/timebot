@@ -67,8 +67,18 @@ namespace :cron do
       end
     end
   end
+
+  desc 'Interesting fact'
+  task fact: :environment do
+    client = Slack::Web::Client.new
+
+    text = File.open(Rails.root.join('public', 'messages', 'fact.txt').to_s, 'r').read
+
+    client.chat_postMessage(channel: 'C02L077LZ', text: text, as_user: true)
+    log(text)
+  end
 end
 
 def log(message)
-  puts "#{Time.now.strftime('%H:%M:%S %d.%m.%Y')} - #{message.gsub(/\n/, '\n')}"
+  puts "#{Time.now.strftime('%H:%M:%S %d.%m.%Y')} - #{message ? message.gsub(/\n/, '\n') : ''}"
 end

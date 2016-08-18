@@ -25,3 +25,4 @@
 dump.rdb
 config/database.yml
 public/assets
+public/messages/fact.txt
