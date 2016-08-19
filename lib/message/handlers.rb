@@ -44,6 +44,11 @@ module Message::Handlers
 
     date = Date.new(year, month, day)
 
+    if date > Date.today
+      send_message('Please enter a valid date.')
+      return
+    end
+
     user.add_time_entry(project_id: project.id, time: time, details: details, date: date)
 
     message = "Set timesheet for #{date.strftime('%-d.%-m.%Y')} for #{project.name}: #{time}."
