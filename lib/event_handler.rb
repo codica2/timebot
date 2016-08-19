@@ -2,6 +2,7 @@ class EventHandler
 
   include Message::Conditions
   include Message::Handlers
+  include Message::Logger
 
   attr_reader :client, :data, :user
 
@@ -12,8 +13,8 @@ class EventHandler
 
   def handle_message
     return if data.bot_id || data.message || data.previous_message || data.channel == ENV['SLACK_RANDOM_CHANNEL']
-    log_message
     @user = User.find_by(uid: data.user)
+    log_incoming_message(@user, data.text)
 
     if message_is_request_for_project
       handle_message_show_projects
@@ -44,10 +45,6 @@ class EventHandler
 
   def send_message(text)
     client.web_client.chat_postMessage(channel: user.uid, text: text, as_user: true)
-    puts "#{Time.now.strftime('%H:%M:%S %d.%m.%Y')} - Send message: #{text.gsub(/\n/, '\n')}"
-  end
-
-  def log_message
-    puts "#{Time.now.strftime('%H:%M:%S %d.%m.%Y')} - Receive message: #{data.text.gsub(/\n/, '\n')}"
+    log_outgoing_message(user, text)
   end
 end
