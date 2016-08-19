@@ -3,9 +3,10 @@ ActiveAdmin.register TimeEntry do
   menu priority: 4
 
   scope :today
+  scope :yesterday
   scope :current_week
   scope :last_week
-  scope :last_month
+  scope :current_month
 
   filter :user, as: :select
   filter :project, as: :select
