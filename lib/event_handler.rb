@@ -4,12 +4,13 @@ class EventHandler
   include Message::Handlers
   include Message::Logger
 
-  attr_reader :client, :data, :user
+  attr_reader :client, :data, :user, :sender
 
   def initialize(client, data)
-    @client = client
-    @data   = data
+    @client          = client
+    @data            = data
     @public_channels = fetch_public_channels
+    @sender          = Message::Sender.new
   end
 
   def handle_message
@@ -39,15 +40,10 @@ class EventHandler
   rescue => e
     puts e
     puts e.backtrace.join("\n\t")
-    send_message('Sorry. An error occurred.')
+    sender.send_message(user, 'Sorry. An error occurred.')
   end
 
   private
-
-  def send_message(text)
-    client.web_client.chat_postMessage(channel: user.uid, text: text, as_user: true)
-    log_outgoing_message(user, text)
-  end
 
   def fetch_public_channels
     @public_channels = client.web_client.channels_list.channels.map(&:id)

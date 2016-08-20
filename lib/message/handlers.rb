@@ -5,23 +5,23 @@ module Message::Handlers
   def handle_message_show_projects
     projects = Project.order(:id)
     text = projects.empty? ? 'No projects added yet.' : projects.map { |project| project.to_s }.join("\n")
-    send_message(text)
+    sender.send_message(user, text)
   end
 
   def handle_unknown_message
     text = 'I don\'t understand you.'
-    client.web_client.chat_postMessage(channel: user.uid, text: text, as_user: true, attachments: [title: '', image_url: 'http://bestanimations.com/Sci-Fi/StarWars/R2D2/r2d2-c3po-animated-gif-3.gif'])
-    log_outgoing_message(user, text)
+    sender.send_message(user, text, { attachments: [title: '',
+                                                    image_url: 'http://bestanimations.com/Sci-Fi/StarWars/R2D2/r2d2-c3po-animated-gif-3.gif']})
   end
 
   def handle_message_show_help
     message = File.open(Rails.root.join('public', 'messages', 'help.txt').to_s, 'r').read
-    send_message(message)
+    sender.send_message(user, message)
   end
 
   def handle_message_over
     user.update(is_speaking: false)
-    send_message('Thanks bro! Have a nice day! :smiley: ')
+    sender.send_message(user, 'Thanks bro! Have a nice day! :smiley: ')
   end
 
   def handle_message_time_for_other_day
@@ -37,7 +37,7 @@ module Message::Handlers
     project = find_project_by_name(project_name)
 
     unless project
-      send_message('No such project.')
+      sender.send_message(user, 'No such project.')
       handle_message_show_projects
       return
     end
@@ -45,7 +45,7 @@ module Message::Handlers
     date = Date.new(year, month, day)
 
     if date > Date.today
-      send_message('Please enter a valid date.')
+      sender.send_message(user, 'Please enter a valid date.')
       return
     end
 
@@ -56,7 +56,7 @@ module Message::Handlers
       message += " Details: #{details || 'none'}."
     end
 
-    send_message(message)
+    sender.send_message(user, message)
   end
 
   def handle_timesheet_entry
@@ -72,17 +72,17 @@ module Message::Handlers
     project = find_project_by_name(project_name)
 
     unless project
-      send_message('No such project.')
+      sender.send_message(user, 'No such project.')
       handle_message_show_projects
       return
     end
 
     user.add_time_entry(project_id: project.id, time: time, details: details)
-    send_message('Do you have any other projects to log? Write `no` to finish logging time.')
+    sender.send_message(user, 'Do you have any other projects to log? Write `no` to finish logging time.')
   end
 
   def handle_invalid_timesheet_entry
-    send_message('Please add entry in following format: `PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`')
+    sender.send_message(user, 'Please add entry in following format: `PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`')
   end
 
   def handle_add_project
@@ -104,15 +104,15 @@ module Message::Handlers
   end
 
   def handle_project_exists(project)
-    send_message("Project with name #{project.name} already exists.")
+    sender.send_message(user, "Project with name #{project.name} already exists.")
   end
 
   def handle_project_name_too_short
-    send_message("Project name is too short - must be at least #{Project::MINIMUM_PROJECT_NAME_LENGTH} characters.")
+    sender.send_message(user, "Project name is too short - must be at least #{Project::MINIMUM_PROJECT_NAME_LENGTH} characters.")
   end
 
   def handle_project_created(project)
-    send_message("Project with name #{project.name} is created.")
+    sender.send_message(user, "Project with name #{project.name} is created.")
   end
 
   def handle_show_week
@@ -132,7 +132,7 @@ module Message::Handlers
     strings = []
     list.each { |date, entries| strings << "`#{date.strftime('%d.%m.%y` (%A)')}: #{entries}" }
     strings << "*Total*: #{user.total_time_for_range(start_date, end_date)}."
-    send_message(strings.join("\n"))
+    sender.send_message(user, strings.join("\n"))
   end
 
   def find_project_by_name(project_name)

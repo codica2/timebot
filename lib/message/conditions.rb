@@ -19,7 +19,7 @@ module Message::Conditions
   end
 
   def message_is_enter_time_for_day
-    data.text =~ ENTER_TIME_FOR_DAY_REGEXP && !user.is_speaking
+    data.text =~ ENTER_TIME_FOR_DAY_REGEXP
   end
 
   def message_is_add_project
