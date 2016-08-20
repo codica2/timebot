@@ -33,4 +33,12 @@ module Message::Conditions
   def message_is_show_month
     data.text =~ /^ *show month *$/
   end
+
+  def message_from_public_channel
+    @public_channels.include? data.channel
+  end
+
+  def message_is_not_processable
+    data.bot_id || data.message || data.previous_message || message_from_public_channel
+  end
 end

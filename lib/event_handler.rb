@@ -9,10 +9,11 @@ class EventHandler
   def initialize(client, data)
     @client = client
     @data   = data
+    @public_channels = fetch_public_channels
   end
 
   def handle_message
-    return if data.bot_id || data.message || data.previous_message || data.channel == ENV['SLACK_RANDOM_CHANNEL']
+    return if message_is_not_processable
     @user = User.find_by(uid: data.user)
     log_incoming_message(@user, data.text)
 
@@ -46,5 +47,9 @@ class EventHandler
   def send_message(text)
     client.web_client.chat_postMessage(channel: user.uid, text: text, as_user: true)
     log_outgoing_message(user, text)
+  end
+
+  def fetch_public_channels
+    @public_channels = client.web_client.channels_list.channels.map(&:id)
   end
 end
