@@ -3,6 +3,7 @@ class EventHandler
   include Message::Conditions
   include Message::Handlers
   include Message::Logger
+  include Helper
 
   attr_reader :client, :data, :user, :sender
 

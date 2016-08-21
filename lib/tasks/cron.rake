@@ -1,5 +1,6 @@
-require Rails.root.join('lib', 'message', 'logger.rb').to_s
-include Message::Logger
+require Rails.root.join('lib', 'helper').to_s
+
+include Helper
 
 namespace :cron do
 
@@ -49,11 +50,13 @@ namespace :cron do
   task remind_about_blank_entries: :environment do
     sender = Message::Sender.new
 
-    dates = (Date.new(Date.today.year, Date.today.month, 1)...Date.today).to_a
+    start_date = suitable_start_date(Date.new(Date.today.year, Date.today.month, 1))
+
+    dates = (start_date...Date.today).to_a
 
     User.find_each do |user|
       user_dates = dates.select { |date| user.time_entries.where(date: date).empty? && date.cwday >= 1 && date.cwday < 6 }
-      if user_dates
+      if user_dates.present?
         text = "Hi mate! Please fill in timesheet for #{user_dates.map { |date| date.strftime('*%d.%m.%y (%A)*') }.join(', ')}."
         sender.send_message(user, text)
       end

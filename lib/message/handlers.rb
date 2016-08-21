@@ -124,7 +124,9 @@ module Message::Handlers
   end
 
   def handle_report(start_date, end_date)
-    list = (start_date..end_date).to_a.map do |date|
+    date = suitable_start_date(start_date)
+
+    list = (date..end_date).to_a.map do |date|
       entries = user.time_entries.where(date: date)
       entries.empty? ? [date, 'No entries'] : [date, entries.map(&:description).join('; ')]
     end
