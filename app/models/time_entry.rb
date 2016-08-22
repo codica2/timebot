@@ -4,8 +4,10 @@ class TimeEntry < ApplicationRecord
   belongs_to :project
 
   validates :date, presence: true
-  validates :project_id, presence: true
   validates :user_id, presence: true
+  validate :presence_of_project_id
+
+  enum reason: [:vacation, :illness]
 
   scope :today, ->{ where(date: Time.now.to_date) }
   scope :yesterday, ->{ where(date: (1.day.ago.beginning_of_day..1.day.ago.end_of_day)) }
@@ -18,6 +20,16 @@ class TimeEntry < ApplicationRecord
       "*#{self.project.name}* - #{self.time} - #{self.details}"
     else
       "*#{self.project.name}* - #{self.time}"
+    end
+  end
+
+  private
+
+  def presence_of_project_id
+    if project_id.nil? && !is_absent && reason.nil?
+      errors.add(:project_id, 'must not be nil')
+    elsif project_id.nil? && is_absent && reason.nil?
+      errors.add(:reason, 'must not be nil')
     end
   end
 end
