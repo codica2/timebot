@@ -7,6 +7,7 @@ ActiveAdmin.register User do
     id_column
     column :name
     column :is_speaking
+    column :is_active
     actions
   end
 
@@ -14,12 +15,13 @@ ActiveAdmin.register User do
     f.inputs do
       f.input :name
       f.input :is_speaking
+      f.input :is_active
     end
 
     f.actions
   end
 
-  permit_params :name, :is_speaking
+  permit_params :name, :is_speaking, :is_active
 
   collection_action :sync_users, method: :post do
     SlackClient.new.sync_users

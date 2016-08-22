@@ -12,7 +12,7 @@ namespace :cron do
   task ask: :environment do
     sender = Message::Sender.new
 
-    User.find_each do |user|
+    User.active.each do |user|
       next if user.time_entries.where(date: Date.today).present?
       sender.send_message(user, 'Hey mate, what did you do today?')
       user.update(is_speaking: true)
@@ -36,14 +36,14 @@ namespace :cron do
 
     text = "Hey mate! Please don't forget to fill in the timesheet!"
 
-    User.find_each do |user|
+    User.active.each do |user|
       sender.send_message(user, text) if user.is_speaking
     end
   end
 
   desc 'Set is_speaking to false on all users'
   task reset_is_speaking: :environment do
-    User.find_each { |user| user.update(is_speaking: false) }
+    User.active.each { |user| user.update(is_speaking: false) }
   end
 
   desc 'Reminds to fill timesheet for blank days'
@@ -54,7 +54,7 @@ namespace :cron do
 
     dates = (start_date...Date.today).to_a
 
-    User.find_each do |user|
+    User.active.each do |user|
       user_dates = dates.select { |date| user.time_entries.where(date: date).empty? && date.cwday >= 1 && date.cwday < 6 }
       if user_dates.present?
         text = "Hi mate! Please fill in timesheet for #{user_dates.map { |date| date.strftime('*%d.%m.%y (%A)*') }.join(', ')}."
