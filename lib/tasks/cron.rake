@@ -23,7 +23,7 @@ namespace :cron do
   task canteen: :environment do
     sender = Message::Sender.new
 
-    users = User.where(uid: ['U0D8LDKL6', 'U1CLQL5JN', 'U0UP0JVAP', 'U0D8LCBD4'])
+    users = User.where(uid: ['U0D8LDKL6', 'U1CLQL5JN', 'U0UP0JVAP'])
 
     text = File::open(Rails.root.join('public', 'messages', 'canteen.txt').to_s, 'r').read
 
