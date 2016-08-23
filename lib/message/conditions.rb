@@ -31,8 +31,16 @@ module Message::Conditions
     data.text =~ /^ *show week *$/
   end
 
+  def message_is_show_last_week
+    data.text =~ /^ *show last week *$/
+  end
+
   def message_is_show_month
     data.text =~ /^ *show month *$/
+  end
+
+  def message_is_show_last_month
+    data.text =~ /^ *show last month *$/
   end
 
   def message_from_public_channel

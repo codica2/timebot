@@ -116,11 +116,21 @@ module Message::Handlers
   end
 
   def handle_show_week
-    handle_report(1.week.ago.to_date, Date.today)
+    handle_report(start_of_week, Date.today)
+  end
+
+  def handle_show_last_week
+    week = last_week
+    handle_report(week[0], week[1])
   end
 
   def handle_show_month
     handle_report(Date.new(Date.today.year, Date.today.month, 1), Date.today)
+  end
+
+  def handle_show_last_month
+    month = last_month
+    handle_report(month[0], month[1])
   end
 
   def handle_report(start_date, end_date)
