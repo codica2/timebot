@@ -3,6 +3,7 @@ module Message::Conditions
   ENTER_TIME_FOR_DAY_REGEXP = / *update (\d?\d)\.(\d?\d).(\d?\d?\d\d) (.*) (\d?\d:[0-5]\d)(?: ((?:.|\n)*))?$/
   ENTER_TIME_REGEXP = / *(.*) (\d?\d:[0-5]\d)(?:((?:.|\n)*))?$$/
   ADD_PROJECT_REGEXP = /^ *add project (\w.*?) *$/
+  SET_ABSENCE_REGEXP = /^ *set (.{3,}) (\d?\d)\.(\d?\d)\.(\d?\d?\d\d) - (\d?\d)\.(\d?\d)\.(\d?\d?\d\d) *$/
 
   private
 
@@ -40,5 +41,9 @@ module Message::Conditions
 
   def message_is_not_processable
     data.bot_id || data.message || data.previous_message || message_from_public_channel
+  end
+
+  def message_is_set_absence
+    data.text =~ SET_ABSENCE_REGEXP
   end
 end

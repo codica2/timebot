@@ -23,6 +23,13 @@ class User < ApplicationRecord
     "#{hours} hours #{minutes} minutes"
   end
 
+  def set_absence(reason, start_date, end_date)
+    (start_date..end_date).to_a.each do |date|
+      next if date.saturday? || date.sunday?
+      self.time_entries.create!(is_absent: true, reason: reason, date: date)
+    end
+  end
+
   private
 
   def parse_time(time)

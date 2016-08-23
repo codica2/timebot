@@ -17,9 +17,9 @@ class TimeEntry < ApplicationRecord
 
   def description
     if self.details.present?
-      "*#{self.project.name}* - #{self.time} - #{self.details}"
+      "*#{self.project.name}* - #{self.time || '-'} - #{self.details}"
     else
-      "*#{self.project.name}* - #{self.time}"
+      "*#{self.project.name}* - #{self.time || '-'}"
     end
   end
 

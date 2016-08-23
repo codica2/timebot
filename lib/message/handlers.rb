@@ -137,6 +137,20 @@ module Message::Handlers
     sender.send_message(user, strings.join("\n"))
   end
 
+  def handle_set_absence
+    match_data = data.text.match Message::Conditions::SET_ABSENCE_REGEXP
+    reason     = match_data[1].downcase
+    start_date = build_date(match_data[2], match_data[3], match_data[4])
+    end_date   = build_date(match_data[5], match_data[6], match_data[7])
+
+    if TimeEntry.reasons.keys.include?(reason) && start_date <= end_date
+      user.set_absence(reason, start_date, end_date)
+      sender.send_message(user, "Set *#{reason.capitalize}* from #{start_date.strftime('%d.%m.%y')} to #{end_date.strftime('%d.%m.%y')}")
+    else
+      sender.send_message(user, 'Invalid reason or invalid dates.')
+    end
+  end
+
   def find_project_by_name(project_name)
     Project.where(['lower(name) = ? OR lower(alias) = ?', project_name.downcase, project_name.downcase]).first
   end

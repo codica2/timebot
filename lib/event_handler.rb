@@ -27,6 +27,8 @@ class EventHandler
       handle_show_week
     elsif message_is_show_month
       handle_show_month
+    elsif message_is_set_absence
+      handle_set_absence
     elsif message_is_enter_time_for_day
       handle_message_time_for_other_day
     elsif message_is_add_project
