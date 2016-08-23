@@ -16,10 +16,12 @@ class TimeEntry < ApplicationRecord
   scope :current_month, ->{ where(date: (Time.now.beginning_of_month.to_date..Time.now.to_date)) }
 
   def description
-    if self.details.present?
-      "*#{self.project.name}* - #{self.time || '-'} - #{self.details}"
+    if self.is_absent
+      self.reason.capitalize
+    elsif self.details.present?
+      "*#{self.project.name}* - #{self.time} - #{self.details}"
     else
-      "*#{self.project.name}* - #{self.time || '-'}"
+      "*#{self.project.name}* - #{self.time}"
     end
   end
 
