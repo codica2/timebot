@@ -41,6 +41,8 @@ class EventHandler
       handle_message_over
     elsif user.is_speaking
       handle_timesheet_entry
+    elsif message_is_ask_me
+      handle_ask_me
     else
       handle_unknown_message
     end

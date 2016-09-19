@@ -18,3 +18,5 @@
 > If you are absent on some days, write `set REASON DAY.MONTH.YEAR - DAY.MONTH.YEAR`.
 > For example, `set vacation 15.08.2016 - 19.08.16`.
 > Valid reasons: Vacation, Illness.
+
+> If you want bot to ask you, write `ask me`.

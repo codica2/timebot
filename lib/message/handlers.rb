@@ -161,6 +161,11 @@ module Message::Handlers
     end
   end
 
+  def handle_ask_me
+    sender.send_message(user, 'Hey mate, what did you do today?')
+    user.update(is_speaking: true)
+  end
+
   def find_project_by_name(project_name)
     Project.where(['lower(name) = ? OR lower(alias) = ?', project_name.downcase, project_name.downcase]).first
   end

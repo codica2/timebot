@@ -54,4 +54,8 @@ module Message::Conditions
   def message_is_set_absence
     data.text =~ SET_ABSENCE_REGEXP
   end
+
+  def message_is_ask_me
+    data.text.downcase =~ /^ *ask me *$/
+  end
 end
