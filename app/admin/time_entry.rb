@@ -14,16 +14,15 @@ ActiveAdmin.register TimeEntry do
 
   index do
 
-    if params[:q].present? && params[:q][:user_id_eq].present?
-      projects = projects_info(params[:q][:user_id_eq],
-                               params[:scope],
-                               params[:q][:date_gteq_date],
-                               params[:q][:date_lteq_date])
-      panel "Projects" do
+    if params[:q].try(:[], :user_id_eq).present?
+      projects = projects_by_user(user_id:    params[:q][:user_id_eq],
+                                  scope:      params[:scope],
+                                  start_date: params[:q][:date_gteq_date],
+                                  end_date:   params[:q][:date_lteq_date])
+      panel 'Projects' do
         ul do
-          projects.each do |project_info|
-            li project_info
-          end
+          projects[:projects].each { |project_info| li project_info }
+          li { b "Total: #{projects[:total]}" }
         end
       end
     end
