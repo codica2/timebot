@@ -4,6 +4,7 @@ module Message::Conditions
   ENTER_TIME_REGEXP = / *(.*) (\d?\d:[0-5]\d)(?:((?:.|\n)*))?$$/
   ADD_PROJECT_REGEXP = /^ *add project (\w.*?) *$/
   SET_ABSENCE_REGEXP = /^ *set (.{3,}) (\d?\d)\.(\d?\d)\.(\d?\d?\d\d) - (\d?\d)\.(\d?\d)\.(\d?\d?\d\d) *$/
+  MESSAGE_IN_REPORT = /^ *show (week|last week|month|last month)(?: (.*?))? *$/
 
   private
 
@@ -27,20 +28,8 @@ module Message::Conditions
     data.text =~ ADD_PROJECT_REGEXP
   end
 
-  def message_is_show_week
-    data.text =~ /^ *show week *$/
-  end
-
-  def message_is_show_last_week
-    data.text =~ /^ *show last week *$/
-  end
-
-  def message_is_show_month
-    data.text =~ /^ *show month *$/
-  end
-
-  def message_is_show_last_month
-    data.text =~ /^ *show last month *$/
+  def message_is_show_reports
+    data.text.downcase =~ MESSAGE_IN_REPORT
   end
 
   def message_from_public_channel
@@ -58,4 +47,5 @@ module Message::Conditions
   def message_is_ask_me
     data.text.downcase =~ /^ *ask me *$/
   end
+
 end
