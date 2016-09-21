@@ -28,7 +28,7 @@ module Message::Conditions
     data.text =~ ADD_PROJECT_REGEXP
   end
 
-  def message_reports
+  def message_is_show_reports
     data.text.downcase =~ MESSAGE_IN_REPORT
   end
 

@@ -23,7 +23,7 @@ class EventHandler
       handle_message_show_projects
     elsif message_is_request_for_help
       handle_message_show_help
-    elsif message_reports
+    elsif message_is_show_reports
       handle_reports
     elsif message_is_set_absence
       handle_set_absence

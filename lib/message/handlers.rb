@@ -139,9 +139,9 @@ module Message::Handlers
     project_name = data.text.match(Message::Conditions::MESSAGE_IN_REPORT)[2]
 
     if project_name.present?
-      @project = find_project_by_name(project_name)
-      if @project.present?
-        handle_show_by time
+      project = find_project_by_name(project_name)
+      if project.present?
+        handle_show_by(time, project)
       else
         sender.send_message(user, 'No such project.')
         handle_message_show_projects
@@ -151,31 +151,31 @@ module Message::Handlers
     end
   end
 
-  def handle_show_by(time)
+  def handle_show_by(time, project = nil)
     case time
       when 'week'
-        handle_report(Time.now.beginning_of_week.to_date, Date.today)
+        handle_report(Time.now.beginning_of_week.to_date, Date.today, project)
       when 'last week'
-        handle_report(1.week.ago.beginning_of_week.to_date, 1.week.ago.end_of_week.to_date)
+        handle_report(1.week.ago.beginning_of_week.to_date, 1.week.ago.end_of_week.to_date, project)
       when 'month'
-        handle_report(Time.now.beginning_of_month.to_date, Date.today)
+        handle_report(Time.now.beginning_of_month.to_date, Date.today, project)
       when 'last month'
-        handle_report(1.month.ago.beginning_of_month.to_date, 1.month.ago.end_of_month.to_date)
+        handle_report(1.month.ago.beginning_of_month.to_date, 1.month.ago.end_of_month.to_date, project)
     end
   end
 
-  def handle_report(start_date, end_date)
+  def handle_report(start_date, end_date, project)
     date = suitable_start_date(start_date)
 
     list = (date..end_date).to_a.map do |date|
       entries = user.time_entries.where(date: date)
-      entries = entries.where(project_id: @project.id) if @project.present?
+      entries = entries.where(project_id: project.id) if project.present?
       entries.empty? ? [date, 'No entries'] : [date, entries.map(&:description).join('; ')]
     end
 
     strings = []
     list.each { |date, entries| strings << "`#{date.strftime('%d.%m.%y` (%A)')}: #{entries}" }
-    strings << "*Total*: #{user.total_time_for_range(start_date, end_date, @project)}."
+    strings << "*Total*: #{user.total_time_for_range(start_date, end_date, project)}."
     sender.send_message(user, strings.join("\n"))
   end
 
