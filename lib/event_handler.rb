@@ -23,14 +23,8 @@ class EventHandler
       handle_message_show_projects
     elsif message_is_request_for_help
       handle_message_show_help
-    elsif message_is_show_week
-      handle_show_week
-    elsif message_is_show_last_week
-      handle_show_last_week
-    elsif message_is_show_month
-      handle_show_month
-    elsif message_is_show_last_month
-      handle_show_last_month
+    elsif message_reports
+      handle_reports
     elsif message_is_set_absence
       handle_set_absence
     elsif message_is_enter_time_for_day

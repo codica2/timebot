@@ -16,8 +16,10 @@ class User < ApplicationRecord
     entry.save!
   end
 
-  def total_time_for_range(start_date, end_date)
-    total = self.time_entries.where(['date BETWEEN ? AND ?', start_date, end_date]).sum(:minutes)
+  def total_time_for_range(start_date, end_date, project = nil)
+    total = self.time_entries.where(['date BETWEEN ? AND ?', start_date, end_date])
+    total = total.where(project_id: project.id) if project.present?
+    total = total.sum(:minutes)
     hours = total / 60
     minutes = total % 60
     "#{hours} hours #{minutes} minutes"
