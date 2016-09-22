@@ -10,12 +10,10 @@ module Message
     end
 
     def handle_unknown_message
-      text = 'I don\'t understand you.'
-      options = {
-        attachments: [title: '',
-                      image_url: 'http://bestanimations.com/Sci-Fi/StarWars/R2D2/r2d2-c3po-animated-gif-3.gif']
-      }
-      sender.send_message(user, text, options)
+      message = @messages['understand'].sample
+      text = message['text']
+      attachments = message['attachments']
+      sender.send_message(user, text, { attachments: attachments })
     end
 
     def handle_message_show_help
@@ -24,8 +22,9 @@ module Message
     end
 
     def handle_message_over
+      message = @messages['thanks'].sample
       user.update(is_speaking: false)
-      sender.send_message(user, 'Thanks bro! Have a nice day! :smiley: ')
+      sender.send_message(user, message['text'])
     end
 
     def handle_message_time_for_other_day
@@ -79,8 +78,9 @@ module Message
         return
       end
 
+      message = @messages['log'].sample
       user.add_time_entry(project_id: project.id, time: time, details: details)
-      sender.send_message(user, 'Do you have any other projects to log? Write `no` to finish logging time.')
+      sender.send_message(user, message['text'])
     end
 
     def handle_invalid_timesheet_entry
@@ -134,7 +134,8 @@ module Message
     end
 
     def handle_ask_me
-      sender.send_message(user, 'Hey mate, what did you do today?')
+      message = @messages['today'].sample
+      sender.send_message(user, message['text'])
       user.update(is_speaking: true)
     end
 

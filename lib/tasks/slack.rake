@@ -7,10 +7,12 @@ namespace :slack do
 end
 
 task start_bot: :environment do
-  client = Slack::RealTime::Client.new
+  client  = Slack::RealTime::Client.new
+  message = YAML.load_file('config/messages.yml')
+
 
   client.on :message do |data|
-    EventHandler.new(client, data).handle_message
+    EventHandler.new(client, data, message).handle_message
   end
 
   client.on :hello do

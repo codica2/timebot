@@ -7,11 +7,12 @@ class EventHandler
 
   attr_reader :client, :data, :user, :sender
 
-  def initialize(client, data)
+  def initialize(client, data, message)
     @client          = client
     @data            = data
     @public_channels = fetch_public_channels
     @sender          = Message::Sender.new
+    @messages        = message
   end
 
   def handle_message
