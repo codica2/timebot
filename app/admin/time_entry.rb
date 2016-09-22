@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 ActiveAdmin.register TimeEntry do
-
   menu priority: 4
 
   scope :today
@@ -13,7 +13,6 @@ ActiveAdmin.register TimeEntry do
   filter :date, as: :date_range
 
   index do
-
     if params[:q].try(:[], :user_id_eq).present?
       projects = projects_by_user(user_id:    params[:q][:user_id_eq],
                                   scope:      params[:scope],
@@ -29,8 +28,8 @@ ActiveAdmin.register TimeEntry do
 
     selectable_column
     id_column
-    column :user, sortable: "users.name"
-    column :project, sortable: "projects.name"
+    column :user, sortable: 'users.name'
+    column :project, sortable: 'projects.name'
     column :date
     column(:time) { |entry| entry.is_absent ? '-' : entry.time }
     column(:details) { |entry| entry.is_absent ? entry.reason.capitalize : entry.details }
@@ -44,5 +43,4 @@ ActiveAdmin.register TimeEntry do
       super.includes :user, :project
     end
   end
-
 end

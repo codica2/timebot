@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 namespace :slack do
-
   desc 'Sync users with slack'
   task sync_users: :environment do
     SlackClient.new.sync_users

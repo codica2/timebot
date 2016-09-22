@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 ActiveAdmin.register Project do
-
   menu priority: 3
 
   index do
@@ -19,6 +19,6 @@ ActiveAdmin.register Project do
 
     f.actions
   end
-  
+
   permit_params :name, :alias
 end
