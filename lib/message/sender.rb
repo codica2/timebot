@@ -1,6 +1,6 @@
+# frozen_string_literal: true
 module Message
   class Sender
-
     include Message::Logger
 
     attr_reader :client

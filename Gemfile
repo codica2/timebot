@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
@@ -33,10 +33,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'slack-ruby-client'
 gem 'eventmachine'
 gem 'faye-websocket'
-gem 'whenever', :require => false
+gem 'whenever', require: false
 gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'devise'
+gem 'rubocop', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

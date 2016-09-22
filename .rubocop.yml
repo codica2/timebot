@@ -1,0 +1,30 @@
+Rails:
+  Enabled: true
+
+AllCops:
+  Exclude:
+    - 'test/**/*'
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'config/**/*'
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Max: 150

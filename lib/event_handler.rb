@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 class EventHandler
-
   include Message::Conditions
   include Message::Handlers
   include Message::Logger
@@ -41,8 +41,8 @@ class EventHandler
       handle_unknown_message
     end
   rescue => e
-    puts e
-    puts e.backtrace.join("\n\t")
+    Rails.logger.error(e)
+    Rails.logger.error(e.backtrace.join("\n\t"))
     sender.send_message(user, 'Sorry. An error occurred.')
   end
 

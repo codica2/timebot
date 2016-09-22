@@ -1,5 +1,5 @@
+# frozen_string_literal: true
 class SlackClient
-
   attr_reader :client
 
   def initialize
