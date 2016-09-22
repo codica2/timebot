@@ -2,6 +2,16 @@ ActiveAdmin.register User do
 
   menu priority: 2
 
+  batch_action :set_speaking_true do |ids|
+    User.where(id: ids).update_all(is_speaking: true)
+    redirect_to collection_path, alert: 'Users were updated'
+  end
+
+  batch_action :set_speaking_false do |ids|
+    User.where(id: ids).update_all(is_speaking: false)
+    redirect_to collection_path, alert: 'Users were updated'
+  end
+
   index do
     selectable_column
     id_column
