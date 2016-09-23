@@ -10,10 +10,8 @@ module Message
     end
 
     def handle_unknown_message
-      message = @messages['understand'].sample
-      text = message['text']
-      attachments = message['attachments']
-      sender.send_message(user, text, { attachments: attachments })
+      message = messages['understand'].sample
+      sender.send_message(user, message['text'], message['options'])
     end
 
     def handle_message_show_help
@@ -22,9 +20,9 @@ module Message
     end
 
     def handle_message_over
-      message = @messages['thanks'].sample
+      message = messages['thanks'].sample
       user.update(is_speaking: false)
-      sender.send_message(user, message['text'])
+      sender.send_message(user, message['text'], message['options'])
     end
 
     def handle_message_time_for_other_day
@@ -78,9 +76,9 @@ module Message
         return
       end
 
-      message = @messages['log'].sample
+      message = messages['log'].sample
       user.add_time_entry(project_id: project.id, time: time, details: details)
-      sender.send_message(user, message['text'])
+      sender.send_message(user, message['text'], message['options'])
     end
 
     def handle_invalid_timesheet_entry
@@ -134,8 +132,8 @@ module Message
     end
 
     def handle_ask_me
-      message = @messages['today'].sample
-      sender.send_message(user, message['text'])
+      message = messages['today'].sample
+      sender.send_message(user, message['text'], message['options'])
       user.update(is_speaking: true)
     end
 
