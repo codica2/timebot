@@ -27,3 +27,4 @@ config/database.yml
 public/assets
 public/messages/fact.txt
 config/messages.yml
+.env
