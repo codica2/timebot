@@ -25,6 +25,18 @@ ActiveAdmin.register TimeEntry do
         end
       end
     end
+    if params[:q].try(:[], :project_id_eq).present?
+      users = users_by_project(project_id:  params[:q][:project_id_eq],
+                               scope:       params[:scope],
+                               start_date:  params[:q][:date_gteq_date],
+                               end_date:    params[:q][:date_lteq_date])
+      panel 'Users' do
+        ul do
+          users[:users].each { |user_info| li user_info }
+          li { b "Total: #{users[:total]}" }
+        end
+      end
+    end
 
     selectable_column
     id_column
