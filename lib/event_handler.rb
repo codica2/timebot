@@ -5,13 +5,14 @@ class EventHandler
   include Message::Logger
   include Helper
 
-  attr_reader :client, :data, :user, :sender
+  attr_reader :client, :data, :user, :sender, :messages
 
-  def initialize(client, data)
+  def initialize(client, data, messages)
     @client          = client
     @data            = data
     @public_channels = fetch_public_channels
     @sender          = Message::Sender.new
+    @messages        = messages
   end
 
   def handle_message

@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+command = ARGV[0]
+
+available_commands = %w(start stop restart)
+
+if ARGV.size != 1 || !available_commands.include?(command)
+  raise 'Invalid command'
+end
+
+def start
+  Process.daemon(true)
+
+  puma_pid = spawn('puma -e production')
+  bot_pid  = spawn({'RAILS_ENV' => 'production'}, 'rake', 'start_bot')
+
+  File.write('tmp/pids/puma.pid', puma_pid)
+  File.write('tmp/pids/bot.pid', bot_pid)
+end
+
+def stop
+  kill_process('puma')
+  kill_process('bot')
+end
+
+def kill_process(type)
+  raise ArgumentError.new('wrong process type') unless %w(puma bot).include?(type)
+  begin
+    pid = File.read("tmp/pids/#{type}.pid").to_i
+    Process.kill('KILL', pid)
+  rescue => e
+    puts e.inspect
+  end
+end
+
+send(command)
