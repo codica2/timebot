@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 command = ARGV[0]
 
@@ -12,7 +13,7 @@ def start
   Process.daemon(true)
 
   puma_pid = spawn('puma -e production')
-  bot_pid  = spawn({'RAILS_ENV' => 'production'}, 'rake', 'start_bot')
+  bot_pid  = spawn({ 'RAILS_ENV' => 'production' }, 'rake', 'start_bot')
 
   File.write('tmp/pids/puma.pid', puma_pid)
   File.write('tmp/pids/bot.pid', bot_pid)
@@ -24,7 +25,7 @@ def stop
 end
 
 def kill_process(type)
-  raise ArgumentError.new('wrong process type') unless %w(puma bot).include?(type)
+  raise ArgumentError, 'wrong process type' unless %w(puma bot).include?(type)
   begin
     pid = File.read("tmp/pids/#{type}.pid").to_i
     Process.kill('KILL', pid)
