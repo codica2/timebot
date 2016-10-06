@@ -5,8 +5,12 @@ module Message
 
     def handle_message_show_projects
       projects = Project.order(:id)
-      text = projects.empty? ? 'No projects added yet.' : projects.map(&:to_s).join("\n")
-      sender.send_message(user, text)
+      text = if projects.empty?
+               'No projects added yet.'
+             else
+               projects.map { |project| "#{project.name.ljust(20)} Alias: #{project.alias}" }.join("\n")
+             end
+      sender.send_message(user, "```#{text}```")
     end
 
     def handle_unknown_message
