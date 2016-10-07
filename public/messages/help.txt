@@ -3,17 +3,20 @@
 >`projects` - prints all available projects projects.
 
 > To update or create entry at specific date, write `update DAY.MONTH.YEAR PROJECT_NAME HOURS:MINUTESCOMMENT(OPTIONAL)`.
-> For example, `update 25.07.2016 fame and partners 8:00 a nice comment`.
+> For example, `update 25.07.2016 Timebot 8:00 a nice comment`.
 
 > To enter time when I ask you, write `PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`.
-> For example, `fame and partners 8:00 some comment`.
+> For example, `Timebot 8:00 some comment`.
 
 > To add new project, write `add project PROJECT_NAME`.
-> For example, `add project Fame and partners`.
+> For example, `add project Timebot`.
 
-> To get report for a week, write `show week`.
+> To get report for a week / last week, write `show week` / `show last week`.
 
-> To get report since the beginning of the month, write `show month`.
+> To get report since the beginning of the month / last month, write `show month` /  `show last month`.
+
+> To get report by project, write `show week` / `show last week` / `show month` /  `show last month` + `PROJECT_NAME`.
+> For example, `show week Timebot` / `show last month Timebot` etc.
 
 > If you are absent on some days, write `set REASON DAY.MONTH.YEAR - DAY.MONTH.YEAR`.
 > For example, `set vacation 15.08.2016 - 19.08.16`.
