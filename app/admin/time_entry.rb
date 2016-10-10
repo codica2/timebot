@@ -22,6 +22,7 @@ ActiveAdmin.register TimeEntry do
         ul do
           projects[:projects].each { |project_info| li project_info }
           li { b "Total: #{projects[:total]}" }
+          li b work_time_for_month
         end
       end
     end
@@ -34,6 +35,7 @@ ActiveAdmin.register TimeEntry do
         ul do
           users[:users].each { |user_info| li user_info }
           li { b "Total: #{users[:total]}" }
+          li b work_time_for_month
         end
       end
     end
