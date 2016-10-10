@@ -56,7 +56,7 @@ module ActiveAdmin
     end
 
     def work_time_for_month
-      working_days = (Date.today.beginning_of_month..Date.today.end_of_month).select {|day| !day.saturday? && !day.sunday? }
+      working_days = (Date.today.beginning_of_month..Date.today.end_of_month).select { |day| !day.saturday? && !day.sunday? }
       holidays = Holiday.pluck(:date)
       total_time = (working_days - holidays).count * 8
       "Total time this month: #{total_time} hours"
