@@ -2,15 +2,8 @@
 ActiveAdmin.register TimeEntry do
   menu priority: 4
 
-  scope :today
-  scope :yesterday
-  scope :current_week
-  scope :last_week
-  scope :current_month
-
   filter :user, as: :select
   filter :project, as: :select
-  filter :date, as: :date_range
 
   index do
     if params[:q].try(:[], :user_id_eq).present?
