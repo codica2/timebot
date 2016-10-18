@@ -10,6 +10,7 @@ namespace :cron do
 
   desc 'Start conversation'
   task ask: :environment do
+    next if Holiday.is_holiday?
     sender = Message::Sender.new
 
     User.active.each do |user|
@@ -21,6 +22,7 @@ namespace :cron do
 
   desc 'Canteen'
   task canteen: :environment do
+    next if Holiday.is_holiday?
     sender = Message::Sender.new
 
     users = User.where(uid: %w(U0D8LDKL6 U1CLQL5JN U0UP0JVAP))
@@ -32,6 +34,7 @@ namespace :cron do
 
   desc 'Remind of setting timesheet'
   task remind: :environment do
+    next if Holiday.is_holiday?
     sender = Message::Sender.new
 
     text = "Hey mate! Please don't forget to fill in the timesheet!"
@@ -48,6 +51,7 @@ namespace :cron do
 
   desc 'Reminds to fill timesheet for blank days'
   task remind_about_blank_entries: :environment do
+    next if Holiday.is_holiday?
     sender = Message::Sender.new
 
     start_date = suitable_start_date(Date.new(Time.zone.today.year, Time.zone.today.month, 1))
@@ -56,7 +60,7 @@ namespace :cron do
 
     User.active.each do |user|
       user_dates = dates.select do |date|
-        user.time_entries.where(date: date).empty? && date.cwday >= 1 && date.cwday < 6
+        user.time_entries.where(date: date).empty? && date.cwday >= 1 && date.cwday < 6 && !Holiday.is_holiday?(date)
       end
 
       next unless user_dates.present?
