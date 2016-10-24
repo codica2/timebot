@@ -142,8 +142,8 @@ module Message
     end
 
     def handle_reports
-      time         = data.text.match(Message::Conditions::MESSAGE_IN_REPORT)[1]
-      project_name = data.text.match(Message::Conditions::MESSAGE_IN_REPORT)[2]
+      time         = data.text.downcase.match(Message::Conditions::MESSAGE_IN_REPORT)[1]
+      project_name = data.text.downcase.match(Message::Conditions::MESSAGE_IN_REPORT)[2]
 
       if project_name.present?
         project = find_project_by_name(project_name)
