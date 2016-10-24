@@ -2,7 +2,7 @@
 lock '3.6.1'
 
 set :application, 'timebot'
-set :repo_url, 'git@gitlab.com:codica2/timebot.git'
+set :repo_url, 'git@gitlab.codica.com:codica2/timebot.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
