@@ -2,7 +2,7 @@
 ActiveAdmin.register TimeEntry do
   menu priority: 4
 
-  filter :user, as: :select
+  filter :user, as: :select, collection: proc { User.active }
   filter :project, as: :select
 
   index do
