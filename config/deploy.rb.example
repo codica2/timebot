@@ -2,13 +2,13 @@
 lock '3.6.1'
 
 set :application, 'timebot'
-set :repo_url, 'git@gitlab.codica.com:codica2/timebot.git'
+set :repo_url, 'repo_url'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/dev/www/timebot'
+set :deploy_to, '/home/username/www/timebot'
 
 # Default value for :scm is :git
 # set :scm, :git

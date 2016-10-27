@@ -28,3 +28,6 @@ public/assets
 public/messages/fact.txt
 config/messages.yml
 .env
+
+config/deploy.rb
+config/deploy/production.rb
