@@ -2,6 +2,9 @@
 ActiveAdmin.register User do
   menu priority: 2
 
+  filter :name
+  filter :is_active
+
   batch_action :set_speaking_true do |ids|
     User.where(id: ids).update_all(is_speaking: true)
     redirect_to collection_path, alert: 'Users were updated'

@@ -2,12 +2,14 @@
 ActiveAdmin.register Project do
   menu priority: 3
 
+  filter :name
+  filter :alias
+
   index do
     selectable_column
     id_column
     column :name
     column :alias
-    column :created_at
     actions
   end
 
