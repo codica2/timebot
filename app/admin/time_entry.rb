@@ -6,29 +6,24 @@ ActiveAdmin.register TimeEntry do
   filter :project, as: :select
 
   index do
-    if params[:q].try(:[], :user_id_eq).present?
-      projects = projects_by_user(user_id:    params[:q][:user_id_eq],
-                                  scope:      params[:scope],
-                                  start_date: params[:q][:date_gteq_date],
-                                  end_date:   params[:q][:date_lteq_date])
+    if params.dig(:q, :user_id_eq)
+      projects = projects_by_user
+
       panel 'Projects' do
         ul do
           projects[:projects].each { |project_info| li project_info }
           li { b "Total: #{projects[:total]}" }
-          li b work_time_for_month
+          li b work_time_for_scope if date_filter_is_applied
         end
       end
-    end
-    if params[:q].try(:[], :project_id_eq).present?
-      users = users_by_project(project_id:  params[:q][:project_id_eq],
-                               scope:       params[:scope],
-                               start_date:  params[:q][:date_gteq_date],
-                               end_date:    params[:q][:date_lteq_date])
+    elsif params.dig(:q, :project_id_eq)
+      users = users_by_project
+
       panel 'Users' do
         ul do
           users[:users].each { |user_info| li user_info }
           li { b "Total: #{users[:total]}" }
-          li b work_time_for_month
+          li b work_time_for_scope if date_filter_is_applied
         end
       end
     end
