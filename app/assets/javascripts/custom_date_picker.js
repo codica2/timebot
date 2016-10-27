@@ -6,7 +6,7 @@ $(document).ready(function () {
     return searchResult ? searchResult.split('=')[1] : false;
   };
 
-  if (window.location.pathname != '/admin/time_entries') return;
+  if (window.location.pathname != '/admin/time_entries' && window.location.pathname != '/admin' && window.location.pathname != '/admin/dashboard') return;
 
   var html = '<div class="date_range input optional stringish filter_form_field filter_date_range" id="q_date_input">';
   html += '<label class="label">Date</label>';
@@ -70,6 +70,15 @@ $(document).ready(function () {
         }
       },
       {
+        name: 'Current Month (Calendar)',
+        dates: function () {
+
+          var start = moment().startOf('month').toDate();
+          var end = moment().endOf('month').toDate();
+          return [start, end];
+        }
+      },
+      {
         name: 'Last Month',
         dates: function () {
           if (moment().date() >= 16)
@@ -77,6 +86,14 @@ $(document).ready(function () {
           else
             return [moment().month(moment().month() - 2).date(16).toDate(),
                     moment().month(moment().month() - 1).date(15).toDate()];
+        }
+      },
+      {
+        name: 'Last Month (Calendar)',
+        dates: function () {
+          var start = moment().subtract(1, 'months').startOf('month').toDate();
+          var end = moment().subtract(1, 'months').endOf('month').toDate();
+          return [start, end];
         }
       }
     ],
