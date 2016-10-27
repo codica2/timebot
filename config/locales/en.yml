@@ -20,4 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  active_admin:
+    filters:
+      predicates:
+        gteq_date: greater or equal than
+        lteq_date: less or equal than
