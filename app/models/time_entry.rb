@@ -14,6 +14,7 @@ class TimeEntry < ApplicationRecord
   scope :current_week, -> { where(date: (Time.zone.now.beginning_of_week..Time.zone.now.to_date)) }
   scope :last_week, -> { where(date: (1.week.ago.beginning_of_week.to_date..1.week.ago.end_of_week.to_date)) }
   scope :current_month, -> { where(date: (Time.zone.now.beginning_of_month.to_date..Time.zone.now.to_date)) }
+  scope :in_interval, -> (start_date, end_date) { where(['date BETWEEN ? AND ?', start_date, end_date]) }
 
   def description
     if is_absent
