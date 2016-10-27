@@ -1,65 +1,64 @@
 # frozen_string_literal: true
 module ActiveAdmin
   module ViewsHelper
-    def projects_by_user(user_id:, scope:, start_date:, end_date:)
-      user = User.find(user_id)
+    def projects_by_user
+      projects = collection.map(&:project).uniq
 
-      project_ids = user.time_entries.pluck(:project_id).uniq.select(&:present?)
-
-      projects = project_ids.map do |project_id|
-        entries = TimeEntry.where(user_id: user_id, project_id: project_id)
-        entries = entries.send(scope) if scope
-        entries = entries.where(date: (start_date..end_date)) if start_date && end_date
-
-        time    = entries.sum(:minutes)
-
-        next ['', 0] if time.zero?
-
+      projects_info = projects.map do |project|
+        entries = collection.select { |entry| entry.project_id == project.id }
+        time = entries.map(&:minutes).select(&:present?).inject(&:+)
         hours   = time / 60
         minutes = time % 60
-        ["#{Project.find(project_id).name}: #{pluralize(hours, 'hour')} #{pluralize(minutes, 'minute')}", time]
+
+        ["#{project.name}: #{pluralize_time(hours, minutes)}", time]
       end
 
-      projects.sort! { |a, b| b[1] <=> a[1] }
+      projects_info.sort! { |a, b| b[1] <=> a[1] }
 
-      total_time = projects.map(&:last).inject(:+)
+      total_time = projects_info.map(&:last).inject(:+)
       total      = "#{pluralize(total_time / 60, 'hour')} #{pluralize(total_time % 60, 'minute')}"
 
-      { projects: projects.map(&:first), total: total }
+      { projects: projects_info.map(&:first), total: total }
     end
 
-    def users_by_project(project_id:, scope:, start_date:, end_date:)
-      project = Project.find(project_id)
+    def users_by_project
+      users = collection.map(&:user).uniq
 
-      user_ids = project.time_entries.pluck(:user_id).uniq
-
-      users = user_ids.map do |user_id|
-        entries = TimeEntry.where(user_id: user_id, project_id: project_id)
-        entries = entries.send(scope) if scope
-        entries = entries.where(date: (start_date..end_date)) if start_date && end_date
-
-        time    = entries.sum(:minutes)
-
-        next ['', 0] if time.zero?
-
+      users_info = users.map do |user|
+        entries = collection.select { |entry| entry.user_id == user.id }
+        time = entries.map(&:minutes).select(&:present?).inject(&:+)
         hours   = time / 60
         minutes = time % 60
-        ["#{User.find(user_id).name}: #{pluralize(hours, 'hour')} #{pluralize(minutes, 'minute')}", time]
+
+        ["#{user.name}: #{pluralize_time(hours, minutes)}", time]
       end
 
-      users.sort! { |a, b| b[1] <=> a[1] }
+      users_info.sort! { |a, b| b[1] <=> a[1] }
 
-      total_time = users.map(&:last).inject(:+)
+      total_time = users_info.map(&:last).inject(:+)
       total      = "#{pluralize(total_time / 60, 'hour')} #{pluralize(total_time % 60, 'minute')}"
 
-      { users: users.map(&:first), total: total }
+      { users: users_info.map(&:first), total: total }
     end
 
-    def work_time_for_month
-      working_days = (Date.today.beginning_of_month..Date.today.end_of_month).select { |day| !day.saturday? && !day.sunday? }
+    def work_time_for_scope
+      start_date = Date.parse(params.dig(:q, :date_gteq_date))
+      end_date   = Date.parse(params.dig(:q, :date_lteq_date))
+      working_days = (start_date..end_date).select { |day| !day.saturday? && !day.sunday? }
       holidays = Holiday.pluck(:date)
       total_time = (working_days - holidays).count * 8
-      "Total time this month: #{total_time} hours"
+      "Total work time between #{start_date.strftime('%d.%m.%Y')} and #{end_date.strftime('%d.%m.%Y')}: #{total_time}"\
+      ' hours'
+    end
+
+    def date_filter_is_applied
+      params.dig(:q, :date_lteq_date) && params.dig(:q, :date_gteq_date)
+    end
+
+    private
+
+    def pluralize_time(hours, minutes)
+      "#{pluralize(hours, 'hour')} #{pluralize(minutes, 'minute')}"
     end
   end
 end
