@@ -63,17 +63,20 @@ $(document).ready(function () {
       {
         name: 'Current Month',
         dates: function () {
-          var start = moment().startOf('month').toDate();
-          var end = moment().endOf('month').toDate();
-          return [start, end];
+          if (moment().date() >= 16)
+            return [moment().date(16).toDate(), moment().month(moment().month() + 1).date(15).toDate()];
+          else
+            return [moment().month(moment().month() - 1).date(16).toDate(), moment().date(15).toDate()];
         }
       },
       {
         name: 'Last Month',
         dates: function () {
-          var start = moment().subtract(1, 'months').startOf('month').toDate();
-          var end = moment().subtract(1, 'months').endOf('month').toDate();
-          return [start, end];
+          if (moment().date() >= 16)
+            return [moment().month(moment().month() - 1).date(16).toDate(), moment().date(15).toDate()];
+          else
+            return [moment().month(moment().month() - 2).date(16).toDate(),
+                    moment().month(moment().month() - 1).date(15).toDate()];
         }
       }
     ],
