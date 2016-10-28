@@ -33,8 +33,8 @@ ActiveAdmin.register TimeEntry do
     column :user, sortable: 'users.name'
     column :project, sortable: 'projects.name'
     column :date
-    column(:time) { |entry| entry.is_absent ? '-' : entry.time }
-    column(:details) { |entry| entry.is_absent ? entry.reason.capitalize : entry.details }
+    column(:time)
+    column(:details)
     actions
   end
 
