@@ -34,6 +34,10 @@ class User < ApplicationRecord
     absence.save
   end
 
+  def is_absent?(date)
+    absences.find_by(date: date).present?
+  end
+
   private
 
   def parse_time(time)

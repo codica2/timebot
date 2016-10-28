@@ -14,7 +14,7 @@ namespace :cron do
     sender = Message::Sender.new
 
     User.active.each do |user|
-      next if user.time_entries.where(date: Time.zone.today).present?
+      next if user.time_entries.where(date: Time.zone.today).present? || user.is_absent?(Time.zone.today)
       sender.send_message(user, 'Hey mate, what did you do today?')
       user.update(is_speaking: true)
     end
@@ -29,7 +29,10 @@ namespace :cron do
 
     text = File.open(Rails.root.join('public', 'messages', 'canteen.txt').to_s, 'r').read
 
-    users.each { |user| sender.send_message(user, text) }
+    users.each do |user|
+      next if user.is_absent?(Time.zone.today)
+      sender.send_message(user, text)
+    end
   end
 
   desc 'Remind of setting timesheet'
@@ -53,19 +56,16 @@ namespace :cron do
   task remind_about_blank_entries: :environment do
     next if Holiday.is_holiday?
     sender = Message::Sender.new
+    start_date = suitable_start_date(Time.zone.now.beginning_of_month.to_date)
 
-    start_date = suitable_start_date(Date.new(Time.zone.today.year, Time.zone.today.month, 1))
-
-    dates = (start_date...Time.zone.today).to_a
+    work_days = (start_date...Time.zone.today).select { |date| !date.saturday? && !date.sunday? } - Holiday.pluck(:date)
 
     User.active.each do |user|
-      user_dates = dates.select do |date|
-        user.time_entries.where(date: date).empty? && date.cwday >= 1 && date.cwday < 6 && !Holiday.is_holiday?(date)
-      end
+      user_work_days = work_days - user.absences.pluck(:date)
 
-      next unless user_dates.present?
+      next unless user_work_days.present?
       text = 'Hi mate! Please fill in timesheet for ' \
-             "#{user_dates.map { |date| date.strftime('*%d.%m.%y (%A)*') }.join(', ')}."
+             "#{user_work_days.map { |date| date.strftime('*%d.%m.%y (%A)*') }.join(', ')}."
       sender.send_message(user, text)
     end
   end
