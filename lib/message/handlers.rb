@@ -125,10 +125,11 @@ module Message
       reason     = match_data[1].downcase
       start_date = build_date(match_data[2], match_data[3], match_data[4])
       end_date   = build_date(match_data[5], match_data[6], match_data[7])
+      comment    = match_data[8]
 
-      if TimeEntry.reasons.keys.include?(reason) && start_date <= end_date
-        user.set_absence(reason, start_date, end_date)
-        text = "Set *#{reason.capitalize}* from #{start_date.strftime('%d.%m.%y')} to #{end_date.strftime('%d.%m.%y')}"
+      if Absence.reasons.keys.include?(reason) && start_date <= end_date
+        (start_date..end_date).each { |date| user.add_absence(reason, date, comment) }
+        text = "Set #{reason} from #{start_date.strftime('%b %e, %Y')} to #{end_date.strftime('%b %e, %Y')}."
         sender.send_message(user, text)
       else
         sender.send_message(user, 'Invalid reason or invalid dates.')

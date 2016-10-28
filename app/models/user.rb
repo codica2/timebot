@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class User < ApplicationRecord
   has_many :time_entries, dependent: :destroy
+  has_many :absences, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: true
@@ -26,11 +27,11 @@ class User < ApplicationRecord
     "#{hours} hours #{minutes} minutes"
   end
 
-  def set_absence(reason, start_date, end_date)
-    (start_date..end_date).to_a.each do |date|
-      next if date.saturday? || date.sunday?
-      time_entries.create!(is_absent: true, reason: reason, date: date)
-    end
+  def add_absence(reason, date, comment = nil)
+    absence = absences.find_by(date: date) || absences.build(date: date)
+    absence.reason = reason
+    absence.comment = comment
+    absence.save
   end
 
   private
