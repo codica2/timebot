@@ -2,7 +2,21 @@
 ActiveAdmin.register_page 'Dashboard' do
   menu priority: 1, label: proc { I18n.t('active_admin.dashboard') }
 
+  controller do
+    def index
+      unless params.dig(:q, :date_gteq_date) && params.dig(:q, :date_lteq_date)
+        redirect_to admin_dashboard_url(q: { date_gteq_date: Date.today.beginning_of_week,
+                                             date_lteq_date: Date.today.end_of_week })
+      end
+    end
+  end
+
   content title: proc { I18n.t('active_admin.dashboard') } do
+    start_date = Date.parse(params.dig(:q, :date_gteq_date))
+    end_date   = Date.parse(params.dig(:q, :date_lteq_date))
+
+    h2 "Statistics for #{start_date.strftime('%b %e, %Y')} - #{end_date.strftime('%b %e, %Y')}"
+
     h3 'Users'
     users = dashboard_users_stats
     table_for users, class: 'index_table' do

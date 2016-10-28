@@ -6,13 +6,15 @@ $(document).ready(function () {
     return searchResult ? searchResult.split('=')[1] : false;
   };
 
-  if (window.location.pathname != '/admin/time_entries' && window.location.pathname != '/admin' && window.location.pathname != '/admin/dashboard') return;
+  if (!window.location.pathname.match(/\/admin\/?(dashboard|time_entries)?\/?/)) return;
 
   var html = '<div class="date_range input optional stringish filter_form_field filter_date_range" id="q_date_input">';
   html += '<label class="label">Date</label>';
-  html += '<input size="12" class="first-datepicker" maxlength="10" value="" type="text" name="q[date_gteq_date]" id="q_date_gteq_date">';
+  html += '<input size="12" class="first-datepicker" maxlength="10" value="" type="text" name="q[date_gteq_date]" ';
+  html += 'id="q_date_gteq_date">';
   html += '<span class="seperator">-</span>';
-  html += '<input size="12" class="last-datepicker" maxlength="10" value="" type="text" name="q[date_lteq_date]" id="q_date_lteq_date"></div>';
+  html += '<input size="12" class="last-datepicker" maxlength="10" value="" type="text" name="q[date_lteq_date]" ';
+  html += 'id="q_date_lteq_date"></div>';
 
   $('.buttons').before(html);
 
@@ -29,6 +31,7 @@ $(document).ready(function () {
     showShortcuts: true,
     shortcuts: [],
     language: 'en',
+    startOfWeek: 'monday',
     customShortcuts: [
       {
         name: 'Today',
@@ -47,16 +50,16 @@ $(document).ready(function () {
       {
         name: 'Current Week',
         dates: function () {
-          var start = moment().startOf('week').toDate();
-          var end = moment().endOf('week').toDate();
+          var start = moment().startOf('isoWeek').toDate();
+          var end = moment().endOf('isoWeek').toDate();
           return [start, end];
         }
       },
       {
         name: 'Last Week',
         dates: function () {
-          var start = moment().subtract(7, 'days').startOf('week').toDate();
-          var end = moment().subtract(7, 'days').endOf('week').toDate();
+          var start = moment().subtract(7, 'days').startOf('isoWeek').toDate();
+          var end = moment().subtract(7, 'days').endOf('isoWeek').toDate();
           return [start, end];
         }
       },
