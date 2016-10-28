@@ -86,7 +86,7 @@ module Message
     end
 
     def handle_invalid_timesheet_entry
-      sender.send_message(user, 'Please add entry in following format: `PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`')
+      sender.send_message(user, 'Please add entry in following format: `PROJECT_NAME HOURS:MINUTES COMMENT`')
     end
 
     def handle_add_project

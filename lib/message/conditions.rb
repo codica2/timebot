@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 module Message
   module Conditions
-    ENTER_TIME_FOR_DAY_REGEXP = / *update (\d?\d)\.(\d?\d).(\d?\d?\d\d) (.*) (\d?\d:[0-5]\d)(?: ((?:.|\n)*))?$/
-    ENTER_TIME_REGEXP = / *(.*) (\d?\d:[0-5]\d)(?:((?:.|\n)*))?$$/
+    ENTER_TIME_FOR_DAY_REGEXP = /^ *update (\d?\d)\.(\d?\d).(\d?\d?\d\d) (.*) (\d?\d:[0-5]\d) ([^\s](?:.|\s)*[^\s])$/
+    ENTER_TIME_REGEXP = /^ *(.*) (\d?\d:[0-5]\d) ([^\s](?:.|\s)*[^\s])$/
     ADD_PROJECT_REGEXP = /^ *add project (\w.*?) *$/
     SET_ABSENCE_REGEXP = /^ *set (.{3,}) (\d?\d)\.(\d?\d)\.(\d?\d?\d\d) - (\d?\d)\.(\d?\d)\.(\d?\d?\d\d) ?(.*)? *$/
     MESSAGE_IN_REPORT = /^ *show (week|last week|month|last month)(?: (.*?))? *$/

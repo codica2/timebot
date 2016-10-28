@@ -2,10 +2,10 @@
 
 >`projects` - prints all available projects projects.
 
-> To update or create entry at specific date, write `update DAY.MONTH.YEAR PROJECT_NAME HOURS:MINUTESCOMMENT(OPTIONAL)`.
+> To update or create entry at specific date, write `update DAY.MONTH.YEAR PROJECT_NAME HOURS:MINUTES COMMENT`.
 > For example, `update 25.07.2016 Timebot 8:00 a nice comment`.
 
-> To enter time when I ask you, write `PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`.
+> To enter time when I ask you, write `PROJECT_NAME HOURS:MINUTES COMMENT`.
 > For example, `Timebot 8:00 some comment`.
 
 > To add new project, write `add project PROJECT_NAME`.

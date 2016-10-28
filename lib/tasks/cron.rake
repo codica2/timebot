@@ -5,7 +5,7 @@ include Helper
 
 namespace :cron do
   START_CONVERSATION_MESSAGE = "Hey mate, what did you do today?\nAnswer in the following format:" \
-                               "`PROJECT_NAME HOURS:MINUTES COMMENT(OPTIONAL)`\n For example, `fame and partners 8:00" \
+                               "`PROJECT_NAME HOURS:MINUTES COMMENT`\n For example, `fame and partners 8:00" \
                                ' some comment`'
 
   desc 'Start conversation'
