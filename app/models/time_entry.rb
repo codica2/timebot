@@ -6,6 +6,7 @@ class TimeEntry < ApplicationRecord
   validates :date, presence: true
   validates :user_id, presence: true
   validates :project_id, presence: true
+  validates :minutes, presence: true
 
   scope :today, -> { where(date: Time.zone.now.to_date) }
   scope :yesterday, -> { where(date: (1.day.ago.beginning_of_day..1.day.ago.end_of_day)) }

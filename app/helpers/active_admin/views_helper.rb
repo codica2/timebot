@@ -46,9 +46,10 @@ module ActiveAdmin
       end_date   = Date.parse(params.dig(:q, :date_lteq_date))
       working_days = (start_date..end_date).select { |day| !day.saturday? && !day.sunday? }
       holidays = Holiday.pluck(:date)
-      total_time = (working_days - holidays).count * 8
-      "Total work time between #{start_date.strftime('%d.%m.%Y')} and #{end_date.strftime('%d.%m.%Y')}: #{total_time}"\
-      ' hours'
+      absence = (user_id = params.dig(:q, :user_id_eq)) ? User.find(user_id).absences.pluck(:date) : []
+      total_time = (working_days - holidays - absence).count * 8
+      "Total work time between #{start_date.strftime('%b %e, %Y')} and #{end_date.strftime('%b %e, %Y')}"\
+      ": #{total_time} hours"
     end
 
     def date_filter_is_applied

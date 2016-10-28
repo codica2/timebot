@@ -10,18 +10,19 @@ module ActiveAdmin
       (collection.map(&:minutes).select(&:present?).inject(&:+).to_f / 60.0).round(2)
     end
 
-    def estimated_hours_worked
+    def estimated_hours_worked(user)
       start_date = Date.parse(params.dig(:q, :date_gteq_date))
       end_date   = Date.parse(params.dig(:q, :date_lteq_date))
       working_days = (start_date..end_date).select { |day| !day.saturday? && !day.sunday? }
       holidays = Holiday.pluck(:date)
-      (working_days - holidays).count * 8
+      absence = user.absences.pluck(:date)
+      (working_days - holidays - absence).count * 8
     rescue
       nil
     end
 
     def difference(user)
-      if hours = estimated_hours_worked
+      if (hours = estimated_hours_worked(user))
         (hours_worked(user) - hours).round(2)
       end
     end
@@ -31,7 +32,7 @@ module ActiveAdmin
         {
           name:                   user.name,
           hours_worked:           hours_worked(user),
-          estimated_hours_worked: estimated_hours_worked,
+          estimated_hours_worked: estimated_hours_worked(user),
           difference:             difference(user)
         }
       end
