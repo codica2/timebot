@@ -32,12 +32,10 @@ module Message
     def handle_message_time_for_other_day
       match_data = data.text.match Message::Conditions::ENTER_TIME_FOR_DAY_REGEXP
 
-      day          = match_data[1].to_i
-      month        = match_data[2].to_i
-      year         = match_data[3].to_i < 2000 ? match_data[3].to_i + 2000 : match_data[3].to_i
-      project_name = match_data[4]
-      time         = match_data[5]
-      details      = match_data[6]
+      date_string  = match_data[1]
+      project_name = match_data[2]
+      time         = match_data[3]
+      details      = match_data[4]
 
       project = find_project_by_name(project_name)
 
@@ -47,7 +45,7 @@ module Message
         return
       end
 
-      date = Date.new(year, month, day)
+      date = parse_date(date_string)
 
       if date > Time.zone.today
         sender.send_message(user, 'Please enter a valid date.')
@@ -123,9 +121,9 @@ module Message
     def handle_set_absence
       match_data = data.text.match Message::Conditions::SET_ABSENCE_REGEXP
       reason     = match_data[1].downcase
-      start_date = build_date(match_data[2], match_data[3], match_data[4])
-      end_date   = build_date(match_data[5], match_data[6], match_data[7])
-      comment    = match_data[8]
+      start_date = parse_date(match_data[2])
+      end_date   = parse_date(match_data[3])
+      comment    = match_data[4]
 
       if Absence.reasons.keys.include?(reason) && start_date <= end_date
         (start_date..end_date).each { |date| user.add_absence(reason, date, comment) }
