@@ -60,8 +60,9 @@ namespace :cron do
 
     work_days = (start_date...Time.zone.today).select { |date| !date.saturday? && !date.sunday? } - Holiday.pluck(:date)
 
-    User.active.each do |user|
-      user_work_days = work_days - user.absences.pluck(:date)
+    User.active.includes(:time_entries, :absences).each do |user|
+      user_work_days = work_days - user.absences.map(&:date)
+      user_work_days.select! { |day| user.time_entries.select { |entry| entry.date == day }.empty? }
 
       next unless user_work_days.present?
       text = 'Hi mate! Please fill in timesheet for ' \
