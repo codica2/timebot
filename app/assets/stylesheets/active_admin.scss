@@ -20,6 +20,38 @@
   color: #38678b;
 }
 
+.shortcuts {
+  font-size: 13px;
+  b {
+    float: left;
+  }
+
+  span a {
+    min-width: 50px;
+  }
+
+  & b:before {
+    content:':';
+    display: block;
+    float: right;
+  }
+
+  & span:nth-child(2)::before {
+    content: '';
+    display: block;
+  }
+
+  & span:nth-child(6)::before {
+    content: '';
+    display: block;
+  }
+
+  & span:nth-child(8)::before {
+    content: '';
+    display: block;
+  }
+}
+
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //

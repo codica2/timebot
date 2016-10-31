@@ -73,15 +73,6 @@ $(document).ready(function () {
         }
       },
       {
-        name: 'Current Month (Calendar)',
-        dates: function () {
-
-          var start = moment().startOf('month').toDate();
-          var end = moment().endOf('month').toDate();
-          return [start, end];
-        }
-      },
-      {
         name: 'Last Month',
         dates: function () {
           if (moment().date() >= 16)
@@ -89,6 +80,15 @@ $(document).ready(function () {
           else
             return [moment().month(moment().month() - 2).date(16).toDate(),
                     moment().month(moment().month() - 1).date(15).toDate()];
+        }
+      },
+      {
+        name: 'Current Month (Calendar)',
+        dates: function () {
+
+          var start = moment().startOf('month').toDate();
+          var end = moment().endOf('month').toDate();
+          return [start, end];
         }
       },
       {
