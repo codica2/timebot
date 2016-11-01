@@ -28,9 +28,30 @@ ActiveAdmin.register_page 'Dashboard' do
 
     h3 'Projects'
     projects = dashboard_projects_stats
-    table_for projects, class: 'index_table' do
-      column('Name') { |project| project[:name] }
-      column('Hours Worked') { |project| project[:hours_worked]  }
+    table(class: 'index_table') do
+      thead do
+        th 'Project'
+        th 'User'
+        th 'Time'
+      end
+      tbody do
+        projects.each do |project|
+          tr(class: 'even') do
+            td do
+              b project[:name]
+            end
+            td
+            td project[:hours_worked]
+          end
+          project[:users].each do |user|
+            tr do
+              td
+              td user[:name]
+              td user[:hours_worked]
+            end
+          end
+        end
+      end
     end
   end
 
