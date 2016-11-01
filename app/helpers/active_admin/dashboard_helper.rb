@@ -13,12 +13,11 @@ module ActiveAdmin
     def estimated_hours_worked(user)
       start_date = Date.parse(params.dig(:q, :date_gteq_date))
       end_date   = Date.parse(params.dig(:q, :date_lteq_date))
-      working_days = (start_date..end_date).select { |day| !day.saturday? && !day.sunday? }
+      working_days = (end_date >= Time.zone.today) ? (start_date...Time.zone.today) : (start_date..end_date)
+      working_days = working_days.select { |day| !day.saturday? && !day.sunday? }
       holidays = Holiday.pluck(:date)
       absence = user.absences.pluck(:date)
       (working_days - holidays - absence).count * 8
-    rescue
-      nil
     end
 
     def difference(user)
