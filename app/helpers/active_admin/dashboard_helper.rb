@@ -1,13 +1,8 @@
 module ActiveAdmin
   module DashboardHelper
     def hours_worked(instance)
-      collection = if params.dig(:q, :date_gteq_date) && params.dig(:q, :date_lteq_date)
-                     instance.time_entries.in_interval(params.dig(:q, :date_gteq_date), params.dig(:q, :date_lteq_date))
-                   else
-                     instance.time_entries
-                   end
-
-      (collection.map(&:minutes).select(&:present?).inject(&:+).to_f / 60.0).round(2)
+      collection = apply_date_filter(instance)
+      total_time(collection)
     end
 
     def estimated_hours_worked(user)
@@ -39,12 +34,36 @@ module ActiveAdmin
       users.sort { |a, b| b[:hours_worked] <=> a[:hours_worked] }
     end
 
+    def apply_date_filter(instance)
+      if params.dig(:q, :date_gteq_date) && params.dig(:q, :date_lteq_date)
+        instance.time_entries.in_interval(params.dig(:q, :date_gteq_date), params.dig(:q, :date_lteq_date))
+      else
+        instance.time_entries
+      end
+    end
+
+    def total_time(time_entries)
+      (time_entries.map(&:minutes).select(&:present?).inject(&:+).to_f / 60.0).round(2)
+    end
+
+    def stats_for_project(project)
+      collection = apply_date_filter(project)
+
+      {
+        name: project.name,
+        hours_worked: total_time(collection),
+        users: collection.map(&:user).uniq.map do |user|
+          {
+            name: user.name,
+            hours_worked: total_time(collection.select { |time_entry| time_entry.user_id == user.id })
+          }
+        end.sort { |a, b| b[:hours_worked] <=> a[:hours_worked] }
+      }
+    end
+
     def dashboard_projects_stats
       projects = Project.all.map do |project|
-        {
-            name:         project.name,
-            hours_worked: hours_worked(project)
-        }
+        stats_for_project(project)
       end.select { |project| !project[:hours_worked].zero? }
 
       projects.sort { |a, b| b[:hours_worked] <=> a[:hours_worked] }
