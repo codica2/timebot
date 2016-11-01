@@ -46,7 +46,7 @@ module ActiveAdmin
             name:         project.name,
             hours_worked: hours_worked(project)
         }
-      end
+      end.select { |project| !project[:hours_worked].zero? }
 
       projects.sort { |a, b| b[:hours_worked] <=> a[:hours_worked] }
     end
