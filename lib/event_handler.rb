@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 class EventHandler
   include Message::Conditions
-  include Message::Handlers
   include Message::Logger
-  include Helper
 
-  attr_reader :client, :data, :user, :sender, :messages
+  attr_reader :client, :data, :sender, :messages, :public_channels
 
   def initialize(client, data, messages)
     @client          = client
@@ -17,29 +15,30 @@ class EventHandler
 
   def handle_message
     return if message_is_not_processable
-    @user = User.find_by(uid: data.user)
-    log_incoming_message(@user, data.text)
+
+    user = User.find_by(uid: data.user)
+    log_incoming_message(user, data.text)
 
     if message_is_request_for_project
-      handle_message_show_projects
+      ShowProjects.call(user)
     elsif message_is_request_for_help
-      handle_message_show_help
+      ShowHelp.call(user)
     elsif message_is_show_reports
-      handle_reports
+      ShowReport.call(user, data.text)
     elsif message_is_set_absence
-      handle_set_absence
+      SetAbsence.call(user, data.text)
     elsif message_is_enter_time_for_day
-      handle_message_time_for_other_day
+      SetTimeForDay.call(user, data.text)
     elsif message_is_add_project
-      handle_add_project
+      AddProject.call(user, data.text)
     elsif message_is_over
-      handle_message_over
+      FinishDialog.call(user, messages)
     elsif user.is_speaking
-      handle_timesheet_entry
+      CreateEntry.call(user, data.text, messages)
     elsif message_is_ask_me
-      handle_ask_me
+      StartConversation.call(user, messages)
     else
-      handle_unknown_message
+      DoNotUnderstand.call(user, messages)
     end
   rescue => e
     Rails.logger.error(e)
