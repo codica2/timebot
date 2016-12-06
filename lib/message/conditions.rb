@@ -17,7 +17,7 @@ module Message
       data.text.casecmp('help').zero?
     end
 
-    def message_is_over
+    def message_is_over(user)
       data.text.downcase =~ /^ *no *$/ && user.is_speaking
     end
 

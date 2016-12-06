@@ -31,7 +31,7 @@ class EventHandler
       SetTimeForDay.call(user, data.text)
     elsif message_is_add_project
       AddProject.call(user, data.text)
-    elsif message_is_over
+    elsif message_is_over(user)
       FinishDialog.call(user, messages)
     elsif user.is_speaking
       CreateEntry.call(user, data.text, messages)
