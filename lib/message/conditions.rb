@@ -34,7 +34,7 @@ module Message
     end
 
     def message_from_public_channel
-      @public_channels.include? data.channel
+      public_channels.include? data.channel
     end
 
     def message_is_not_processable
