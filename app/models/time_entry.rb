@@ -16,6 +16,6 @@ class TimeEntry < ApplicationRecord
   scope :in_interval, -> (start_date, end_date) { where(['date BETWEEN ? AND ?', start_date, end_date]) }
 
   def description
-    details.present? ? "*#{project.name}* - #{time} - #{details}" : "*#{project.name}* - #{time}"
+    "*#{id}: #{project.name}* - #{time} - #{details}"
   end
 end
