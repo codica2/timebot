@@ -6,6 +6,7 @@ module Message
     ADD_PROJECT_REGEXP = /^ *add project (\w.*?) *$/
     SET_ABSENCE_REGEXP = /^ *set (.{3,}) (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?) - (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?) ?([^\s](?:.|\s)*[^\s])? *$/
     MESSAGE_IN_REPORT = /^ *show (week|last week|month|last month)(?: (.*?))? *$/
+    REMOVE_ENTRY_REGEXP = /^ *remove entry (?<id>\d+) *$/
 
     private
 
@@ -47,6 +48,10 @@ module Message
 
     def message_is_ask_me
       data.text.downcase =~ /^ *ask me *$/
+    end
+
+    def message_is_remove_entry
+      data.text.downcase =~ REMOVE_ENTRY_REGEXP
     end
   end
 end

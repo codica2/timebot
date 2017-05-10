@@ -33,6 +33,8 @@ class EventHandler
       AddProject.call(user, data.text)
     elsif message_is_over(user)
       FinishDialog.call(user, messages)
+    elsif message_is_remove_entry
+      RemoveEntry.call(user, data.text.match(REMOVE_ENTRY_REGEXP)[:id].to_i)
     elsif user.is_speaking
       CreateEntry.call(user, data.text, messages)
     elsif message_is_ask_me
