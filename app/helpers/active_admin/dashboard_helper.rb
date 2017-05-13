@@ -46,6 +46,10 @@ module ActiveAdmin
       (time_entries.map(&:minutes).select(&:present?).inject(&:+).to_f / 60.0).round(2)
     end
 
+    def records(time_entries)
+      time_entries.map { |t| "#{t.details} (#{(t.minutes.to_f / 60.0).round(1)} h)" }
+    end
+
     def stats_for_project(project)
       collection = apply_date_filter(project)
 
@@ -55,7 +59,8 @@ module ActiveAdmin
         users: collection.map(&:user).uniq.map do |user|
           {
             name: user.name,
-            hours_worked: total_time(collection.select { |time_entry| time_entry.user_id == user.id })
+            hours_worked: total_time(collection.select { |time_entry| time_entry.user_id == user.id }),
+            records: records(collection.select { |time_entry| time_entry.user_id == user.id })
           }
         end.sort { |a, b| b[:hours_worked] <=> a[:hours_worked] }
       }

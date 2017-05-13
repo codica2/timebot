@@ -49,6 +49,14 @@ ActiveAdmin.register_page 'Dashboard' do
               td user[:name]
               td user[:hours_worked]
             end
+            user[:records].each do |time_entry|
+              tr do
+                td
+                td colspan: 2 do
+                  time_entry
+                end
+              end
+            end
           end
         end
       end
