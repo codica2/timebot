@@ -73,5 +73,45 @@ module ActiveAdmin
 
       projects.sort { |a, b| b[:hours_worked] <=> a[:hours_worked] }
     end
+
+    def sql_dashboard_projects_stats
+      sql = <<~SQL
+        SELECT
+          projects.name AS "project",
+          users.name AS "user",
+          time_entries.details,
+          time_entries.minutes
+        FROM projects
+          INNER JOIN time_entries ON time_entries.project_id = projects.id
+          INNER JOIN users ON time_entries.user_id = users.id
+        WHERE date BETWEEN '#{params[:q][:date_gteq_date]}' AND '#{params[:q][:date_lteq_date]}'
+        ORDER BY (SELECT SUM(t.minutes)
+                  FROM time_entries AS t
+                  WHERE t.project_id = projects.id AND (date BETWEEN '#{params[:q][:date_gteq_date]}'
+                        AND '#{params[:q][:date_lteq_date]}')) DESC,
+                 (SELECT SUM(t.minutes)
+                  FROM time_entries AS t
+                  WHERE t.project_id = projects.id AND t.user_id = users.id
+                        AND (date BETWEEN '#{params[:q][:date_gteq_date]}' AND '#{params[:q][:date_lteq_date]}')) DESC,
+                 time_entries.minutes DESC
+      SQL
+      result = TimeEntry.connection.execute(sql).to_a
+
+      result.map { |h| h['project'] }.uniq.map do |project|
+        project_rows = result.select { |h| h['project'] == project }
+        {
+          name: project,
+          total: (project_rows.map { |h| h['minutes'] }.sum / 60.0).round(1),
+          users: project_rows.map { |h| h['user'] }.uniq.map do |user|
+            user_rows = result.select { |h| h['project'] == project && h['user'] == user }
+            {
+              name: user,
+              total: (user_rows.map { |h| h['minutes'] }.sum / 60.0).round(1),
+              entries: user_rows.map { |h| { time: (h['minutes'] / 60.0).round(1), details: h['details'] } }
+            }
+          end,
+        }
+      end
+    end
   end
 end

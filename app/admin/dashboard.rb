@@ -27,11 +27,12 @@ ActiveAdmin.register_page 'Dashboard' do
     end
 
     h3 'Projects'
-    projects = dashboard_projects_stats
+    projects = sql_dashboard_projects_stats
     table(class: 'index_table') do
       thead do
         th 'Project'
         th 'User'
+        th 'Details'
         th 'Time'
       end
       tbody do
@@ -41,20 +42,26 @@ ActiveAdmin.register_page 'Dashboard' do
               b project[:name]
             end
             td
-            td project[:hours_worked]
+            td
+            td do
+              b project[:total]
+            end
           end
           project[:users].each do |user|
             tr do
               td
               td user[:name]
-              td user[:hours_worked]
+              td
+              td do
+                b user[:total]
+              end
             end
-            user[:records].each do |time_entry|
+            user[:entries].each do |time_entry|
               tr do
                 td
-                td colspan: 2 do
-                  time_entry
-                end
+                td
+                td time_entry[:details]
+                td time_entry[:time]
               end
             end
           end
