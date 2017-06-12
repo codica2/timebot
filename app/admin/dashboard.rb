@@ -36,8 +36,8 @@ ActiveAdmin.register_page 'Dashboard' do
         th 'Time'
       end
       tbody do
-        projects.each do |project|
-          tr(class: 'even') do
+        projects.each_with_index do |project, index|
+          tr(class: 'even report__project-name', :'data-id' => project[:id]) do
             td do
               b project[:name]
             end
@@ -47,21 +47,23 @@ ActiveAdmin.register_page 'Dashboard' do
               b project[:total]
             end
           end
-          project[:users].each do |user|
-            tr do
-              td
-              td user[:name]
-              td
-              td do
-                b user[:total]
-              end
-            end
-            user[:entries].each do |time_entry|
+          tbody(:'data-project-id' => project[:id], style: index != 0 ? 'display: none' : '') do
+            project[:users].each do |user|
               tr do
                 td
+                td user[:name]
                 td
-                td time_entry[:details]
-                td time_entry[:time]
+                td do
+                  b user[:total]
+                end
+              end
+              user[:entries].each do |time_entry|
+                tr do
+                  td
+                  td
+                  td time_entry[:details]
+                  td time_entry[:time]
+                end
               end
             end
           end

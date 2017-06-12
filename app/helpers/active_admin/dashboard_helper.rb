@@ -77,6 +77,7 @@ module ActiveAdmin
     def sql_dashboard_projects_stats
       sql = <<~SQL
         SELECT
+          projects.id AS "project_id",
           projects.name AS "project",
           users.name AS "user",
           time_entries.details,
@@ -100,6 +101,7 @@ module ActiveAdmin
       result.map { |h| h['project'] }.uniq.map do |project|
         project_rows = result.select { |h| h['project'] == project }
         {
+          id: project_rows.first['project_id'],
           name: project,
           total: (project_rows.map { |h| h['minutes'] }.sum / 60.0).round(1),
           users: project_rows.map { |h| h['user'] }.uniq.map do |user|
