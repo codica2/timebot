@@ -16,4 +16,9 @@ module ServiceHelper
     year  = year + 2000 if year < 100
     Date.new(year, month, day)
   end
+
+  def parse_time(time)
+    match_data = time.match(/^(\d?\d):([0-5]\d)$/)
+    match_data[1].to_i * 60 + match_data[2].to_i
+  end
 end

@@ -28,13 +28,15 @@ class EventHandler
     elsif message_is_set_absence
       SetAbsence.call(user, data.text)
     elsif message_is_enter_time_for_day
-      SetTimeForDay.call(user, data.text)
+      CreateEntryForDay.call(user, data.text)
     elsif message_is_add_project
       AddProject.call(user, data.text)
     elsif message_is_over(user)
       FinishDialog.call(user, messages)
     elsif message_is_remove_entry
       RemoveEntry.call(user, data.text.match(REMOVE_ENTRY_REGEXP)[:id].to_i)
+    elsif message_is_edit_entry
+      EditEntry.call(user, data.text)
     elsif message_is_enter_time
       CreateEntry.call(user, data.text, messages)
     else

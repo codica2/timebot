@@ -1,4 +1,4 @@
-class SetTimeForDay < BaseService
+class CreateEntryForDay < BaseService
   include ServiceHelper
 
   attr_reader :user, :text
@@ -32,7 +32,10 @@ class SetTimeForDay < BaseService
       return
     end
 
-    user.add_time_entry(project_id: project.id, time: time, details: details, date: date)
+    minutes = parse_time(time)
+    time = format('%2d:%02d', minutes / 60, minutes % 60)
+
+    user.time_entries.create!(project_id: project.id, time: time, minutes: minutes, details: details, date: date)
 
     message = "Set timesheet for #{date.strftime('%-d.%-m.%Y')} for #{project.name}: #{time}."
     message += " Details: #{details || 'none'}." if details
