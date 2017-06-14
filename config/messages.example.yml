@@ -44,7 +44,7 @@ thanks:
 
 log:
   -
-    text: 'Do you have any other projects to log? Write `no` to finish logging time.'
+    text: 'The entry was successfully created.'
     options:
       :attachments: []
 today:

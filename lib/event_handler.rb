@@ -35,10 +35,8 @@ class EventHandler
       FinishDialog.call(user, messages)
     elsif message_is_remove_entry
       RemoveEntry.call(user, data.text.match(REMOVE_ENTRY_REGEXP)[:id].to_i)
-    elsif user.is_speaking
+    elsif message_is_enter_time
       CreateEntry.call(user, data.text, messages)
-    elsif message_is_ask_me
-      StartConversation.call(user, messages)
     else
       DoNotUnderstand.call(user, messages)
     end

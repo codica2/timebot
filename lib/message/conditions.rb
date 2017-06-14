@@ -53,5 +53,9 @@ module Message
     def message_is_remove_entry
       data.text.downcase =~ REMOVE_ENTRY_REGEXP
     end
+
+    def message_is_enter_time
+      data.text.downcase =~ ENTER_TIME_REGEXP
+    end
   end
 end
