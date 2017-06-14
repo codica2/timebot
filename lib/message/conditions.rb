@@ -47,10 +47,6 @@ module Message
       data.text =~ SET_ABSENCE_REGEXP
     end
 
-    def message_is_ask_me
-      data.text.downcase =~ /^ *ask me *$/
-    end
-
     def message_is_remove_entry
       data.text.downcase =~ REMOVE_ENTRY_REGEXP
     end
