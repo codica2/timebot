@@ -33,9 +33,12 @@ class CreateEntryForDay < BaseService
     end
 
     minutes = parse_time(time)
-    time = format('%2d:%02d', minutes / 60, minutes % 60)
 
-    user.time_entries.create!(project_id: project.id, time: time, minutes: minutes, details: details, date: date)
+    user.time_entries.create!(project_id: project.id,
+                              time:       format_time(minutes),
+                              minutes:    minutes,
+                              details:    details,
+                              date:       date)
 
     message = "Set timesheet for #{date.strftime('%-d.%-m.%Y')} for #{project.name}: #{time}."
     message += " Details: #{details || 'none'}." if details

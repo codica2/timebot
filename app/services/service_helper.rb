@@ -21,4 +21,8 @@ module ServiceHelper
     match_data = time.match(/^(\d?\d):([0-5]\d)$/)
     match_data[1].to_i * 60 + match_data[2].to_i
   end
+
+  def format_time(minutes)
+    format('%2d:%02d', minutes / 60, minutes % 60)
+  end
 end

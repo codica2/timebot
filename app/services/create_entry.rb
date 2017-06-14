@@ -29,8 +29,11 @@ class CreateEntry < BaseService
 
     message = messages['log'].sample
     minutes = parse_time(time)
-    time = format('%2d:%02d', minutes / 60, minutes % 60)
-    user.time_entries.create!(project_id: project.id, time: time, minutes: minutes, details: details, date: Time.zone.today)
+    user.time_entries.create!(project_id: project.id,
+                              time:       format_time(minutes),
+                              minutes:    minutes,
+                              details:    details,
+                              date:       Time.zone.today)
     sender.send_message(user, message['text'], message['options'])
 
     if user.is_speaking
