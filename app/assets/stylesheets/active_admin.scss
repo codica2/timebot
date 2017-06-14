@@ -56,6 +56,10 @@
   cursor: pointer;
 }
 
+.report tr > td:last-child, .report tr > th:last-child {
+  width: 30px;
+}
+
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //

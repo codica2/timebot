@@ -28,7 +28,7 @@ ActiveAdmin.register_page 'Dashboard' do
 
     h3 'Projects'
     projects = sql_dashboard_projects_stats
-    table(class: 'index_table') do
+    table(class: 'index_table report') do
       thead do
         th 'Project'
         th 'User'
