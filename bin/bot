@@ -3,17 +3,20 @@
 
 command = ARGV[0]
 
-available_commands = %w(start stop restart)
+available_commands = %w(start stop)
 
 if ARGV.size != 1 || !available_commands.include?(command)
   raise 'Invalid command'
 end
 
 def start
-  Process.daemon(true)
+  stream = %w(log/production.log a)
 
-  puma_pid = spawn('puma -e production')
-  bot_pid  = spawn({ 'RAILS_ENV' => 'production' }, 'rake', 'start_bot')
+  puma_pid = spawn('bundle', 'exec', 'puma', '-e', 'production', out: stream, err: stream)
+  bot_pid  = spawn({ 'RAILS_ENV' => 'production' }, 'bundle', 'exec', 'rake', 'start_bot', out: stream, err: stream)
+
+  Process.detach(puma_pid)
+  Process.detach(bot_pid)
 
   File.write('tmp/pids/puma.pid', puma_pid)
   File.write('tmp/pids/bot.pid', bot_pid)

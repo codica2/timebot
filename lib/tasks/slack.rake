@@ -22,3 +22,30 @@ task start_bot: :environment do
 
   client.start!
 end
+
+task check_status: :environment do
+  client = Slack::Web::Client.new
+
+  timebot_id = client.users_list[:members].find { |user| user[:name] == 'timebot' }[:id]
+  presence = client.users_getPresence(user: timebot_id)
+
+  unless presence[:online]
+    pid_file_path = Rails.root.join('tmp', 'pids', 'bot.pid').to_s
+
+    pid = File.read(pid_file_path)
+
+    begin
+      Process.kill('KILL', pid.to_i) if pid.present?
+    rescue Errno::ESRCH => e
+      puts e.inspect
+    end
+
+    stream = [Rails.root.join('log', "#{Rails.env}.log").to_s, 'a']
+
+    Dir.chdir(Rails.root)
+    pid = spawn({ 'RAILS_ENV' => 'production' }, 'bundle', 'exec', 'rake', 'start_bot', out: stream, err: stream)
+    Process.detach(pid)
+
+    File.write(pid_file_path, pid)
+  end
+end
