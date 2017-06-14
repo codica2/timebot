@@ -22,7 +22,7 @@ class EditEntry < BaseService
 
     minutes = parse_time(time)
 
-    time_entry.update(time: time, minutes: format_time(minutes), details: details)
+    time_entry.update(time: format_time(minutes), minutes: minutes, details: details)
 
     sender.send_message(user, 'The time entry was successfully updated.')
   rescue ActiveRecord::RecordNotFound
