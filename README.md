@@ -10,6 +10,11 @@ We are using Slack Realtime API for event listening. We also use ActiveAdmin as 
  - Rails 5
  - PostgreSQL
  - ActiveAdmin
+ 
+## Deployment
+
+Create a `config/deploy/production.rb` and a `config/deploy.rb` files. Check `config/deploy/production.rb.example` and
+`config/deploy.rb.example` for help. Then you can deploy with `cap production deploy` command.
 
 ## License
 
