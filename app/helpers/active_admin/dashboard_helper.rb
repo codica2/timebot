@@ -115,5 +115,19 @@ module ActiveAdmin
         }
       end
     end
+
+    def project_time_entries
+      TimeEntry.in_interval(params[:q][:date_gteq_date], params[:q][:date_lteq_date])
+        .group_by(&:project)
+        .sort { |a, b| time_worked(b) <=> time_worked(a) }
+    end
+
+    def time_worked(entry)
+      (entry.last.map(&:minutes).sum / 60.0).round(1)
+    end
+
+    def user_names(entry)
+      entry.last.map(&:user).map(&:name).uniq.to_sentence
+    end
   end
 end
