@@ -39,6 +39,8 @@ class EventHandler
       EditEntry.call(user, data.text)
     elsif message_is_enter_time
       CreateEntry.call(user, data.text, messages)
+    elsif message_is_find_project
+      FindProject.call(user, data.text)
     else
       DoNotUnderstand.call(user, messages)
     end

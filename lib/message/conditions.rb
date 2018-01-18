@@ -8,6 +8,7 @@ module Message
     MESSAGE_IN_REPORT = /^ *show (week|last week|month|last month)(?: (.*?))? *$/
     REMOVE_ENTRY_REGEXP = /^ *remove entry (?<id>\d+) *$/
     EDIT_ENTRY_REGEXP = /^ *edit (\d+) (\d?\d:[0-5]\d) ([^\s](?:.|\s)*[^\s]) *$/
+    FIND_PROJECT_REGEXP = /^ *find project (\w.*?) *$/
 
     private
 
@@ -57,6 +58,10 @@ module Message
 
     def message_is_edit_entry
       data.text.downcase =~ EDIT_ENTRY_REGEXP
+    end
+
+    def message_is_find_project
+      data.text =~ FIND_PROJECT_REGEXP
     end
   end
 end

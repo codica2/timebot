@@ -2,6 +2,9 @@
 
 >`projects` - prints all available projects projects.
 
+> To find project, write `find project SEARCH_QUERY`
+> For example, `find project time`
+
 > To enter time, write `PROJECT_NAME HOURS:MINUTES COMMENT`.
 > For example, `Timebot 8:00 some comment`.
 
