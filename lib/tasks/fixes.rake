@@ -10,4 +10,12 @@ namespace :fix do
       entry.update(time: right_time)
     end
   end
+
+  task aliases: :environment do
+    Project.all.each do |project|
+      next if project.alias.present?
+
+      project.update(alias: project.name.downcase.tr(' ', '-'))
+    end
+  end
 end
