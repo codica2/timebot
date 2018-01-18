@@ -3,6 +3,11 @@ module ServiceHelper
     Project.where(['lower(name) = ? OR lower(alias) = ?', project_name.downcase, project_name.downcase]).first
   end
 
+  def scan_projects_by_name(project_name)
+    search_value = "%#{project_name.downcase}%"
+    Project.where('lower(name) LIKE ? OR lower(alias) LIKE ?', search_value, search_value)
+  end
+
   def suitable_start_date(start_date)
     launch_date = ENV['TIMEBOT_LAUNCH_DATE'] ? Date.parse(ENV['TIMEBOT_LAUNCH_DATE']) : nil
     launch_date && launch_date > start_date ? launch_date : start_date
