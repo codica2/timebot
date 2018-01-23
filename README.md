@@ -16,6 +16,7 @@ We are using Slack Realtime API for event listening. We also use ActiveAdmin as 
 Create a `config/deploy/production.rb` and a `config/deploy.rb` files. Check `config/deploy/production.rb.example` and
 `config/deploy.rb.example` for help. Then you can deploy with `cap production deploy` command.
 
+If you need to start bot manualy, just type `sudo service timebot start`
 ## License
 
 The MIT License (MIT)
