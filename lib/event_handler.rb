@@ -34,20 +34,20 @@ class EventHandler
     elsif message_is_over(user)
       FinishDialog.call(user, messages)
     elsif message_is_remove_entry
-      RemoveEntry.call(user, data.text.match(REMOVE_ENTRY_REGEXP)[:id].to_i)
+      RemoveEntry.call(user, data.text.match(REMOVE_ENTRY_REGEXP)[1])
     elsif message_is_edit_entry
       EditEntry.call(user, data.text)
     elsif message_is_enter_time
       CreateEntry.call(user, data.text, messages)
     elsif message_is_find_project
       FindProject.call(user, data.text)
+    elsif message_is_worked_hours
+      match_data = data.match(WORKED_HOURS_MONTH) || data.match(WORKED_HOURS_PREV_MONTH) || data.match(WORKED_HOURS)
+      ShowWorkedHours.call(user, match_data)
     else
       DoNotUnderstand.call(user, messages)
     end
-  rescue => e
-    Rails.logger.error(e)
-    Rails.logger.error(e.backtrace.join("\n\t"))
-    sender.send_message(user, 'Sorry. An error occurred.')
+
   end
 
   private

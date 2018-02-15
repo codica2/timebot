@@ -6,17 +6,19 @@
 > For example, `find project time`
 
 > To enter time, write `PROJECT_NAME HOURS:MINUTES COMMENT`.
-> For example, `Timebot 8:00 some comment`.
+> For example, `Timebot 8:00 some comment`,
+>               or `bot     8:00    comment after tab char`.
 
 > To create an entry for the specific date, write `update(OPTIONAL) DAY.MONTH.YEAR(OPTIONAL) PROJECT_NAME HOURS:MINUTES COMMENT`.
 > For example, `update 25.07 Timebot 8:00 a nice comment`,
-                or messy one but still valid `25.07    bot  8:00   a nice comment` which is equal to the previous entry.
+>               or messy one but still valid `25.07    bot  8:00   a nice comment` which is equal to the previous entry.
 
 > To edit an existing time entry, write `edit TIME_ENTRY_ID HOURS:MINUTES COMMENT`.
 > For example, `edit 1 Timebot 8:00 a nice comment`.
 
 > To remove a time entry, write `remove entry ID`.
 > For example, `remove entry 1`.
+>              `remove entry last`
 
 > To add new project, write `add project PROJECT_NAME`.
 > For example, `add project Timebot`.
@@ -27,6 +29,9 @@
 
 > To get report by project, write `show week` / `show last week` / `show month` /  `show last month` + `PROJECT_NAME`.
 > For example, `show week Timebot` / `show last month Timebot` etc.
+
+> To get hours worked between two dates report, write two dates with a dash delimiter
+> For example, `1.1 - 1.2` / `15.2.18-14.3.18` / `23.01.2018  -  23.3` / etc. or `show work month` / `show work last month`
 
 > If you are absent on some days, write `set REASON DAY.MONTH.YEAR(OPTIONAL) - DAY.MONTH.YEAR(OPTIONAL)`.
 > For example, `set vacation 15.08 - 19.08`.
