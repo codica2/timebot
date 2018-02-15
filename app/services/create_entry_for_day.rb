@@ -17,9 +17,15 @@ class CreateEntryForDay < BaseService
     time         = match_data[3]
     details      = match_data[4]
 
-    project = find_project_by_name(project_name)
+    project = find_project_by_name_like(project_name)
 
-    unless project
+    if project.count > 1
+      sender.send_message(user, "Multiple projects with name #{project_name} : #{project.map(&:name).to_s}.")
+      ShowProjects.call(user)
+      return
+    end
+
+    if project.count == 0
       sender.send_message(user, 'No such project.')
       ShowProjects.call(user)
       return

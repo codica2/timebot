@@ -3,6 +3,10 @@ module ServiceHelper
     Project.where(['lower(name) = ? OR lower(alias) = ?', project_name.downcase, project_name.downcase]).first
   end
 
+  def find_project_by_name_like(project_name)
+    Project.where('lower(name) like ? OR lower(alias) like ?', "%#{project_name.downcase}%", "%#{project_name.downcase}%")
+  end
+
   def scan_projects_by_name(project_name)
     search_value = "%#{project_name.downcase}%"
     Project.where('lower(name) LIKE ? OR lower(alias) LIKE ?', search_value, search_value)

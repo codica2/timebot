@@ -19,9 +19,10 @@ class CreateEntry < BaseService
   private
 
   def create_entry(project_name, time, details)
-    project = find_project_by_name(project_name)
+    project = find_project_by_name_like(project_name)
+    project = project.count > 1 ? nil : project
 
-    unless project
+    if project.nil?
       sender.send_message(user, 'No such project.')
       ShowProjects.call(user)
       return

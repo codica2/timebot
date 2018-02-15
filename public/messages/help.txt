@@ -8,8 +8,9 @@
 > To enter time, write `PROJECT_NAME HOURS:MINUTES COMMENT`.
 > For example, `Timebot 8:00 some comment`.
 
-> To create an entry for the specific date, write `update DAY.MONTH.YEAR(OPTIONAL) PROJECT_NAME HOURS:MINUTES COMMENT`.
-> For example, `update 25.07 Timebot 8:00 a nice comment`.
+> To create an entry for the specific date, write `update(OPTIONAL) DAY.MONTH.YEAR(OPTIONAL) PROJECT_NAME HOURS:MINUTES COMMENT`.
+> For example, `update 25.07 Timebot 8:00 a nice comment`,
+                or messy one but still valid `25.07    bot  8:00   a nice comment` which is equal to the previous entry.
 
 > To edit an existing time entry, write `edit TIME_ENTRY_ID HOURS:MINUTES COMMENT`.
 > For example, `edit 1 Timebot 8:00 a nice comment`.
