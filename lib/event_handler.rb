@@ -42,7 +42,7 @@ class EventHandler
     elsif message_is_find_project
       FindProject.call(user, data.text)
     elsif message_is_worked_hours
-      match_data = data.match(WORKED_HOURS_MONTH) || data.match(WORKED_HOURS_PREV_MONTH) || data.match(WORKED_HOURS)
+      match_data = data.text.match(WORKED_HOURS_MONTH) || data.text.match(WORKED_HOURS_PREV_MONTH) || data.text.match(WORKED_HOURS)
       ShowWorkedHours.call(user, match_data)
     else
       DoNotUnderstand.call(user, messages)
