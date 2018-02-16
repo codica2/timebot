@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 module Message
   module Conditions
-    ENTER_TIME_FOR_DAY_REGEXP = /^ *update (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?) (.*) (\d?\d:[0-5]\d) ([^\s](?:.|\s)*[^\s]) *$/
-    ENTER_TIME_REGEXP = /^ *(.*) (\d?\d:[0-5]\d) ([^\s](?:.|\s)*[^\s])$/
+    ENTER_TIME_FOR_DAY_REGEXP = /^\s*(?:update\s+?)?(\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)\s+?(\w+?)\s+?(\d?\d:[0-5]\d)\s+?([^\s](?:.|\s)*[^\s])\s*$/
+    ENTER_TIME_REGEXP = /^(?!update)([^\d\.\s][^\s]+?)\s+?(\d?\d:[0-5]\d)\s+?([^\s](?:.|\s)*[^\s])\s*$/
     ADD_PROJECT_REGEXP = /^ *add project (\w.*?) *$/
     SET_ABSENCE_REGEXP = /^ *set (.{3,}) (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?) - (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?) ?([^\s](?:.|\s)*[^\s])? *$/
     MESSAGE_IN_REPORT = /^ *show (week|last week|month|last month)(?: (.*?))? *$/
-    REMOVE_ENTRY_REGEXP = /^ *remove entry (?<id>\d+) *$/
+    REMOVE_ENTRY_REGEXP = /^ *remove entry (\d+|last) *$/
     EDIT_ENTRY_REGEXP = /^ *edit (\d+) (\d?\d:[0-5]\d) ([^\s](?:.|\s)*[^\s]) *$/
     FIND_PROJECT_REGEXP = /^ *find project (\w.*?) *$/
-
-    private
+    WORKED_HOURS = /^\s*(\d{1,2}\.\d{1,2}\.?(?:\d{4}|\d{2})?)\s*?-\s*?(\d{1,2}\.\d{1,2}\.?(?:\d{4}|\d{2})?)\s*?$/
+    WORKED_HOURS_MONTH = /^ *show work month *$/
+    WORKED_HOURS_PREV_MONTH = /^ *show work last month *$/
 
     def message_is_request_for_project
       data.text.casecmp('projects').zero?
@@ -62,6 +63,10 @@ module Message
 
     def message_is_find_project
       data.text =~ FIND_PROJECT_REGEXP
+    end
+
+    def message_is_worked_hours
+      data.text =~ WORKED_HOURS || data.text =~ WORKED_HOURS_MONTH || data.text =~ WORKED_HOURS_PREV_MONTH
     end
   end
 end

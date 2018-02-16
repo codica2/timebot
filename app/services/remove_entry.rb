@@ -8,7 +8,8 @@ class RemoveEntry < BaseService
   end
 
   def call
-    TimeEntry.find(time_entry_id).destroy
+    time_entry_id[/\d+/].present? ? TimeEntry.find(time_entry_id).destroy
+                                  : TimeEntry.where(user_id: user.id).last.destroy
 
     sender.send_message(user, "Entry with ID #{time_entry_id} successfully removed.")
   end

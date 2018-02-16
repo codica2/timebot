@@ -19,13 +19,21 @@ class CreateEntry < BaseService
   private
 
   def create_entry(project_name, time, details)
-    project = find_project_by_name(project_name)
+    projects = find_project_by_name_like(project_name)
 
-    unless project
+    if projects.count > 1
+      sender.send_message(user, "Multiple projects with name #{project_name} : #{projects.map(&:name)}.")
+      ShowProjects.call(user)
+      return
+    end
+
+    if projects.count == 0
       sender.send_message(user, 'No such project.')
       ShowProjects.call(user)
       return
     end
+
+    project = projects.first
 
     message = messages['log'].sample
     minutes = parse_time(time)
