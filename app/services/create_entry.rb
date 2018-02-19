@@ -19,11 +19,11 @@ class CreateEntry < BaseService
   private
 
   def create_entry(project_name, time, details)
-    projects = project_name[/\\a$/] ? [find_project_by_name(project_name[0..-3])]
-                                    : find_project_by_name_like(project_name)
+    projects = find_project_by_name_like(project_name)
 
     if projects.count > 1
       sender.send_message(user, "Multiple projects with name #{project_name} : #{projects.map(&:name)}.")
+      ShowProjects.call(user)
       return
     end
 
@@ -45,7 +45,7 @@ class CreateEntry < BaseService
     sender.send_message(user, message['text'], message['options'])
 
     if user.is_speaking
-      sender.send_message(user, "Entry with data #{project.name}: #{format_time(minutes)} was successfully created.")
+      sender.send_message(user, 'Do you have any other projects to log? Write `no` to finish logging time.')
     end
   end
 end
