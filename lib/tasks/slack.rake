@@ -4,23 +4,25 @@ namespace :slack do
   task sync_users: :environment do
     SlackClient.new.sync_users
   end
-end
 
-task start_bot: :environment do
-  client = Slack::RealTime::Client.new
-  messages = YAML.load_file('config/messages.yml')
 
-  Rails.logger = ActiveSupport::Logger.new('log/bot.log')
+  task start_bot: :environment do
+    client = Slack::RealTime::Client.new
+    messages = YAML.load_file('config/messages.yml')
 
-  client.on :message do |data|
-    EventHandler.new(client, data, messages).handle_message
+    Rails.logger = ActiveSupport::Logger.new('log/bot.log')
+
+    client.on :message do |data|
+      EventHandler.new(client, data, messages).handle_message
+    end
+
+    client.on :hello do
+      puts 'Successfully connected to Slack'
+    end
+
+    client.start!
   end
 
-  client.on :hello do
-    puts 'Successfully connected to Slack'
-  end
-
-  client.start!
 end
 
 task check_status: :environment do
@@ -43,7 +45,7 @@ task check_status: :environment do
     stream = [Rails.root.join('log', "#{Rails.env}.log").to_s, 'a']
 
     Dir.chdir(Rails.root)
-    pid = spawn({ 'RAILS_ENV' => 'production' }, 'bundle', 'exec', 'rake', 'start_bot', out: stream, err: stream)
+    pid = spawn({ 'RAILS_ENV' => 'production' }, 'bundle', 'exec', 'rake', 'slack:start_bot', out: stream, err: stream)
     Process.detach(pid)
 
     File.write(pid_file_path, pid)
