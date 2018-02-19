@@ -13,7 +13,7 @@ def start
   stream = %w(log/production.log a)
 
   puma_pid = spawn('bundle', 'exec', 'puma', '-e', 'production', out: stream, err: stream)
-  bot_pid  = spawn({ 'RAILS_ENV' => 'production' }, 'bundle', 'exec', 'rake', 'start_bot', out: stream, err: stream)
+  bot_pid  = spawn({ 'RAILS_ENV' => 'production' }, 'bundle', 'exec', 'rake', 'slack:start_bot', out: stream, err: stream)
 
   Process.detach(puma_pid)
   Process.detach(bot_pid)
