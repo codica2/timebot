@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 module Message
   module Conditions
-    ENTER_TIME_FOR_DAY_REGEXP = /^\s*(?:update\s+?)?(\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)\s+?(\w+?)\s+?(\d?\d:[0-5]\d)\s+?([^\s](?:.|\s)*[^\s])\s*$/
-    ENTER_TIME_REGEXP = /^(?!update)([^\d\.\s][^\s]+?)\s+?(\d?\d:[0-5]\d)\s+?([^\s](?:.|\s)*[^\s])\s*$/
+    ENTER_TIME_FOR_DAY_REGEXP = /^\s*(?:update\s+?)?(\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)\s+([^:]+?)\s+?(\d?\d:[0-5]\d)\s+?([^\s](?:.|\s)*[^\s])\s*$/
+    ENTER_TIME_REGEXP = /^(?!update\s)(?!edit\s)(?!add\s)(?!set)([^\.]+?)\s+?(\d?\d:[0-5]\d)\s+?([^\s](?:.|\s)*[^\s])\s*$/
     ADD_PROJECT_REGEXP = /^ *add project (\w.*?) *$/
     SET_ABSENCE_REGEXP = /^ *set (.{3,}) (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?) - (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?) ?([^\s](?:.|\s)*[^\s])? *$/
     MESSAGE_IN_REPORT = /^ *show (week|last week|month|last month)(?: (.*?))? *$/
     REMOVE_ENTRY_REGEXP = /^ *remove entry (\d+|last) *$/
-    EDIT_ENTRY_REGEXP = /^ *edit (\d+) (\d?\d:[0-5]\d) ([^\s](?:.|\s)*[^\s]) *$/
+    EDIT_ENTRY_REGEXP = /^ *edit (\d+) ([^:]+?) (\d?\d:[0-5]\d) ([^\s](?:.|\s)*[^\s]) *$/
     FIND_PROJECT_REGEXP = /^ *find project (\w.*?) *$/
     WORKED_HOURS = /^\s*(\d{1,2}\.\d{1,2}\.?(?:\d{4}|\d{2})?)\s*?-\s*?(\d{1,2}\.\d{1,2}\.?(?:\d{4}|\d{2})?)\s*?$/
     WORKED_HOURS_MONTH = /^ *show work month *$/

@@ -11,6 +11,11 @@ We are using Slack Realtime API for event listening. We also use ActiveAdmin as 
  - PostgreSQL
  - ActiveAdmin
  
+## Testing
+1. Add `timebot_test` app in Slack
+2. Set `SLACK_TOKEN=xoxb-316400252963-74YmCBr3kezR9xI17AWqA5W1` in your `.env`
+3. Run `rake slack:start_bot`  
+
 ## Deployment
 
 Create a `config/deploy/production.rb` and a `config/deploy.rb` files. Check `config/deploy/production.rb.example` and
