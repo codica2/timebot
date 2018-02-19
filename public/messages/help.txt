@@ -7,19 +7,18 @@
 
 > To enter time, write `PROJECT_NAME HOURS:MINUTES COMMENT`.
 > For example, `Timebot 8:00 some comment`,
->                   or `oth     8:00    comment after tab char` (by default bot searches project name that contains typed word)
->                   or `management\a 2:15 managing people` (add suffix `\a` to the project name to define a precise project name)
+>               or `bot     8:00    comment after tab char`.
 
 > To create an entry for the specific date, write `update(OPTIONAL) DAY.MONTH.YEAR(OPTIONAL) PROJECT_NAME HOURS:MINUTES COMMENT`.
 > For example, `update 25.07 Timebot 8:00 a nice comment`,
->                   or messy one but still valid `25.7    bot  8:00   a nice comment` which is equal to the previous entry.
+>               or messy one but still valid `25.07    bot  8:00   a nice comment` which is equal to the previous entry.
 
 > To edit an existing time entry, write `edit TIME_ENTRY_ID HOURS:MINUTES COMMENT`.
 > For example, `edit 1 Timebot 8:00 a nice comment`.
 
 > To remove a time entry, write `remove entry ID`.
 > For example, `remove entry 1`.
-                `remove entry last`
+>              `remove entry last`
 
 > To add new project, write `add project PROJECT_NAME`.
 > For example, `add project Timebot`.
