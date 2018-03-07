@@ -17,10 +17,11 @@ ActiveAdmin.register Project do
     f.inputs do
       f.input :name
       f.input :alias
+      f.input :team, as: :select, collection: Team.all, selected: f.object.team
     end
 
     f.actions
   end
 
-  permit_params :name, :alias
+  permit_params :name, :alias, :team_id
 end

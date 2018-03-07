@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   MINIMUM_PROJECT_NAME_LENGTH = 4
 
   has_many :time_entries
+  belongs_to :team
 
   validates :name, :alias, uniqueness: { case_sensitive: false }
 

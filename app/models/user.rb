@@ -2,6 +2,7 @@
 class User < ApplicationRecord
   has_many :time_entries, dependent: :destroy
   has_many :absences, dependent: :destroy
+  belongs_to :team
 
   validates :name, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: true

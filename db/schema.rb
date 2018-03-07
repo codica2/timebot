@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028114143) do
+ActiveRecord::Schema.define(version: 20180306093524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(version: 20161028114143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "alias"
+    t.integer  "team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "team_lead_id"
+    t.integer  "project_manager_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "time_entries", force: :cascade do |t|
@@ -87,6 +97,7 @@ ActiveRecord::Schema.define(version: 20161028114143) do
     t.datetime "updated_at",                  null: false
     t.boolean  "is_speaking", default: false
     t.boolean  "is_active",   default: true
+    t.integer  "team_id"
     t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
 

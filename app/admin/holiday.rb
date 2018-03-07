@@ -1,5 +1,5 @@
 ActiveAdmin.register Holiday do
-  menu priority: 5
+  menu priority: 6
 
   filter :name
   filter :date

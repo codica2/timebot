@@ -1,5 +1,5 @@
 ActiveAdmin.register Absence do
-  menu priority: 6
+  menu priority: 7
 
   filter :user, as: :select, collection: proc { User.active.order(:name) }
   filter :reason, as: :select, collection: proc { Absence.reasons.keys.map(&:capitalize) }

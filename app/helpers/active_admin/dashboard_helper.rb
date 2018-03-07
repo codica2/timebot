@@ -116,8 +116,17 @@ module ActiveAdmin
       end
     end
 
+    def team_project_time_entries(team_id)
+      TimeEntry.includes(:user, :project).joins(:team)
+        .where(teams: { id: team_id })
+        .in_interval(params[:q][:date_gteq_date], params[:q][:date_lteq_date])
+        .group_by(&:project)
+        .sort { |a, b| time_worked(b) <=> time_worked(a) }
+    end
+
     def project_time_entries
-      TimeEntry.in_interval(params[:q][:date_gteq_date], params[:q][:date_lteq_date])
+      TimeEntry.includes(:user, :project)
+        .in_interval(params[:q][:date_gteq_date], params[:q][:date_lteq_date])
         .group_by(&:project)
         .sort { |a, b| time_worked(b) <=> time_worked(a) }
     end
