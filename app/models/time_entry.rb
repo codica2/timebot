@@ -2,6 +2,7 @@
 class TimeEntry < ApplicationRecord
   belongs_to :user
   belongs_to :project
+  has_one :team, through: :project
 
   validates :date, presence: true
   validates :user_id, presence: true

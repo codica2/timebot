@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 ActiveAdmin.register TimeEntry do
-  menu priority: 4
+  menu priority: 5
 
   filter :user, as: :select, collection: proc { User.active }
   filter :project, as: :select

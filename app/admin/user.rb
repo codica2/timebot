@@ -29,12 +29,13 @@ ActiveAdmin.register User do
       f.input :name
       f.input :is_speaking
       f.input :is_active
+      f.input :team, as: :select, collection: Team.all, selected: f.object.team
     end
 
     f.actions
   end
 
-  permit_params :name, :is_speaking, :is_active
+  permit_params :name, :is_speaking, :is_active, :team_id
 
   collection_action :sync_users, method: :post do
     SlackClient.new.sync_users

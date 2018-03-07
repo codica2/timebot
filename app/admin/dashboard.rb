@@ -37,7 +37,7 @@ ActiveAdmin.register_page 'Dashboard' do
       end
       tbody do
         projects.each_with_index do |project, index|
-          tr(class: 'even report_by_user__project-name', :'data-id' => project[:id]) do
+          tr(class: 'even report_by_user__project-name', 'data-id': project[:id]) do
             td do
               b project[:name]
             end
@@ -47,7 +47,7 @@ ActiveAdmin.register_page 'Dashboard' do
               b project[:total]
             end
           end
-          tbody(:'data-by-user-project-id' => project[:id], style:'display: none') do
+          tbody('data-by-user-project-id': project[:id], style:'display: none') do
             project[:users].each do |user|
               tr do
                 td
@@ -81,7 +81,7 @@ ActiveAdmin.register_page 'Dashboard' do
       end
       tbody do
         project_time_entries.each_with_index do |company_time_entry, index|
-          tr(class: 'even report_by_ticket__project-name', :'data-id' => company_time_entry.first.id) do
+          tr(class: 'even report_by_ticket__project-name', 'data-id': company_time_entry.first.id) do
             td do
               b company_time_entry.first.name
             end
@@ -91,13 +91,49 @@ ActiveAdmin.register_page 'Dashboard' do
               b time_worked(company_time_entry)
             end
           end
-          tbody(:'data-by-ticket-project-id' => company_time_entry.first.id, style: 'display: none') do
+          tbody('data-by-ticket-project-id': company_time_entry.first.id, style: 'display: none') do
             company_time_entry.last.group_by(&:details).each do |detail_time_entry|
               tr do
                 td
                 td detail_time_entry.first
                 td user_names(detail_time_entry)
                 td time_worked(detail_time_entry)
+              end
+            end
+          end
+        end
+      end
+    end
+
+    Team.all.each do |team|
+      h3 "Project by Team #{team.name}"
+      table(class: 'index_table report') do
+        thead do
+          th 'Project'
+          th 'Ticket'
+          th 'Users Worked on'
+          th 'Time'
+        end
+        tbody do
+          team_project_time_entries(team.id).each_with_index do |company_time_entry, index|
+            tr(class: 'even report_by_ticket__project-name', 'data-id': company_time_entry.first.id) do
+              td do
+                b company_time_entry.first.name
+              end
+              td
+              td
+              td do
+                b time_worked(company_time_entry)
+              end
+            end
+            tbody('data-by-ticket-project-id': company_time_entry.first.id, style: 'display: none') do
+              company_time_entry.last.group_by(&:details).each do |detail_time_entry|
+                tr do
+                  td
+                  td detail_time_entry.first
+                  td user_names(detail_time_entry)
+                  td time_worked(detail_time_entry)
+                end
               end
             end
           end
