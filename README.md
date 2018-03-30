@@ -12,8 +12,8 @@ We are using Slack Realtime API for event listening. We also use ActiveAdmin as 
  - ActiveAdmin
  
 ## Testing
-1. Add `timebot_test` app in Slack
-2. Set `SLACK_TOKEN=xoxb-316400252963-74YmCBr3kezR9xI17AWqA5W1` in your `.env`
+1. Add `timebot_test` app in Slack or create new one
+2. Set `SLACK_TOKEN=xoxb-338593550772-QkhAKI3vlSMlUVaiWMg1vKZX` in your `.env` or your own `Bot User OAuth Access Token`
 3. Run `rake slack:start_bot`  
 
 ## Deployment

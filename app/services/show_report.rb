@@ -30,6 +30,10 @@ class ShowReport < BaseService
 
   def handle_show_by(time, project = nil)
     case time
+    when 'day'
+      handle_report(Time.zone.today, Time.zone.today, project)
+    when 'last day'
+      handle_report(Time.zone.today - 1, Time.zone.today - 1, project)
     when 'week'
       handle_report(Time.zone.now.beginning_of_week.to_date, Time.zone.today, project)
     when 'last week'
@@ -46,8 +50,9 @@ class ShowReport < BaseService
 
     list = (date..end_date).to_a.map do |day|
       entries = user.time_entries.where(date: day)
+      absence = user.absences.find_by(date: day)
       entries = entries.where(project_id: project.id) if project.present?
-      entries.empty? ? [day, []] : [day, entries.map(&:description).join("\n")]
+      (entries.to_a<<absence).empty? ? [day, []] : [day, entries.map(&:description).join("\n") + "#{"\n*#{absence.id}: #{absence.reason} #{absence.comment}*" if absence.present? && project.nil?}"]
     end
 
     strings = list.map do |day, entries|

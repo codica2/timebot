@@ -15,12 +15,12 @@ class EventHandler
 
   def handle_message
     return if message_is_not_processable
-
     user = User.find_by(uid: data.user)
     log_incoming_message(user, data.text)
-
     if message_is_enter_time
       CreateEntry.call(user, data.text, messages)
+    elsif message_is_specify_project
+      SpecifyProject.call(user, data.text, messages)
     elsif message_is_request_for_help
       ShowHelp.call(user)
     elsif message_is_remove_entry
@@ -44,6 +44,8 @@ class EventHandler
       SetAbsence.call(user, data.text)
     elsif message_is_find_project
       FindProject.call(user, data.text)
+    elsif message_is_absence_days
+      AbsenceDays.call(user, data.text)
     else
       DoNotUnderstand.call(user, messages)
     end

@@ -19,6 +19,10 @@ class EditEntry < BaseService
 
   def edit_entry(id, project_name, time, details)
     time_entry = TimeEntry.find(id)
+    if time_entry.user != user
+      sender.send_message(user, "This time entry isn't yours.")
+      return
+    end
 
     minutes = parse_time(time)
 

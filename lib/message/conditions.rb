@@ -1,17 +1,19 @@
 # frozen_string_literal: true
 module Message
   module Conditions
-    ENTER_TIME_FOR_DAY_REGEXP = /^\s*(?:update\s+?)?(\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)\s+([^:]+?)\s+?(\d?\d:[0-5]\d)\s+?([^\s](?:.|\s)*[^\s])\s*$/
-    ENTER_TIME_REGEXP = /^(?!update\s)(?!edit\s)(?!add\s)(?!set)([^\.]+?)\s+?(\d?\d:[0-5]\d)\s+?([^\s](?:.|\s)*[^\s])\s*$/
+    ENTER_TIME_FOR_DAY_REGEXP = /^(?:update\s+?)?(\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)\s+\*?([^:]+?)[\*\s-]+?(\d?\d:[0-5]\d)[-\s]+([^\s](?:.|\s)*[^\s])\s*$/
+    ENTER_TIME_REGEXP = /^\*?(?!update\s)(?!edit\s)(?!add\s)(?!set)([^\.]+?)[\s\*-]+?(\d?\d:[0-5]\d)[\s-]+?([^\s-](?:.|\s)*[^\s])\s*$/
     ADD_PROJECT_REGEXP = /^ *add project (\w.*?) *$/
-    SET_ABSENCE_REGEXP = /^ *set (.{3,}) (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?) - (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?) ?([^\s](?:.|\s)*[^\s])? *$/
-    MESSAGE_IN_REPORT = /^ *show (week|last week|month|last month)(?: (.*?))? *$/
+    SET_ABSENCE_REGEXP = /^ *set (.+?) (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)(?: - (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)?)?(.+)?$/
+    MESSAGE_IN_REPORT = /^ *show ((?:last)?\s*?(?:day|week|month))(?: (.*?))? *$/
     REMOVE_ENTRY_REGEXP = /^ *remove entry (\d+|last) *$/
-    EDIT_ENTRY_REGEXP = /^ *edit (\d+) ([^:]+?) (\d?\d:[0-5]\d) ([^\s](?:.|\s)*[^\s]) *$/
+    EDIT_ENTRY_REGEXP = /^ *edit[\:\*\-\s]*(\d+)[\:\*\-\s]+([^:]+?)[\:\*\-\s]*?(\d?\d:[0-5]\d)(?: -)?\s+?([^\s](?:.|\s)*[^\s]) *$/
     FIND_PROJECT_REGEXP = /^ *find project (\w.*?) *$/
     WORKED_HOURS = /^\s*(\d{1,2}\.\d{1,2}\.?(?:\d{4}|\d{2})?)\s*?-\s*?(\d{1,2}\.\d{1,2}\.?(?:\d{4}|\d{2})?)\s*?$/
     WORKED_HOURS_MONTH = /^ *show work month *$/
     WORKED_HOURS_PREV_MONTH = /^ *show work last month *$/
+    ABSENCE_DAYS = /^ *show absence(?: last year)? *$/
+    SPECIFY_PROJECT = /^\d+.{0,2} *$/
 
     def message_is_request_for_project
       data.text.casecmp('projects').zero?
@@ -67,6 +69,14 @@ module Message
 
     def message_is_worked_hours
       data.text =~ WORKED_HOURS || data.text =~ WORKED_HOURS_MONTH || data.text =~ WORKED_HOURS_PREV_MONTH
+    end
+
+    def message_is_specify_project
+      data.text =~ SPECIFY_PROJECT
+    end
+
+    def message_is_absence_days
+      data.text =~ ABSENCE_DAYS
     end
   end
 end

@@ -2,8 +2,8 @@
 ActiveAdmin.register TimeEntry do
   menu priority: 5
 
-  filter :user, as: :select, collection: proc { User.active }
-  filter :project, as: :select
+  filter :user, as: :select, collection: proc { User.active.order(:name) }
+  filter :project, as: :select, collection: proc { Project.order(:name) }
 
   index do
     if params.dig(:q, :user_id_eq)
