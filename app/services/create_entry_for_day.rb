@@ -1,11 +1,12 @@
 class CreateEntryForDay < BaseService
   include ServiceHelper
 
-  attr_reader :user, :text
+  attr_reader :user, :text, :project_number
 
-  def initialize(user, text)
+  def initialize(user, text, project_number = nil)
     @user = user
     @text = text
+    @project_number = project_number
     super()
   end
 
@@ -17,11 +18,14 @@ class CreateEntryForDay < BaseService
     time         = match_data[3]
     details      = match_data[4]
 
-    projects = project_name[/\\a$/] ? [find_project_by_name(project_name[0..-3])]
-                                    : find_project_by_name_like(project_name)
+    projects = find_project_by_name_like(project_name)
+    precise_match = find_project_by_name(project_name)
 
-    if projects.count > 1
-      sender.send_message(user, "Multiple projects with name #{project_name} : #{projects.map(&:name).to_s}.")
+    if projects.count > 1 && project_number.nil? && precise_match.nil?
+      message = 'Specify the number of project : '
+      projects.each_with_index { |obj, i| message += "\n#{i + 1} - #{obj.name}" }
+      sender.send_message(user, message)
+      user.update!(last_message: text)
       return
     end
 
@@ -31,7 +35,7 @@ class CreateEntryForDay < BaseService
       return
     end
 
-    project = projects.first
+    project = projects.count > 1 && project_number.present? ? projects[project_number - 1] : precise_match
 
     date = parse_date(date_string)
 
@@ -48,8 +52,8 @@ class CreateEntryForDay < BaseService
                               details:    details,
                               date:       date)
 
-    message = "Set timesheet for #{date.strftime('%-d.%-m.%Y')} for #{project.name}: #{time}."
-    message += " Details: #{details || 'none'}." if details
+    message = "Set timesheet for #{date.strftime('%b %-d, %Y')} for #{project.name}: #{time}."
+    message += "\nDetails: #{details || 'none'}." if details
 
     sender.send_message(user, message)
   end
