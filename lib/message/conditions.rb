@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 module Message
   module Conditions
-    ENTER_TIME_FOR_DAY_REGEXP = /^(?:update\s+?)?(\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)\s+\*?([^:]+?)[\*\s-]+?(\d?\d:[0-5]\d)[-\s]+([^\s](?:.|\s)*[^\s])\s*$/
-    ENTER_TIME_REGEXP = /^\*?(?!update\s)(?!edit\s)(?!add\s)(?!set)([^\.]+?)[\s\*-]+?(\d?\d:[0-5]\d)[\s-]+?([^\s-](?:.|\s)*[^\s])\s*$/
+    ENTER_TIME_FOR_DAY_REGEXP = /^(?:update\s+?)?(\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)\s+\*?([^:]+?-?)[\*\s-]+?(\d?\d:[0-5]\d)[-\s]+([^\s](?:.|\s)*[^\s])\s*$/
+    ENTER_TIME_REGEXP = /^\*?(?!update\s)(?!edit\s)(?!add\s)(?!set)([^\.]+?-?)[\s\*-]+?(\d?\d:[0-5]\d)[\s-]+?([^\s-](?:.|\s)*[^\s])\s*$/
     ADD_PROJECT_REGEXP = /^ *add project (\w.*?) *$/
     SET_ABSENCE_REGEXP = /^ *set (.+?) (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)(?: - (\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)?)?(.+)?$/
     MESSAGE_IN_REPORT = /^ *show ((?:last)?\s*?(?:day|week|month))(?: (.*?))? *$/

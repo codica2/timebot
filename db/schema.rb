@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330160731) do
+ActiveRecord::Schema.define(version: 20180404084359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20180330160731) do
     t.datetime "updated_at", null: false
     t.string   "alias"
     t.integer  "team_id"
+    t.index ["name"], name: "index_projects_on_name", unique: true, using: :btree
   end
 
   create_table "teams", force: :cascade do |t|

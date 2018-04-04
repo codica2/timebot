@@ -32,7 +32,7 @@ class AbsenceDays < BaseService
 
     absences = user.absences.where(date: [dates[0]..dates[1]])
     vacation_days_total = (dates[1].month - dates[0].month) * 15 / 12
-    illness_days_total = (dates[1].month - dates[0].month) * 5 / 12
+    illness_days_total = 5 #(dates[1].month - dates[0].month) * 5 / 12
 
     s = "```Vacation days taken: #{absences.vacation.count} of #{vacation_days_total}\n"
     s+= "Illness days taken: #{absences.illness.count} of #{illness_days_total}\n```"
