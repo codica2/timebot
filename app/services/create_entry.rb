@@ -37,7 +37,7 @@ class CreateEntry < BaseService
       return
     end
 
-    project = projects.count > 1 && project_number.present? ? projects[project_number - 1] : precise_match
+    project = projects.count > 1 && project_number.present? ? projects[project_number - 1] : projects.first
 
     minutes = parse_time(time)
     user.time_entries.create!(project_id: project.id,
