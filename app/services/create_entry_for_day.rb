@@ -20,7 +20,7 @@ class CreateEntryForDay < BaseService
 
     projects = find_project_by_name_like(project_name)
     precise_match = find_project_by_name(project_name)
-    byebug
+    
     if projects.count > 1 && project_number.nil? && precise_match.nil?
       message = 'Specify the number of project : '
       projects.each_with_index { |obj, i| message += "\n#{i + 1} - #{obj.name}" }
