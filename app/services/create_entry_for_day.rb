@@ -35,7 +35,7 @@ class CreateEntryForDay < BaseService
       return
     end
 
-    project = projects.count > 1 && project_number.present? ? projects[project_number - 1] : projects.first
+    project = projects.count > 1 && project_number.present? ? projects[project_number - 1] : precise_match || projects.first
 
     date = parse_date(date_string)
 
