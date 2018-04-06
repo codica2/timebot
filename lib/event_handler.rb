@@ -5,10 +5,10 @@ class EventHandler
 
   attr_reader :client, :data, :sender, :messages, :public_channels
 
-  def initialize(client, data, messages)
+  def initialize(client, data, messages, public_channels)
     @client          = client
     @data            = data
-    @public_channels = fetch_public_channels
+    @public_channels = public_channels
     @sender          = Message::Sender.new
     @messages        = messages
   end
@@ -51,9 +51,9 @@ class EventHandler
     end
   end
 
-  private
-
-  def fetch_public_channels
-    @public_channels = client.web_client.channels_list.channels.map(&:id)
-  end
+  # private
+  #
+  # def fetch_public_channels
+  #   @public_channels = client.web_client.channels_list.channels.map(&:id)
+  # end
 end

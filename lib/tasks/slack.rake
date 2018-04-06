@@ -11,9 +11,9 @@ namespace :slack do
     messages = YAML.load_file('config/messages.yml')
 
     Rails.logger = ActiveSupport::Logger.new('log/bot.log')
-
+    public_channels = client.web_client.channels_list.channels.map(&:id)
     client.on :message do |data|
-      EventHandler.new(client, data, messages).handle_message
+      EventHandler.new(client, data, messages, public_channels).handle_message
     end
 
     client.on :hello do
