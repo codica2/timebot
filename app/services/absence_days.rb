@@ -10,15 +10,15 @@ class AbsenceDays < BaseService
   end
 
   def call
-    last_year = text.downcase[/last year/]
+    last_year = text.downcase[/last year/] || text[/ly/]
     this_year = Time.zone.today.year
     hire_date = user.created_at.to_date
-    default_year = Date.new(this_year, 1, 1)
+    anniversary = Date.new(this_year, hire_date.month, hire_date.day)
 
     if last_year.nil?
-      dates = hire_date < default_year ? [default_year, Date.new(this_year, 12, 31)] : [hire_date, Date.new(this_year, 12, 31)]
+      dates = Date.today < anniversary ? [Date.new(this_year - 1, hire_date.month, hire_date.day), Date.today] : [anniversary, Date.today]
     else
-      dates = hire_date < default_year - 1.year ? [default_year - 1.year, Date.new(this_year - 1, 12, 31) ] : [hire_date, Date.new(this_year - 1, 12, 31)]
+      dates = Date.today < anniversary ? [Date.new(this_year - 2, hire_date.month, hire_date.day), Date.new(this_year - 1, hire_date.month, hire_date.day)] : [Date.new(this_year - 1, hire_date.month, hire_date.day), Date.new(this_year, hire_date.month, hire_date.day)]
     end
 
     list = (dates[0]..dates[1]).to_a.map do |day|
@@ -31,11 +31,13 @@ class AbsenceDays < BaseService
     end
 
     absences = user.absences.where(date: [dates[0]..dates[1]])
-    vacation_days_total = (Time.zone.today.month - dates[0].month) * 15 / 12
+    vacation_days_total = (dates[1].year * 12 + dates[1].month - (dates[0].year * 12 + dates[0].month)) * 15 / 12
     illness_days_total = 5 #(dates[1].month - dates[0].month) * 5 / 12
 
-    s = "```Vacation days taken: #{absences.vacation.count} of #{vacation_days_total}\n"
-    s+= "Illness days taken: #{absences.illness.count} of #{illness_days_total}\n```"
+    s = "```Period: #{dates[0].strftime('%b %d, %Y')} - #{dates[1].strftime('%b %d, %Y')}\n"
+    s+= "Vacation days taken: #{absences.vacation.count} of #{vacation_days_total}\n"
+    s+= "Illness days taken: #{absences.illness.count} of #{illness_days_total}\n```\n"
+    s+= "_Notice: you had joined the team only on #{user.created_at.strftime('%b %d, %Y')}_" if  user.created_at > dates[1]
     strings << s
     sender.send_message(user, strings.join("\n"))
   end

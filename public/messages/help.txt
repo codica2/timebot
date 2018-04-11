@@ -11,24 +11,27 @@
 > To create an entry for the specific date, write `update(OPTIONAL) DAY.MONTH.YEAR PROJECT_NAME HOURS:MINUTES COMMENT`.
 > For example, `update 25.07 Timebot 8:00 a nice comment`, `25.7 bot 8:00 a nice comment`.
 
-> To edit an existing time entry, write `edit TIME_ENTRY_ID HOURS:MINUTES COMMENT`.
+> To edit an existing time entry, write `edit NEW_DATE(OPTIONAL) TIME_ENTRY_ID HOURS:MINUTES COMMENT`.
 > For example, `edit 1 Timebot 8:00 a nice comment`.
 
 > To remove a time entry, write `remove entry ID`.
-> For example, `remove entry 1`, `remove entry last`.
+> For example, `remove entry 1`, `remove entry last`. Aliases: `re123`, `rel`.
 
 > To add new project, write `add project PROJECT_NAME`.
 > For example, `add project Timebot`.
 
 > To get report for this day/week/month, write `show day`/`show week`/`show month`. You can also add `last` before the day/week/month word.
+> Aliases: `sd`, `sw`, `sm`, `sld`, `slw`, `slm`.
 
 > To get report by project, write `show week` / `show last week` / `show month` /  `show last month` + `PROJECT_NAME`.
-> For example, `show week Timebot` / `show last month Timebot` etc.
+> For example, `show week Timebot`, `sw Timebot`, / `show last month Timebot` etc.
 
 > To get hours worked between two dates report, write two dates with a dash delimiter
 > For example, `1.1 - 1.2` / `15.2.18-14.3.18` / `23.01.2018  -  23.3` / etc. or `show work month` / `show work last month`
+> Aliases: `swm`, `swlm`.
 
 > If you were/will be absent on some days, write `set REASON DAY.MONTH.YEAR(OPTIONAL) - DAY.MONTH.YEAR(OPTIONAL)`.
 > For example, `set vacation 15.08 - 19.08`.
 > Valid reasons: Vacation, Illness.
 > To display it - `show absence`/`show absence last year`
+> Aliases: `sa`, `saly`.

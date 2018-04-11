@@ -38,9 +38,30 @@ ActiveAdmin.register TimeEntry do
     actions
   end
 
+  form do |f|
+    f.inputs 'New Absence' do
+      f.input :user, collection: User.active.order(:name)
+      f.input :project, collection: Project.order(:name)
+      f.input :date, label: 'Date (leave blank if for today)', as: :datepicker
+      f.input :time, label: 'Time (hh:mm)', required: true
+      f.input :details
+    end
+    f.actions
+  end
+
+  action_item :new, only: :show do
+    link_to 'New Time Entry', new_admin_time_entry_path
+  end
+
   permit_params :user_id, :date, :time, :minutes, :details, :project_id, :id
 
   controller do
+    def create
+      hour_minutes = params[:time_entry][:time].scan(/(\d{1,2}):(\d{2})/).flatten.map(&:to_i)
+      params[:time_entry][:minutes] = hour_minutes[0] * 60 + hour_minutes[1]
+      params[:time_entry][:date] = Time.zone.today if params[:time_entry][:date].blank?
+      super
+    end
     def scoped_collection
       super.includes :user, :project
     end

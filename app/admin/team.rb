@@ -20,8 +20,8 @@ ActiveAdmin.register Team do
     f.inputs do
       f.input :name
       f.input :description
-      f.input :team_lead, as: :select, collection: User.active, selected: f.object.team_lead
-      f.input :project_manager, as: :select, collection: User.active, selected: f.object.project_manager
+      f.input :team_lead, as: :select, collection: User.active.order(:name), selected: f.object.team_lead
+      f.input :project_manager, as: :select, collection: User.active.order(:name), selected: f.object.project_manager
     end
 
     f.actions

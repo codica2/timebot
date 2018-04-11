@@ -1,9 +1,10 @@
 class RemoveEntry < BaseService
+  include Message::Conditions
   attr_reader :user, :time_entry_id
 
-  def initialize(user, time_entry_id)
+  def initialize(user, text)
     @user = user
-    @time_entry_id = time_entry_id
+    @time_entry_id = text.match(REMOVE_ENTRY_REGEXP)[0][/\d+/]
     super()
   end
 
@@ -22,6 +23,6 @@ class RemoveEntry < BaseService
   end
 
   def id_given?
-    time_entry_id[/\d+/].present?
+    time_entry_id.present?
   end
 end

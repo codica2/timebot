@@ -15,7 +15,22 @@
 .date-picker-wrapper * thead th {
   background-color: #ffffff;
 }
-
+div.ui-datepicker {
+  width: 250px;
+  font-size:14px;
+  .ui-datepicker-header {
+    width: 96.5%;
+    .ui-datepicker-next {
+      border-left: 15px solid white;
+    }
+    .ui-datepicker-prev {
+      border-right: 15px solid white;
+    }
+  }
+  .ui-datepicker-calendar {
+    width: 100%;
+  }
+}
 .date-picker-wrapper a {
   color: #38678b;
 }
