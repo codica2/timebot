@@ -5,13 +5,14 @@ class ShowReport < BaseService
 
   def initialize(user, text)
     @user = user
-    @text = text
+    @text = text.match(Message::Conditions::MESSAGE_IN_REPORT)
     super()
   end
 
   def call
-    time         = text.downcase.match(Message::Conditions::MESSAGE_IN_REPORT)[1]
-    project_name = text.downcase.match(Message::Conditions::MESSAGE_IN_REPORT)[2]
+    time         = text[:alias][1..-1].sub('l', 'last ').sub('d', 'day').sub('w', 'week').sub('m', 'month') if text[:alias]
+    time         = text[:time].downcase unless text[:alias]
+    project_name = text[:project].try(:downcase)
 
     if project_name.present?
       project = find_project_by_name(project_name)
@@ -50,9 +51,8 @@ class ShowReport < BaseService
 
     list = (date..end_date).to_a.map do |day|
       entries = user.time_entries.where(date: day)
-      absence = user.absences.find_by(date: day)
       entries = entries.where(project_id: project.id) if project.present?
-      (entries.to_a<<absence).empty? ? [day, []] : [day, entries.map(&:description).join("\n") + "#{"\n*#{absence.id}: #{absence.reason} #{absence.comment}*" if absence.present? && project.nil?}"]
+      entries.empty? ? [day, []] : [day, entries.map(&:description).join("\n")]
     end
 
     strings = list.map do |day, entries|

@@ -24,7 +24,7 @@ class EventHandler
     elsif message_is_request_for_help
       ShowHelp.call(user)
     elsif message_is_remove_entry
-      RemoveEntry.call(user, data.text.match(REMOVE_ENTRY_REGEXP)[1])
+      RemoveEntry.call(user, data.text)
     elsif message_is_show_reports
       ShowReport.call(user, data.text)
     elsif message_is_enter_time_for_day

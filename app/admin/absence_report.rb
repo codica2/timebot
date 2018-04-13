@@ -19,7 +19,7 @@ ActiveAdmin.register_page 'Absence Report' do
   content do
     report_year = params[:report_year] || Time.current.year
     absences = Absence.where('extract(year from date) = ?', report_year)
-    absences = absences.group_by { |ab| ab.user.name }
+    absences = absences.group_by { |ab| ab.user.name }.sort_by { |user, absence| user }
     h3 "Report Year #{report_year}"
     table(class: 'index_table') do
       thead do
