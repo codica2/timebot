@@ -21,9 +21,20 @@ module ActiveAdmin
       { projects: projects_info.map(&:first), total: total }
     end
 
-    def users_by_project
-      users = time_entries.map(&:user).uniq
+    def working_hours_by_ticket
+      if params[:q][:details_contains].present?
+        time_entries_by_ticket = time_entries.where("details LIKE '%#{params[:q][:details_contains]}%'")
+      else
+        time_entries_by_ticket = time_entries.where(details: params[:q][:details_equals])
+      end
 
+      out = get_data(time_entries_by_ticket)
+
+      { ticket: get_ticket(time_entries_by_ticket), users: out[:users_info].map(&:first), total: out[:total] }
+    end
+
+    def get_data(time_entries)
+      users = time_entries.map(&:user).uniq
       users_info = users.map do |user|
         entries = time_entries.select { |entry| entry.user_id == user.id }
         time = entries.map(&:minutes).select(&:present?).inject(&:+)
@@ -37,8 +48,19 @@ module ActiveAdmin
 
       total_time = users_info.map(&:last).inject(:+)
       total      = "#{pluralize(total_time / 60, 'hour')} #{pluralize(total_time % 60, 'minute')}"
+      { users_info: users_info, total: total }
+    end
 
-      { users: users_info.map(&:first), total: total }
+
+    def users_by_project
+      out = get_data(time_entries)
+
+      { users: out[:users_info].map(&:first), total: out[:total] }
+    end
+
+    def get_ticket(time_entries)
+      link = /(?:https?|ftp):\/\/[^\s\/$.?#].[^\s<>]*/.match(time_entries.sample.details).to_s
+      link.present? ? "Working hours by <a href='#{link}'> Ticket </a>" : "Working hours by Details: #{params[:q][:details_contains]}"
     end
 
     def work_time_for_scope
