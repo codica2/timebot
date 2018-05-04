@@ -4,9 +4,20 @@ ActiveAdmin.register TimeEntry do
 
   filter :user, as: :select, collection: proc { User.active.order(:name) }
   filter :project, as: :select, collection: proc { Project.order(:name) }
+  filter :details, filters: [:contains, :equals]
 
   index do
-    if params.dig(:q, :user_id_eq)
+    if params.dig(:q, :details_contains) || params.dig(:q, :details_equals)
+      time = working_hours_by_ticket
+
+      panel "#{time[:ticket]}".html_safe do
+        ul do
+          time[:users].each { |user_info| li user_info }
+          li { b "Total: #{time[:total]}" }
+          li b work_time_for_scope if date_filter_is_applied
+        end
+      end
+    elsif params.dig(:q, :user_id_eq)
       projects = projects_by_user
 
       panel 'Projects' do

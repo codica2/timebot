@@ -74,6 +74,11 @@ div.ui-datepicker {
 .report tr > td:last-child, .report tr > th:last-child {
   width: 30px;
 }
+#q_details {
+  display: block;
+  width: calc(100% - 30px);
+  margin: 10px 0 0 0;
+}
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
