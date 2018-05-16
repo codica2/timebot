@@ -19,15 +19,15 @@ class ShowWorkedHours < BaseService
       return
     end
 
-    if end_date - start_date > 400
+    if end_date - start_date > 700
       sender.send_message(user, 'Too wide date period: ' + (@end_date - @start_date).to_i.to_s + 'days')
       return
     end
-
     message  = '```'
-    message += "Hours worked           : #{hours_worked}\n"
-    message += "Estimated hours worked : #{estimated_hours_worked}\n"
-    message += "Difference             : #{difference}\n"
+    message += "Period                  : #{start_date} - #{end_date}\n"
+    message += "Hours worked            : #{hours_worked}\n"
+    message += "Estimated hours worked  : #{estimated_hours_worked}\n"
+    message += "Difference              : #{difference}\n"
     message += '```'
 
     sender.send_message(user, message)
@@ -38,11 +38,11 @@ class ShowWorkedHours < BaseService
   def init_dates(date_period)
     today = Time.zone.today
     if date_period[0].match(WORKED_HOURS_MONTH)
-      ["15.#{(today.day > 14 ? today : today - 1.month).strftime('%m.%Y')}",
-       "14.#{(today.day > 14 ? today + 1.month : today).strftime('%m.%Y')}"]
+      ["16.#{(today.day > 15 ? today : today - 1.month).strftime('%m.%Y')}",
+       "15.#{(today.day > 15 ? today + 1.month : today).strftime('%m.%Y')}"]
     elsif date_period[0].match(WORKED_HOURS_PREV_MONTH)
-      ["15.#{(today.day > 14 ? today - 1.month : today - 2.month).strftime('%m.%Y')}",
-       "14.#{(today.day > 14 ? today : today - 1.month).strftime('%m.%Y')}"]
+      ["16.#{(today.day > 15 ? today - 1.month : today - 2.month).strftime('%m.%Y')}",
+       "15.#{(today.day > 15 ? today : today - 1.month).strftime('%m.%Y')}"]
     else
       [date_period[1], date_period[2]]
     end
@@ -58,7 +58,13 @@ class ShowWorkedHours < BaseService
   end
 
   def estimated_hours_worked
-    working_days = (end_date >= Time.zone.today) ? (start_date...Time.zone.today) : (start_date..end_date)
+    if end_date == start_date
+      working_days = [start_date]
+    elsif end_date > Time.zone.today
+      working_days = (start_date...Time.zone.today)
+    else
+      working_days = (start_date..end_date)
+    end
     working_days = working_days.select { |day| !day.saturday? && !day.sunday? }
     holidays = Holiday.pluck(:date)
     absence = user.absences.pluck(:date)
