@@ -2,4 +2,5 @@
 #= require moment.min
 #= require jquery.daterangepicker
 #= require custom_date_picker
+#= require multiple_details
 #= require reports

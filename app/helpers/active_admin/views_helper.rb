@@ -21,17 +21,20 @@ module ActiveAdmin
       { projects: projects_info.map(&:first), total: total }
     end
 
+    def selection_by_query
+      query = params[:q][:details_contains].map { |d| "'%#{d}%'"}.join(' or details like ')
+      query = "details like #{query}"
+      time_entries.where(query)
+    end
+
     def working_hours_by_ticket
-      if params[:q][:details_contains].present?
-        time_entries_by_ticket = time_entries.where("details LIKE '%#{params[:q][:details_contains]}%'")
-      else
-        time_entries_by_ticket = time_entries.where(details: params[:q][:details_equals])
-      end
+      time_entries_by_ticket = selection_by_query
 
       out = get_data(time_entries_by_ticket)
 
-      { ticket: get_ticket(time_entries_by_ticket), users: out[:users_info].map(&:first), total: out[:total] }
+      { ticket: get_ticket, users: out[:users_info].map(&:first), total: out[:total] }
     end
+
 
     def get_data(time_entries)
       users = time_entries.map(&:user).uniq
@@ -58,9 +61,19 @@ module ActiveAdmin
       { users: out[:users_info].map(&:first), total: out[:total] }
     end
 
-    def get_ticket(time_entries)
-      link = /(?:https?|ftp):\/\/[^\s\/$.?#].[^\s<>]*/.match(time_entries.sample.details).to_s
-      link.present? ? "Working hours by <a href='#{link}'> Ticket </a>" : "Working hours by Details: #{params[:q][:details_contains]}"
+    def get_ticket
+
+      links = params[:q][:details_contains].select { |d| d[/(?:https?|ftp):\/\/[^\s\/$.?#].[^\s<>]*/] }
+
+      prettified_links = links.map.with_index { |d, i| "<a href='#{d}'> Ticket#{i + 1 if links.count > 1}</a>" }.join(', ')
+
+      details = (params[:q][:details_contains] - links).join(', ')
+
+      if links.present? && details.present?
+        "Working hours by #{prettified_links} & details: #{details}"
+      else
+        "Working hours by #{prettified_links || details}"
+      end
     end
 
     def work_time_for_scope
@@ -78,7 +91,7 @@ module ActiveAdmin
       params.dig(:q, :date_lteq_date) && params.dig(:q, :date_gteq_date)
     end
 
-    private
+
 
     def pluralize_time(hours, minutes)
       "#{pluralize(hours, 'hour')} #{pluralize(minutes, 'minute')}"
