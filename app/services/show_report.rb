@@ -52,11 +52,12 @@ class ShowReport < BaseService
     list = (date..end_date).to_a.map do |day|
       entries = user.time_entries.where(date: day)
       entries = entries.where(project_id: project.id) if project.present?
-      entries.empty? ? [day, []] : [day, entries.map(&:description).join("\n")]
+      entries unless entries.empty?
+      entries.empty? ? [day, nil, []] : [day, entries.map(&:minutes).sum, entries.map(&:description).join("\n")]
     end
 
-    strings = list.map do |day, entries|
-      "`#{day.strftime('%d.%m.%y` (%A)')}: #{entries.empty? ? 'No entries' : "\n#{entries}"}"
+    strings = list.map do |day, minutes, entries|
+      "`#{day.strftime('%d.%m.%y` (%A)')}: #{":timex: *#{format_time(minutes)}*" if minutes} #{entries.empty? ? 'No entries' : "\n#{entries}"}"
     end
 
     strings << "*Total*: #{user.total_time_for_range(start_date, end_date, project)}."
