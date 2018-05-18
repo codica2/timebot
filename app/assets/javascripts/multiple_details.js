@@ -1,11 +1,12 @@
 $(document).ready(function () {
 
     $('#q_details_contains_input').append($('<a class="pointer details-contains-or">OR</a>'));
+    $('#q_details_contains_input').find('abbr').remove();
     $('textarea[name="q[details_contains]"]')[0].name += '[]';
 
     $(document).delegate('.details-contains-or', 'click', function () {
         var identifier = Date.now() % 1000;
-        var $parent = $(this).parents('div[id^=q_details_contains_input]');
+        var $parent = $(this).parents('*[id^=q_details_contains_input]');
         var $element = $parent.clone().attr('id', 'q_details_contains_input' + identifier);
         $element.find('textarea').attr({'name': 'q[details_contains][]', 'id': 'q_details_contains' + identifier }).val('').html('');
         $parent.after($element);
