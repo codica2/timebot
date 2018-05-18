@@ -4,7 +4,7 @@ ActiveAdmin.register TimeEntry do
 
   filter :user, as: :select, collection: proc { User.active.order(:name) }
   filter :project, as: :select, collection: proc { Project.order(:name) }
-  filter :details, filters: [:contains, :equals]
+  filter :details_contains, as: :text
 
   index do
     if params.dig(:q, :details_contains) || params.dig(:q, :details_equals)
@@ -67,6 +67,13 @@ ActiveAdmin.register TimeEntry do
   permit_params :user_id, :date, :time, :minutes, :details, :project_id, :id
 
   controller do
+    include ActiveAdmin::ViewsHelper
+    def index
+      index! do |format|
+        @time_entries = selection_by_query.page(params[:page]) if params[:q].present? && params[:q][:details_contains].present?
+        format.html
+      end
+    end
     def create
       hour_minutes = params[:time_entry][:time].scan(/(\d{1,2}):(\d{2})/).flatten.map(&:to_i)
       params[:time_entry][:minutes] = hour_minutes[0] * 60 + hour_minutes[1]

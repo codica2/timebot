@@ -67,16 +67,17 @@ div.ui-datepicker {
   }
 }
 
-.report_by_user__project-name, .report_by_ticket__project-name {
+.report_by_user__project-name, .report_by_ticket__project-name, .pointer {
   cursor: pointer;
 }
 
 .report tr > td:last-child, .report tr > th:last-child {
   width: 30px;
 }
-#q_details {
+textarea[id^="q_details_contains"] {
   display: block;
   width: calc(100% - 30px);
+  height: 50px;
   margin: 10px 0 0 0;
 }
 
