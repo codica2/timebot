@@ -27,20 +27,20 @@ $(document).ready(function () {
 
     }
 
-});
-function getUrlParameters() {
-    var pageParamString = decodeURIComponent(window.location.search.substring(1));
-    var paramsArray = pageParamString.split('&');
-    var paramsHash = new Map();
-    for (var i = 0; i < paramsArray.length; i++) {
-        var singleParam = paramsArray[i].split('=');
+    function getUrlParameters() {
+        var pageParamString = decodeURIComponent(window.location.search.substring(1));
+        var paramsArray = pageParamString.split('&');
+        var paramsHash = new Map();
+        for (var i = 0; i < paramsArray.length; i++) {
+            var singleParam = paramsArray[i].split('=');
 
-        if (paramsHash.has(singleParam[0])) {
-            paramsHash.get(singleParam[0]).push(singleParam[1]);
-        } else {
-            paramsHash.set(singleParam[0], [singleParam[1]]);
+            if (paramsHash.has(singleParam[0])) {
+                paramsHash.get(singleParam[0]).push(singleParam[1]);
+            } else {
+                paramsHash.set(singleParam[0], [singleParam[1]]);
+            }
         }
-    }
 
-    return paramsHash
-}
+        return paramsHash;
+    }
+});
