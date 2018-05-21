@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    if (!window.location.pathname.match(/^\/admin\/time_entries\/?$/)) return;
 
     $('#q_details_contains_input').append($('<a class="pointer details-contains-or">OR</a>'));
     $('#q_details_contains_input').find('abbr').remove();
