@@ -1,8 +1,8 @@
 ActiveAdmin.register Absence do
   menu priority: 7
 
-  filter :user, as: :select, collection: proc { User.active.order(:name) }
-  filter :reason, as: :select, collection: proc { Absence.reasons.keys.map(&:capitalize) }
+  filter :user, as: :select, collection: proc { User.active.order(:name).map{ |usr| [usr.name, usr.id.to_s]} }
+  filter :reason, as: :select, collection: proc { Absence.reasons.map { |k, v| [k.capitalize, v] } }
 
   index do
     selectable_column
@@ -10,14 +10,15 @@ ActiveAdmin.register Absence do
     column('User') { |absence| absence.user.name }
     column :date
     column('Reason') { |absence| status_tag absence.reason }
+    column :comment
     actions
   end
 
   form do |f|
     f.inputs 'New Absence' do
       f.input :user, collection: User.active.order(:name)
-      f.input :date, as: :datepicker
-      f.input :date, label: 'To date (optional)', as: :datepicker, input_html: { class: 'date_range',name: 'absence_to_date', id: 'absence_to_date_input'}, required: false
+      f.input :date, as: :datepicker, input_html: { autocomplete: :off }
+      f.input :date, label: 'To date (optional)', as: :datepicker, input_html: { class: 'date_range',name: 'absence_to_date', id: 'absence_to_date_input', autocomplete: :off}, required: false
       f.input :reason, as: :radio
       f.input :comment
     end

@@ -1,5 +1,6 @@
 $(document).ready(function () {
     if (!window.location.pathname.match(/^\/admin\/time_entries\/?$/)) return;
+    $('select').chosen();
 
     $('#q_details_contains_input').append($('<a class="pointer details-contains-or">OR</a>'));
     $('#q_details_contains_input').find('abbr').remove();
@@ -14,6 +15,15 @@ $(document).ready(function () {
         $(this).parent().append($(this).html());
         $(this).remove();
 
+    });
+
+    $(document).delegate("*[name='q[details_contains][]']", 'keypress', function (e) {
+        if(e.which === 13 && !e.shiftKey) {
+            //submit form via ajax, this is not JS but server side scripting so not showing here
+            $(this).closest('form').submit();
+            e.preventDefault();
+            return false
+        }
     });
 
     var params = getUrlParameters();
@@ -31,15 +41,15 @@ $(document).ready(function () {
 
     function getUrlParameters() {
         var pageParamString = decodeURIComponent(window.location.search.substring(1));
-        var paramsArray = pageParamString.split('&');
+        var paramsArray = pageParamString.split('&').filter(function(item) { return item !== "" });
         var paramsHash = new Map();
         for (var i = 0; i < paramsArray.length; i++) {
             var singleParam = paramsArray[i].split('=');
 
             if (paramsHash.has(singleParam[0])) {
-                paramsHash.get(singleParam[0]).push(singleParam[1]);
+                paramsHash.get(singleParam[0]).push(singleParam[1].replace(/(\w)?\+(\w)?/g, '$1 $2'));
             } else {
-                paramsHash.set(singleParam[0], [singleParam[1]]);
+                paramsHash.set(singleParam[0], [singleParam[1].replace(/(\w)?\+(\w)?/g, '$1 $2')]);
             }
         }
 
