@@ -7,6 +7,7 @@ ActiveAdmin.register TimeEntry do
   filter :details_contains, as: :text, input_html: { spellcheck: false }
 
   index do
+
     if params.dig(:q, :details_contains) || params.dig(:q, :details_equals)
       time = working_hours_by_ticket
 
@@ -24,24 +25,35 @@ ActiveAdmin.register TimeEntry do
           li b work_time_for_scope if date_filter_is_applied
         end
       end
-    elsif params.dig(:q, :user_id_eq)
-      projects = projects_by_user
+    elsif params.dig(:q, :user_id_in)
+      users = projects_by_user
 
       panel 'Projects' do
-        ul do
-          projects[:projects].each { |project_info| li project_info }
-          li { b "Total: #{projects[:total]}" }
-          li b work_time_for_scope if date_filter_is_applied
+        users.each_key do |user|
+          div(class: 'line') do
+            ul do
+              li b user
+              users[user][:projects].each { |project_info| li project_info }
+              li { b "Total: #{users[user][:total]}" }
+              li b work_time_for_scope if date_filter_is_applied
+            end
+          end
         end
+
       end
-    elsif params.dig(:q, :project_id_eq)
-      users = users_by_project
+    elsif params.dig(:q, :project_id_in)
+      projects = users_by_project
 
       panel 'Users' do
-        ul do
-          users[:users].each { |user_info| li user_info }
-          li { b "Total: #{users[:total]}" }
-          li b work_time_for_scope if date_filter_is_applied
+        projects.each_key do |project|
+          div(class: 'line') do
+            ul do
+              li b project
+              projects[project][:projects].each { |user_info| li user_info }
+              li { b "Total: #{projects[project][:total]}" }
+              li b work_time_for_scope if date_filter_is_applied
+            end
+          end
         end
       end
     end
