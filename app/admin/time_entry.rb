@@ -2,9 +2,9 @@
 ActiveAdmin.register TimeEntry do
   menu priority: 5
 
-  filter :user, as: :select, collection: proc { User.active.order(:name) }
-  filter :project, as: :select, collection: proc { Project.order(:name) }
-  filter :details_contains, as: :text
+  filter :user, as: :select, collection: proc { User.active.order(:name).map { |user| [user.name, user.id.to_s]} }, input_html: { multiple: true }
+  filter :project, as: :select, collection: proc { Project.order(:name).map { |prj| [prj.name, prj.id.to_s]} }, input_html: { multiple: true }
+  filter :details_contains, as: :text, input_html: { spellcheck: false }
 
   index do
     if params.dig(:q, :details_contains) || params.dig(:q, :details_equals)
@@ -12,7 +12,14 @@ ActiveAdmin.register TimeEntry do
 
       panel "#{time[:ticket]}".html_safe do
         ul do
-          time[:users].each { |user_info| li user_info }
+          time[:users].each do |user_info|
+            div(class: 'line') do
+              div(class: 'w150') { user_info[0] }
+              user_info[1..-1].each do |block|
+                div(class: 'w250') { block.html_safe }
+              end
+            end
+          end
           li { b "Total: #{time[:total]}" }
           li b work_time_for_scope if date_filter_is_applied
         end
@@ -50,10 +57,10 @@ ActiveAdmin.register TimeEntry do
   end
 
   form do |f|
-    f.inputs 'New Absence' do
-      f.input :user, collection: User.active.order(:name)
-      f.input :project, collection: Project.order(:name)
-      f.input :date, label: 'Date (leave blank if for today)', as: :datepicker
+    f.inputs 'New Time Entry' do
+      f.input :user, collection: User.active.order(:name).map { |user| [user.name, user.id.to_s]}
+      f.input :project, collection: Project.order(:name).map { |prj| [prj.name, prj.id.to_s]}
+      f.input :date, label: 'Date (leave blank if for today)', as: :datepicker, input_html: { autocomplete: :off }
       f.input :time, label: 'Time (hh:mm)', required: true
       f.input :details
     end
@@ -70,13 +77,19 @@ ActiveAdmin.register TimeEntry do
     include ActiveAdmin::ViewsHelper
     def index
       index! do |format|
-        @time_entries = selection_by_query.page(params[:page]) if params[:q].present? && params[:q][:details_contains].present?
+        @time_entries = selection_by_query.order(params[:order].split('_').join(' ')).page(params[:page]) if params[:q].present? && params[:q][:details_contains].present?
         format.html
       end
     end
     def create
-      hour_minutes = params[:time_entry][:time].scan(/(\d{1,2}):(\d{2})/).flatten.map(&:to_i)
-      params[:time_entry][:minutes] = hour_minutes[0] * 60 + hour_minutes[1]
+      hour_minutes = params[:time_entry][:time].scan(/(\d{1,2})?:?(\d{2})/).flatten.map(&:to_i)
+      params[:time_entry][:minutes] = (hour_minutes[0] || 0) * 60 + hour_minutes[1]
+      params[:time_entry][:date] = Time.zone.today if params[:time_entry][:date].blank?
+      super
+    end
+    def update
+      hour_minutes = params[:time_entry][:time].scan(/(\d{1,2})?:?(\d{2})/).flatten.map(&:to_i)
+      params[:time_entry][:minutes] = (hour_minutes[0] || 0) * 60 + hour_minutes[1]
       params[:time_entry][:date] = Time.zone.today if params[:time_entry][:date].blank?
       super
     end

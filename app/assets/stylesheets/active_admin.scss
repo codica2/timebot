@@ -11,6 +11,7 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 @import "daterangepicker";
+@import "chosen.min";
 
 .date-picker-wrapper * thead th {
   background-color: #ffffff;
@@ -84,6 +85,23 @@ textarea[id^="q_details_contains"] {
   list-style: none;
 }
 
+.panel {
+  font-size: 13px;
+}
+.line {
+  border-bottom: 1px solid #e3e3e3;
+}
+.w150 {
+  width: 150px;
+  display: inline-block;
+  vertical-align: top;
+}
+.w250 {
+  vertical-align: top;
+  width: 250px;
+  word-break: break-all;
+  display: inline-block;
+}
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //

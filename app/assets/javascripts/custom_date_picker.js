@@ -11,10 +11,10 @@ $(document).ready(function () {
   var html = '<div class="date_range input optional stringish filter_form_field filter_date_range" id="q_date_input">';
   html += '<label class="label">Date</label>';
   html += '<input size="12" class="first-datepicker" maxlength="10" value="" type="text" name="q[date_gteq_date]" ';
-  html += 'id="q_date_gteq_date">';
+  html += 'id="q_date_gteq_date" autocomplete="off">';
   html += '<span class="seperator">-</span>';
   html += '<input size="12" class="last-datepicker" maxlength="10" value="" type="text" name="q[date_lteq_date]" ';
-  html += 'id="q_date_lteq_date"></div>';
+  html += 'id="q_date_lteq_date" autocomplete="off"></div>';
 
   $('.buttons').before(html);
 
