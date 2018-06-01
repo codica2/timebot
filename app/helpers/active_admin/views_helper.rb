@@ -2,23 +2,60 @@
 module ActiveAdmin
   module ViewsHelper
     def projects_by_user
+
+      users = time_entries.map(&:user).uniq
+
+      users.map do |user|
+
+        projects = time_entries.map(&:project).uniq
+
+        projects_info = projects.map do |project|
+          entries = time_entries.select { |entry| entry.project_id == project.id && entry.user == user }
+          if entries.empty?
+            nil
+          else
+            time = entries.map(&:minutes).select(&:present?).inject(&:+)
+            hours   = time / 60
+            minutes = time % 60
+            ["#{project.name}: #{pluralize_time(hours, minutes)}", time]
+          end
+        end.compact
+        projects_info.sort! { |a, a2|
+          a2[1] <=> a[1]
+        }
+        total_time = projects_info.map(&:last).inject(:+)
+        total      = "#{pluralize(total_time / 60, 'hour')} #{pluralize(total_time % 60, 'minute')}"
+        { user.name => { projects: projects_info.map(&:first), total: total } }
+      end.inject(:merge)
+    end
+
+    def users_by_project
       projects = time_entries.map(&:project).uniq
 
-      projects_info = projects.map do |project|
-        entries = time_entries.select { |entry| entry.project_id == project.id }
-        time = entries.map(&:minutes).select(&:present?).inject(&:+)
-        hours   = time / 60
-        minutes = time % 60
+      projects.map do |project|
 
-        ["#{project.name}: #{pluralize_time(hours, minutes)}", time]
-      end
+        users = time_entries.map(&:user).uniq
 
-      projects_info.sort! { |a, b| b[1] <=> a[1] }
+        users_info = users.map do |user|
+          entries = time_entries.select { |entry| entry.project_id == project.id && entry.user == user }
+          if entries.empty?
+            nil
+          else
+            time = entries.map(&:minutes).select(&:present?).inject(&:+)
+            hours   = time / 60
+            minutes = time % 60
+            ["#{user.name}: #{pluralize_time(hours, minutes)}", time]
+          end
+        end.compact
 
-      total_time = projects_info.map(&:last).inject(:+)
-      total      = "#{pluralize(total_time / 60, 'hour')} #{pluralize(total_time % 60, 'minute')}"
+        users_info.sort! { |a, a2|
+          a2[1] <=> a[1]
+        }
+        total_time = users_info.map(&:last).inject(:+)
+        total      = "#{pluralize(total_time / 60, 'hour')} #{pluralize(total_time % 60, 'minute')}"
+        { project.name => { projects: users_info.map(&:first), total: total } }
+      end.inject(:merge)
 
-      { projects: projects_info.map(&:first), total: total }
     end
 
     def selection_by_query
@@ -43,7 +80,7 @@ module ActiveAdmin
         hours   = time / 60
         minutes = time % 60
         out = ["#{user.name}: "]
-        params_details = params.dig(:q, :details_contains)
+        params_details = params.dig(:q, :details_contains) || []
         if params_details.size > 1
           links = prettify_links
           params_details.each_with_index do |detail, i|
@@ -68,11 +105,7 @@ module ActiveAdmin
       { users_info: users_info, total: total }
     end
 
-    def users_by_project
-      out = get_data(time_entries)
 
-      { users: out[:users_info].map(&:first), total: out[:total] }
-    end
 
     def get_ticket
       links = params[:q][:details_contains].select { |d| d[/(?:https?|ftp):\/\/[^\s\/$.?#].[^\s<>]*/] }
