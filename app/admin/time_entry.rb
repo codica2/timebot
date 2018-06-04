@@ -29,15 +29,19 @@ ActiveAdmin.register TimeEntry do
       users = projects_by_user
 
       panel 'Projects' do
-        users.each_key do |user|
-          div(class: 'line') do
-            ul do
-              li b user
-              users[user][:projects].each { |project_info| li project_info }
-              li { b "Total: #{users[user][:total]}" }
-              li b work_time_for_scope if date_filter_is_applied
+        if users.present?
+          users.each_key do |user|
+            div(class: 'line') do
+              ul do
+                li b user
+                users[user][:projects].each { |project_info| li project_info }
+                li { b "Total: #{users[user][:total]}" }
+                li b work_time_for_scope(User.find_by(name: user)) if date_filter_is_applied
+              end
             end
           end
+        else
+          div { 'No such entries' }
         end
 
       end
@@ -45,15 +49,18 @@ ActiveAdmin.register TimeEntry do
       projects = users_by_project
 
       panel 'Users' do
-        projects.each_key do |project|
-          div(class: 'line') do
-            ul do
-              li b project
-              projects[project][:projects].each { |user_info| li user_info }
-              li { b "Total: #{projects[project][:total]}" }
-              li b work_time_for_scope if date_filter_is_applied
+        if projects.present?
+          projects.each_key do |project|
+            div(class: 'line') do
+              ul do
+                li b project
+                projects[project][:projects].each { |user_info| li user_info }
+                li { b "Total: #{projects[project][:total]}" }
+              end
             end
           end
+        else
+          div { 'No such entries' }
         end
       end
     end
@@ -89,6 +96,7 @@ ActiveAdmin.register TimeEntry do
     include ActiveAdmin::ViewsHelper
     def index
       index! do |format|
+        @time_entries = time_entries.order(params[:order].split('_').join(' ')).page(params[:page])
         @time_entries = selection_by_query.order(params[:order].split('_').join(' ')).page(params[:page]) if params[:q].present? && params[:q][:details_contains].present?
         format.html
       end

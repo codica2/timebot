@@ -125,15 +125,21 @@ module ActiveAdmin
       links.map.with_index { |d, i| "<a href='#{d}'> Ticket#{i + 1 if links.count > 1}</a>" }
     end
 
-    def work_time_for_scope
+    def work_time_for_scope(user_id = nil)
       start_date = Date.parse(params.dig(:q, :date_gteq_date))
       end_date   = Date.parse(params.dig(:q, :date_lteq_date))
       working_days = (start_date..end_date).select { |day| !day.saturday? && !day.sunday? }
       holidays = Holiday.pluck(:date)
-      absence = (user_id = params.dig(:q, :user_id_in)) ? User.find(user_id).absences.pluck(:date) : []
-      total_time = (working_days - holidays - absence).count * 8
-      "Total work time between #{start_date.strftime('%b %e, %Y')} and #{end_date.strftime('%b %e, %Y')}"\
-      ": #{total_time} hours"
+      if user_id.nil?
+        absence = (user_id = params.dig(:q, :user_id_in)) ? User.find(user_id).first.absences.pluck(:date) : []
+        total_time = (working_days - holidays - absence).count * 8
+        "Total work time between #{start_date.strftime('%b %e, %Y')} and #{end_date.strftime('%b %e, %Y')} : #{total_time} hours"
+      else
+        absence = User.find(user_id).absences.pluck(:date)
+        total_time = (working_days - holidays - absence).count * 8
+        "Total work time between #{start_date.strftime('%b %e, %Y')} and #{end_date.strftime('%b %e, %Y')} : #{total_time} hours"
+      end
+
     end
 
     def date_filter_is_applied
@@ -152,7 +158,7 @@ module ActiveAdmin
       if @time_entries_collection
         @time_entries_collection
       else
-        @time_entries_collection = TimeEntry.all.includes(:user)
+        @time_entries_collection = TimeEntry.all.includes(:user, :project)
         if (user_id = params.dig(:q, :user_id_in))
           @time_entries_collection = @time_entries_collection.where(user_id: user_id)
         end
