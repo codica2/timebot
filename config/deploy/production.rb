@@ -3,7 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server '172.104.151.14', user: 'dev', roles: %w{app}, port: 22
+server '172.104.151.14', user: 'dev', roles: %w{app db web}, port: 22
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 set :rvm_ruby_version, '2.3.1@timebot'
