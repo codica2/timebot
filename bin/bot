@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
 command = ARGV[0]
 
 available_commands = %w(start stop)
@@ -11,10 +12,13 @@ end
 def start
   stream = %w(log/production.log a)
 
+  puma_pid = spawn('bundle', 'exec', 'puma', '-e', 'production', out: stream, err: stream)
   bot_pid  = spawn({ 'RAILS_ENV' => 'production' }, 'bundle', 'exec', 'rake', 'slack:start_bot', out: stream, err: stream)
 
+  Process.detach(puma_pid)
   Process.detach(bot_pid)
 
+  File.write('tmp/pids/puma.pid', puma_pid)
   File.write('tmp/pids/bot.pid', bot_pid)
 end
 
