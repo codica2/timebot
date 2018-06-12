@@ -37,7 +37,7 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/sockets', 'tmp/cache', 'public/asse
 # set :keep_releases, 5
 
 namespace :deploy do
-  before :finished, 'deploy:slack_stop'
+  before :finished, 'slack:slack_stop'
   after :finished, 'deploy:restart'
-  after :finished, 'deploy:slack_start'
+  after :finished, 'slack:slack_start'
 end
