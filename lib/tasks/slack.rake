@@ -16,11 +16,21 @@ namespace :slack do
       EventHandler.new(client, data, messages, public_channels).handle_message
     end
 
-    client.on :hello do
-      puts 'Successfully connected to Slack'
-    end
+    File.write('tmp/pids/bot.pid', Process.pid)
 
     client.start!
+  end
+
+  task stop_bot: :environment do
+
+    pid = File.read(Rails.root.join('tmp/pids/bot.pid'))
+
+    begin
+      Process.kill('KILL', pid.to_i) if pid.present?
+    rescue Errno::ESRCH => e
+      puts e.inspect
+    end
+    
   end
 
 end

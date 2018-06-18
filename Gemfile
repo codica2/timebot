@@ -43,8 +43,12 @@ gem 'dotenv-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'pry'
   gem 'capistrano', '~> 3.6'
+  gem 'capistrano-bundler', '>= 1.1.0'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
+  gem 'pry'
 end
 
 group :development do
