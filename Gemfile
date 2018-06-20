@@ -39,6 +39,7 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'devise'
 gem 'rubocop', require: false
 gem 'dotenv-rails'
+gem 'ruby-trello'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

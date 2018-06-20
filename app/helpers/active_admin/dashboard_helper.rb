@@ -81,6 +81,7 @@ module ActiveAdmin
           projects.name AS "project",
           users.name AS "user",
           time_entries.details,
+          time_entries.trello_labels,
           time_entries.minutes
         FROM projects
           INNER JOIN time_entries ON time_entries.project_id = projects.id
@@ -109,7 +110,13 @@ module ActiveAdmin
             {
               name: user,
               total: (user_rows.map { |h| h['minutes'] }.sum / 60.0).round(1),
-              entries: user_rows.map { |h| { time: (h['minutes'] / 60.0).round(1), details: h['details'] } }
+              entries: user_rows.map do |h|
+                {
+                    time: (h['minutes'] / 60.0).round(1),
+                    details: h['details'],
+                    labels: h['trello_labels']
+                }
+              end
             }
           end,
         }
@@ -138,5 +145,21 @@ module ActiveAdmin
     def user_names(entry)
       entry.last.map(&:user).map(&:name).uniq.to_sentence
     end
+
+    def formatted_labels(trello_labels)
+      return {} if trello_labels.blank?
+      if trello_labels.is_a? Array
+        labels = trello_labels.flatten.compact.uniq
+      else
+        labels = trello_labels.split(',')
+      end
+      regexp = /[0-9]{1}/
+      labels = {
+        estimate: labels.select { |l| l.match(regexp) },
+        labels:   labels.reject { |l| l.match(regexp) }
+      }
+      labels.each { |k, v| labels[k] = v.to_s.gsub(/[{}"\[\]\\]/, '') }
+    end
+
   end
 end
