@@ -33,6 +33,8 @@ ActiveAdmin.register_page 'Dashboard' do
         th 'Project'
         th 'User'
         th 'Details'
+        th 'Labels'
+        th 'Estimate'
         th 'Time'
       end
       tbody do
@@ -41,6 +43,8 @@ ActiveAdmin.register_page 'Dashboard' do
             td do
               b project[:name]
             end
+            td
+            td
             td
             td
             td do
@@ -53,6 +57,8 @@ ActiveAdmin.register_page 'Dashboard' do
                 td
                 td user[:name]
                 td
+                td
+                td
                 td do
                   b user[:total]
                 end
@@ -62,6 +68,8 @@ ActiveAdmin.register_page 'Dashboard' do
                   td
                   td
                   td time_entry[:details]
+                  td formatted_labels(time_entry[:labels]).dig(:labels)
+                  td formatted_labels(time_entry[:labels]).dig(:estimate)
                   td time_entry[:time]
                 end
               end
@@ -76,7 +84,9 @@ ActiveAdmin.register_page 'Dashboard' do
       thead do
         th 'Project'
         th 'Ticket'
+        th 'Labels'
         th 'Users Worked on'
+        th 'Estimate'
         th 'Time'
       end
       tbody do
@@ -85,6 +95,8 @@ ActiveAdmin.register_page 'Dashboard' do
             td do
               b company_time_entry.first.name
             end
+            td
+            td
             td
             td
             td do
@@ -96,7 +108,9 @@ ActiveAdmin.register_page 'Dashboard' do
               tr do
                 td
                 td detail_time_entry.first
+                td formatted_labels(detail_time_entry.last.map(&:trello_labels))[:labels]
                 td user_names(detail_time_entry)
+                td formatted_labels(detail_time_entry.last.map(&:trello_labels))[:estimate]
                 td time_worked(detail_time_entry)
               end
             end
@@ -111,7 +125,9 @@ ActiveAdmin.register_page 'Dashboard' do
         thead do
           th 'Project'
           th 'Ticket'
+          th 'Labels'
           th 'Users Worked on'
+          th 'Estimate'
           th 'Time'
         end
         tbody do
@@ -120,6 +136,8 @@ ActiveAdmin.register_page 'Dashboard' do
               td do
                 b company_time_entry.first.name
               end
+              td
+              td
               td
               td
               td do
@@ -131,7 +149,9 @@ ActiveAdmin.register_page 'Dashboard' do
                 tr do
                   td
                   td detail_time_entry.first
+                  td formatted_labels(detail_time_entry.last.map(&:trello_labels))[:labels]
                   td user_names(detail_time_entry)
+                  td formatted_labels(detail_time_entry.last.map(&:trello_labels))[:estimate]
                   td time_worked(detail_time_entry)
                 end
               end
