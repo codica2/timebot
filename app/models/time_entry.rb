@@ -42,6 +42,7 @@ class TimeEntry < ApplicationRecord
   end
 
   def trello_card_labels
+    return if trello_ticket_id.blank?
     begin
       card = Trello::Card.find(trello_ticket_id)
     rescue
