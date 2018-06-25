@@ -3,6 +3,6 @@ class Holiday < ApplicationRecord
   validates :date, uniqueness: true
 
   def self.is_holiday?(date = Date.today)
-    Holiday.where(date: date).present?
+    Holiday.all.map { |holy| holy.date.strftime('%m-%d') }.include? date.strftime('%m-%d')
   end
 end

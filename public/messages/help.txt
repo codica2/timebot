@@ -30,8 +30,8 @@
 > For example, `1.1 - 1.2` / `15.2.18-14.3.18` / `23.01.2018  -  23.3` / etc. or `show work month` / `show work last month`
 > Aliases: `swm`, `swlm`.
 
-> If you were/will be absent on some days, write `set REASON DAY.MONTH.YEAR(OPTIONAL) - DAY.MONTH.YEAR(OPTIONAL)`.
+> If you were/will be absent on some days, write `set REASON DAY.MONTH.YEAR(OPTIONAL) - DAY.MONTH.YEAR(OPTIONAL) COMMENT(OPTIONAL)`.
 > For example, `set vacation 15.08 - 19.08`.
-> Valid reasons: Vacation, Illness.
+> Valid reasons: Vacation, Illness, Other. Note: when using Other as reason, the comment is required.
 > To display it - `show absence`/`show absence last year`
 > Aliases: `sa`, `saly`.
