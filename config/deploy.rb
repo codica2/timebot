@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.6.1'
+# lock '3.6.1'
 
 set :application, 'timebot'
 set :repo_url, 'git@gitlab.codica.com:codica2/timebot.git'
@@ -12,7 +12,7 @@ set :branch, 'master'
 set :deploy_to, '/home/dev/www/timebot'
 
 # Default value for :scm is :git
-set :scm, :git
+# set :scm, :git
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
