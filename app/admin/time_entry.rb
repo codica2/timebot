@@ -79,7 +79,7 @@ ActiveAdmin.register TimeEntry do
     f.inputs 'New Time Entry' do
       f.input :user, collection: User.active.order(:name).map { |user| [user.name, user.id.to_s]}
       f.input :project, collection: Project.order(:name).map { |prj| [prj.name, prj.id.to_s]}
-      f.input :date, label: 'Date (leave blank if for today)', as: :datepicker, input_html: { autocomplete: :off }
+      f.input :date, label: 'Date (leave blank if for today)', as: :datepicker, datepicker_options: { firstDay: 1 }, input_html: { autocomplete: :off }
       f.input :time, label: 'Time (hh:mm)', required: true
       f.input :details
     end

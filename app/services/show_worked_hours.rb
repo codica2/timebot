@@ -61,7 +61,7 @@ class ShowWorkedHours < BaseService
     if end_date == start_date
       working_days = [start_date]
     elsif end_date > Time.zone.today
-      working_days = (start_date...Time.zone.today)
+      working_days = (start_date..Time.zone.today)
     else
       working_days = (start_date..end_date)
     end

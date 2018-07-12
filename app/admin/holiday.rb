@@ -12,5 +12,14 @@ ActiveAdmin.register Holiday do
     actions
   end
 
+  form do |f|
+    f.inputs do
+      f.input :name
+      f.input :date, as: :datepicker, datepicker_options: { firstDay: 1 }, input_html: { autocomplete: :off }, label: 'Date (YYYY-MM-DD)'
+    end
+
+    f.actions
+  end
+
   permit_params :name, :date
 end
