@@ -17,8 +17,8 @@ ActiveAdmin.register Absence do
   form do |f|
     f.inputs 'New Absence' do
       f.input :user, collection: User.active.order(:name)
-      f.input :date, as: :datepicker, input_html: { autocomplete: :off }
-      f.input :date, label: 'To date (optional)', as: :datepicker, input_html: { class: 'date_range',name: 'absence_to_date', id: 'absence_to_date_input', autocomplete: :off}, required: false
+      f.input :date, as: :datepicker, datepicker_options: { firstDay: 1 }, input_html: { autocomplete: :off }
+      f.input :date, label: 'To date (optional)', as: :datepicker, datepicker_options: { firstDay: 1 }, input_html: { class: 'date_range',name: 'absence_to_date', id: 'absence_to_date_input', autocomplete: :off}, required: false
       f.input :reason, as: :radio
       f.input :comment
     end
