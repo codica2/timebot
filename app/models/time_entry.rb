@@ -23,6 +23,7 @@ class TimeEntry < ApplicationRecord
   end
 
   def ticket_url
+    return if details.blank?
     regexp = /(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
     details.gsub(/[<>]/, '').scan(regexp).flatten.first
   end
@@ -33,6 +34,13 @@ class TimeEntry < ApplicationRecord
     regexp = /\/[a-zA-Z0-9]{8}\//
     id = url.scan(regexp).first
     id.gsub('/', '') if id.present?
+  end
+
+  def trello_list_name
+    return if trello_ticket_id.blank?
+    Trello::Card.find(trello_ticket_id).list.name
+  rescue => e
+    return nil
   end
 
   private
