@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 ActiveAdmin.register_page 'Report' do
+  menu parent: 'Reports'
 
   controller do
     def index

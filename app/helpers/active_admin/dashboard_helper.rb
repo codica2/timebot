@@ -148,12 +148,12 @@ module ActiveAdmin
 
     def formatted_labels(trello_labels)
       return {} if trello_labels.blank?
-      if trello_labels.is_a? Array
-        labels = trello_labels.flatten.compact.uniq
-      else
-        labels = trello_labels.split(',')
-      end
-      regexp = /[0-9]{1}/
+      labels = if trello_labels.is_a? Array
+                trello_labels.flatten.compact.uniq
+              else
+                trello_labels.split(',')
+              end
+      regexp = /^\d+$/
       labels = {
         estimate: labels.select { |l| l.match(regexp) },
         labels:   labels.reject { |l| l.match(regexp) }

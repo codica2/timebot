@@ -6,7 +6,7 @@ $(document).ready(function () {
     return searchResult ? searchResult.split('=')[1] : false;
   };
 
-  if (!window.location.pathname.match(/^\/admin\/?(dashboard|time_entries|absences|report)?\/?$/)) return;
+  if (!window.location.pathname.match(/^\/admin\/?(dashboard|time_entries|absences|report|time_reports)?\/?$/)) return;
 
   var html = '<div class="date_range input optional stringish filter_form_field filter_date_range" id="q_date_input">';
   html += '<label class="label">Date</label>';
