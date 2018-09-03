@@ -4,7 +4,7 @@ class TimeEntry < ApplicationRecord
   belongs_to :project
   has_one :team, through: :project
 
-  before_save :save_labels
+  before_save :save_labels, :save_ticket_url
 
   validates :date, presence: true
   validates :user_id, presence: true
@@ -16,7 +16,8 @@ class TimeEntry < ApplicationRecord
   scope :current_week, -> { where(date: (Time.zone.now.beginning_of_week..Time.zone.now.to_date)) }
   scope :last_week, -> { where(date: (1.week.ago.beginning_of_week.to_date..1.week.ago.end_of_week.to_date)) }
   scope :current_month, -> { where(date: (Time.zone.now.beginning_of_month.to_date..Time.zone.now.to_date)) }
-  scope :in_interval, -> (start_date, end_date) { where(['date BETWEEN ? AND ?', start_date, end_date]) }
+  scope :in_interval, ->(start_date, end_date) { where(['date BETWEEN ? AND ?', start_date, end_date]) }
+  scope :with_ticket, ->(ticket_url) { where("details LIKE ?", "%#{ticket_url}%") }
 
   def description
     "*#{id}: #{project.name}* - #{time} - #{details}"
@@ -24,8 +25,7 @@ class TimeEntry < ApplicationRecord
 
   def ticket_url
     return if details.blank?
-    regexp = /(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
-    details.gsub(/[<>]/, '').scan(regexp).flatten.first
+    URI.extract(details).first
   end
 
   def trello_ticket_id
@@ -43,10 +43,25 @@ class TimeEntry < ApplicationRecord
     return nil
   end
 
+  def total_time
+    search_param = ticket_url || details
+    (TimeEntry.with_ticket(search_param).pluck(:minutes).sum / 60.0).round(1)
+  end
+
+  def collaborators
+    search_param = ticket_url || details
+    TimeEntry.with_ticket(search_param).map { |t| t.user }.uniq
+  end
+
   private
 
   def save_labels
     self.trello_labels = trello_card_labels
+  end
+
+  def save_ticket_url
+    url = ticket_url
+    self.ticket = url if url.present?
   end
 
   def trello_card_labels

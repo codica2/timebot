@@ -1,10 +1,11 @@
 # frozen_string_literal: true
-ActiveAdmin.register_page 'Report' do
+ActiveAdmin.register_page 'Time Reports' do
+  menu parent: 'Reports'
 
   controller do
     def index
       unless params.dig(:q, :date_gteq_date) && params.dig(:q, :date_lteq_date)
-        redirect_to admin_report_url(q: { date_gteq_date: Date.today.beginning_of_week,
+        redirect_to admin_time_reports_url(q: { date_gteq_date: Date.today.beginning_of_week,
                                           date_lteq_date: Date.today.end_of_week })
       end
     end
@@ -60,7 +61,7 @@ ActiveAdmin.register_page 'Report' do
   end
 
   sidebar :filters do
-    form class: 'filter_form', method: '/get', action: '/admin/report' do
+    form class: 'filter_form', method: '/get', action: '/admin/time_reports' do
       div class: 'buttons' do
         button type: 'submit' do
           'Filter'
