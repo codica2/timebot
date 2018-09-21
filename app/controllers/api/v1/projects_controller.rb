@@ -3,14 +3,14 @@ module Api
   module V1
 
     class ProjectsController < ApplicationController
-
+      include Rails::Pagination
       # TODO: remove after authentication implementation
       skip_before_action :verify_authenticity_token
 
       # GET /api/v1/projects/
       def index
         projects = Project.all
-        render json: projects
+        paginate json: projects, per_page: PER_PAGE
       end
 
       # GET /api/v1/projects/:id
