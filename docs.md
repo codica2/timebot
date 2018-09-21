@@ -1,6 +1,4 @@
-page: 1
-per-page: 30
-total: 64
+
 
 # Group Projects
 
@@ -22,6 +20,9 @@ total: 64
 
     + Headers
 
+            X-Total: 35
+            X-Per-Page: 30
+            X-Page: 1
             Content-Type: application/json; charset=utf-8
 
     + Body
@@ -521,10 +522,10 @@ total: 64
 ### Get a project [GET /api/v1/projects/{id}]
 
 + Parameters
-    + id: `67` (number, required)
+    + id: `37` (number, required)
 
 + Request Show project by id
-**GET**&nbsp;&nbsp;`/api/v1/projects/67`
+**GET**&nbsp;&nbsp;`/api/v1/projects/37`
 
     + Headers
 
@@ -540,16 +541,16 @@ total: 64
 
             {
               "data": {
-                "id": "67",
+                "id": "37",
                 "type": "projects",
                 "attributes": {
-                  "name": "Project_67",
-                  "alias": "alias_67"
+                  "name": "Project_37",
+                  "alias": "alias_37"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "67",
+                      "id": "37",
                       "type": "teams"
                     }
                   }
@@ -560,10 +561,10 @@ total: 64
 ### Delete a project [DELETE /api/v1/projects/{id}]
 
 + Parameters
-    + id: `103` (number, required)
+    + id: `88` (number, required)
 
 + Request Delete project by id
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/103`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/88`
 
     + Headers
 
@@ -589,7 +590,7 @@ total: 64
 
     + Body
 
-            project[name]=Jerry%27s+Mytholog&project[alias]=Pluto&project[team_id]=141
+            project[name]=Shrimply+Pibbles&project[alias]=Planet+Squanch&project[team_id]=141
 
 + Response 200
 
@@ -604,8 +605,8 @@ total: 64
                 "id": "141",
                 "type": "projects",
                 "attributes": {
-                  "name": "Jerry's Mytholog",
-                  "alias": "Pluto"
+                  "name": "Shrimply Pibbles",
+                  "alias": "Planet Squanch"
                 },
                 "relationships": {
                   "team": {
@@ -621,10 +622,10 @@ total: 64
 ### Update a project [PUT /api/v1/projects/{id}]
 
 + Parameters
-    + id: `174` (number, required)
+    + id: `142` (number, required)
 
 + Request Update project
-**PUT**&nbsp;&nbsp;`/api/v1/projects/174`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/142`
 
     + Headers
 
@@ -633,7 +634,7 @@ total: 64
 
     + Body
 
-            project[name]=PROJECT_173
+            project[name]=PROJECT_141
 
 + Response 200
 
@@ -645,16 +646,16 @@ total: 64
 
             {
               "data": {
-                "id": "174",
+                "id": "142",
                 "type": "projects",
                 "attributes": {
-                  "name": "PROJECT_173",
-                  "alias": "alias_173"
+                  "name": "PROJECT_141",
+                  "alias": "alias_141"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "174",
+                      "id": "142",
                       "type": "teams"
                     }
                   }
