@@ -13,15 +13,27 @@ We are using Slack Realtime API for event listening. We also use ActiveAdmin as 
  
 ## Testing
 1. Add `timebot_test` app in Slack or create new one
+
 2. Set `SLACK_TOKEN=xoxb-338593550772-QkhAKI3vlSMlUVaiWMg1vKZX` in your `.env` or your own `Bot User OAuth Access Token`
+
 3. Run `rake slack:start_bot`  
 
 ## Deployment
 
-Create a `config/deploy/production.rb` and a `config/deploy.rb` files. Check `config/deploy/production.rb.example` and
-`config/deploy.rb.example` for help. Then you can deploy with `cap production deploy` command.
+* Check `config/deploy/production.rb` and a `config/deploy.rb` files. 
 
-If you need to start bot manualy, just type `sudo service timebot start`
+* Deploy with `cap production deploy` command.
+
+* After succesfull deployment, Capistrano won't return shell after executing task `slack:slack_start`. You can safely interrupt process with `Ctrl+C`, 
+Bot will still be connected to Slack.
+
+## Help notes
+
+* If Bot disconnected from Slack - you need to restart only slack client! For this purpose, run 
+```
+    cap production slack:slack_restart
+```
+
 ## License
 
 The MIT License (MIT)
