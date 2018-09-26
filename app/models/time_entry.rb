@@ -53,6 +53,10 @@ class TimeEntry < ApplicationRecord
     TimeEntry.with_ticket(search_param).map { |t| t.user }.uniq
   end
 
+  def estimated_time
+    trello_labels.grep(/^\d+$/).first if trello_labels.present?
+  end
+
   private
 
   def save_labels

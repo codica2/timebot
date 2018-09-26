@@ -28,6 +28,19 @@ RSpec.describe 'Projects API', type: :request do
     end
   end
 
+  describe 'GET /projects/all' do
+    include ApiDoc::V1::Projects::All
+
+    it 'Get all projects', :dox do
+      get '/api/v1/projects/all'
+      json = JSON.parse(response.body)
+
+      expect(response).to be_success
+      expect(json['data'].count).to eq(Project.count)
+    end
+  end
+
+
   describe 'GET /projects/:id' do
     include ApiDoc::V1::Projects::Show
 

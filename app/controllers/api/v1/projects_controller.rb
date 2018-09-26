@@ -13,6 +13,11 @@ module Api
         paginate json: projects, per_page: PER_PAGE
       end
 
+      # GET /api/v1/projects/all
+      def all
+        render json: Project.all
+      end
+
       # GET /api/v1/projects/:id
       def show
         project = Project.find_by(id: params[:id])
