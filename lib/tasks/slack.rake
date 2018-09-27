@@ -5,8 +5,11 @@ namespace :slack do
     SlackClient.new.sync_users
   end
 
+  pid_file = Rails.root.join('tmp/pids/bot.pid')
 
   task start_bot: :environment do
+
+    return puts 'Pid file exists. Maybe your app is running?' if File.exist?(pid_file)
     client = Slack::RealTime::Client.new
     messages = YAML.load_file('config/messages.yml')
 
@@ -16,21 +19,22 @@ namespace :slack do
       EventHandler.new(client, data, messages, public_channels).handle_message
     end
 
-    File.write('tmp/pids/bot.pid', Process.pid)
+    File.write(pid_file, Process.pid)
 
     client.start!
   end
 
   task stop_bot: :environment do
 
-    pid = File.read(Rails.root.join('tmp/pids/bot.pid'))
+    pid = File.read(pid_file)
+    File.delete(pid_file) if File.exist?(pid_file)
 
     begin
       Process.kill('KILL', pid.to_i) if pid.present?
     rescue Errno::ESRCH => e
       puts e.inspect
     end
-    
+
   end
 
 end
