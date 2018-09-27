@@ -1,33 +1,33 @@
 module ApiDoc
   module V1
-    module Users
+    module Holidays
       extend Dox::DSL::Syntax
 
       document :api do
-        resource 'Users' do
-          endpoint '/users'
-          group 'Users'
+        resource 'Holidays' do
+          endpoint '/holidays'
+          group 'Holidays'
         end
       end
 
       document :show do # generates module Docs::Pokemons::Show
-        action 'Get a user'
+        action 'Get a holiday'
       end
 
       document :index do
-        action 'Get users'
+        action 'Get holidays'
       end
 
       document :create do
-        action 'Create a user'
+        action 'Create a holiday'
       end
 
       document :destroy do
-        action 'Delete a user'
+        action 'Delete a holiday'
       end
 
       document :update do
-        action 'Update a user'
+        action 'Update a holiday'
       end
 
     end

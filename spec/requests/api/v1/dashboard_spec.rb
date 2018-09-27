@@ -8,7 +8,6 @@ RSpec.describe 'Dashboard API', type: :request do
 
     it 'Get dashboard info', :dox do
       get '/api/v1/dashboard'
-      json = JSON.parse(response.body)
 
       expect(response).to be_success
       # expect(json['data'].count).to eq(User.count)

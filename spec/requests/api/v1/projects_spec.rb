@@ -21,7 +21,6 @@ RSpec.describe 'Projects API', type: :request do
 
     it 'Get projects', :dox do
       get '/api/v1/projects'
-      json = JSON.parse(response.body)
 
       expect(response).to be_success
       expect(json['data'].count).to eq(PER_PAGE)
@@ -33,7 +32,6 @@ RSpec.describe 'Projects API', type: :request do
 
     it 'Get all projects', :dox do
       get '/api/v1/projects/all'
-      json = JSON.parse(response.body)
 
       expect(response).to be_success
       expect(json['data'].count).to eq(Project.count)
@@ -47,7 +45,6 @@ RSpec.describe 'Projects API', type: :request do
     it 'Show project by id', :dox do
       project = projects.sample
       get "/api/v1/projects/#{project.id}"
-      json = JSON.parse(response.body)
 
       expect(response).to be_success
       expect(json.dig('data', 'id')).to eq(project.id.to_s)
@@ -72,7 +69,7 @@ RSpec.describe 'Projects API', type: :request do
       projects_number = projects.count
       post('/api/v1/projects/', params: valid_params)
       expect(response).to be_success
-      expect(JSON.parse(response.body)).to have_key('data')
+      expect(json).to have_key('data')
       expect(projects_number).to be < Project.count
     end
   end
@@ -84,7 +81,6 @@ RSpec.describe 'Projects API', type: :request do
       project = projects.sample
       params = { project: { name: project.name.upcase } }
       put("/api/v1/projects/#{project.id}", params: params)
-      json = JSON.parse(response.body)
 
       expect(response).to be_success
       expect(json.dig('data', 'attributes', 'name')).to eq(project.name.upcase)

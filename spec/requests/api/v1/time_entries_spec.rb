@@ -26,7 +26,6 @@ RSpec.describe 'Time Entries API', type: :request do
 
     it 'Get time entries', :dox do
       get '/api/v1/time_entries'
-      json = JSON.parse(response.body)
 
       expect(response).to be_success
       expect(json['data'].count).to eq(PER_PAGE)
@@ -39,7 +38,6 @@ RSpec.describe 'Time Entries API', type: :request do
     it 'Show time entry by id', :dox do
       time_entry = time_entries.sample
       get "/api/v1/time_entries/#{time_entry.id}"
-      json = JSON.parse(response.body)
 
       expect(response).to be_success
       expect(json.dig('data', 'id')).to eq(time_entry.id.to_s)
@@ -64,7 +62,7 @@ RSpec.describe 'Time Entries API', type: :request do
       time_entries_number = time_entries.count
       post('/api/v1/time_entries/', params: valid_params)
       expect(response).to be_success
-      expect(JSON.parse(response.body)).to have_key('data')
+      expect(json).to have_key('data')
       expect(time_entries_number).to be < TimeEntry.count
     end
   end
@@ -76,7 +74,6 @@ RSpec.describe 'Time Entries API', type: :request do
       time_entry = time_entries.sample
       params = { time_entry: { details: time_entry.details.upcase } }
       put("/api/v1/time_entries/#{time_entry.id}", params: params)
-      json = JSON.parse(response.body)
 
       expect(response).to be_success
       expect(json.dig('data', 'attributes', 'details')).to eq(time_entry.details.upcase)

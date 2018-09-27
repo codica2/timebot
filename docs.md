@@ -1,5 +1,266 @@
 
 
+# Group Dashboard
+
+
+## Dashboard [/dashboard]
+
+
+### Get dashboard info [GET /api/v1/dashboard]
+
+
++ Request Get dashboard info
+**GET**&nbsp;&nbsp;`/api/v1/dashboard`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "start_of_week": "2018-10-01",
+              "end_of_week": "2018-10-01",
+              "hours_to_work": 0,
+              "hours_worked": 0,
+              "holidays": [
+            
+              ],
+              "absent": [
+            
+              ],
+              "users_chart": {
+                "title": "Users",
+                "data": [
+                  {
+                    "name": "Pm",
+                    "value": 0.0
+                  },
+                  {
+                    "name": "Front end",
+                    "value": 0.0
+                  },
+                  {
+                    "name": "Back end",
+                    "value": 0.0
+                  },
+                  {
+                    "name": "Qa",
+                    "value": 0.0
+                  },
+                  {
+                    "name": "Ops",
+                    "value": 0.0
+                  },
+                  {
+                    "name": "Marketing",
+                    "value": 0.0
+                  },
+                  {
+                    "name": "Design",
+                    "value": 0.0
+                  }
+                ]
+              },
+              "projects_chart": {
+                "title": "Projects",
+                "data": [
+            
+                ]
+              }
+            }
+
+# Group Holidays
+
+
+## Holidays [/holidays]
+
+
+### Get holidays [GET /api/v1/holidays]
+
+
++ Request Get holidays
+**GET**&nbsp;&nbsp;`/api/v1/holidays`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": "1",
+                  "type": "holidays",
+                  "attributes": {
+                    "name": "Dr. Glip-Glop",
+                    "date": "2018-10-02"
+                  }
+                },
+                {
+                  "id": "2",
+                  "type": "holidays",
+                  "attributes": {
+                    "name": "Arthricia",
+                    "date": "2018-10-03"
+                  }
+                },
+                {
+                  "id": "3",
+                  "type": "holidays",
+                  "attributes": {
+                    "name": "Beta VII",
+                    "date": "2018-10-04"
+                  }
+                },
+                {
+                  "id": "4",
+                  "type": "holidays",
+                  "attributes": {
+                    "name": "Snowball",
+                    "date": "2018-10-05"
+                  }
+                },
+                {
+                  "id": "5",
+                  "type": "holidays",
+                  "attributes": {
+                    "name": "Tammy Gueterman",
+                    "date": "2018-10-06"
+                  }
+                }
+              ]
+            }
+
+### Get a holiday [GET /api/v1/holidays/{id}]
+
++ Parameters
+    + id: `8` (number, required)
+
++ Request Show holiday by id
+**GET**&nbsp;&nbsp;`/api/v1/holidays/8`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "8",
+                "type": "holidays",
+                "attributes": {
+                  "name": "Beta VII",
+                  "date": "2018-10-09"
+                }
+              }
+            }
+
+### Delete a holiday [DELETE /api/v1/holidays/{id}]
+
++ Parameters
+    + id: `13` (number, required)
+
++ Request Delete holiday by id
+**DELETE**&nbsp;&nbsp;`/api/v1/holidays/13`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 204
+
+### Create a holiday [POST /api/v1/holidays]
+
+
++ Request Create holiday
+**POST**&nbsp;&nbsp;`/api/v1/holidays`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            holiday[name]=Beth+Smith&holiday[date]=2018-10-22
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "21",
+                "type": "holidays",
+                "attributes": {
+                  "name": "Beth Smith",
+                  "date": "2018-10-22"
+                }
+              }
+            }
+
+### Update a holiday [PUT /api/v1/holidays/{id}]
+
++ Parameters
+    + id: `25` (number, required)
+
++ Request Update holiday
+**PUT**&nbsp;&nbsp;`/api/v1/holidays/25`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            holiday[name]=BETH%27S+MYTHOLOG
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "25",
+                "type": "holidays",
+                "attributes": {
+                  "name": "BETH'S MYTHOLOG",
+                  "date": "2018-10-26"
+                }
+              }
+            }
+
 # Group Projects
 
 
@@ -1105,10 +1366,10 @@
 ### Get a project [GET /api/v1/projects/{id}]
 
 + Parameters
-    + id: `89` (number, required)
+    + id: `75` (number, required)
 
 + Request Show project by id
-**GET**&nbsp;&nbsp;`/api/v1/projects/89`
+**GET**&nbsp;&nbsp;`/api/v1/projects/75`
 
     + Headers
 
@@ -1124,16 +1385,16 @@
 
             {
               "data": {
-                "id": "89",
+                "id": "75",
                 "type": "projects",
                 "attributes": {
-                  "name": "Project_89",
-                  "alias": "alias_89"
+                  "name": "Project_75",
+                  "alias": "alias_75"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "89",
+                      "id": "75",
                       "type": "teams"
                     }
                   }
@@ -1144,10 +1405,10 @@
 ### Delete a project [DELETE /api/v1/projects/{id}]
 
 + Parameters
-    + id: `120` (number, required)
+    + id: `106` (number, required)
 
 + Request Delete project by id
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/120`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/106`
 
     + Headers
 
@@ -1173,7 +1434,7 @@
 
     + Body
 
-            project[name]=Loggins&project[alias]=Screaming+Sun+Earth&project[team_id]=176
+            project[name]=Jessica&project[alias]=Planet+Squanch&project[team_id]=176
 
 + Response 200
 
@@ -1188,8 +1449,8 @@
                 "id": "176",
                 "type": "projects",
                 "attributes": {
-                  "name": "Loggins",
-                  "alias": "Screaming Sun Earth"
+                  "name": "Jessica",
+                  "alias": "Planet Squanch"
                 },
                 "relationships": {
                   "team": {
@@ -1205,10 +1466,10 @@
 ### Update a project [PUT /api/v1/projects/{id}]
 
 + Parameters
-    + id: `187` (number, required)
+    + id: `202` (number, required)
 
 + Request Update project
-**PUT**&nbsp;&nbsp;`/api/v1/projects/187`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/202`
 
     + Headers
 
@@ -1217,7 +1478,7 @@
 
     + Body
 
-            project[name]=PROJECT_186
+            project[name]=PROJECT_201
 
 + Response 200
 
@@ -1229,18 +1490,299 @@
 
             {
               "data": {
-                "id": "187",
+                "id": "202",
                 "type": "projects",
                 "attributes": {
-                  "name": "PROJECT_186",
-                  "alias": "alias_186"
+                  "name": "PROJECT_201",
+                  "alias": "alias_201"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "187",
+                      "id": "202",
                       "type": "teams"
                     }
+                  }
+                }
+              }
+            }
+
+# Group Teams
+
+
+## Teams [/teams]
+
+
+### Get teams [GET /api/v1/teams]
+
+
++ Request Get teams
+**GET**&nbsp;&nbsp;`/api/v1/teams`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": "212",
+                  "type": "teams",
+                  "attributes": {
+                    "name": "Mr. Needful",
+                    "description": "I hate to break it to you, but what people call 'love' is just a chemical reaction that compels animals to breed. It hits hard Morty then it slowly fades leaving you stranded in a failing marriage. I did it. Your parents are going to do it. Break the cycle Morty, rise above, focus on science."
+                  },
+                  "relationships": {
+                    "projects": {
+                      "data": [
+            
+                      ]
+                    },
+                    "users": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "213",
+                  "type": "teams",
+                  "attributes": {
+                    "name": "Jerry's Mytholog",
+                    "description": "I don't get it and I don't need to."
+                  },
+                  "relationships": {
+                    "projects": {
+                      "data": [
+            
+                      ]
+                    },
+                    "users": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "214",
+                  "type": "teams",
+                  "attributes": {
+                    "name": "Baby Legs",
+                    "description": "No no, If I wanted to be sober, I wouldn’t have gotten drunk."
+                  },
+                  "relationships": {
+                    "projects": {
+                      "data": [
+            
+                      ]
+                    },
+                    "users": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "215",
+                  "type": "teams",
+                  "attributes": {
+                    "name": "Squanchy",
+                    "description": "I don't get it and I don't need to."
+                  },
+                  "relationships": {
+                    "projects": {
+                      "data": [
+            
+                      ]
+                    },
+                    "users": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "216",
+                  "type": "teams",
+                  "attributes": {
+                    "name": "Jerry's Mytholog",
+                    "description": "Pluto's a planet."
+                  },
+                  "relationships": {
+                    "projects": {
+                      "data": [
+            
+                      ]
+                    },
+                    "users": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+
+### Get a teams [GET /api/v1/teams/{id}]
+
++ Parameters
+    + id: `219` (number, required)
+
++ Request Show team by id
+**GET**&nbsp;&nbsp;`/api/v1/teams/219`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "219",
+                "type": "teams",
+                "attributes": {
+                  "name": "King Jellybean",
+                  "description": "Having a family doesn't mean that you stop being an individual."
+                },
+                "relationships": {
+                  "projects": {
+                    "data": [
+            
+                    ]
+                  },
+                  "users": {
+                    "data": [
+            
+                    ]
+                  }
+                }
+              }
+            }
+
+### Delete a teams [DELETE /api/v1/teams/{id}]
+
++ Parameters
+    + id: `224` (number, required)
+
++ Request Delete team by id
+**DELETE**&nbsp;&nbsp;`/api/v1/teams/224`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 204
+
+### Create a teams [POST /api/v1/teams]
+
+
++ Request Create team
+**POST**&nbsp;&nbsp;`/api/v1/teams`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            team[name]=Baby+Legs&team[description]=Having+a+family+doesn%27t+mean+that+you+stop+being+an+individual.
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "232",
+                "type": "teams",
+                "attributes": {
+                  "name": "Baby Legs",
+                  "description": "Having a family doesn't mean that you stop being an individual."
+                },
+                "relationships": {
+                  "projects": {
+                    "data": [
+            
+                    ]
+                  },
+                  "users": {
+                    "data": [
+            
+                    ]
+                  }
+                }
+              }
+            }
+
+### Update a teams [PUT /api/v1/teams/{id}]
+
++ Parameters
+    + id: `237` (number, required)
+
++ Request Update team
+**PUT**&nbsp;&nbsp;`/api/v1/teams/237`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            team[name]=SNOWBALL
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "237",
+                "type": "teams",
+                "attributes": {
+                  "name": "SNOWBALL",
+                  "description": "Get off the high road Summer. We all got pink eye because you wouldn't stop texting on the toilet."
+                },
+                "relationships": {
+                  "projects": {
+                    "data": [
+            
+                    ]
+                  },
+                  "users": {
+                    "data": [
+            
+                    ]
                   }
                 }
               }
@@ -1279,16 +1821,11 @@
                   "id": "1",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1309,16 +1846,11 @@
                   "id": "2",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1339,16 +1871,11 @@
                   "id": "3",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1369,16 +1896,11 @@
                   "id": "4",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1399,16 +1921,11 @@
                   "id": "5",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1429,16 +1946,11 @@
                   "id": "6",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1459,16 +1971,11 @@
                   "id": "7",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1489,16 +1996,11 @@
                   "id": "8",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1519,16 +2021,11 @@
                   "id": "9",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1549,16 +2046,11 @@
                   "id": "10",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1579,16 +2071,11 @@
                   "id": "11",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1609,16 +2096,11 @@
                   "id": "12",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1639,16 +2121,11 @@
                   "id": "13",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1669,16 +2146,11 @@
                   "id": "14",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1699,16 +2171,11 @@
                   "id": "15",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1729,16 +2196,11 @@
                   "id": "16",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1759,16 +2221,11 @@
                   "id": "17",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1789,16 +2246,11 @@
                   "id": "18",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1819,16 +2271,11 @@
                   "id": "19",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1849,16 +2296,11 @@
                   "id": "20",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1879,16 +2321,11 @@
                   "id": "21",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1909,16 +2346,11 @@
                   "id": "22",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1939,16 +2371,11 @@
                   "id": "23",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1969,16 +2396,11 @@
                   "id": "24",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -1999,16 +2421,11 @@
                   "id": "25",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -2029,16 +2446,11 @@
                   "id": "26",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -2059,16 +2471,11 @@
                   "id": "27",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -2089,16 +2496,11 @@
                   "id": "28",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -2119,16 +2521,11 @@
                   "id": "29",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -2149,16 +2546,11 @@
                   "id": "30",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-09-26",
-                    "time": "13:47",
+                    "date": "2018-10-01",
+                    "time": "13:44",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": [
-                      "Feature",
-                      "High Priority",
-                      "2",
-                      "Central America & Caribean"
-                    ],
-                    "estimated-time": "2"
+                    "trello-labels": null,
+                    "estimated-time": null
                   },
                   "relationships": {
                     "user": {
@@ -2210,16 +2602,11 @@
                 "id": "53",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-09-26",
-                  "time": "13:47",
+                  "date": "2018-10-01",
+                  "time": "13:44",
                   "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                  "trello-labels": [
-                    "Feature",
-                    "High Priority",
-                    "2",
-                    "Central America & Caribean"
-                  ],
-                  "estimated-time": "2"
+                  "trello-labels": null,
+                  "estimated-time": null
                 },
                 "relationships": {
                   "user": {
@@ -2241,10 +2628,10 @@
 ### Delete a time entry [DELETE /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `91` (number, required)
+    + id: `101` (number, required)
 
 + Request Delete time entry by id
-**DELETE**&nbsp;&nbsp;`/api/v1/time_entries/91`
+**DELETE**&nbsp;&nbsp;`/api/v1/time_entries/101`
 
     + Headers
 
@@ -2270,7 +2657,7 @@
 
     + Body
 
-            time_entry[date]=2018-09-26&time_entry[time]=13%3A48&time_entry[minutes]=48&time_entry[details]=%3Chttps%3A%2F%2Ftrello.com%2Fc%2FhcIRv6W0%2F1496-google-analytics%3E&time_entry[trello_labels][]=Feature&time_entry[trello_labels][]=High+Priority&time_entry[trello_labels][]=5&time_entry[user_id]=141&time_entry[project_id]=352
+            time_entry[date]=2018-10-01&time_entry[time]=13%3A44&time_entry[minutes]=44&time_entry[details]=%3Chttps%3A%2F%2Ftrello.com%2Fc%2FhcIRv6W0%2F1496-google-analytics%3E&time_entry[trello_labels][]=Feature&time_entry[trello_labels][]=High+Priority&time_entry[trello_labels][]=5&time_entry[user_id]=141&time_entry[project_id]=352
 
 + Response 200
 
@@ -2285,16 +2672,11 @@
                 "id": "141",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-09-26",
-                  "time": "13:48",
+                  "date": "2018-10-01",
+                  "time": "13:44",
                   "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                  "trello-labels": [
-                    "Feature",
-                    "High Priority",
-                    "2",
-                    "Central America & Caribean"
-                  ],
-                  "estimated-time": "2"
+                  "trello-labels": null,
+                  "estimated-time": null
                 },
                 "relationships": {
                   "user": {
@@ -2316,10 +2698,10 @@
 ### Update a time entry [PUT /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `154` (number, required)
+    + id: `144` (number, required)
 
 + Request Update time entry
-**PUT**&nbsp;&nbsp;`/api/v1/time_entries/154`
+**PUT**&nbsp;&nbsp;`/api/v1/time_entries/144`
 
     + Headers
 
@@ -2340,11 +2722,11 @@
 
             {
               "data": {
-                "id": "154",
+                "id": "144",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-09-26",
-                  "time": "13:48",
+                  "date": "2018-10-01",
+                  "time": "13:44",
                   "details": "<HTTPS://TRELLO.COM/C/HCIRV6W0/1496-GOOGLE-ANALYTICS>",
                   "trello-labels": null,
                   "estimated-time": null
@@ -2352,14 +2734,284 @@
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "154",
+                      "id": "144",
                       "type": "users"
                     }
                   },
                   "project": {
                     "data": {
-                      "id": "365",
+                      "id": "355",
                       "type": "projects"
+                    }
+                  }
+                }
+              }
+            }
+
+# Group Users
+
+
+## Users [/users]
+
+
+### Get users [GET /api/v1/users]
+
+
++ Request Get users
+**GET**&nbsp;&nbsp;`/api/v1/users`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": "177",
+                  "type": "users",
+                  "attributes": {
+                    "name": "User_177",
+                    "uid": "Fy6eNfF3C",
+                    "created-at": "2018-10-01T10:44:29.968Z",
+                    "is-active": true,
+                    "role": null
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "590",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "178",
+                  "type": "users",
+                  "attributes": {
+                    "name": "User_178",
+                    "uid": "3lYjW81y3m976p",
+                    "created-at": "2018-10-01T10:44:29.972Z",
+                    "is-active": true,
+                    "role": null
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "591",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "179",
+                  "type": "users",
+                  "attributes": {
+                    "name": "User_179",
+                    "uid": "IuKg87F0HwVt",
+                    "created-at": "2018-10-01T10:44:29.976Z",
+                    "is-active": true,
+                    "role": null
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "592",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "180",
+                  "type": "users",
+                  "attributes": {
+                    "name": "User_180",
+                    "uid": "3c7lT6NeOa6t0kE2",
+                    "created-at": "2018-10-01T10:44:29.981Z",
+                    "is-active": true,
+                    "role": null
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "593",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "181",
+                  "type": "users",
+                  "attributes": {
+                    "name": "User_181",
+                    "uid": "BiS2Jb5aO",
+                    "created-at": "2018-10-01T10:44:29.985Z",
+                    "is-active": true,
+                    "role": null
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "594",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+
+### Get a user [GET /api/v1/users/{id}]
+
++ Parameters
+    + id: `186` (number, required)
+
++ Request Show user by id
+**GET**&nbsp;&nbsp;`/api/v1/users/186`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "186",
+                "type": "users",
+                "attributes": {
+                  "name": "User_186",
+                  "uid": "I1ZsUcE6E5OlHwQ9",
+                  "created-at": "2018-10-01T10:44:30.030Z",
+                  "is-active": true,
+                  "role": null
+                },
+                "relationships": {
+                  "team": {
+                    "data": {
+                      "id": "599",
+                      "type": "teams"
+                    }
+                  }
+                }
+              }
+            }
+
+### Delete a user [DELETE /api/v1/users/{id}]
+
++ Parameters
+    + id: `189` (number, required)
+
++ Request Delete user by id
+**DELETE**&nbsp;&nbsp;`/api/v1/users/189`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 204
+
+### Create a user [POST /api/v1/users]
+
+
++ Request Create user
+**POST**&nbsp;&nbsp;`/api/v1/users`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            user[name]=User_197&user[is_active]=true&user[uid]=VqUoAsGbCz9pM3
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "197",
+                "type": "users",
+                "attributes": {
+                  "name": "User_197",
+                  "uid": "VqUoAsGbCz9pM3",
+                  "created-at": "2018-10-01T10:44:30.138Z",
+                  "is-active": true,
+                  "role": null
+                },
+                "relationships": {
+                  "team": {
+                    "data": null
+                  }
+                }
+              }
+            }
+
+### Update a user [PUT /api/v1/users/{id}]
+
++ Parameters
+    + id: `200` (number, required)
+
++ Request Update user
+**PUT**&nbsp;&nbsp;`/api/v1/users/200`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            user[name]=USER_200
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "200",
+                "type": "users",
+                "attributes": {
+                  "name": "USER_200",
+                  "uid": "530vH8941p7eQ",
+                  "created-at": "2018-10-01T10:44:30.169Z",
+                  "is-active": true,
+                  "role": null
+                },
+                "relationships": {
+                  "team": {
+                    "data": {
+                      "id": "612",
+                      "type": "teams"
                     }
                   }
                 }
