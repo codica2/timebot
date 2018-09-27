@@ -19,6 +19,7 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :name
+    column :role
     column :is_speaking
     column :is_active
     actions
@@ -27,6 +28,7 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :name
+      f.input :role, as: :select
       f.input :is_speaking
       f.input :is_active
       f.input :team, as: :select, collection: Team.all, selected: f.object.team
@@ -35,7 +37,7 @@ ActiveAdmin.register User do
     f.actions
   end
 
-  permit_params :name, :is_speaking, :is_active, :team_id
+  permit_params :name, :is_speaking, :is_active, :team_id, :role
 
   collection_action :sync_users, method: :post do
     SlackClient.new.sync_users

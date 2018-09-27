@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   scope :active, -> { where(is_active: true) }
 
+  enum role: %i[pm front_end back_end QA ops marketing design]
+
   def total_time_for_range(start_date, end_date, project = nil)
     total = time_entries.where(['date BETWEEN ? AND ?', start_date, end_date])
     total = total.where(project_id: project.id) if project.present?

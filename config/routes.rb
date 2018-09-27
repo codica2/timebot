@@ -21,6 +21,14 @@ Rails.application.routes.draw do
         delete '/:id' => 'api/v1/time_entries#destroy'
       end
 
+      scope 'users' do
+        get '/' => 'api/v1/users#index'
+      end
+
+      scope 'dashboard' do
+        get '/' => 'api/v1/dashboard#index'
+      end
+
     end
   end
 end
