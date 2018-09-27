@@ -15,6 +15,7 @@ class DashboardInfo < BaseService
     data.merge!(holidays)
     data.merge!(absent)
     data.merge!(pie_chart)
+    data.merge!(bar_chart)
   end
 
   private
@@ -51,11 +52,13 @@ class DashboardInfo < BaseService
   end
 
   def hours_worked
-    TimeEntry.in_interval(start_date, end_date).map(&:total_time).sum
+    TimeEntry.in_interval(start_date, end_date).map { |p| p.minutes / 60.0 }.sum
   end
 
   def hours_to_work
-    (5 - holidays['holidays']&.count.to_i) * 8 * User.active.count
+    users = TimeEntry.in_interval(start_date, end_date).pluck(:user_id).uniq
+    working_days = (start_date.to_date..end_date.to_date).select { |day| !day.saturday? && !day.sunday? }
+    (working_days.count - holidays['holidays']&.count.to_i) * 8 * (users.count - absent.count)
   end
 
   def pie_chart
@@ -71,6 +74,30 @@ class DashboardInfo < BaseService
     }
   end
 
+  def bar_chart
+    projects = TimeEntry.in_interval(start_date, end_date).map(&:project).uniq
+    time_entries = TimeEntry.in_interval(start_date, end_date)
+    users = User.active
+    data = projects.map do |project|
+      {
+        name: project.name,
+        type: 'bar',
+        stack: 'projects',
+        barWidth: '60%',
+        animationDuration: 3000,
+        data: users.map do |user|
+          minutes = time_entries.select { |t| t.user_id == user.id && t.project_id == project.id }
+                                .pluck(:minutes).sum
+          (minutes / 60.0).round
+        end
+      }
+    end
+    {
+      series: data,
+      xAxisData: users.pluck(:name)
+    }
+  end
+
   def hours_by_roles
     User.roles.map do |key, value|
       total = TimeEntry.in_interval(start_date, end_date)
@@ -79,7 +106,7 @@ class DashboardInfo < BaseService
                        .map { |p| p.minutes / 60.0 }.sum
       {
         name: key.humanize,
-        value: total.round(4)
+        value: total.round(2)
       }
     end
   end
