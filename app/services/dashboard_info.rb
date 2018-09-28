@@ -37,7 +37,7 @@ class DashboardInfo < BaseService
     result = absent.map do |key, value|
       {
         date: key,
-        users: value.map do |abs|
+        children: value.map do |abs|
           {
             name: User.find_by(id: abs.user_id).name,
             reason: abs.reason,
