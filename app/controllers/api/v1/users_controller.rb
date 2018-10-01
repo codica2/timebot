@@ -10,7 +10,8 @@ module Api
       skip_before_action :verify_authenticity_token
 
       def index
-        render json: User.all
+        users = User.paginate(params)
+        render json: users, meta: { total_count: users.total_count }
       end
 
       def show

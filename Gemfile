@@ -26,7 +26,6 @@ gem 'ruby-trello'
 gem 'active_model_serializers'
 gem 'rack-cors', require: 'rack/cors'
 gem 'kaminari'
-gem 'api-pagination'
 
 group :development, :test do
   gem 'byebug', platform: :mri

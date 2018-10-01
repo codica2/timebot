@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class TimeEntry < ApplicationRecord
+  include Paginationable
+
   belongs_to :user
   belongs_to :project
   has_one :team, through: :project

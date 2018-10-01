@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class Project < ApplicationRecord
+  include Paginationable
   MINIMUM_PROJECT_NAME_LENGTH = 4
 
   has_many :time_entries

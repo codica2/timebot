@@ -1,0 +1,1 @@
+ActiveModelSerializers.config.jsonapi_pagination_links_enabled = false

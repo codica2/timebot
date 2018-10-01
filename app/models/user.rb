@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class User < ApplicationRecord
+  include Paginationable
   has_many :time_entries, dependent: :destroy
   has_many :absences, dependent: :destroy
   belongs_to :team, optional: true

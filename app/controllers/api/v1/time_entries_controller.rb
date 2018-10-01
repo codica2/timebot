@@ -3,14 +3,13 @@ module Api
   module V1
 
     class TimeEntriesController < ApplicationController
-      include Rails::Pagination
       # TODO: remove after authentication implementation
       skip_before_action :verify_authenticity_token
 
       # GET /api/v1/time_entries/
       def index
-        time_entries = TimeEntry.all
-        paginate json: time_entries, per_page: PER_PAGE
+        time_entries = TimeEntry.paginate(params)
+        render json: time_entries, meta: { total_count: time_entries.total_count }
       end
 
       # GET /api/v1/time_entries/:id

@@ -1,4 +1,6 @@
 class Absence < ApplicationRecord
+  include Paginationable
+
   belongs_to :user
 
   enum reason: [:vacation, :illness, :other]

@@ -10,7 +10,8 @@ module Api
       skip_before_action :verify_authenticity_token
 
       def index
-        render json: Absence.all
+        absences = Absence.paginate(params)
+        render json: absences, meta: { total_count: absences.total_count }
       end
 
       def show
