@@ -74,6 +74,7 @@ class DashboardInfo < BaseService
       },
       projects_chart: {
         title: 'Projects',
+        innerSize: '75%',
         data: hours_by_projects.compact
       }
     }
@@ -85,10 +86,6 @@ class DashboardInfo < BaseService
     data = projects.map do |project|
       {
         name: project.name,
-        type: 'bar',
-        stack: 'projects',
-        barWidth: '60%',
-        animationDuration: 3000,
         data: users.map do |user|
           minutes = @time_entries.select { |t| t.user_id == user.id && t.project_id == project.id }
                                  .pluck(:minutes).sum
@@ -109,7 +106,8 @@ class DashboardInfo < BaseService
                            .map { |p| p.minutes / 60.0 }.sum
       {
         name: key.humanize,
-        value: total.round(2)
+        y: total.round(2),
+        z: total.round(2)
       }
     end
   end
@@ -122,7 +120,8 @@ class DashboardInfo < BaseService
       total = time_entries.where(project_id: project.id).map { |p| p.minutes / 60.0 }.sum
       {
         name: project.name,
-        value: total.round(1)
+        y: total.round(1),
+        z: total.round(1)
       }
     end
   end
