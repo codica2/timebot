@@ -1,17 +1,16 @@
+# frozen_string_literal: true
+
 module Api
-
   module V1
-
     class AbsencesController < ApplicationController
-
-      before_action :set_absence, only: [:show, :update, :destroy]
+      before_action :set_absence, only: %i[show update destroy]
 
       # TODO: remove after authentication implementation
       skip_before_action :verify_authenticity_token
 
       def index
-        absences = Absence.paginate(params)
-        render json: absences, include: ['user'], meta: { total_count: absences.total_count }
+        absences = Absence.filter(filtering_params).paginate(params)
+        render json: absences, meta: { total_count: absences.total_count }
       end
 
       def show
@@ -49,8 +48,9 @@ module Api
         params.require(:absence).permit(:reason, :comment, :user_id, :date)
       end
 
+      def filtering_params
+        params.permit(:by_user, :by_reason, :date_from, :date_to)
+      end
     end
-
   end
-
 end

@@ -1,16 +1,15 @@
+# frozen_string_literal: true
+
 module Api
-
   module V1
-
     class HolidaysController < ApplicationController
-
-      before_action :set_holiday, only: [:show, :update, :destroy]
+      before_action :set_holiday, only: %i[show update destroy]
 
       # TODO: remove after authentication implementation
       skip_before_action :verify_authenticity_token
 
       def index
-        render json: Holiday.all
+        render json: Holiday.filter(filtering_params)
       end
 
       def show
@@ -48,8 +47,9 @@ module Api
         params.require(:holiday).permit(:name, :date)
       end
 
+      def filtering_params
+        params.permit(:by_name, :date_from, :date_to)
+      end
     end
-
   end
-
 end

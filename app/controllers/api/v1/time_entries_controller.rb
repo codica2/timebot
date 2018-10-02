@@ -1,15 +1,15 @@
+# frozen_string_literal: true
+
 module Api
-
   module V1
-
     class TimeEntriesController < ApplicationController
       # TODO: remove after authentication implementation
       skip_before_action :verify_authenticity_token
 
       # GET /api/v1/time_entries/
       def index
-        time_entries = TimeEntry.paginate(params)
-        render json: time_entries, include: ['project', 'user'], meta: { total_count: time_entries.total_count }
+        time_entries = TimeEntry.filter(filtering_params).paginate(params)
+        render json: time_entries, meta: { total_count: time_entries.total_count }
       end
 
       # GET /api/v1/time_entries/:id
@@ -50,8 +50,9 @@ module Api
         params.require(:time_entry).permit(:user_id, :time, :minutes, :date, :details, :project_id)
       end
 
+      def filtering_params
+        params.permit(:date_from, :with_ticket, :date_to, by_projects: [], by_users: [])
+      end
     end
-
   end
-
 end

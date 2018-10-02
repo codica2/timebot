@@ -1,5 +1,265 @@
 
 
+# Group Absences
+
+
+## Absences [/absences]
+
+
+### Get absences [GET /api/v1/absences]
+
+
++ Request Get absences
+**GET**&nbsp;&nbsp;`/api/v1/absences`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": "5",
+                  "type": "absences",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "comment": "Where are my testicles, Summer?",
+                    "reason": "other"
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "6",
+                        "type": "users"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "4",
+                  "type": "absences",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "comment": "Pluto's a planet.",
+                    "reason": "other"
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "5",
+                        "type": "users"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "3",
+                  "type": "absences",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "comment": "Keep Summer safe.",
+                    "reason": "other"
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "4",
+                        "type": "users"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "2",
+                  "type": "absences",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "comment": "I want that Mulan McNugget sauce, Morty!",
+                    "reason": "other"
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "3",
+                        "type": "users"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "1",
+                  "type": "absences",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "comment": "Great, now I have to take over an entire planet because of your stupid boobs.",
+                    "reason": "other"
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "2",
+                        "type": "users"
+                      }
+                    }
+                  }
+                }
+              ],
+              "meta": {
+                "total-count": 5
+              }
+            }
+
+### Get an absence [GET /api/v1/absences/{id}]
+
++ Parameters
+    + id: `10` (number, required)
+
++ Request Show absence by id
+**GET**&nbsp;&nbsp;`/api/v1/absences/10`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "10",
+                "type": "absences",
+                "attributes": {
+                  "date": "2018-10-03",
+                  "comment": "Where are my testicles, Summer?",
+                  "reason": "other"
+                },
+                "relationships": {
+                  "user": {
+                    "data": {
+                      "id": "12",
+                      "type": "users"
+                    }
+                  }
+                }
+              }
+            }
+
+### Delete an absence [DELETE /api/v1/absences/{id}]
+
++ Parameters
+    + id: `15` (number, required)
+
++ Request Delete absence by id
+**DELETE**&nbsp;&nbsp;`/api/v1/absences/15`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 204
+
+### Create an absence [POST /api/v1/absences]
+
+
++ Request Create absence
+**POST**&nbsp;&nbsp;`/api/v1/absences`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            absence[reason]=other&absence[date]=2018-10-03+15%3A55%3A24+UTC&absence[comment]=Little+tip%2C+Morty.+Never+clean+DNA+vials+with+your+spit.&absence[user_id]=19
+
++ Response 201
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "21",
+                "type": "absences",
+                "attributes": {
+                  "date": "2018-10-03",
+                  "comment": "Little tip, Morty. Never clean DNA vials with your spit.",
+                  "reason": "other"
+                },
+                "relationships": {
+                  "user": {
+                    "data": {
+                      "id": "19",
+                      "type": "users"
+                    }
+                  }
+                }
+              }
+            }
+
+### Update an absence [PUT /api/v1/absences/{id}]
+
++ Parameters
+    + id: `22` (number, required)
+
++ Request Update absence
+**PUT**&nbsp;&nbsp;`/api/v1/absences/22`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+
+    + Body
+
+            absence[comment]=Comment
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": {
+                "id": "22",
+                "type": "absences",
+                "attributes": {
+                  "date": "2018-10-03",
+                  "comment": "Comment",
+                  "reason": "other"
+                },
+                "relationships": {
+                  "user": {
+                    "data": {
+                      "id": "26",
+                      "type": "users"
+                    }
+                  }
+                }
+              }
+            }
+
 # Group Dashboard
 
 
@@ -25,9 +285,9 @@
     + Body
 
             {
-              "start_of_week": "2018-10-01",
-              "end_of_week": "2018-10-01",
-              "hours_to_work": 0,
+              "start_of_week": "2018-10-03",
+              "end_of_week": "2018-10-03",
+              "hours_to_work": -8,
               "hours_worked": 0,
               "holidays": [
             
@@ -73,7 +333,13 @@
                 "data": [
             
                 ]
-              }
+              },
+              "series": [
+            
+              ],
+              "xAxisData": [
+            
+              ]
             }
 
 # Group Holidays
@@ -106,40 +372,40 @@
                   "id": "1",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Dr. Glip-Glop",
-                    "date": "2018-10-02"
+                    "name": "Revolio 'Gearhead' Clockberg, Jr.",
+                    "date": "2018-10-04"
                   }
                 },
                 {
                   "id": "2",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Arthricia",
-                    "date": "2018-10-03"
+                    "name": "Cousin Nicky",
+                    "date": "2018-10-05"
                   }
                 },
                 {
                   "id": "3",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Beta VII",
-                    "date": "2018-10-04"
+                    "name": "King Jellybean",
+                    "date": "2018-10-06"
                   }
                 },
                 {
                   "id": "4",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Snowball",
-                    "date": "2018-10-05"
+                    "name": "King Jellybean",
+                    "date": "2018-10-07"
                   }
                 },
                 {
                   "id": "5",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Tammy Gueterman",
-                    "date": "2018-10-06"
+                    "name": "Jerry Smith",
+                    "date": "2018-10-08"
                   }
                 }
               ]
@@ -148,10 +414,10 @@
 ### Get a holiday [GET /api/v1/holidays/{id}]
 
 + Parameters
-    + id: `8` (number, required)
+    + id: `9` (number, required)
 
 + Request Show holiday by id
-**GET**&nbsp;&nbsp;`/api/v1/holidays/8`
+**GET**&nbsp;&nbsp;`/api/v1/holidays/9`
 
     + Headers
 
@@ -167,11 +433,11 @@
 
             {
               "data": {
-                "id": "8",
+                "id": "9",
                 "type": "holidays",
                 "attributes": {
-                  "name": "Beta VII",
-                  "date": "2018-10-09"
+                  "name": "Lighthouse Chief",
+                  "date": "2018-10-12"
                 }
               }
             }
@@ -179,10 +445,10 @@
 ### Delete a holiday [DELETE /api/v1/holidays/{id}]
 
 + Parameters
-    + id: `13` (number, required)
+    + id: `11` (number, required)
 
 + Request Delete holiday by id
-**DELETE**&nbsp;&nbsp;`/api/v1/holidays/13`
+**DELETE**&nbsp;&nbsp;`/api/v1/holidays/11`
 
     + Headers
 
@@ -204,7 +470,7 @@
 
     + Body
 
-            holiday[name]=Beth+Smith&holiday[date]=2018-10-22
+            holiday[name]=Dr.+Glip-Glop&holiday[date]=2018-10-24
 
 + Response 201
 
@@ -219,8 +485,8 @@
                 "id": "21",
                 "type": "holidays",
                 "attributes": {
-                  "name": "Beth Smith",
-                  "date": "2018-10-22"
+                  "name": "Dr. Glip-Glop",
+                  "date": "2018-10-24"
                 }
               }
             }
@@ -228,10 +494,10 @@
 ### Update a holiday [PUT /api/v1/holidays/{id}]
 
 + Parameters
-    + id: `25` (number, required)
+    + id: `26` (number, required)
 
 + Request Update holiday
-**PUT**&nbsp;&nbsp;`/api/v1/holidays/25`
+**PUT**&nbsp;&nbsp;`/api/v1/holidays/26`
 
     + Headers
 
@@ -240,7 +506,7 @@
 
     + Body
 
-            holiday[name]=BETH%27S+MYTHOLOG
+            holiday[name]=TINY+RICK
 
 + Response 200
 
@@ -252,11 +518,11 @@
 
             {
               "data": {
-                "id": "25",
+                "id": "26",
                 "type": "holidays",
                 "attributes": {
-                  "name": "BETH'S MYTHOLOG",
-                  "date": "2018-10-26"
+                  "name": "TINY RICK",
+                  "date": "2018-10-29"
                 }
               }
             }
@@ -281,9 +547,6 @@
 
     + Headers
 
-            X-Total: 35
-            X-Per-Page: 30
-            X-Page: 1
             Content-Type: application/json; charset=utf-8
 
     + Body
@@ -291,464 +554,96 @@
             {
               "data": [
                 {
-                  "id": "1",
+                  "id": "36",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_1",
-                    "alias": "alias_1"
+                    "name": "Africar",
+                    "alias": "alias_36"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "1",
+                        "id": "66",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "2",
+                  "id": "35",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_2",
-                    "alias": "alias_2"
+                    "name": "Project_35",
+                    "alias": "alias_35"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "2",
+                        "id": "65",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "3",
+                  "id": "34",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_3",
-                    "alias": "alias_3"
+                    "name": "Project_34",
+                    "alias": "alias_34"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "3",
+                        "id": "64",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "4",
+                  "id": "33",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_4",
-                    "alias": "alias_4"
+                    "name": "Project_33",
+                    "alias": "alias_33"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "4",
+                        "id": "63",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "5",
+                  "id": "32",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_5",
-                    "alias": "alias_5"
+                    "name": "Project_32",
+                    "alias": "alias_32"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "5",
+                        "id": "62",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "6",
+                  "id": "31",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_6",
-                    "alias": "alias_6"
+                    "name": "Project_31",
+                    "alias": "alias_31"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "6",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "7",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_7",
-                    "alias": "alias_7"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "7",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "8",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_8",
-                    "alias": "alias_8"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "8",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "9",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_9",
-                    "alias": "alias_9"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "9",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "10",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_10",
-                    "alias": "alias_10"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "10",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "11",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_11",
-                    "alias": "alias_11"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "11",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "12",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_12",
-                    "alias": "alias_12"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "12",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "13",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_13",
-                    "alias": "alias_13"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "13",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "14",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_14",
-                    "alias": "alias_14"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "14",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "15",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_15",
-                    "alias": "alias_15"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "15",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "16",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_16",
-                    "alias": "alias_16"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "16",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "17",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_17",
-                    "alias": "alias_17"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "17",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "18",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_18",
-                    "alias": "alias_18"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "18",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "19",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_19",
-                    "alias": "alias_19"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "19",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "20",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_20",
-                    "alias": "alias_20"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "20",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "21",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_21",
-                    "alias": "alias_21"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "21",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "22",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_22",
-                    "alias": "alias_22"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "22",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "23",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_23",
-                    "alias": "alias_23"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "23",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "24",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_24",
-                    "alias": "alias_24"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "24",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "25",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_25",
-                    "alias": "alias_25"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "25",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "26",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_26",
-                    "alias": "alias_26"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "26",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "27",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_27",
-                    "alias": "alias_27"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "27",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "28",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_28",
-                    "alias": "alias_28"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "28",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "29",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_29",
-                    "alias": "alias_29"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "29",
+                        "id": "61",
                         "type": "teams"
                       }
                     }
@@ -764,19 +659,383 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "30",
+                        "id": "60",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "29",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_29",
+                    "alias": "alias_29"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "59",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "28",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_28",
+                    "alias": "alias_28"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "58",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "27",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_27",
+                    "alias": "alias_27"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "57",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "26",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_26",
+                    "alias": "alias_26"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "56",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "25",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_25",
+                    "alias": "alias_25"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "55",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "24",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_24",
+                    "alias": "alias_24"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "54",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "23",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_23",
+                    "alias": "alias_23"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "53",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "22",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_22",
+                    "alias": "alias_22"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "52",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "21",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_21",
+                    "alias": "alias_21"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "51",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "20",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_20",
+                    "alias": "alias_20"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "50",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "19",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_19",
+                    "alias": "alias_19"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "49",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "18",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_18",
+                    "alias": "alias_18"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "48",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "17",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_17",
+                    "alias": "alias_17"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "47",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "16",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_16",
+                    "alias": "alias_16"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "46",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "15",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_15",
+                    "alias": "alias_15"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "45",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "14",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_14",
+                    "alias": "alias_14"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "44",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "13",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_13",
+                    "alias": "alias_13"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "43",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "12",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_12",
+                    "alias": "alias_12"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "42",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "11",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_11",
+                    "alias": "alias_11"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "41",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "10",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_10",
+                    "alias": "alias_10"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "40",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "9",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_9",
+                    "alias": "alias_9"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "39",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "8",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_8",
+                    "alias": "alias_8"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "38",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "7",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_7",
+                    "alias": "alias_7"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "37",
                         "type": "teams"
                       }
                     }
                   }
                 }
               ],
-              "links": {
-                "self": "http://www.example.com/api/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=30",
-                "first": "http://www.example.com/api/v1/projects?page%5Bnumber%5D=1&page%5Bsize%5D=30",
-                "prev": null,
-                "next": "http://www.example.com/api/v1/projects?page%5Bnumber%5D=2&page%5Bsize%5D=30",
-                "last": "http://www.example.com/api/v1/projects?page%5Bnumber%5D=2&page%5Bsize%5D=30"
+              "meta": {
+                "total-count": 36
               }
             }
 
@@ -801,507 +1060,11 @@
             {
               "data": [
                 {
-                  "id": "36",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_36",
-                    "alias": "alias_36"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "36",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
                   "id": "37",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_37",
+                    "name": "Project_36",
                     "alias": "alias_37"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "37",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "38",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_38",
-                    "alias": "alias_38"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "38",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "39",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_39",
-                    "alias": "alias_39"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "39",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "40",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_40",
-                    "alias": "alias_40"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "40",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "41",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_41",
-                    "alias": "alias_41"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "41",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "42",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_42",
-                    "alias": "alias_42"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "42",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "43",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_43",
-                    "alias": "alias_43"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "43",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "44",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_44",
-                    "alias": "alias_44"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "44",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "45",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_45",
-                    "alias": "alias_45"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "45",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "46",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_46",
-                    "alias": "alias_46"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "46",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "47",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_47",
-                    "alias": "alias_47"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "47",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "48",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_48",
-                    "alias": "alias_48"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "48",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "49",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_49",
-                    "alias": "alias_49"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "49",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "50",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_50",
-                    "alias": "alias_50"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "50",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "51",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_51",
-                    "alias": "alias_51"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "51",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "52",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_52",
-                    "alias": "alias_52"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "52",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "53",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_53",
-                    "alias": "alias_53"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "53",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "54",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_54",
-                    "alias": "alias_54"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "54",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "55",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_55",
-                    "alias": "alias_55"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "55",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "56",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_56",
-                    "alias": "alias_56"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "56",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "57",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_57",
-                    "alias": "alias_57"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "57",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "58",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_58",
-                    "alias": "alias_58"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "58",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "59",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_59",
-                    "alias": "alias_59"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "59",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "60",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_60",
-                    "alias": "alias_60"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "60",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "61",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_61",
-                    "alias": "alias_61"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "61",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "62",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_62",
-                    "alias": "alias_62"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "62",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "63",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_63",
-                    "alias": "alias_63"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "63",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "64",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_64",
-                    "alias": "alias_64"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "64",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "65",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_65",
-                    "alias": "alias_65"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "65",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "66",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_66",
-                    "alias": "alias_66"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "66",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "67",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_67",
-                    "alias": "alias_67"
                   },
                   "relationships": {
                     "team": {
@@ -1313,11 +1076,11 @@
                   }
                 },
                 {
-                  "id": "68",
+                  "id": "38",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_68",
-                    "alias": "alias_68"
+                    "name": "Project_37",
+                    "alias": "alias_38"
                   },
                   "relationships": {
                     "team": {
@@ -1329,11 +1092,11 @@
                   }
                 },
                 {
-                  "id": "69",
+                  "id": "39",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_69",
-                    "alias": "alias_69"
+                    "name": "Project_38",
+                    "alias": "alias_39"
                   },
                   "relationships": {
                     "team": {
@@ -1345,16 +1108,528 @@
                   }
                 },
                 {
-                  "id": "70",
+                  "id": "40",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_70",
-                    "alias": "alias_70"
+                    "name": "Project_39",
+                    "alias": "alias_40"
                   },
                   "relationships": {
                     "team": {
                       "data": {
                         "id": "70",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "41",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_40",
+                    "alias": "alias_41"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "71",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "42",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_41",
+                    "alias": "alias_42"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "72",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "43",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_42",
+                    "alias": "alias_43"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "73",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "44",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_43",
+                    "alias": "alias_44"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "74",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "45",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_44",
+                    "alias": "alias_45"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "75",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "46",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_45",
+                    "alias": "alias_46"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "76",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "47",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_46",
+                    "alias": "alias_47"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "77",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "48",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_47",
+                    "alias": "alias_48"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "78",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "49",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_48",
+                    "alias": "alias_49"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "79",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "50",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_49",
+                    "alias": "alias_50"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "80",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "51",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_50",
+                    "alias": "alias_51"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "81",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "52",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_51",
+                    "alias": "alias_52"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "82",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "53",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_52",
+                    "alias": "alias_53"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "83",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "54",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_53",
+                    "alias": "alias_54"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "84",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "55",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_54",
+                    "alias": "alias_55"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "85",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "56",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_55",
+                    "alias": "alias_56"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "86",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "57",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_56",
+                    "alias": "alias_57"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "87",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "58",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_57",
+                    "alias": "alias_58"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "88",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "59",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_58",
+                    "alias": "alias_59"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "89",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "60",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_59",
+                    "alias": "alias_60"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "90",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "61",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_60",
+                    "alias": "alias_61"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "91",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "62",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_61",
+                    "alias": "alias_62"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "92",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "63",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_62",
+                    "alias": "alias_63"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "93",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "64",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_63",
+                    "alias": "alias_64"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "94",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "65",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_64",
+                    "alias": "alias_65"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "95",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "66",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_65",
+                    "alias": "alias_66"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "96",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "67",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_66",
+                    "alias": "alias_67"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "97",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "68",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_67",
+                    "alias": "alias_68"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "98",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "69",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_68",
+                    "alias": "alias_69"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "99",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "70",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_69",
+                    "alias": "alias_70"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "100",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "71",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_70",
+                    "alias": "alias_71"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "101",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "72",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Africar",
+                    "alias": "alias_72"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "102",
                         "type": "teams"
                       }
                     }
@@ -1366,10 +1641,10 @@
 ### Get a project [GET /api/v1/projects/{id}]
 
 + Parameters
-    + id: `75` (number, required)
+    + id: `103` (number, required)
 
 + Request Show project by id
-**GET**&nbsp;&nbsp;`/api/v1/projects/75`
+**GET**&nbsp;&nbsp;`/api/v1/projects/103`
 
     + Headers
 
@@ -1385,16 +1660,16 @@
 
             {
               "data": {
-                "id": "75",
+                "id": "103",
                 "type": "projects",
                 "attributes": {
-                  "name": "Project_75",
-                  "alias": "alias_75"
+                  "name": "Project_101",
+                  "alias": "alias_103"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "75",
+                      "id": "133",
                       "type": "teams"
                     }
                   }
@@ -1405,10 +1680,10 @@
 ### Delete a project [DELETE /api/v1/projects/{id}]
 
 + Parameters
-    + id: `106` (number, required)
+    + id: `123` (number, required)
 
 + Request Delete project by id
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/106`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/123`
 
     + Headers
 
@@ -1434,7 +1709,7 @@
 
     + Body
 
-            project[name]=Jessica&project[alias]=Planet+Squanch&project[team_id]=176
+            project[name]=King+Jellybean&project[alias]=Parblesnops&project[team_id]=211
 
 + Response 200
 
@@ -1446,16 +1721,16 @@
 
             {
               "data": {
-                "id": "176",
+                "id": "181",
                 "type": "projects",
                 "attributes": {
-                  "name": "Jessica",
-                  "alias": "Planet Squanch"
+                  "name": "King Jellybean",
+                  "alias": "Parblesnops"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "176",
+                      "id": "211",
                       "type": "teams"
                     }
                   }
@@ -1466,10 +1741,10 @@
 ### Update a project [PUT /api/v1/projects/{id}]
 
 + Parameters
-    + id: `202` (number, required)
+    + id: `184` (number, required)
 
 + Request Update project
-**PUT**&nbsp;&nbsp;`/api/v1/projects/202`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/184`
 
     + Headers
 
@@ -1478,7 +1753,7 @@
 
     + Body
 
-            project[name]=PROJECT_201
+            project[name]=PROJECT_178
 
 + Response 200
 
@@ -1490,21 +1765,48 @@
 
             {
               "data": {
-                "id": "202",
+                "id": "184",
                 "type": "projects",
                 "attributes": {
-                  "name": "PROJECT_201",
-                  "alias": "alias_201"
+                  "name": "PROJECT_178",
+                  "alias": "alias_183"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "202",
+                      "id": "214",
                       "type": "teams"
                     }
                   }
                 }
               }
+            }
+
+### Search by name [GET /api/v1/projects/search]
+
+
++ Request should search projects by name
+**GET**&nbsp;&nbsp;`/api/v1/projects/search?by_name=aFric`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": 253,
+                  "name": "Africar"
+                }
+              ]
             }
 
 # Group Teams
@@ -1534,11 +1836,11 @@
             {
               "data": [
                 {
-                  "id": "212",
+                  "id": "284",
                   "type": "teams",
                   "attributes": {
-                    "name": "Mr. Needful",
-                    "description": "I hate to break it to you, but what people call 'love' is just a chemical reaction that compels animals to breed. It hits hard Morty then it slowly fades leaving you stranded in a failing marriage. I did it. Your parents are going to do it. Break the cycle Morty, rise above, focus on science."
+                    "name": "Scary Terry",
+                    "description": "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing."
                   },
                   "relationships": {
                     "projects": {
@@ -1554,71 +1856,71 @@
                   }
                 },
                 {
-                  "id": "213",
+                  "id": "285",
                   "type": "teams",
                   "attributes": {
-                    "name": "Jerry's Mytholog",
-                    "description": "I don't get it and I don't need to."
-                  },
-                  "relationships": {
-                    "projects": {
-                      "data": [
-            
-                      ]
-                    },
-                    "users": {
-                      "data": [
-            
-                      ]
-                    }
-                  }
-                },
-                {
-                  "id": "214",
-                  "type": "teams",
-                  "attributes": {
-                    "name": "Baby Legs",
-                    "description": "No no, If I wanted to be sober, I wouldn’t have gotten drunk."
-                  },
-                  "relationships": {
-                    "projects": {
-                      "data": [
-            
-                      ]
-                    },
-                    "users": {
-                      "data": [
-            
-                      ]
-                    }
-                  }
-                },
-                {
-                  "id": "215",
-                  "type": "teams",
-                  "attributes": {
-                    "name": "Squanchy",
-                    "description": "I don't get it and I don't need to."
-                  },
-                  "relationships": {
-                    "projects": {
-                      "data": [
-            
-                      ]
-                    },
-                    "users": {
-                      "data": [
-            
-                      ]
-                    }
-                  }
-                },
-                {
-                  "id": "216",
-                  "type": "teams",
-                  "attributes": {
-                    "name": "Jerry's Mytholog",
+                    "name": "Rick Sanchez",
                     "description": "Pluto's a planet."
+                  },
+                  "relationships": {
+                    "projects": {
+                      "data": [
+            
+                      ]
+                    },
+                    "users": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "286",
+                  "type": "teams",
+                  "attributes": {
+                    "name": "Revolio 'Gearhead' Clockberg, Jr.",
+                    "description": "I like what you got."
+                  },
+                  "relationships": {
+                    "projects": {
+                      "data": [
+            
+                      ]
+                    },
+                    "users": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "287",
+                  "type": "teams",
+                  "attributes": {
+                    "name": "Abradolf Lincler",
+                    "description": "Pluto's a planet."
+                  },
+                  "relationships": {
+                    "projects": {
+                      "data": [
+            
+                      ]
+                    },
+                    "users": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "288",
+                  "type": "teams",
+                  "attributes": {
+                    "name": "Krombopulos Michael",
+                    "description": "Listen, I'm not the nicest guy in the universe, because I'm the smartest, and being nice is something stupid people do to hedge their bets."
                   },
                   "relationships": {
                     "projects": {
@@ -1639,10 +1941,10 @@
 ### Get a teams [GET /api/v1/teams/{id}]
 
 + Parameters
-    + id: `219` (number, required)
+    + id: `292` (number, required)
 
 + Request Show team by id
-**GET**&nbsp;&nbsp;`/api/v1/teams/219`
+**GET**&nbsp;&nbsp;`/api/v1/teams/292`
 
     + Headers
 
@@ -1658,11 +1960,11 @@
 
             {
               "data": {
-                "id": "219",
+                "id": "292",
                 "type": "teams",
                 "attributes": {
-                  "name": "King Jellybean",
-                  "description": "Having a family doesn't mean that you stop being an individual."
+                  "name": "Mr. Needful",
+                  "description": "Well then get your shit together. Get it all together and put it in a backpack, all your shit, so it's together. ...and if you gotta take it somewhere, take it somewhere ya know? Take it to the shit store and sell it, or put it in a shit museum. I don't care what you do, you just gotta get it together... Get your shit together."
                 },
                 "relationships": {
                   "projects": {
@@ -1682,10 +1984,10 @@
 ### Delete a teams [DELETE /api/v1/teams/{id}]
 
 + Parameters
-    + id: `224` (number, required)
+    + id: `298` (number, required)
 
 + Request Delete team by id
-**DELETE**&nbsp;&nbsp;`/api/v1/teams/224`
+**DELETE**&nbsp;&nbsp;`/api/v1/teams/298`
 
     + Headers
 
@@ -1707,7 +2009,7 @@
 
     + Body
 
-            team[name]=Baby+Legs&team[description]=Having+a+family+doesn%27t+mean+that+you+stop+being+an+individual.
+            team[name]=King+Jellybean&team[description]=It%27s+fine%2C+everything+is+fine.+Theres+an+infinite+number+of+realities+Morty+and+in+a+few+dozen+of+those+I+got+lucky+and+turned+everything+back+to+normal.
 
 + Response 201
 
@@ -1719,11 +2021,11 @@
 
             {
               "data": {
-                "id": "232",
+                "id": "304",
                 "type": "teams",
                 "attributes": {
-                  "name": "Baby Legs",
-                  "description": "Having a family doesn't mean that you stop being an individual."
+                  "name": "King Jellybean",
+                  "description": "It's fine, everything is fine. Theres an infinite number of realities Morty and in a few dozen of those I got lucky and turned everything back to normal."
                 },
                 "relationships": {
                   "projects": {
@@ -1743,10 +2045,10 @@
 ### Update a teams [PUT /api/v1/teams/{id}]
 
 + Parameters
-    + id: `237` (number, required)
+    + id: `305` (number, required)
 
 + Request Update team
-**PUT**&nbsp;&nbsp;`/api/v1/teams/237`
+**PUT**&nbsp;&nbsp;`/api/v1/teams/305`
 
     + Headers
 
@@ -1755,7 +2057,7 @@
 
     + Body
 
-            team[name]=SNOWBALL
+            team[name]=JERRY+SMITH
 
 + Response 200
 
@@ -1767,11 +2069,11 @@
 
             {
               "data": {
-                "id": "237",
+                "id": "305",
                 "type": "teams",
                 "attributes": {
-                  "name": "SNOWBALL",
-                  "description": "Get off the high road Summer. We all got pink eye because you wouldn't stop texting on the toilet."
+                  "name": "JERRY SMITH",
+                  "description": "The first rule of space travel kids is always check out distress beacons. Nine out of ten times it's a ship full of dead aliens and a bunch of free shit! One out of ten times it's a deadly trap, but... I'm ready to roll those dice!"
                 },
                 "relationships": {
                   "projects": {
@@ -1808,9 +2110,6 @@
 
     + Headers
 
-            X-Total: 35
-            X-Per-Page: 30
-            X-Page: 1
             Content-Type: application/json; charset=utf-8
 
     + Body
@@ -1818,11 +2117,11 @@
             {
               "data": [
                 {
-                  "id": "1",
+                  "id": "35",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
+                    "date": "2018-10-03",
+                    "time": "18:55",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -1830,24 +2129,24 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "1",
+                        "id": "65",
                         "type": "users"
                       }
                     },
                     "project": {
                       "data": {
-                        "id": "212",
+                        "id": "288",
                         "type": "projects"
                       }
                     }
                   }
                 },
                 {
-                  "id": "2",
+                  "id": "34",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
+                    "date": "2018-10-03",
+                    "time": "18:55",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -1855,24 +2154,24 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "2",
+                        "id": "64",
                         "type": "users"
                       }
                     },
                     "project": {
                       "data": {
-                        "id": "213",
+                        "id": "287",
                         "type": "projects"
                       }
                     }
                   }
                 },
                 {
-                  "id": "3",
+                  "id": "33",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
+                    "date": "2018-10-03",
+                    "time": "18:55",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -1880,24 +2179,24 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "3",
+                        "id": "63",
                         "type": "users"
                       }
                     },
                     "project": {
                       "data": {
-                        "id": "214",
+                        "id": "286",
                         "type": "projects"
                       }
                     }
                   }
                 },
                 {
-                  "id": "4",
+                  "id": "32",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
+                    "date": "2018-10-03",
+                    "time": "18:55",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -1905,24 +2204,24 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "4",
+                        "id": "62",
                         "type": "users"
                       }
                     },
                     "project": {
                       "data": {
-                        "id": "215",
+                        "id": "285",
                         "type": "projects"
                       }
                     }
                   }
                 },
                 {
-                  "id": "5",
+                  "id": "31",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
+                    "date": "2018-10-03",
+                    "time": "18:55",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -1930,613 +2229,13 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "5",
+                        "id": "61",
                         "type": "users"
                       }
                     },
                     "project": {
                       "data": {
-                        "id": "216",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "6",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "6",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "217",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "7",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "7",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "218",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "8",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "8",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "219",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "9",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "9",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "220",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "10",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "10",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "221",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "11",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "11",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "222",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "12",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "12",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "223",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "13",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "13",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "224",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "14",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "14",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "225",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "15",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "15",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "226",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "16",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "16",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "227",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "17",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "17",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "228",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "18",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "18",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "229",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "19",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "19",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "230",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "20",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "20",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "231",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "21",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "21",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "232",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "22",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "22",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "233",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "23",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "23",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "234",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "24",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "24",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "235",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "25",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "25",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "236",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "26",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "26",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "237",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "27",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "27",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "238",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "28",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "28",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "239",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "29",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "29",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "240",
+                        "id": "284",
                         "type": "projects"
                       }
                     }
@@ -2546,8 +2245,8 @@
                   "id": "30",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-01",
-                    "time": "13:44",
+                    "date": "2018-10-03",
+                    "time": "18:55",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2555,35 +2254,631 @@
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "30",
+                        "id": "60",
                         "type": "users"
                       }
                     },
                     "project": {
                       "data": {
-                        "id": "241",
+                        "id": "283",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "29",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "59",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "282",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "28",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "58",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "281",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "27",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "57",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "280",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "26",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "56",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "279",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "25",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "55",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "278",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "24",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "54",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "277",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "23",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "53",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "276",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "22",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "52",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "275",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "21",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "51",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "274",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "20",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "50",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "273",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "19",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "49",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "272",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "18",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "48",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "271",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "17",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "47",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "270",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "16",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "46",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "269",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "15",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "45",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "268",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "14",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "44",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "267",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "13",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "43",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "266",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "12",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "42",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "265",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "11",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "41",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "264",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "10",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "40",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "263",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "9",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "39",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "262",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "8",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "38",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "261",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "7",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "37",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "260",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "6",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-03",
+                    "time": "18:55",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "36",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "259",
                         "type": "projects"
                       }
                     }
                   }
                 }
               ],
-              "links": {
-                "self": "http://www.example.com/api/v1/time_entries?page%5Bnumber%5D=1&page%5Bsize%5D=30",
-                "first": "http://www.example.com/api/v1/time_entries?page%5Bnumber%5D=1&page%5Bsize%5D=30",
-                "prev": null,
-                "next": "http://www.example.com/api/v1/time_entries?page%5Bnumber%5D=2&page%5Bsize%5D=30",
-                "last": "http://www.example.com/api/v1/time_entries?page%5Bnumber%5D=2&page%5Bsize%5D=30"
+              "meta": {
+                "total-count": 35
               }
             }
 
 ### Get a time entry [GET /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `53` (number, required)
+    + id: `58` (number, required)
 
 + Request Show time entry by id
-**GET**&nbsp;&nbsp;`/api/v1/time_entries/53`
+**GET**&nbsp;&nbsp;`/api/v1/time_entries/58`
 
     + Headers
 
@@ -2599,11 +2894,11 @@
 
             {
               "data": {
-                "id": "53",
+                "id": "58",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-10-01",
-                  "time": "13:44",
+                  "date": "2018-10-03",
+                  "time": "18:55",
                   "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                   "trello-labels": null,
                   "estimated-time": null
@@ -2611,13 +2906,13 @@
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "53",
+                      "id": "88",
                       "type": "users"
                     }
                   },
                   "project": {
                     "data": {
-                      "id": "264",
+                      "id": "311",
                       "type": "projects"
                     }
                   }
@@ -2628,10 +2923,10 @@
 ### Delete a time entry [DELETE /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `101` (number, required)
+    + id: `87` (number, required)
 
 + Request Delete time entry by id
-**DELETE**&nbsp;&nbsp;`/api/v1/time_entries/101`
+**DELETE**&nbsp;&nbsp;`/api/v1/time_entries/87`
 
     + Headers
 
@@ -2657,7 +2952,7 @@
 
     + Body
 
-            time_entry[date]=2018-10-01&time_entry[time]=13%3A44&time_entry[minutes]=44&time_entry[details]=%3Chttps%3A%2F%2Ftrello.com%2Fc%2FhcIRv6W0%2F1496-google-analytics%3E&time_entry[trello_labels][]=Feature&time_entry[trello_labels][]=High+Priority&time_entry[trello_labels][]=5&time_entry[user_id]=141&time_entry[project_id]=352
+            time_entry[date]=2018-10-03&time_entry[time]=18%3A55&time_entry[minutes]=55&time_entry[details]=%3Chttps%3A%2F%2Ftrello.com%2Fc%2FhcIRv6W0%2F1496-google-analytics%3E&time_entry[trello_labels][]=Feature&time_entry[trello_labels][]=High+Priority&time_entry[trello_labels][]=5&time_entry[user_id]=171&time_entry[project_id]=394
 
 + Response 200
 
@@ -2672,8 +2967,8 @@
                 "id": "141",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-10-01",
-                  "time": "13:44",
+                  "date": "2018-10-03",
+                  "time": "18:55",
                   "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                   "trello-labels": null,
                   "estimated-time": null
@@ -2681,13 +2976,13 @@
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "141",
+                      "id": "171",
                       "type": "users"
                     }
                   },
                   "project": {
                     "data": {
-                      "id": "352",
+                      "id": "394",
                       "type": "projects"
                     }
                   }
@@ -2698,10 +2993,10 @@
 ### Update a time entry [PUT /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `144` (number, required)
+    + id: `163` (number, required)
 
 + Request Update time entry
-**PUT**&nbsp;&nbsp;`/api/v1/time_entries/144`
+**PUT**&nbsp;&nbsp;`/api/v1/time_entries/163`
 
     + Headers
 
@@ -2722,11 +3017,11 @@
 
             {
               "data": {
-                "id": "144",
+                "id": "163",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-10-01",
-                  "time": "13:44",
+                  "date": "2018-10-03",
+                  "time": "18:55",
                   "details": "<HTTPS://TRELLO.COM/C/HCIRV6W0/1496-GOOGLE-ANALYTICS>",
                   "trello-labels": null,
                   "estimated-time": null
@@ -2734,13 +3029,13 @@
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "144",
+                      "id": "193",
                       "type": "users"
                     }
                   },
                   "project": {
                     "data": {
-                      "id": "355",
+                      "id": "416",
                       "type": "projects"
                     }
                   }
@@ -2775,110 +3070,132 @@
             {
               "data": [
                 {
-                  "id": "177",
+                  "id": "212",
                   "type": "users",
                   "attributes": {
-                    "name": "User_177",
-                    "uid": "Fy6eNfF3C",
-                    "created-at": "2018-10-01T10:44:29.968Z",
-                    "is-active": true,
+                    "name": "Valentin",
+                    "uid": "Ln9gQy6dGe",
+                    "created-at": "2018-10-03T15:55:29.058Z",
+                    "is-active": false,
                     "role": null
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "590",
+                        "id": "667",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "178",
+                  "id": "211",
                   "type": "users",
                   "attributes": {
-                    "name": "User_178",
-                    "uid": "3lYjW81y3m976p",
-                    "created-at": "2018-10-01T10:44:29.972Z",
-                    "is-active": true,
+                    "name": "User_211",
+                    "uid": "QfNeBtVhKaEzMq",
+                    "created-at": "2018-10-03T15:55:29.054Z",
+                    "is-active": false,
                     "role": null
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "591",
+                        "id": "666",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "179",
+                  "id": "210",
                   "type": "users",
                   "attributes": {
-                    "name": "User_179",
-                    "uid": "IuKg87F0HwVt",
-                    "created-at": "2018-10-01T10:44:29.976Z",
-                    "is-active": true,
+                    "name": "User_210",
+                    "uid": "PtM4N9NeT",
+                    "created-at": "2018-10-03T15:55:29.049Z",
+                    "is-active": false,
                     "role": null
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "592",
+                        "id": "665",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "180",
+                  "id": "209",
                   "type": "users",
                   "attributes": {
-                    "name": "User_180",
-                    "uid": "3c7lT6NeOa6t0kE2",
-                    "created-at": "2018-10-01T10:44:29.981Z",
-                    "is-active": true,
+                    "name": "User_209",
+                    "uid": "N688JvWlW9O0D0",
+                    "created-at": "2018-10-03T15:55:29.046Z",
+                    "is-active": false,
                     "role": null
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "593",
+                        "id": "664",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "181",
+                  "id": "208",
                   "type": "users",
                   "attributes": {
-                    "name": "User_181",
-                    "uid": "BiS2Jb5aO",
-                    "created-at": "2018-10-01T10:44:29.985Z",
-                    "is-active": true,
+                    "name": "User_208",
+                    "uid": "WoP7PwF7H9BwAy",
+                    "created-at": "2018-10-03T15:55:29.041Z",
+                    "is-active": false,
                     "role": null
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "594",
+                        "id": "663",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "207",
+                  "type": "users",
+                  "attributes": {
+                    "name": "User_207",
+                    "uid": "O6XuXm43Xh3yZm",
+                    "created-at": "2018-10-03T15:55:29.037Z",
+                    "is-active": false,
+                    "role": null
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "662",
                         "type": "teams"
                       }
                     }
                   }
                 }
-              ]
+              ],
+              "meta": {
+                "total-count": 6
+              }
             }
 
 ### Get a user [GET /api/v1/users/{id}]
 
 + Parameters
-    + id: `186` (number, required)
+    + id: `213` (number, required)
 
 + Request Show user by id
-**GET**&nbsp;&nbsp;`/api/v1/users/186`
+**GET**&nbsp;&nbsp;`/api/v1/users/213`
 
     + Headers
 
@@ -2894,19 +3211,19 @@
 
             {
               "data": {
-                "id": "186",
+                "id": "213",
                 "type": "users",
                 "attributes": {
-                  "name": "User_186",
-                  "uid": "I1ZsUcE6E5OlHwQ9",
-                  "created-at": "2018-10-01T10:44:30.030Z",
-                  "is-active": true,
+                  "name": "User_212",
+                  "uid": "Ug3a7sQ6W0B1Uo",
+                  "created-at": "2018-10-03T15:55:29.087Z",
+                  "is-active": false,
                   "role": null
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "599",
+                      "id": "668",
                       "type": "teams"
                     }
                   }
@@ -2914,13 +3231,40 @@
               }
             }
 
+### Search by name [GET /api/v1/users/search]
+
+
++ Request should search users by name
+**GET**&nbsp;&nbsp;`/api/v1/users/search?by_name=Alen`
+
+    + Headers
+
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": 224,
+                  "name": "Valentin"
+                }
+              ]
+            }
+
 ### Delete a user [DELETE /api/v1/users/{id}]
 
 + Parameters
-    + id: `189` (number, required)
+    + id: `227` (number, required)
 
 + Request Delete user by id
-**DELETE**&nbsp;&nbsp;`/api/v1/users/189`
+**DELETE**&nbsp;&nbsp;`/api/v1/users/227`
 
     + Headers
 
@@ -2942,7 +3286,7 @@
 
     + Body
 
-            user[name]=User_197&user[is_active]=true&user[uid]=VqUoAsGbCz9pM3
+            user[name]=User_232&user[is_active]=false&user[uid]=AoG0VgImWv7m2uZj
 
 + Response 201
 
@@ -2954,13 +3298,13 @@
 
             {
               "data": {
-                "id": "197",
+                "id": "237",
                 "type": "users",
                 "attributes": {
-                  "name": "User_197",
-                  "uid": "VqUoAsGbCz9pM3",
-                  "created-at": "2018-10-01T10:44:30.138Z",
-                  "is-active": true,
+                  "name": "User_232",
+                  "uid": "AoG0VgImWv7m2uZj",
+                  "created-at": "2018-10-03T15:55:29.302Z",
+                  "is-active": false,
                   "role": null
                 },
                 "relationships": {
@@ -2974,10 +3318,10 @@
 ### Update a user [PUT /api/v1/users/{id}]
 
 + Parameters
-    + id: `200` (number, required)
+    + id: `238` (number, required)
 
 + Request Update user
-**PUT**&nbsp;&nbsp;`/api/v1/users/200`
+**PUT**&nbsp;&nbsp;`/api/v1/users/238`
 
     + Headers
 
@@ -2986,7 +3330,7 @@
 
     + Body
 
-            user[name]=USER_200
+            user[name]=USER_233
 
 + Response 200
 
@@ -2998,19 +3342,19 @@
 
             {
               "data": {
-                "id": "200",
+                "id": "238",
                 "type": "users",
                 "attributes": {
-                  "name": "USER_200",
-                  "uid": "530vH8941p7eQ",
-                  "created-at": "2018-10-01T10:44:30.169Z",
-                  "is-active": true,
+                  "name": "USER_233",
+                  "uid": "IgWy37Uu3",
+                  "created-at": "2018-10-03T15:55:29.323Z",
+                  "is-active": false,
                   "role": null
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "612",
+                      "id": "692",
                       "type": "teams"
                     }
                   }

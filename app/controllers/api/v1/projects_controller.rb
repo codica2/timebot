@@ -1,15 +1,19 @@
+# frozen_string_literal: true
+
 module Api
-
   module V1
-
     class ProjectsController < ApplicationController
       # TODO: remove after authentication implementation
       skip_before_action :verify_authenticity_token
 
       # GET /api/v1/projects/
       def index
-        projects = Project.paginate(params)
-        render json: projects, include: ['team'], meta: { total_count: projects.total_count }
+        projects = Project.filter(filtering_params).paginate(params)
+        render json: projects, meta: { total_count: projects.total_count }
+      end
+
+      def search
+        render json: Project.search(filtering_params)
       end
 
       # GET /api/v1/projects/:id
@@ -50,8 +54,9 @@ module Api
         params.require(:project).permit(:name, :alias, :team_id)
       end
 
+      def filtering_params
+        params.permit(:by_name, :by_alias)
+      end
     end
-
   end
-
 end

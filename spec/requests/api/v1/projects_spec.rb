@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Projects API', type: :request do
   include ApiDoc::V1::Projects::Api
 
-  let!(:projects) { FactoryBot.create_list(:project, 35) }
+  let!(:projects) { create_list :project, 35 }
+  let!(:project) { create :project, name: 'Africar' }
   let(:team) { create :team }
 
   let(:user) { create :admin }
@@ -75,6 +76,17 @@ RSpec.describe 'Projects API', type: :request do
 
       expect(response).to be_success
       expect(json.dig('data', 'attributes', 'name')).to eq(project.name.upcase)
+    end
+  end
+
+  describe 'GET /projects/search' do
+    include ApiDoc::V1::Projects::Search
+
+    it 'should search projects by name', :dox do
+      params = { by_name: 'aFric' }
+      get '/api/v1/projects/search', params: params
+
+      expect(json['data'].first['name']).to eq 'Africar'
     end
   end
 

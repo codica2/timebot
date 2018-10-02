@@ -4,6 +4,7 @@ RSpec.describe 'Users API' do
   include ApiDoc::V1::Users::Api
 
   let!(:users) { create_list(:user, 5) }
+  let!(:user) { create :user, name: 'Valentin' }
 
   let(:valid_params) { { user: attributes_for(:user) } }
 
@@ -18,7 +19,7 @@ RSpec.describe 'Users API' do
     it 'Get users', :dox do
       get '/api/v1/users', headers: headers
       expect(response).to be_success
-      expect(json['data'].count).to eq(5)
+      expect(json['data'].count).to eq 6
     end
   end
 
@@ -31,6 +32,17 @@ RSpec.describe 'Users API' do
 
       expect(response).to be_success
       expect(json.dig('data', 'id')).to eq(user.id.to_s)
+    end
+  end
+
+  describe 'GET /users/search' do
+    include ApiDoc::V1::Users::Search
+
+    it 'should search users by name', :dox do
+      params = { by_name: 'Alen' }
+      get '/api/v1/users/search', params: params
+      
+      expect(json['data'].first['name']).to eq 'Valentin'
     end
   end
 

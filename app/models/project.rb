@@ -1,14 +1,20 @@
 # frozen_string_literal: true
+
 class Project < ApplicationRecord
-  include Paginationable
   MINIMUM_PROJECT_NAME_LENGTH = 4
 
-  has_many :time_entries
+  include Paginationable
+  include Filterable
+
+  has_many :time_entries, dependent: :nullify
   belongs_to :team
 
   validates :name, :alias, uniqueness: { case_sensitive: false }
 
   before_validation :generate_alias
+
+  scope :by_name, ->(term) { where('lower(name) LIKE ?', "%#{term.downcase}%") }
+  scope :by_alias, ->(term) { where('lower(alias) LIKE ?', "%#{term.downcase}%") }
 
   def to_s
     string = "#{id}. *#{name}*"
@@ -23,5 +29,4 @@ class Project < ApplicationRecord
 
     self.alias = name.downcase.tr(' ', '-')
   end
-
 end

@@ -4,9 +4,15 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :projects, except: [:edit]
+      resources :projects, except: [:edit] do
+        collection do
+          get :search
+        end
+      end
       resources :time_entries, except: [:edit]
-      resources :users, except: [:edit]
+      resources :users, except: [:edit] do
+        get :search, on: :collection
+      end
       resources :teams, except: [:edit]
       resources :holidays, except: [:edit]
       resources :absences, except: [:edit]

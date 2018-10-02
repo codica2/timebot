@@ -1,37 +1,33 @@
 module ApiDoc
   module V1
-    module Users
+    module Absences
       extend Dox::DSL::Syntax
 
       document :api do
-        resource 'Users' do
-          endpoint '/users'
-          group 'Users'
+        resource 'Absences' do
+          endpoint '/absences'
+          group 'Absences'
         end
       end
 
       document :show do # generates module Docs::Pokemons::Show
-        action 'Get a user'
+        action 'Get an absence'
       end
 
       document :index do
-        action 'Get users'
+        action 'Get absences'
       end
 
       document :create do
-        action 'Create a user'
+        action 'Create an absence'
       end
 
       document :destroy do
-        action 'Delete a user'
+        action 'Delete an absence'
       end
 
       document :update do
-        action 'Update a user'
-      end
-
-      document :search do
-        action 'Search by name'
+        action 'Update an absence'
       end
 
     end

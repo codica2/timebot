@@ -1,6 +1,10 @@
 # frozen_string_literal: true
+
 class User < ApplicationRecord
+
   include Paginationable
+  include Filterable
+
   has_many :time_entries, dependent: :destroy
   has_many :absences, dependent: :destroy
   belongs_to :team, optional: true
@@ -9,6 +13,8 @@ class User < ApplicationRecord
   validates :uid, presence: true, uniqueness: true
 
   scope :active, -> { where(is_active: true) }
+  scope :by_name, ->(term) { where('lower(name) LIKE ?', "%#{term.downcase}%") }
+  scope :active_status, ->(status) { where(is_active: status) if %w[true false].include? status }
 
   enum role: %i[pm front_end back_end QA ops marketing design]
 

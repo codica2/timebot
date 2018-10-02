@@ -1,17 +1,20 @@
+# frozen_string_literal: true
+
 module Api
-
   module V1
-
     class UsersController < ApplicationController
-
-      before_action :set_user, only: [:show, :update, :destroy]
+      before_action :set_user, only: %i[show update destroy]
 
       # TODO: remove after authentication implementation
       skip_before_action :verify_authenticity_token
 
       def index
-        users = User.paginate(params)
+        users = User.filter(filtering_params).paginate(params)
         render json: users, meta: { total_count: users.total_count }
+      end
+
+      def search
+        render json: User.search(filtering_params)
       end
 
       def show
@@ -49,8 +52,9 @@ module Api
         params.require(:user).permit(:name, :description, :is_active, :team_id, :last_message, :role, :uid)
       end
 
+      def filtering_params
+        params.permit(:by_name, :active_status)
+      end
     end
-
   end
-
 end

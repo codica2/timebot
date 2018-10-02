@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+
 class TimeEntry < ApplicationRecord
   include Paginationable
+  include Filterable
 
   belongs_to :user
   belongs_to :project
@@ -19,7 +21,11 @@ class TimeEntry < ApplicationRecord
   scope :last_week, -> { where(date: (1.week.ago.beginning_of_week.to_date..1.week.ago.end_of_week.to_date)) }
   scope :current_month, -> { where(date: (Time.zone.now.beginning_of_month.to_date..Time.zone.now.to_date)) }
   scope :in_interval, ->(start_date, end_date) { where(['date BETWEEN ? AND ?', start_date, end_date]) }
-  scope :with_ticket, ->(ticket_url) { where("details LIKE ?", "%#{ticket_url}%") }
+  scope :with_ticket, ->(ticket_url) { where("lower(details) LIKE ?", "%#{ticket_url.downcase}%") }
+  scope :by_users, ->(users_id) { where(user_id: users_id) }
+  scope :by_projects, ->(projects_id) { where(project_id: projects_id) }
+  scope :date_from, ->(date) { where('date >= ?', date) }
+  scope :date_to, ->(date) { where('date <= ?', date) }
 
   def description
     "*#{id}: #{project.name}* - #{time} - #{details}"
@@ -79,5 +85,4 @@ class TimeEntry < ApplicationRecord
     end
     card.labels.map(&:name)
   end
-
 end

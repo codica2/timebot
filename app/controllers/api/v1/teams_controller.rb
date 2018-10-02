@@ -1,16 +1,15 @@
+# frozen_string_literal: true
+
 module Api
-
   module V1
-
     class TeamsController < ApplicationController
-
-      before_action :set_team, only: [:show, :update, :destroy]
+      before_action :set_team, only: %i[show update destroy]
 
       # TODO: remove after authentication implementation
       skip_before_action :verify_authenticity_token
 
       def index
-        render json: Team.all
+        render json: Team.filter(filtering_params)
       end
 
       def show
@@ -48,8 +47,9 @@ module Api
         params.require(:team).permit(:name, :description)
       end
 
+      def filtering_params
+        params.permit(:by_project, :by_user)
+      end
     end
-
   end
-
 end

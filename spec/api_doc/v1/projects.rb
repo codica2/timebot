@@ -30,6 +30,10 @@ module ApiDoc
         action 'Update a project'
       end
 
+      document :search do
+        action 'Search by name'
+      end
+
     end
   end
 end
