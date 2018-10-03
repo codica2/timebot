@@ -4,9 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :projects, except: [:edit] do
-        get 'all', on: :collection
-      end
+      resources :projects, except: [:edit]
       resources :time_entries, except: [:edit]
       resources :users, except: [:edit]
       resources :teams, except: [:edit]

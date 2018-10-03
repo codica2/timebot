@@ -18,10 +18,6 @@ module ApiDoc
         action 'Get projects'
       end
 
-      document :all do
-        action 'Get all projects'
-      end
-
       document :create do
         action 'Create a project'
       end

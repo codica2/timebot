@@ -9,7 +9,7 @@ module Api
       # GET /api/v1/time_entries/
       def index
         time_entries = TimeEntry.paginate(params)
-        render json: time_entries, meta: { total_count: time_entries.total_count }
+        render json: time_entries, include: ['project', 'user'], meta: { total_count: time_entries.total_count }
       end
 
       # GET /api/v1/time_entries/:id

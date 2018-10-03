@@ -9,12 +9,7 @@ module Api
       # GET /api/v1/projects/
       def index
         projects = Project.paginate(params)
-        render json: projects, meta: { total_count: projects.total_count }
-      end
-
-      # GET /api/v1/projects/all
-      def all
-        render json: Project.all
+        render json: projects, include: ['team'], meta: { total_count: projects.total_count }
       end
 
       # GET /api/v1/projects/:id
