@@ -44,6 +44,7 @@ RSpec.configure do |config|
   end
   
   config.include ApiHelper
+  config.include AuthHelper
 end
 
 Dox.configure do |config|

@@ -19,13 +19,16 @@ gem 'faye-websocket'
 gem 'whenever', require: false
 gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-gem 'devise'
 gem 'rubocop', require: false
 gem 'dotenv-rails'
 gem 'ruby-trello'
 gem 'active_model_serializers'
 gem 'rack-cors', require: 'rack/cors'
 gem 'kaminari'
+
+# Auth
+gem 'jwt'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platform: :mri

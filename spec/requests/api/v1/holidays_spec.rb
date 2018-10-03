@@ -3,15 +3,19 @@ require 'rails_helper'
 RSpec.describe 'Holidays API' do
   include ApiDoc::V1::Holidays::Api
 
+  let(:user) { create :admin }
   let!(:holidays) { create_list(:holiday, 5) }
   let(:valid_params) { { holiday: attributes_for(:holiday) } }
   let(:invalid_params) { { holiday: attributes_for(:holiday, name: nil) } }
+
+  let(:headers) { auth_headers(user) }
 
   describe 'GET /holidays/' do
     include ApiDoc::V1::Holidays::Index
 
     it 'Get holidays', :dox do
-      get '/api/v1/holidays'
+      get '/api/v1/holidays', headers: headers
+
       expect(response).to be_success
       expect(json['data'].count).to eq(5)
     end
@@ -22,7 +26,7 @@ RSpec.describe 'Holidays API' do
 
     it 'Show holiday by id', :dox do
       holiday = holidays.sample
-      get "/api/v1/holidays/#{holiday.id}"
+      get "/api/v1/holidays/#{holiday.id}", headers: headers
 
       expect(response).to be_success
       expect(json.dig('data', 'id')).to eq(holiday.id.to_s)
@@ -35,7 +39,7 @@ RSpec.describe 'Holidays API' do
   
       it 'Delete holiday by id', :dox do
         holiday = holidays.sample
-        delete "/api/v1/holidays/#{holiday.id}"
+        delete "/api/v1/holidays/#{holiday.id}", headers: headers
         expect(response).to be_success
         expect(Holiday.find_by(id: holiday.id)).to eq(nil)
       end
@@ -46,7 +50,7 @@ RSpec.describe 'Holidays API' do
       
       it 'Create holiday', :dox do
         users_number = holidays.count
-        post('/api/v1/holidays/', params: valid_params)
+        post '/api/v1/holidays/', params: valid_params, headers: headers
         expect(response).to be_success
         expect(json).to have_key('data')
         expect(users_number).to be < Holiday.count
@@ -59,7 +63,7 @@ RSpec.describe 'Holidays API' do
       it 'Update holiday' do
         holiday = holidays.sample
         params = { holiday: { name: holiday.name.upcase } }
-        put("/api/v1/holidays/#{holiday.id}", params: params)
+        put "/api/v1/holidays/#{holiday.id}", params: params, headers: headers
   
         expect(response).to be_success
         expect(json.dig('data', 'attributes', 'name')).to eq(holiday.name.upcase)
@@ -70,7 +74,7 @@ RSpec.describe 'Holidays API' do
   context 'with invalid params' do
     describe 'POST /holidays/' do
       it 'Create holiday' do
-        post('/api/v1/holidays/', params: invalid_params)
+        post '/api/v1/holidays/', params: invalid_params, headers: headers
         expect(response).to have_http_status :unprocessable_entity
         expect(json['name'].first).to eq 'can\'t be blank'
       end

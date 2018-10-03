@@ -6,6 +6,9 @@ RSpec.describe 'Projects API', type: :request do
   let!(:projects) { FactoryBot.create_list(:project, 35) }
   let(:team) { create :team }
 
+  let(:user) { create :admin }
+  let(:headers) { auth_headers(user) }
+
   let(:valid_params) do
     {
       project: {
@@ -20,7 +23,7 @@ RSpec.describe 'Projects API', type: :request do
     include ApiDoc::V1::Projects::Index
 
     it 'Get projects', :dox do
-      get '/api/v1/projects'
+      get '/api/v1/projects', headers: headers
 
       expect(response).to be_success
       expect(json['data'].count).to eq(PER_PAGE)
@@ -32,7 +35,7 @@ RSpec.describe 'Projects API', type: :request do
 
     it 'Show project by id', :dox do
       project = projects.sample
-      get "/api/v1/projects/#{project.id}"
+      get "/api/v1/projects/#{project.id}", headers: headers
 
       expect(response).to be_success
       expect(json.dig('data', 'id')).to eq(project.id.to_s)
@@ -44,7 +47,7 @@ RSpec.describe 'Projects API', type: :request do
 
     it 'Delete project by id', :dox do
       project = projects.sample
-      delete "/api/v1/projects/#{project.id}"
+      delete "/api/v1/projects/#{project.id}", headers: headers
       expect(response).to be_success
       expect(Project.find_by(id: project.id)).to eq(nil)
     end
@@ -55,7 +58,7 @@ RSpec.describe 'Projects API', type: :request do
 
     it 'Create project', :dox do
       projects_number = projects.count
-      post('/api/v1/projects/', params: valid_params)
+      post('/api/v1/projects/', params: valid_params, headers: headers)
       expect(response).to be_success
       expect(json).to have_key('data')
       expect(projects_number).to be < Project.count
@@ -68,7 +71,7 @@ RSpec.describe 'Projects API', type: :request do
     it 'Update project' do
       project = projects.sample
       params = { project: { name: project.name.upcase } }
-      put("/api/v1/projects/#{project.id}", params: params)
+      put("/api/v1/projects/#{project.id}", params: params, headers: headers)
 
       expect(response).to be_success
       expect(json.dig('data', 'attributes', 'name')).to eq(project.name.upcase)

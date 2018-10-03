@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       scope 'dashboard' do
         get '/' => 'dashboard#index'
       end
+
+      namespace :auth do
+        resources :sessions, only: [:create]
+      end
     end
   end
 end

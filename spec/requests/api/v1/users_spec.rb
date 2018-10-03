@@ -9,11 +9,14 @@ RSpec.describe 'Users API' do
 
   let(:invalid_params) { { user: attributes_for(:user, name: nil) } }
 
+  let(:user) { create :admin }
+  let(:headers) { auth_headers(user) }
+
   describe 'GET /users/' do
     include ApiDoc::V1::Users::Index
 
     it 'Get users', :dox do
-      get '/api/v1/users'
+      get '/api/v1/users', headers: headers
       expect(response).to be_success
       expect(json['data'].count).to eq(5)
     end
@@ -24,7 +27,7 @@ RSpec.describe 'Users API' do
 
     it 'Show user by id', :dox do
       user = users.sample
-      get "/api/v1/users/#{user.id}"
+      get "/api/v1/users/#{user.id}", headers: headers
 
       expect(response).to be_success
       expect(json.dig('data', 'id')).to eq(user.id.to_s)
@@ -37,7 +40,7 @@ RSpec.describe 'Users API' do
   
       it 'Delete user by id', :dox do
         user = users.sample
-        delete "/api/v1/users/#{user.id}"
+        delete "/api/v1/users/#{user.id}", headers: headers
         expect(response).to be_success
         expect(User.find_by(id: user.id)).to eq(nil)
       end
@@ -48,7 +51,7 @@ RSpec.describe 'Users API' do
       
       it 'Create user', :dox do
         users_number = users.count
-        post('/api/v1/users/', params: valid_params)
+        post '/api/v1/users/', params: valid_params, headers: headers
         expect(response).to be_success
         expect(json).to have_key('data')
         expect(users_number).to be < User.count
@@ -61,7 +64,7 @@ RSpec.describe 'Users API' do
       it 'Update user' do
         user = users.sample
         params = { user: { name: user.name.upcase } }
-        put("/api/v1/users/#{user.id}", params: params)
+        put "/api/v1/users/#{user.id}", params: params, headers: headers
   
         expect(response).to be_success
         expect(json.dig('data', 'attributes', 'name')).to eq(user.name.upcase)
@@ -72,7 +75,7 @@ RSpec.describe 'Users API' do
   context 'with invalid params' do
     describe 'POST /users/' do
       it 'Create user' do
-        post('/api/v1/users/', params: invalid_params)
+        post '/api/v1/users/', params: invalid_params, headers: headers
         expect(response).to have_http_status :unprocessable_entity
         expect(json['name'].first).to eq 'can\'t be blank'
       end

@@ -6,6 +6,9 @@ RSpec.describe 'Time Entries API', type: :request do
   let!(:time_entries) { FactoryBot.create_list(:time_entry, 35) }
   let(:user)    { create :user }
   let(:project) { create :project }
+  
+  let(:admin)    { create :admin }
+  let(:headers) { auth_headers(admin) }
 
   let(:valid_params) do
     {
@@ -25,7 +28,7 @@ RSpec.describe 'Time Entries API', type: :request do
     include ApiDoc::V1::TimeEntries::Index
 
     it 'Get time entries', :dox do
-      get '/api/v1/time_entries'
+      get '/api/v1/time_entries', headers: headers
 
       expect(response).to be_success
       expect(json['data'].count).to eq(PER_PAGE)
@@ -37,7 +40,7 @@ RSpec.describe 'Time Entries API', type: :request do
 
     it 'Show time entry by id', :dox do
       time_entry = time_entries.sample
-      get "/api/v1/time_entries/#{time_entry.id}"
+      get "/api/v1/time_entries/#{time_entry.id}", headers: headers
 
       expect(response).to be_success
       expect(json.dig('data', 'id')).to eq(time_entry.id.to_s)
@@ -49,7 +52,7 @@ RSpec.describe 'Time Entries API', type: :request do
 
     it 'Delete time entry by id', :dox do
       time_entry = time_entries.sample
-      delete "/api/v1/time_entries/#{time_entry.id}"
+      delete "/api/v1/time_entries/#{time_entry.id}", headers: headers
       expect(response).to be_success
       expect(TimeEntry.find_by(id: time_entry.id)).to eq(nil)
     end
@@ -59,11 +62,10 @@ RSpec.describe 'Time Entries API', type: :request do
     include ApiDoc::V1::TimeEntries::Create
 
     it 'Create time entry', :dox do
-      time_entries_number = time_entries.count
-      post('/api/v1/time_entries/', params: valid_params)
-      expect(response).to be_success
+      post '/api/v1/time_entries/', params: valid_params, headers: headers
+
+      expect(response).to have_http_status(:created)
       expect(json).to have_key('data')
-      expect(time_entries_number).to be < TimeEntry.count
     end
   end
 
@@ -73,7 +75,7 @@ RSpec.describe 'Time Entries API', type: :request do
     it 'Update time entry' do
       time_entry = time_entries.sample
       params = { time_entry: { details: time_entry.details.upcase } }
-      put("/api/v1/time_entries/#{time_entry.id}", params: params)
+      put("/api/v1/time_entries/#{time_entry.id}", params: params, headers: headers)
 
       expect(response).to be_success
       expect(json.dig('data', 'attributes', 'details')).to eq(time_entry.details.upcase)

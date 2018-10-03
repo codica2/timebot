@@ -8,11 +8,14 @@ RSpec.describe 'Teams API', type: :request do
   let(:valid_params) { { team: attributes_for(:team) } }
   let(:invalid_params) { { team: attributes_for(:team, name: nil) } }
 
+  let(:user) { create :admin }
+  let(:headers) { auth_headers(user) }
+
   describe 'GET /teams/' do
     include ApiDoc::V1::Teams::Index
 
     it 'Get teams', :dox do
-      get '/api/v1/teams'
+      get '/api/v1/teams', headers: headers
       expect(response).to be_success
       expect(json['data'].count).to eq(5)
     end
@@ -23,7 +26,7 @@ RSpec.describe 'Teams API', type: :request do
 
     it 'Show team by id', :dox do
       team = teams.sample
-      get "/api/v1/teams/#{team.id}"
+      get "/api/v1/teams/#{team.id}", headers: headers
 
       expect(response).to be_success
       expect(json.dig('data', 'id')).to eq(team.id.to_s)
@@ -36,7 +39,7 @@ RSpec.describe 'Teams API', type: :request do
   
       it 'Delete team by id', :dox do
         team = teams.sample
-        delete "/api/v1/teams/#{team.id}"
+        delete "/api/v1/teams/#{team.id}", headers: headers
         expect(response).to be_success
         expect(Team.find_by(id: team.id)).to eq(nil)
       end
@@ -47,7 +50,7 @@ RSpec.describe 'Teams API', type: :request do
   
       it 'Create team', :dox do
         teams_number = teams.count
-        post('/api/v1/teams/', params: valid_params)
+        post('/api/v1/teams/', params: valid_params, headers: headers)
         expect(response).to be_success
         expect(json).to have_key('data')
         expect(teams_number).to be < Team.count
@@ -60,7 +63,7 @@ RSpec.describe 'Teams API', type: :request do
       it 'Update team' do
         team = teams.sample
         params = { team: { name: team.name.upcase } }
-        put("/api/v1/teams/#{team.id}", params: params)
+        put("/api/v1/teams/#{team.id}", params: params, headers: headers)
   
         expect(response).to be_success
         expect(json.dig('data', 'attributes', 'name')).to eq(team.name.upcase)
@@ -71,7 +74,7 @@ RSpec.describe 'Teams API', type: :request do
   context 'with invalid params' do
     describe 'POST /teams/' do
       it 'Create team' do
-        post('/api/v1/teams/', params: invalid_params)
+        post('/api/v1/teams/', params: invalid_params, headers: headers)
         expect(response).to have_http_status :unprocessable_entity
         expect(json['name'].first).to eq 'can\'t be blank'
       end
