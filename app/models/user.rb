@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: true
+  validates :role, presence: true
 
   scope :active, -> { where(is_active: true) }
   scope :by_name, ->(term) { where('lower(name) LIKE ?', "%#{term.downcase}%") }

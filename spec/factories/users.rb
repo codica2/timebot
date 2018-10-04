@@ -5,6 +5,7 @@ FactoryBot.define do
     end
     is_active { false }
     uid       { Faker::Internet.password }
+    role 'back_end'
     team
 
     trait :active do is_active true; end
