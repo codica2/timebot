@@ -10,8 +10,8 @@ RSpec.describe 'Users API' do
 
   let(:invalid_params) { { user: attributes_for(:user, name: nil) } }
 
-  let(:user) { create :admin }
-  let(:headers) { auth_headers(user) }
+  let(:admin_user) { create :admin }
+  let(:headers) { auth_headers(admin_user) }
 
   describe 'GET /users/' do
     include ApiDoc::V1::Users::Index
@@ -40,7 +40,7 @@ RSpec.describe 'Users API' do
 
     it 'should search users by name', :dox do
       params = { by_name: 'Alen' }
-      get '/api/v1/users/search', params: params
+      get '/api/v1/users/search', params: params, headers: headers
       
       expect(json['data'].first['name']).to eq 'Valentin'
     end

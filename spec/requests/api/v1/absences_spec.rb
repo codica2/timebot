@@ -8,11 +8,15 @@ RSpec.describe 'Absences API' do
   let(:valid_params) { { absence: attributes_for(:absence, user_id: user.id) } }
   let(:invalid_params) { { absence: attributes_for(:absence, comment: nil) } }
 
+  let(:admin_user) { create :admin }
+  let(:headers) { auth_headers(admin_user) }
+
   describe 'GET /absences/' do
     include ApiDoc::V1::Absences::Index
 
     it 'Get absences', :dox do
-      get '/api/v1/absences'
+      get '/api/v1/absences', headers: headers
+
       expect(response).to be_success
       expect(json['data'].count).to eq(5)
     end
@@ -23,7 +27,7 @@ RSpec.describe 'Absences API' do
 
     it 'Show absence by id', :dox do
       absence = absences.sample
-      get "/api/v1/absences/#{absence.id}"
+      get "/api/v1/absences/#{absence.id}", headers: headers
 
       expect(response).to be_success
       expect(json.dig('data', 'id')).to eq(absence.id.to_s)
@@ -36,7 +40,7 @@ RSpec.describe 'Absences API' do
   
       it 'Delete absence by id', :dox do
         absence = absences.sample
-        delete "/api/v1/absences/#{absence.id}"
+        delete "/api/v1/absences/#{absence.id}", headers: headers
         expect(response).to be_success
         expect(Absence.find_by(id: absence.id)).to eq(nil)
       end
@@ -47,7 +51,7 @@ RSpec.describe 'Absences API' do
       
       it 'Create absence', :dox do
         users_number = absences.count
-        post('/api/v1/absences/', params: valid_params)
+        post('/api/v1/absences/', params: valid_params, headers: headers)
 
         expect(response).to be_success
         expect(json).to have_key('data')
@@ -61,7 +65,7 @@ RSpec.describe 'Absences API' do
       it 'Update absence' do
         absence = absences.sample
         params = { absence: { comment: 'Comment' } }
-        put "/api/v1/absences/#{absence.id}", params: params
+        put "/api/v1/absences/#{absence.id}", params: params, headers: headers
 
         expect(response).to be_success
         expect(json.dig('data', 'attributes', 'comment')).to eq 'Comment'
@@ -72,7 +76,7 @@ RSpec.describe 'Absences API' do
   context 'with invalid params' do
     describe 'POST /absences/' do
       it 'Create absence' do
-        post('/api/v1/absences/', params: invalid_params)
+        post('/api/v1/absences/', params: invalid_params, headers: headers)
         expect(response).to have_http_status :unprocessable_entity
         expect(json['comment'].first).to eq 'must not be nil'
       end
