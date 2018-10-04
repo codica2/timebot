@@ -10,7 +10,7 @@ module Api
 
       def index
         absences = Absence.filter(filtering_params).paginate(params)
-        render json: absences, meta: { total_count: absences.total_count }
+        render json: absences, include: ['user'], meta: { total_count: absences.total_count }
       end
 
       def show

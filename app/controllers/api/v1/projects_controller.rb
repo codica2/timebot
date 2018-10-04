@@ -9,7 +9,7 @@ module Api
       # GET /api/v1/projects/
       def index
         projects = Project.filter(filtering_params).paginate(params)
-        render json: projects, meta: { total_count: projects.total_count }
+        render json: projects, include: ['team'], meta: { total_count: projects.total_count }
       end
 
       def search
