@@ -44,6 +44,7 @@ class TimeEntry < ApplicationRecord
     id.gsub('/', '') if id.present?
   end
 
+  # such logic might need to be moved to client side
   def trello_list_name
     return if trello_ticket_id.blank?
     Trello::Card.find(trello_ticket_id).list.name
@@ -51,14 +52,16 @@ class TimeEntry < ApplicationRecord
     return nil
   end
 
+  # needs refactoring
   def total_time
     search_param = ticket_url || details
     (TimeEntry.with_ticket(search_param).pluck(:minutes).sum / 60.0).round(1)
   end
 
+   # needs refactoring
   def collaborators
     search_param = ticket_url || details
-    TimeEntry.with_ticket(search_param).map { |t| t.user }.uniq
+    TimeEntry.includes(:user).with_ticket(search_param).map { |t| t.user }.uniq
   end
 
   def estimated_time

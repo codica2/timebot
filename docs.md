@@ -14,6 +14,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1Mzg3NTAyNjF9.zn07Csy0OJQ9A3aXx9_F4Gs2vA2zKtM-iE0yQyvmgGc
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -30,8 +31,8 @@
                   "id": "5",
                   "type": "absences",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "comment": "Where are my testicles, Summer?",
+                    "date": "2018-10-05",
+                    "comment": "The first rule of space travel kids is always check out distress beacons. Nine out of ten times it's a ship full of dead aliens and a bunch of free shit! One out of ten times it's a deadly trap, but... I'm ready to roll those dice!",
                     "reason": "other"
                   },
                   "relationships": {
@@ -47,8 +48,8 @@
                   "id": "4",
                   "type": "absences",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "comment": "Pluto's a planet.",
+                    "date": "2018-10-05",
+                    "comment": "Hello Jerry, come to rub my face in urine again?",
                     "reason": "other"
                   },
                   "relationships": {
@@ -64,8 +65,8 @@
                   "id": "3",
                   "type": "absences",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "comment": "Keep Summer safe.",
+                    "date": "2018-10-05",
+                    "comment": "That just sounds like slavery with extra steps.",
                     "reason": "other"
                   },
                   "relationships": {
@@ -81,8 +82,8 @@
                   "id": "2",
                   "type": "absences",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "comment": "I want that Mulan McNugget sauce, Morty!",
+                    "date": "2018-10-05",
+                    "comment": "Oh, I'm sorry Morty, are you the scientist or are you the kid who wanted to get laid?",
                     "reason": "other"
                   },
                   "relationships": {
@@ -98,8 +99,8 @@
                   "id": "1",
                   "type": "absences",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "comment": "Great, now I have to take over an entire planet because of your stupid boobs.",
+                    "date": "2018-10-05",
+                    "comment": "I don't get it and I don't need to.",
                     "reason": "other"
                   },
                   "relationships": {
@@ -120,13 +121,14 @@
 ### Get an absence [GET /api/v1/absences/{id}]
 
 + Parameters
-    + id: `10` (number, required)
+    + id: `7` (number, required)
 
 + Request Show absence by id
-**GET**&nbsp;&nbsp;`/api/v1/absences/10`
+**GET**&nbsp;&nbsp;`/api/v1/absences/7`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE1Mzg3NTAyNjF9.z-vzxufxC2lDDQ2BAazF-lprIWyKs7pXBVcxWfKJUmQ
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -139,17 +141,17 @@
 
             {
               "data": {
-                "id": "10",
+                "id": "7",
                 "type": "absences",
                 "attributes": {
-                  "date": "2018-10-03",
-                  "comment": "Where are my testicles, Summer?",
+                  "date": "2018-10-05",
+                  "comment": "It's a figure of speech, Morty! They're bureaucrats! I don't respect them. Just keep shooting, Morty! You have no idea what prison is like here!",
                   "reason": "other"
                 },
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "12",
+                      "id": "9",
                       "type": "users"
                     }
                   }
@@ -160,13 +162,14 @@
 ### Delete an absence [DELETE /api/v1/absences/{id}]
 
 + Parameters
-    + id: `15` (number, required)
+    + id: `14` (number, required)
 
 + Request Delete absence by id
-**DELETE**&nbsp;&nbsp;`/api/v1/absences/15`
+**DELETE**&nbsp;&nbsp;`/api/v1/absences/14`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE1Mzg3NTAyNjF9.LXi7jDz7Je3XiU-Vdm2-BwIH8x0T2bTH7n-wrEzTDrQ
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -180,12 +183,13 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE1Mzg3NTAyNjF9.ngsFDl7pqv68tpRQHXZ2-xn2PB4WvyFKIIbYxmmMUoM
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            absence[reason]=other&absence[date]=2018-10-03+15%3A55%3A24+UTC&absence[comment]=Little+tip%2C+Morty.+Never+clean+DNA+vials+with+your+spit.&absence[user_id]=19
+            absence[reason]=other&absence[date]=2018-10-05+12%3A37%3A41+UTC&absence[comment]=Oh%2C+I%27m+sorry+Morty%2C+are+you+the+scientist+or+are+you+the+kid+who+wanted+to+get+laid%3F&absence[user_id]=19
 
 + Response 201
 
@@ -200,8 +204,8 @@
                 "id": "21",
                 "type": "absences",
                 "attributes": {
-                  "date": "2018-10-03",
-                  "comment": "Little tip, Morty. Never clean DNA vials with your spit.",
+                  "date": "2018-10-05",
+                  "comment": "Oh, I'm sorry Morty, are you the scientist or are you the kid who wanted to get laid?",
                   "reason": "other"
                 },
                 "relationships": {
@@ -225,6 +229,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1Mzg3NTAyNjF9.Hs0Feszt7vXz_shU7xvnVlDbUK6iagBfzaRcTL0iEZU
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -245,7 +250,7 @@
                 "id": "22",
                 "type": "absences",
                 "attributes": {
-                  "date": "2018-10-03",
+                  "date": "2018-10-05",
                   "comment": "Comment",
                   "reason": "other"
                 },
@@ -274,6 +279,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1Mzg3NTAyNjF9.ReyX-mV30Y0lXhgXNWIROohq-qZMT1MTDCGu2BJ2YC8
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -285,8 +291,8 @@
     + Body
 
             {
-              "start_of_week": "2018-10-03",
-              "end_of_week": "2018-10-03",
+              "start_of_week": "2018-10-05",
+              "end_of_week": "2018-10-05",
               "hours_to_work": -8,
               "hours_worked": 0,
               "holidays": [
@@ -300,36 +306,44 @@
                 "data": [
                   {
                     "name": "Pm",
-                    "value": 0.0
+                    "y": 0.0,
+                    "z": 0.0
                   },
                   {
                     "name": "Front end",
-                    "value": 0.0
+                    "y": 0.0,
+                    "z": 0.0
                   },
                   {
                     "name": "Back end",
-                    "value": 0.0
+                    "y": 0.0,
+                    "z": 0.0
                   },
                   {
                     "name": "Qa",
-                    "value": 0.0
+                    "y": 0.0,
+                    "z": 0.0
                   },
                   {
                     "name": "Ops",
-                    "value": 0.0
+                    "y": 0.0,
+                    "z": 0.0
                   },
                   {
                     "name": "Marketing",
-                    "value": 0.0
+                    "y": 0.0,
+                    "z": 0.0
                   },
                   {
                     "name": "Design",
-                    "value": 0.0
+                    "y": 0.0,
+                    "z": 0.0
                   }
                 ]
               },
               "projects_chart": {
                 "title": "Projects",
+                "innerSize": "75%",
                 "data": [
             
                 ]
@@ -340,6 +354,199 @@
               "xAxisData": [
             
               ]
+            }
+
+# Group EstimationReports
+
+
+## EstimationReports [/reports/estimation_reports]
+
+
+### Get report [GET /api/v1/reports/estimation_reports]
+
+
++ Request should generate estimation report
+**GET**&nbsp;&nbsp;`/api/v1/reports/estimation_reports`
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE1Mzg3NTAyNjF9.-eoCibNsInox4L_jdbaXwRn0MKw8frPbxs1zPb3tgto
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+
++ Response 200
+
+    + Headers
+
+            Content-Type: application/json; charset=utf-8
+
+    + Body
+
+            {
+              "data": [
+                {
+                  "id": 5,
+                  "project": "Project_5",
+                  "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                  "created_at": "2018-10-05T12:37:41.908Z",
+                  "trello_labels": null,
+                  "estimate": null,
+                  "status": null,
+                  "total_time": 3.1,
+                  "collaborators": [
+                    {
+                      "id": 31,
+                      "name": "User_31"
+                    },
+                    {
+                      "id": 32,
+                      "name": "User_32"
+                    },
+                    {
+                      "id": 33,
+                      "name": "User_33"
+                    },
+                    {
+                      "id": 34,
+                      "name": "User_34"
+                    },
+                    {
+                      "id": 35,
+                      "name": "User_35"
+                    }
+                  ]
+                },
+                {
+                  "id": 4,
+                  "project": "Project_4",
+                  "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                  "created_at": "2018-10-05T12:37:41.895Z",
+                  "trello_labels": null,
+                  "estimate": null,
+                  "status": null,
+                  "total_time": 3.1,
+                  "collaborators": [
+                    {
+                      "id": 31,
+                      "name": "User_31"
+                    },
+                    {
+                      "id": 32,
+                      "name": "User_32"
+                    },
+                    {
+                      "id": 33,
+                      "name": "User_33"
+                    },
+                    {
+                      "id": 34,
+                      "name": "User_34"
+                    },
+                    {
+                      "id": 35,
+                      "name": "User_35"
+                    }
+                  ]
+                },
+                {
+                  "id": 3,
+                  "project": "Project_3",
+                  "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                  "created_at": "2018-10-05T12:37:41.881Z",
+                  "trello_labels": null,
+                  "estimate": null,
+                  "status": null,
+                  "total_time": 3.1,
+                  "collaborators": [
+                    {
+                      "id": 31,
+                      "name": "User_31"
+                    },
+                    {
+                      "id": 32,
+                      "name": "User_32"
+                    },
+                    {
+                      "id": 33,
+                      "name": "User_33"
+                    },
+                    {
+                      "id": 34,
+                      "name": "User_34"
+                    },
+                    {
+                      "id": 35,
+                      "name": "User_35"
+                    }
+                  ]
+                },
+                {
+                  "id": 2,
+                  "project": "Project_2",
+                  "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                  "created_at": "2018-10-05T12:37:41.865Z",
+                  "trello_labels": null,
+                  "estimate": null,
+                  "status": null,
+                  "total_time": 3.1,
+                  "collaborators": [
+                    {
+                      "id": 31,
+                      "name": "User_31"
+                    },
+                    {
+                      "id": 32,
+                      "name": "User_32"
+                    },
+                    {
+                      "id": 33,
+                      "name": "User_33"
+                    },
+                    {
+                      "id": 34,
+                      "name": "User_34"
+                    },
+                    {
+                      "id": 35,
+                      "name": "User_35"
+                    }
+                  ]
+                },
+                {
+                  "id": 1,
+                  "project": "Project_1",
+                  "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                  "created_at": "2018-10-05T12:37:41.850Z",
+                  "trello_labels": null,
+                  "estimate": null,
+                  "status": null,
+                  "total_time": 3.1,
+                  "collaborators": [
+                    {
+                      "id": 31,
+                      "name": "User_31"
+                    },
+                    {
+                      "id": 32,
+                      "name": "User_32"
+                    },
+                    {
+                      "id": 33,
+                      "name": "User_33"
+                    },
+                    {
+                      "id": 34,
+                      "name": "User_34"
+                    },
+                    {
+                      "id": 35,
+                      "name": "User_35"
+                    }
+                  ]
+                }
+              ],
+              "meta": {
+                "total_count": 5
+              }
             }
 
 # Group Holidays
@@ -356,6 +563,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo4LCJleHAiOjE1Mzg3NTAyNjF9.6cq2_tNjZRs0S269K5F8LiCQnwt76qlgAoYMeLPTSPs
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -372,40 +580,40 @@
                   "id": "1",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Revolio 'Gearhead' Clockberg, Jr.",
-                    "date": "2018-10-04"
+                    "name": "Jerry Smith",
+                    "date": "2018-10-06"
                   }
                 },
                 {
                   "id": "2",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Cousin Nicky",
-                    "date": "2018-10-05"
+                    "name": "Baby Legs",
+                    "date": "2018-10-07"
                   }
                 },
                 {
                   "id": "3",
                   "type": "holidays",
                   "attributes": {
-                    "name": "King Jellybean",
-                    "date": "2018-10-06"
+                    "name": "Fart",
+                    "date": "2018-10-08"
                   }
                 },
                 {
                   "id": "4",
                   "type": "holidays",
                   "attributes": {
-                    "name": "King Jellybean",
-                    "date": "2018-10-07"
+                    "name": "Jan Michael Vincent",
+                    "date": "2018-10-09"
                   }
                 },
                 {
                   "id": "5",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Jerry Smith",
-                    "date": "2018-10-08"
+                    "name": "Morty Jr.",
+                    "date": "2018-10-10"
                   }
                 }
               ]
@@ -421,6 +629,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE1Mzg3NTAyNjF9.LEAnYoSJinBWx7bqibrv9NLPxPIReNdBQ7SrWMES5HM
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -436,8 +645,8 @@
                 "id": "9",
                 "type": "holidays",
                 "attributes": {
-                  "name": "Lighthouse Chief",
-                  "date": "2018-10-12"
+                  "name": "Jessica",
+                  "date": "2018-10-14"
                 }
               }
             }
@@ -445,13 +654,14 @@
 ### Delete a holiday [DELETE /api/v1/holidays/{id}]
 
 + Parameters
-    + id: `11` (number, required)
+    + id: `15` (number, required)
 
 + Request Delete holiday by id
-**DELETE**&nbsp;&nbsp;`/api/v1/holidays/11`
+**DELETE**&nbsp;&nbsp;`/api/v1/holidays/15`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMCwiZXhwIjoxNTM4NzUwMjYyfQ.4kpFRDfPdbZBrwYD0SMpr-RqY5N2X8d4ssW3JinwU_M
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -465,12 +675,13 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMSwiZXhwIjoxNTM4NzUwMjYyfQ.RkFIRw7LRsZohnj8SnCfnUlhozleFDT2iMzXxpDspv4
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            holiday[name]=Dr.+Glip-Glop&holiday[date]=2018-10-24
+            holiday[name]=Fart&holiday[date]=2018-10-26
 
 + Response 201
 
@@ -485,8 +696,8 @@
                 "id": "21",
                 "type": "holidays",
                 "attributes": {
-                  "name": "Dr. Glip-Glop",
-                  "date": "2018-10-24"
+                  "name": "Fart",
+                  "date": "2018-10-26"
                 }
               }
             }
@@ -494,19 +705,20 @@
 ### Update a holiday [PUT /api/v1/holidays/{id}]
 
 + Parameters
-    + id: `26` (number, required)
+    + id: `23` (number, required)
 
 + Request Update holiday
-**PUT**&nbsp;&nbsp;`/api/v1/holidays/26`
+**PUT**&nbsp;&nbsp;`/api/v1/holidays/23`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMiwiZXhwIjoxNTM4NzUwMjYyfQ.10sjbnTJbWTDw9xaqZB1W0gMdwM0M4R8AqENGsQw9-c
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            holiday[name]=TINY+RICK
+            holiday[name]=BETA+VII
 
 + Response 200
 
@@ -518,11 +730,11 @@
 
             {
               "data": {
-                "id": "26",
+                "id": "23",
                 "type": "holidays",
                 "attributes": {
-                  "name": "TINY RICK",
-                  "date": "2018-10-29"
+                  "name": "BETA VII",
+                  "date": "2018-10-28"
                 }
               }
             }
@@ -541,6 +753,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMywiZXhwIjoxNTM4NzUwMjYyfQ.t37JDYCKmk2eqPg1nC9m4IvD0Gy6tQkmcTs8atnb2CQ
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -554,16 +767,96 @@
             {
               "data": [
                 {
-                  "id": "36",
+                  "id": "41",
                   "type": "projects",
                   "attributes": {
                     "name": "Africar",
+                    "alias": "alias_41"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "76",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "40",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_40",
+                    "alias": "alias_40"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "75",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "39",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_39",
+                    "alias": "alias_39"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "74",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "38",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_38",
+                    "alias": "alias_38"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "73",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "37",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_37",
+                    "alias": "alias_37"
+                  },
+                  "relationships": {
+                    "team": {
+                      "data": {
+                        "id": "72",
+                        "type": "teams"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "36",
+                  "type": "projects",
+                  "attributes": {
+                    "name": "Project_36",
                     "alias": "alias_36"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "66",
+                        "id": "71",
                         "type": "teams"
                       }
                     }
@@ -579,7 +872,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "65",
+                        "id": "70",
                         "type": "teams"
                       }
                     }
@@ -595,7 +888,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "64",
+                        "id": "69",
                         "type": "teams"
                       }
                     }
@@ -611,7 +904,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "63",
+                        "id": "68",
                         "type": "teams"
                       }
                     }
@@ -627,7 +920,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "62",
+                        "id": "67",
                         "type": "teams"
                       }
                     }
@@ -643,7 +936,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "61",
+                        "id": "66",
                         "type": "teams"
                       }
                     }
@@ -659,7 +952,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "60",
+                        "id": "65",
                         "type": "teams"
                       }
                     }
@@ -675,7 +968,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "59",
+                        "id": "64",
                         "type": "teams"
                       }
                     }
@@ -691,7 +984,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "58",
+                        "id": "63",
                         "type": "teams"
                       }
                     }
@@ -707,7 +1000,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "57",
+                        "id": "62",
                         "type": "teams"
                       }
                     }
@@ -723,7 +1016,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "56",
+                        "id": "61",
                         "type": "teams"
                       }
                     }
@@ -739,7 +1032,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "55",
+                        "id": "60",
                         "type": "teams"
                       }
                     }
@@ -755,7 +1048,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "54",
+                        "id": "59",
                         "type": "teams"
                       }
                     }
@@ -771,7 +1064,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "53",
+                        "id": "58",
                         "type": "teams"
                       }
                     }
@@ -787,7 +1080,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "52",
+                        "id": "57",
                         "type": "teams"
                       }
                     }
@@ -803,7 +1096,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "51",
+                        "id": "56",
                         "type": "teams"
                       }
                     }
@@ -819,7 +1112,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "50",
+                        "id": "55",
                         "type": "teams"
                       }
                     }
@@ -835,7 +1128,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "49",
+                        "id": "54",
                         "type": "teams"
                       }
                     }
@@ -851,7 +1144,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "48",
+                        "id": "53",
                         "type": "teams"
                       }
                     }
@@ -867,7 +1160,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "47",
+                        "id": "52",
                         "type": "teams"
                       }
                     }
@@ -883,7 +1176,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "46",
+                        "id": "51",
                         "type": "teams"
                       }
                     }
@@ -899,7 +1192,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "45",
+                        "id": "50",
                         "type": "teams"
                       }
                     }
@@ -915,7 +1208,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "44",
+                        "id": "49",
                         "type": "teams"
                       }
                     }
@@ -931,7 +1224,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "43",
+                        "id": "48",
                         "type": "teams"
                       }
                     }
@@ -947,87 +1240,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "42",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "11",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_11",
-                    "alias": "alias_11"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "41",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "10",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_10",
-                    "alias": "alias_10"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "40",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "9",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_9",
-                    "alias": "alias_9"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "39",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "8",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_8",
-                    "alias": "alias_8"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "38",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "7",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_7",
-                    "alias": "alias_7"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "37",
+                        "id": "47",
                         "type": "teams"
                       }
                     }
@@ -1039,615 +1252,17 @@
               }
             }
 
-### Get all projects [GET /api/v1/projects/all]
-
-
-+ Request Get all projects
-**GET**&nbsp;&nbsp;`/api/v1/projects/all`
-
-    + Headers
-
-            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/json; charset=utf-8
-
-    + Body
-
-            {
-              "data": [
-                {
-                  "id": "37",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_36",
-                    "alias": "alias_37"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "67",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "38",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_37",
-                    "alias": "alias_38"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "68",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "39",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_38",
-                    "alias": "alias_39"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "69",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "40",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_39",
-                    "alias": "alias_40"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "70",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "41",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_40",
-                    "alias": "alias_41"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "71",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "42",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_41",
-                    "alias": "alias_42"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "72",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "43",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_42",
-                    "alias": "alias_43"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "73",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "44",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_43",
-                    "alias": "alias_44"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "74",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "45",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_44",
-                    "alias": "alias_45"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "75",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "46",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_45",
-                    "alias": "alias_46"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "76",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "47",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_46",
-                    "alias": "alias_47"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "77",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "48",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_47",
-                    "alias": "alias_48"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "78",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "49",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_48",
-                    "alias": "alias_49"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "79",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "50",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_49",
-                    "alias": "alias_50"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "80",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "51",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_50",
-                    "alias": "alias_51"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "81",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "52",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_51",
-                    "alias": "alias_52"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "82",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "53",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_52",
-                    "alias": "alias_53"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "83",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "54",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_53",
-                    "alias": "alias_54"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "84",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "55",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_54",
-                    "alias": "alias_55"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "85",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "56",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_55",
-                    "alias": "alias_56"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "86",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "57",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_56",
-                    "alias": "alias_57"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "87",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "58",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_57",
-                    "alias": "alias_58"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "88",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "59",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_58",
-                    "alias": "alias_59"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "89",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "60",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_59",
-                    "alias": "alias_60"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "90",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "61",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_60",
-                    "alias": "alias_61"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "91",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "62",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_61",
-                    "alias": "alias_62"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "92",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "63",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_62",
-                    "alias": "alias_63"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "93",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "64",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_63",
-                    "alias": "alias_64"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "94",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "65",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_64",
-                    "alias": "alias_65"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "95",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "66",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_65",
-                    "alias": "alias_66"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "96",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "67",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_66",
-                    "alias": "alias_67"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "97",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "68",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_67",
-                    "alias": "alias_68"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "98",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "69",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_68",
-                    "alias": "alias_69"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "99",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "70",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_69",
-                    "alias": "alias_70"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "100",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "71",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Project_70",
-                    "alias": "alias_71"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "101",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "72",
-                  "type": "projects",
-                  "attributes": {
-                    "name": "Africar",
-                    "alias": "alias_72"
-                  },
-                  "relationships": {
-                    "team": {
-                      "data": {
-                        "id": "102",
-                        "type": "teams"
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-
 ### Get a project [GET /api/v1/projects/{id}]
 
 + Parameters
-    + id: `103` (number, required)
+    + id: `70` (number, required)
 
 + Request Show project by id
-**GET**&nbsp;&nbsp;`/api/v1/projects/103`
+**GET**&nbsp;&nbsp;`/api/v1/projects/70`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNCwiZXhwIjoxNTM4NzUwMjYyfQ.jNdGseNkc2j1vShoL9-rkBQThHWS_RApE3dRgpIEovA
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -1660,16 +1275,16 @@
 
             {
               "data": {
-                "id": "103",
+                "id": "70",
                 "type": "projects",
                 "attributes": {
-                  "name": "Project_101",
-                  "alias": "alias_103"
+                  "name": "Project_69",
+                  "alias": "alias_70"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "133",
+                      "id": "105",
                       "type": "teams"
                     }
                   }
@@ -1680,13 +1295,14 @@
 ### Delete a project [DELETE /api/v1/projects/{id}]
 
 + Parameters
-    + id: `123` (number, required)
+    + id: `96` (number, required)
 
 + Request Delete project by id
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/123`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/96`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNSwiZXhwIjoxNTM4NzUwMjYyfQ.G9mUVgRV2rmTREWNPDpQqXVILODLd8OI2r1avEdgzeU
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -1704,12 +1320,13 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNiwiZXhwIjoxNTM4NzUwMjYzfQ._BFqhBaGb-kM-dqQxWjVrPH77pJNghtsDK0TWFc0yNA
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            project[name]=King+Jellybean&project[alias]=Parblesnops&project[team_id]=211
+            project[name]=Snowball&project[alias]=Dimension+C-132&project[team_id]=185
 
 + Response 200
 
@@ -1721,16 +1338,16 @@
 
             {
               "data": {
-                "id": "181",
+                "id": "150",
                 "type": "projects",
                 "attributes": {
-                  "name": "King Jellybean",
-                  "alias": "Parblesnops"
+                  "name": "Snowball",
+                  "alias": "Dimension C-132"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "211",
+                      "id": "185",
                       "type": "teams"
                     }
                   }
@@ -1741,19 +1358,20 @@
 ### Update a project [PUT /api/v1/projects/{id}]
 
 + Parameters
-    + id: `184` (number, required)
+    + id: `170` (number, required)
 
 + Request Update project
-**PUT**&nbsp;&nbsp;`/api/v1/projects/184`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/170`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNTM4NzUwMjYzfQ.C7Xym_JevIKEs9yHAsaxW2NOo3lnpGZRxK8IaYDINoU
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            project[name]=PROJECT_178
+            project[name]=PROJECT_165
 
 + Response 200
 
@@ -1765,16 +1383,16 @@
 
             {
               "data": {
-                "id": "184",
+                "id": "170",
                 "type": "projects",
                 "attributes": {
-                  "name": "PROJECT_178",
-                  "alias": "alias_183"
+                  "name": "PROJECT_165",
+                  "alias": "alias_169"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "214",
+                      "id": "205",
                       "type": "teams"
                     }
                   }
@@ -1790,6 +1408,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOCwiZXhwIjoxNTM4NzUwMjYzfQ.4yJNQNo5HP1Ax3uHwnMYVog6yuwfVt1YlztDscGAYFw
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -1803,7 +1422,7 @@
             {
               "data": [
                 {
-                  "id": 253,
+                  "id": 222,
                   "name": "Africar"
                 }
               ]
@@ -1823,6 +1442,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOSwiZXhwIjoxNTM4NzUwMjYzfQ.z2yn8KVaza46t-angSvHMKEWcoSw9r_Uis_ufA89KYQ
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -1836,11 +1456,11 @@
             {
               "data": [
                 {
-                  "id": "284",
+                  "id": "258",
                   "type": "teams",
                   "attributes": {
-                    "name": "Scary Terry",
-                    "description": "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing."
+                    "name": "Jerry's Mytholog",
+                    "description": "WUBBA LUBBA DUB DUBS!!!"
                   },
                   "relationships": {
                     "projects": {
@@ -1856,11 +1476,11 @@
                   }
                 },
                 {
-                  "id": "285",
+                  "id": "259",
                   "type": "teams",
                   "attributes": {
-                    "name": "Rick Sanchez",
-                    "description": "Pluto's a planet."
+                    "name": "Baby Legs",
+                    "description": "The first rule of space travel kids is always check out distress beacons. Nine out of ten times it's a ship full of dead aliens and a bunch of free shit! One out of ten times it's a deadly trap, but... I'm ready to roll those dice!"
                   },
                   "relationships": {
                     "projects": {
@@ -1876,11 +1496,31 @@
                   }
                 },
                 {
-                  "id": "286",
+                  "id": "260",
+                  "type": "teams",
+                  "attributes": {
+                    "name": "Eyeholes Man",
+                    "description": "Keep Summer safe."
+                  },
+                  "relationships": {
+                    "projects": {
+                      "data": [
+            
+                      ]
+                    },
+                    "users": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "261",
                   "type": "teams",
                   "attributes": {
                     "name": "Revolio 'Gearhead' Clockberg, Jr.",
-                    "description": "I like what you got."
+                    "description": "This sounds like something The One True Morty might say."
                   },
                   "relationships": {
                     "projects": {
@@ -1896,31 +1536,11 @@
                   }
                 },
                 {
-                  "id": "287",
+                  "id": "262",
                   "type": "teams",
                   "attributes": {
-                    "name": "Abradolf Lincler",
-                    "description": "Pluto's a planet."
-                  },
-                  "relationships": {
-                    "projects": {
-                      "data": [
-            
-                      ]
-                    },
-                    "users": {
-                      "data": [
-            
-                      ]
-                    }
-                  }
-                },
-                {
-                  "id": "288",
-                  "type": "teams",
-                  "attributes": {
-                    "name": "Krombopulos Michael",
-                    "description": "Listen, I'm not the nicest guy in the universe, because I'm the smartest, and being nice is something stupid people do to hedge their bets."
+                    "name": "Dr. Glip-Glop",
+                    "description": "What is my purpose. You pass butter. Oh My God. Yeah, Welcome to the club pal."
                   },
                   "relationships": {
                     "projects": {
@@ -1941,13 +1561,14 @@
 ### Get a teams [GET /api/v1/teams/{id}]
 
 + Parameters
-    + id: `292` (number, required)
+    + id: `267` (number, required)
 
 + Request Show team by id
-**GET**&nbsp;&nbsp;`/api/v1/teams/292`
+**GET**&nbsp;&nbsp;`/api/v1/teams/267`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMCwiZXhwIjoxNTM4NzUwMjYzfQ.TrAt62iL2-lkVGFPVGtKMoqsOLe4u37PYO1yhnaPglE
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -1960,11 +1581,11 @@
 
             {
               "data": {
-                "id": "292",
+                "id": "267",
                 "type": "teams",
                 "attributes": {
-                  "name": "Mr. Needful",
-                  "description": "Well then get your shit together. Get it all together and put it in a backpack, all your shit, so it's together. ...and if you gotta take it somewhere, take it somewhere ya know? Take it to the shit store and sell it, or put it in a shit museum. I don't care what you do, you just gotta get it together... Get your shit together."
+                  "name": "Mr. Meeseeks",
+                  "description": "Oh yeah, If you think my Rick is Dead, then he is alive. If you think you're safe, then he's coming for you."
                 },
                 "relationships": {
                   "projects": {
@@ -1984,13 +1605,14 @@
 ### Delete a teams [DELETE /api/v1/teams/{id}]
 
 + Parameters
-    + id: `298` (number, required)
+    + id: `270` (number, required)
 
 + Request Delete team by id
-**DELETE**&nbsp;&nbsp;`/api/v1/teams/298`
+**DELETE**&nbsp;&nbsp;`/api/v1/teams/270`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMSwiZXhwIjoxNTM4NzUwMjYzfQ.6XybhwtMeAX5aUHmIi3JQdb55lSuJTFNEC4veq_8HF8
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -2004,12 +1626,13 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMiwiZXhwIjoxNTM4NzUwMjYzfQ.sudY1DrdNbWGKWR7HwmGz5sKyqN1u_mkIQbiOIAtWkM
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            team[name]=King+Jellybean&team[description]=It%27s+fine%2C+everything+is+fine.+Theres+an+infinite+number+of+realities+Morty+and+in+a+few+dozen+of+those+I+got+lucky+and+turned+everything+back+to+normal.
+            team[name]=Birdperson&team[description]=No+no%2C+If+I+wanted+to+be+sober%2C+I+wouldn%E2%80%99t+have+gotten+drunk.
 
 + Response 201
 
@@ -2021,11 +1644,11 @@
 
             {
               "data": {
-                "id": "304",
+                "id": "278",
                 "type": "teams",
                 "attributes": {
-                  "name": "King Jellybean",
-                  "description": "It's fine, everything is fine. Theres an infinite number of realities Morty and in a few dozen of those I got lucky and turned everything back to normal."
+                  "name": "Birdperson",
+                  "description": "No no, If I wanted to be sober, I wouldn’t have gotten drunk."
                 },
                 "relationships": {
                   "projects": {
@@ -2045,19 +1668,20 @@
 ### Update a teams [PUT /api/v1/teams/{id}]
 
 + Parameters
-    + id: `305` (number, required)
+    + id: `280` (number, required)
 
 + Request Update team
-**PUT**&nbsp;&nbsp;`/api/v1/teams/305`
+**PUT**&nbsp;&nbsp;`/api/v1/teams/280`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMywiZXhwIjoxNTM4NzUwMjYzfQ.PCExFSVwXZw8-R9Q7yOzHNcqAQma-OqhXtC6PXhKctQ
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            team[name]=JERRY+SMITH
+            team[name]=MORTY+SMITH
 
 + Response 200
 
@@ -2069,11 +1693,11 @@
 
             {
               "data": {
-                "id": "305",
+                "id": "280",
                 "type": "teams",
                 "attributes": {
-                  "name": "JERRY SMITH",
-                  "description": "The first rule of space travel kids is always check out distress beacons. Nine out of ten times it's a ship full of dead aliens and a bunch of free shit! One out of ten times it's a deadly trap, but... I'm ready to roll those dice!"
+                  "name": "MORTY SMITH",
+                  "description": "Meeseeks are not born into this world fumbling for meaning, Jerry! We are created to serve a single purpose, for which we go to any lengths to fulfill."
                 },
                 "relationships": {
                   "projects": {
@@ -2104,6 +1728,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNCwiZXhwIjoxNTM4NzUwMjY0fQ.qWhjruBR8A02oq2RxhkaDS4m-1_piHVI2QC1S95QWkY
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -2117,11 +1742,136 @@
             {
               "data": [
                 {
+                  "id": "40",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-05",
+                    "time": "15:37",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "70",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "257",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "39",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-05",
+                    "time": "15:37",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "69",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "256",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "38",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-05",
+                    "time": "15:37",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "68",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "255",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "37",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-05",
+                    "time": "15:37",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "67",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "254",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
+                  "id": "36",
+                  "type": "time-entries",
+                  "attributes": {
+                    "date": "2018-10-05",
+                    "time": "15:37",
+                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
+                    "trello-labels": null,
+                    "estimated-time": null
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "66",
+                        "type": "users"
+                      }
+                    },
+                    "project": {
+                      "data": {
+                        "id": "253",
+                        "type": "projects"
+                      }
+                    }
+                  }
+                },
+                {
                   "id": "35",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2135,7 +1885,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "288",
+                        "id": "252",
                         "type": "projects"
                       }
                     }
@@ -2145,8 +1895,8 @@
                   "id": "34",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2160,7 +1910,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "287",
+                        "id": "251",
                         "type": "projects"
                       }
                     }
@@ -2170,8 +1920,8 @@
                   "id": "33",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2185,7 +1935,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "286",
+                        "id": "250",
                         "type": "projects"
                       }
                     }
@@ -2195,8 +1945,8 @@
                   "id": "32",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2210,7 +1960,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "285",
+                        "id": "249",
                         "type": "projects"
                       }
                     }
@@ -2220,8 +1970,8 @@
                   "id": "31",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2235,7 +1985,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "284",
+                        "id": "248",
                         "type": "projects"
                       }
                     }
@@ -2245,8 +1995,8 @@
                   "id": "30",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2260,7 +2010,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "283",
+                        "id": "247",
                         "type": "projects"
                       }
                     }
@@ -2270,8 +2020,8 @@
                   "id": "29",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2285,7 +2035,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "282",
+                        "id": "246",
                         "type": "projects"
                       }
                     }
@@ -2295,8 +2045,8 @@
                   "id": "28",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2310,7 +2060,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "281",
+                        "id": "245",
                         "type": "projects"
                       }
                     }
@@ -2320,8 +2070,8 @@
                   "id": "27",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2335,7 +2085,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "280",
+                        "id": "244",
                         "type": "projects"
                       }
                     }
@@ -2345,8 +2095,8 @@
                   "id": "26",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2360,7 +2110,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "279",
+                        "id": "243",
                         "type": "projects"
                       }
                     }
@@ -2370,8 +2120,8 @@
                   "id": "25",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2385,7 +2135,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "278",
+                        "id": "242",
                         "type": "projects"
                       }
                     }
@@ -2395,8 +2145,8 @@
                   "id": "24",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2410,7 +2160,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "277",
+                        "id": "241",
                         "type": "projects"
                       }
                     }
@@ -2420,8 +2170,8 @@
                   "id": "23",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2435,7 +2185,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "276",
+                        "id": "240",
                         "type": "projects"
                       }
                     }
@@ -2445,8 +2195,8 @@
                   "id": "22",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2460,7 +2210,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "275",
+                        "id": "239",
                         "type": "projects"
                       }
                     }
@@ -2470,8 +2220,8 @@
                   "id": "21",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2485,7 +2235,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "274",
+                        "id": "238",
                         "type": "projects"
                       }
                     }
@@ -2495,8 +2245,8 @@
                   "id": "20",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2510,7 +2260,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "273",
+                        "id": "237",
                         "type": "projects"
                       }
                     }
@@ -2520,8 +2270,8 @@
                   "id": "19",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2535,7 +2285,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "272",
+                        "id": "236",
                         "type": "projects"
                       }
                     }
@@ -2545,8 +2295,8 @@
                   "id": "18",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2560,7 +2310,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "271",
+                        "id": "235",
                         "type": "projects"
                       }
                     }
@@ -2570,8 +2320,8 @@
                   "id": "17",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2585,7 +2335,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "270",
+                        "id": "234",
                         "type": "projects"
                       }
                     }
@@ -2595,8 +2345,8 @@
                   "id": "16",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2610,7 +2360,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "269",
+                        "id": "233",
                         "type": "projects"
                       }
                     }
@@ -2620,8 +2370,8 @@
                   "id": "15",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2635,7 +2385,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "268",
+                        "id": "232",
                         "type": "projects"
                       }
                     }
@@ -2645,8 +2395,8 @@
                   "id": "14",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2660,7 +2410,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "267",
+                        "id": "231",
                         "type": "projects"
                       }
                     }
@@ -2670,8 +2420,8 @@
                   "id": "13",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2685,7 +2435,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "266",
+                        "id": "230",
                         "type": "projects"
                       }
                     }
@@ -2695,8 +2445,8 @@
                   "id": "12",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2710,7 +2460,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "265",
+                        "id": "229",
                         "type": "projects"
                       }
                     }
@@ -2720,8 +2470,8 @@
                   "id": "11",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
+                    "date": "2018-10-05",
+                    "time": "15:37",
                     "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                     "trello-labels": null,
                     "estimated-time": null
@@ -2735,132 +2485,7 @@
                     },
                     "project": {
                       "data": {
-                        "id": "264",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "10",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "40",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "263",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "9",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "39",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "262",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "8",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "38",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "261",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "7",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "37",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "260",
-                        "type": "projects"
-                      }
-                    }
-                  }
-                },
-                {
-                  "id": "6",
-                  "type": "time-entries",
-                  "attributes": {
-                    "date": "2018-10-03",
-                    "time": "18:55",
-                    "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
-                    "trello-labels": null,
-                    "estimated-time": null
-                  },
-                  "relationships": {
-                    "user": {
-                      "data": {
-                        "id": "36",
-                        "type": "users"
-                      }
-                    },
-                    "project": {
-                      "data": {
-                        "id": "259",
+                        "id": "228",
                         "type": "projects"
                       }
                     }
@@ -2875,13 +2500,14 @@
 ### Get a time entry [GET /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `58` (number, required)
+    + id: `67` (number, required)
 
 + Request Show time entry by id
-**GET**&nbsp;&nbsp;`/api/v1/time_entries/58`
+**GET**&nbsp;&nbsp;`/api/v1/time_entries/67`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNSwiZXhwIjoxNTM4NzUwMjY0fQ.I8sZD0zB7BB9XefWdDDhboh-jNU6BZC86KjbR9fPTp0
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -2894,11 +2520,11 @@
 
             {
               "data": {
-                "id": "58",
+                "id": "67",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-10-03",
-                  "time": "18:55",
+                  "date": "2018-10-05",
+                  "time": "15:37",
                   "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                   "trello-labels": null,
                   "estimated-time": null
@@ -2906,13 +2532,13 @@
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "88",
+                      "id": "97",
                       "type": "users"
                     }
                   },
                   "project": {
                     "data": {
-                      "id": "311",
+                      "id": "284",
                       "type": "projects"
                     }
                   }
@@ -2923,13 +2549,14 @@
 ### Delete a time entry [DELETE /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `87` (number, required)
+    + id: `89` (number, required)
 
 + Request Delete time entry by id
-**DELETE**&nbsp;&nbsp;`/api/v1/time_entries/87`
+**DELETE**&nbsp;&nbsp;`/api/v1/time_entries/89`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNiwiZXhwIjoxNTM4NzUwMjY0fQ.tSNfdtEXHY8Ji8gxZR9kSV4EOnzt4d2GBrZwXMEeVvE
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -2947,14 +2574,15 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNywiZXhwIjoxNTM4NzUwMjY1fQ.DMONgn5rvOjqCKmzKcKP92nXWQAIK6puUKBP5vgpb4A
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            time_entry[date]=2018-10-03&time_entry[time]=18%3A55&time_entry[minutes]=55&time_entry[details]=%3Chttps%3A%2F%2Ftrello.com%2Fc%2FhcIRv6W0%2F1496-google-analytics%3E&time_entry[trello_labels][]=Feature&time_entry[trello_labels][]=High+Priority&time_entry[trello_labels][]=5&time_entry[user_id]=171&time_entry[project_id]=394
+            time_entry[date]=2018-10-05&time_entry[time]=15%3A37&time_entry[minutes]=37&time_entry[details]=%3Chttps%3A%2F%2Ftrello.com%2Fc%2FhcIRv6W0%2F1496-google-analytics%3E&time_entry[trello_labels][]=Feature&time_entry[trello_labels][]=High+Priority&time_entry[trello_labels][]=5&time_entry[user_id]=176&time_entry[project_id]=363
 
-+ Response 200
++ Response 201
 
     + Headers
 
@@ -2964,11 +2592,11 @@
 
             {
               "data": {
-                "id": "141",
+                "id": "146",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-10-03",
-                  "time": "18:55",
+                  "date": "2018-10-05",
+                  "time": "15:37",
                   "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                   "trello-labels": null,
                   "estimated-time": null
@@ -2976,13 +2604,13 @@
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "171",
+                      "id": "176",
                       "type": "users"
                     }
                   },
                   "project": {
                     "data": {
-                      "id": "394",
+                      "id": "363",
                       "type": "projects"
                     }
                   }
@@ -2993,13 +2621,14 @@
 ### Update a time entry [PUT /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `163` (number, required)
+    + id: `178` (number, required)
 
 + Request Update time entry
-**PUT**&nbsp;&nbsp;`/api/v1/time_entries/163`
+**PUT**&nbsp;&nbsp;`/api/v1/time_entries/178`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyOCwiZXhwIjoxNTM4NzUwMjY1fQ.IkEkOip7v3GhihYQf5qyadlZGq7j1c9NfPKj_maQNcQ
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -3017,11 +2646,11 @@
 
             {
               "data": {
-                "id": "163",
+                "id": "178",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-10-03",
-                  "time": "18:55",
+                  "date": "2018-10-05",
+                  "time": "15:37",
                   "details": "<HTTPS://TRELLO.COM/C/HCIRV6W0/1496-GOOGLE-ANALYTICS>",
                   "trello-labels": null,
                   "estimated-time": null
@@ -3029,13 +2658,13 @@
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "193",
+                      "id": "208",
                       "type": "users"
                     }
                   },
                   "project": {
                     "data": {
-                      "id": "416",
+                      "id": "395",
                       "type": "projects"
                     }
                   }
@@ -3057,6 +2686,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyOSwiZXhwIjoxNTM4NzUwMjY1fQ.2wt3YopZjF6Rz7360DC3Ut_IJVP8dVAgLarDLai-vBA
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -3070,114 +2700,114 @@
             {
               "data": [
                 {
-                  "id": "212",
+                  "id": "217",
                   "type": "users",
                   "attributes": {
                     "name": "Valentin",
-                    "uid": "Ln9gQy6dGe",
-                    "created-at": "2018-10-03T15:55:29.058Z",
+                    "uid": "NfCzL7UiWv6y1c3e",
+                    "created-at": "2018-10-05T12:37:45.791Z",
                     "is-active": false,
-                    "role": null
+                    "role": "back_end"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "667",
+                        "id": "641",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "211",
+                  "id": "216",
                   "type": "users",
                   "attributes": {
-                    "name": "User_211",
-                    "uid": "QfNeBtVhKaEzMq",
-                    "created-at": "2018-10-03T15:55:29.054Z",
+                    "name": "User_216",
+                    "uid": "YmR9Gv1m",
+                    "created-at": "2018-10-05T12:37:45.786Z",
                     "is-active": false,
-                    "role": null
+                    "role": "back_end"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "666",
+                        "id": "640",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "210",
+                  "id": "215",
                   "type": "users",
                   "attributes": {
-                    "name": "User_210",
-                    "uid": "PtM4N9NeT",
-                    "created-at": "2018-10-03T15:55:29.049Z",
+                    "name": "User_215",
+                    "uid": "T0LpY9B3BhM9IiY",
+                    "created-at": "2018-10-05T12:37:45.782Z",
                     "is-active": false,
-                    "role": null
+                    "role": "back_end"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "665",
+                        "id": "639",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "209",
+                  "id": "214",
                   "type": "users",
                   "attributes": {
-                    "name": "User_209",
-                    "uid": "N688JvWlW9O0D0",
-                    "created-at": "2018-10-03T15:55:29.046Z",
+                    "name": "User_214",
+                    "uid": "F5MdI45e",
+                    "created-at": "2018-10-05T12:37:45.777Z",
                     "is-active": false,
-                    "role": null
+                    "role": "back_end"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "664",
+                        "id": "638",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "208",
+                  "id": "213",
                   "type": "users",
                   "attributes": {
-                    "name": "User_208",
-                    "uid": "WoP7PwF7H9BwAy",
-                    "created-at": "2018-10-03T15:55:29.041Z",
+                    "name": "User_213",
+                    "uid": "O1H9XkOoTy0h2d",
+                    "created-at": "2018-10-05T12:37:45.773Z",
                     "is-active": false,
-                    "role": null
+                    "role": "back_end"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "663",
+                        "id": "637",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "207",
+                  "id": "212",
                   "type": "users",
                   "attributes": {
-                    "name": "User_207",
-                    "uid": "O6XuXm43Xh3yZm",
-                    "created-at": "2018-10-03T15:55:29.037Z",
+                    "name": "User_212",
+                    "uid": "A3RmHqUo",
+                    "created-at": "2018-10-05T12:37:45.768Z",
                     "is-active": false,
-                    "role": null
+                    "role": "back_end"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "662",
+                        "id": "636",
                         "type": "teams"
                       }
                     }
@@ -3192,13 +2822,14 @@
 ### Get a user [GET /api/v1/users/{id}]
 
 + Parameters
-    + id: `213` (number, required)
+    + id: `219` (number, required)
 
 + Request Show user by id
-**GET**&nbsp;&nbsp;`/api/v1/users/213`
+**GET**&nbsp;&nbsp;`/api/v1/users/219`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMCwiZXhwIjoxNTM4NzUwMjY1fQ.JLLN4KNDMgp2fOVBtI6uHuA2WhuwyMHlAwXdIWlM-hI
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -3211,19 +2842,19 @@
 
             {
               "data": {
-                "id": "213",
+                "id": "219",
                 "type": "users",
                 "attributes": {
-                  "name": "User_212",
-                  "uid": "Ug3a7sQ6W0B1Uo",
-                  "created-at": "2018-10-03T15:55:29.087Z",
+                  "name": "User_218",
+                  "uid": "MtU6QtF2",
+                  "created-at": "2018-10-05T12:37:45.829Z",
                   "is-active": false,
-                  "role": null
+                  "role": "back_end"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "668",
+                      "id": "643",
                       "type": "teams"
                     }
                   }
@@ -3239,6 +2870,7 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMSwiZXhwIjoxNTM4NzUwMjY1fQ.dRTzFiG-DPE_zXDWAdi0jdmafwcE7nwVW2sVzqet1QM
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -3252,7 +2884,7 @@
             {
               "data": [
                 {
-                  "id": 224,
+                  "id": 229,
                   "name": "Valentin"
                 }
               ]
@@ -3261,13 +2893,14 @@
 ### Delete a user [DELETE /api/v1/users/{id}]
 
 + Parameters
-    + id: `227` (number, required)
+    + id: `230` (number, required)
 
 + Request Delete user by id
-**DELETE**&nbsp;&nbsp;`/api/v1/users/227`
+**DELETE**&nbsp;&nbsp;`/api/v1/users/230`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMiwiZXhwIjoxNTM4NzUwMjY1fQ.RZPn8w32D1fHe4jGpxo69L_YyNcvm7MzxB5YMllfOho
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -3281,12 +2914,13 @@
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMywiZXhwIjoxNTM4NzUwMjY2fQ.WvK6vYKju_ap2um2ZRqz2Lgv1xCRIQuUU-4rH1EpGlE
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            user[name]=User_232&user[is_active]=false&user[uid]=AoG0VgImWv7m2uZj
+            user[name]=User_237&user[is_active]=false&user[uid]=Au0aK9SqQjOh3&user[role]=back_end
 
 + Response 201
 
@@ -3298,14 +2932,14 @@
 
             {
               "data": {
-                "id": "237",
+                "id": "242",
                 "type": "users",
                 "attributes": {
-                  "name": "User_232",
-                  "uid": "AoG0VgImWv7m2uZj",
-                  "created-at": "2018-10-03T15:55:29.302Z",
+                  "name": "User_237",
+                  "uid": "Au0aK9SqQjOh3",
+                  "created-at": "2018-10-05T12:37:46.017Z",
                   "is-active": false,
-                  "role": null
+                  "role": "back_end"
                 },
                 "relationships": {
                   "team": {
@@ -3318,19 +2952,20 @@
 ### Update a user [PUT /api/v1/users/{id}]
 
 + Parameters
-    + id: `238` (number, required)
+    + id: `247` (number, required)
 
 + Request Update user
-**PUT**&nbsp;&nbsp;`/api/v1/users/238`
+**PUT**&nbsp;&nbsp;`/api/v1/users/247`
 
     + Headers
 
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNCwiZXhwIjoxNTM4NzUwMjY2fQ.A_2TphUNL5CU9AoJAXiBePF4p_eHb2_hCpgSA-IyPS8
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            user[name]=USER_233
+            user[name]=USER_242
 
 + Response 200
 
@@ -3342,19 +2977,19 @@
 
             {
               "data": {
-                "id": "238",
+                "id": "247",
                 "type": "users",
                 "attributes": {
-                  "name": "USER_233",
-                  "uid": "IgWy37Uu3",
-                  "created-at": "2018-10-03T15:55:29.323Z",
+                  "name": "USER_242",
+                  "uid": "Wo6vKnEu",
+                  "created-at": "2018-10-05T12:37:46.045Z",
                   "is-active": false,
-                  "role": null
+                  "role": "back_end"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "692",
+                      "id": "670",
                       "type": "teams"
                     }
                   }

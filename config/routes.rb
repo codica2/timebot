@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      namespace :auth do
+        resources :sessions, only: [:create]
+      end
       resources :projects, except: [:edit] do
         collection do
           get :search
@@ -17,12 +20,13 @@ Rails.application.routes.draw do
       resources :holidays, except: [:edit]
       resources :absences, except: [:edit]
 
-      scope 'dashboard' do
+      scope :dashboard do
         get '/' => 'dashboard#index'
       end
 
-      namespace :auth do
-        resources :sessions, only: [:create]
+      scope :reports, module: :reports do
+        resources :estimation_reports, only: [:index]
+        resources :time_reports, only: [:index]
       end
     end
   end

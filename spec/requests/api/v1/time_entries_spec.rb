@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Time Entries API', type: :request do
   include ApiDoc::V1::TimeEntries::Api
 
-  let!(:time_entries) { FactoryBot.create_list(:time_entry, 35) }
+  let!(:time_entries) { create_list(:time_entry, 35) }
   let(:user)    { create :user }
   let(:project) { create :project }
   
