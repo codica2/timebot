@@ -20,7 +20,7 @@ module Api
       def create
         absence = Absence.new(absence_params)
         if absence.save
-          render json: absence, status: :created
+          render json: absence, include: ['user'], status: :created
         else
           render json: absence.errors, status: :unprocessable_entity
         end
@@ -28,7 +28,7 @@ module Api
 
       def update
         if @absence.update(absence_params)
-          render json: @absence, status: :ok
+          render json: @absence, include: ['user'], status: :ok
         else
           render json: @absence.errors, status: :unprocessable_entity
         end

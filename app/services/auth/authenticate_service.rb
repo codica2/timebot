@@ -17,7 +17,7 @@ module Auth
 
     def process_response
       if token.present?
-        { json: { jwt: token } }
+        { json: { token: token[:token], exp: token[:exp], user: @user.as_json(only: [:id, :email]) } }
       else
         { json: { message: 'Invalid email or password' }, status: :unauthorized }
       end

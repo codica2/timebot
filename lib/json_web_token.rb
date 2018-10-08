@@ -4,9 +4,9 @@ class JsonWebToken
 
   class << self
 
-    def encode(payload, exp = 2.hours.from_now)
-      payload[:exp] = exp.to_i
-      JWT.encode payload, auth_secret, ALGORYTHM
+    def encode(payload, exp = 2.hours)
+      payload[:exp] = Time.current.to_i + exp.to_i
+      { token: JWT.encode(payload, auth_secret, ALGORYTHM), exp: exp.to_i }
     end
 
     def decode(token)

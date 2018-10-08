@@ -22,7 +22,7 @@ module Api
       def create
         time_entry = TimeEntry.new(time_entry_params)
         if time_entry.save
-          render json: time_entry, status: :created
+          render json: time_entry, include: ['project', 'user'], status: :created
         else
           render json: time_entry.errors, status: :unprocessable_entity
         end
@@ -32,7 +32,7 @@ module Api
       def update
         time_entry = TimeEntry.find_by(id: params[:id])
         if time_entry.update(time_entry_params)
-          render json: time_entry, status: :ok
+          render json: time_entry, include: ['project', 'user'], status: :ok
         else
           render json: time_entry.errors, status: :unprocessable_entity
         end

@@ -42,7 +42,7 @@ RSpec.describe 'Auth' do
 
   describe 'Anauthorized user' do
     it 'should get access to all resources' do
-      token = JsonWebToken.encode({user_id: admin.id})
+      token = JsonWebToken.encode({user_id: admin.id})[:token]
       headers = {'Authorization': "Bearer #{token}"}
       get '/api/v1/projects', headers: headers
 

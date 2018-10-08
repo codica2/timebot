@@ -10,7 +10,7 @@ RSpec.describe 'Sessions API' do
         params = { email: admin.email, password: '123456' }
         post '/api/v1/auth/sessions', params: params
 
-        expect(json['jwt'].split('.').count).to eq 3
+        expect(json['token'].split('.').count).to eq 3
         expect(response).to have_http_status(:ok)
       end
     end

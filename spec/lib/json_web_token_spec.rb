@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'JWT' do
   let(:user) { create :user }
-  let(:token) { JsonWebToken.encode({ user_id: user.id }) }
+  let(:token) { JsonWebToken.encode({ user_id: user.id })[:token] }
 
   describe 'encode/decode' do
     it 'should generate right token' do
@@ -18,12 +18,12 @@ RSpec.describe 'JWT' do
 
   describe 'exceptions' do
     it 'should raise right exception' do
-      expired_token = JsonWebToken.encode({ user_id: user.id }, Time.current - 1.minutes)
+      expired_token = JsonWebToken.encode({ user_id: user.id }, -60)
       wrong_token = 'my.wrong.token'
       very_wrong_token = 'fdgdgf'
 
       expect{
-        JsonWebToken.decode(expired_token)
+        JsonWebToken.decode(expired_token[:token])
       }.to raise_error ExceptionHandler::UnauthorizedRequestError
 
       expect{
