@@ -19,7 +19,7 @@ module Reports
     end
 
     def team_entities
-      Team.includes(:projects).limit(10).map do |team|
+      Team.includes(:projects).map do |team|
         {
           id: team.id,
           name: team.name,
@@ -55,6 +55,7 @@ module Reports
       TimeEntry.includes(:user, :project).joins(:team)
         .where(teams: { id: team_id })
         .filter(filters)
+        .limit(150)
         .group_by(&:project)
         .sort { |a, b| time_worked(b) <=> time_worked(a) }
     end
