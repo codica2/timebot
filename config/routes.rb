@@ -7,18 +7,19 @@ Rails.application.routes.draw do
       namespace :auth do
         resources :sessions, only: [:create]
       end
-      resources :projects, except: [:edit] do
+      resources :projects, except: [:new, :edit] do
         collection do
           get :search
         end
       end
-      resources :time_entries, except: [:edit]
-      resources :users, except: [:edit] do
+      resources :time_entries, except: [:new, :edit]
+      resources :users, except: [:new, :edit] do
         get :search, on: :collection
       end
-      resources :teams, except: [:edit]
-      resources :holidays, except: [:edit]
-      resources :absences, except: [:edit]
+      resources :teams, except: [:new, :edit]
+      resources :holidays, except: [:new, :edit]
+      resources :absences, except: [:new, :edit]
+      resources :admins, except: [:new, :edit]
 
       scope :dashboard do
         get '/' => 'dashboard#index'
