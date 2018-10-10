@@ -3,7 +3,7 @@
 module Reports
   class TimeReportService < BaseService
     def initialize(filters)
-      @filters = filters || {}
+      @filters = filters[:filters] || {}
     end
 
     def call

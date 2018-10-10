@@ -4,6 +4,7 @@ module Api
   module V1
     class ProjectsController < ApplicationController
       skip_before_action :verify_authenticity_token
+      before_action :set_project, only: %i[show update destroy]
 
       def index
         projects = Project.filter(filtering_params).paginate(params)
@@ -15,8 +16,7 @@ module Api
       end
 
       def show
-        project = Project.find_by(id: params[:id])
-        render json: project
+        render json: @project
       end
 
       def create
@@ -29,16 +29,15 @@ module Api
       end
 
       def update
-        project = Project.find_by(id: params[:id])
-        if project.update(project_params)
-          render json: project, status: :ok
+        if @project.update(project_params)
+          render json: @project, status: :ok
         else
-          render json: project.errors, status: :unprocessable_entity
+          render json: @project.errors, status: :unprocessable_entity
         end
       end
 
       def destroy
-        Project.find_by(id: params[:id]).destroy
+        @project.destroy
         head :ok
       end
 
@@ -46,6 +45,10 @@ module Api
 
       def project_params
         params.require(:project).permit(:name, :alias, :team_id)
+      end
+
+      def set_project
+        @project = Project.find(params[:id])
       end
 
       def filtering_params

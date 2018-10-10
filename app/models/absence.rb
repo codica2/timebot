@@ -8,13 +8,9 @@ class Absence < ApplicationRecord
 
   enum reason: %i[vacation illness other]
 
-  validates :user_id, presence: true
-  validates :reason, presence: true
-  validates :date, presence: true
+  validates :reason, :date, presence: true
   validate :presence_of_comment
 
-  scope :vacation, -> { where(reason: 0) }
-  scope :illness, -> { where(reason: 1) }
   scope :between_dates, ->(start_date, end_date) { where(date: (start_date..end_date)) }
   scope :date_from, ->(date) { where('date >= ?', date) }
   scope :date_to, ->(date) { where('date <= ?', date) }

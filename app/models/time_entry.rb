@@ -10,10 +10,7 @@ class TimeEntry < ApplicationRecord
 
   before_save :save_labels, :save_ticket_url
 
-  validates :date, presence: true
-  validates :user_id, presence: true
-  validates :project_id, presence: true
-  validates :minutes, presence: true
+  validates :date, :minutes, presence: true
 
   scope :today, -> { where(date: Time.zone.now.to_date) }
   scope :yesterday, -> { where(date: (1.day.ago.beginning_of_day..1.day.ago.end_of_day)) }
@@ -58,10 +55,10 @@ class TimeEntry < ApplicationRecord
     (TimeEntry.with_ticket(search_param).pluck(:minutes).sum / 60.0).round(1)
   end
 
-   # needs refactoring
+  # needs refactoring
   def collaborators
     search_param = ticket_url || details
-    TimeEntry.includes(:user).with_ticket(search_param).map { |t| t.user }.uniq
+    TimeEntry.includes(:user).with_ticket(search_param).map(&:user).uniq
   end
 
   def estimated_time

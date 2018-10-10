@@ -9,9 +9,9 @@ class User < ApplicationRecord
   has_many :absences, dependent: :destroy
   belongs_to :team, optional: true
 
-  validates :name, presence: true, uniqueness: true
-  validates :uid, presence: true, uniqueness: true
-  validates :role, presence: true
+  validates :name, uniqueness: true
+  validates :uid, uniqueness: true
+  validates :role, :name, :uid, presence: true
 
   scope :active, -> { where(is_active: true) }
   scope :by_name, ->(term) { where('lower(name) LIKE ?', "%#{term.downcase}%") }

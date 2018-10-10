@@ -4,6 +4,7 @@ module Api
   module V1
     class TimeEntriesController < ApplicationController
       skip_before_action :verify_authenticity_token
+      before_action :set_time_entry, only: %i[show update destroy]
 
       def index
         time_entries = TimeEntry.filter(filtering_params).paginate(params)
@@ -11,8 +12,7 @@ module Api
       end
 
       def show
-        time_entry = TimeEntry.find_by(id: params[:id])
-        render json: time_entry
+        render json: @time_entry
       end
 
       def create
@@ -25,16 +25,15 @@ module Api
       end
 
       def update
-        time_entry = TimeEntry.find_by(id: params[:id])
-        if time_entry.update(time_entry_params)
-          render json: time_entry, include: %w[project user], status: :ok
+        if @time_entry.update(time_entry_params)
+          render json: @time_entry, include: %w[project user], status: :ok
         else
-          render json: time_entry.errors, status: :unprocessable_entity
+          render json: @time_entry.errors, status: :unprocessable_entity
         end
       end
 
       def destroy
-        TimeEntry.find_by(id: params[:id]).destroy
+        @time_entry.destroy
         head :ok
       end
 
@@ -42,6 +41,10 @@ module Api
 
       def time_entry_params
         params.require(:time_entry).permit(:user_id, :time, :minutes, :date, :details, :project_id)
+      end
+
+      def set_time_entry
+        @time_entry = TimeEntry.find(params[:id])
       end
 
       def filtering_params
