@@ -4,9 +4,9 @@ module Reports
   class EstimationReportService < BaseService
     include ActiveAdmin::DashboardHelper
 
-    def initialize(filters: filters = {}, pagination: pagination = {})
-      @filters = filters
-      @pagination = pagination
+    def initialize(options)
+      @filters = options[:filters] || {}
+      @pagination = options[:pagination] || {}
     end
 
     def call
@@ -48,6 +48,5 @@ module Reports
     def filtering_params
       params.permit(:date_from, :with_ticket, :date_to, by_projects: [], by_users: [])
     end
-
   end
 end

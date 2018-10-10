@@ -2,8 +2,8 @@
 
 module Reports
   class TimeReportService < BaseService
-    def initialize(filters: filtering_params = {})
-      @filters = filters
+    def initialize(filters)
+      @filters = filters || {}
     end
 
     def call
@@ -53,11 +53,11 @@ module Reports
 
     def team_project_time_entries(team_id)
       TimeEntry.includes(:user, :project).joins(:team)
-        .where(teams: { id: team_id })
-        .filter(filters)
-        .limit(150)
-        .group_by(&:project)
-        .sort { |a, b| time_worked(b) <=> time_worked(a) }
+               .where(teams: { id: team_id })
+               .filter(filters)
+               .limit(150)
+               .group_by(&:project)
+               .sort { |a, b| time_worked(b) <=> time_worked(a) }
     end
 
     def time_worked(entry)
@@ -67,6 +67,5 @@ module Reports
     def user_names(entry)
       entry.last.map(&:user).map(&:name).uniq.to_sentence
     end
-
   end
 end

@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 module Auth
-
   class AuthorizeApiRequest < BaseService
-
     def initialize(headers = {})
       @auth_header = headers['Authorization']
     end
@@ -9,7 +9,7 @@ module Auth
     def call
       user
     end
-  
+
     private
 
     attr_reader :auth_header
@@ -25,7 +25,5 @@ module Auth
     def user
       @user ||= Admin.find_by(id: decoded_payload['user_id']) if decoded_payload.present?
     end
-
   end
-
 end
