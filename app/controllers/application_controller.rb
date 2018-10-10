@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-
   include ExceptionHandler
 
   protect_from_forgery with: :exception
@@ -15,5 +14,4 @@ class ApplicationController < ActionController::Base
     @current_user = ::Auth::AuthorizeApiRequest.call(request.headers)
     raise ExceptionHandler::UnauthorizedRequestError, 'Unauthorized' if current_user.blank?
   end
-
 end
