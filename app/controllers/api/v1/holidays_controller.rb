@@ -4,7 +4,6 @@ module Api
   module V1
     class HolidaysController < ApplicationController
       before_action :set_holiday, only: %i[show update destroy]
-      skip_before_action :verify_authenticity_token
 
       def index
         render json: Holiday.filter(filtering_params)

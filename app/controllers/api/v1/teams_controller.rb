@@ -4,7 +4,6 @@ module Api
   module V1
     class TeamsController < ApplicationController
       before_action :set_team, only: %i[show update destroy]
-      skip_before_action :verify_authenticity_token
 
       def index
         render json: Team.filter(filtering_params)

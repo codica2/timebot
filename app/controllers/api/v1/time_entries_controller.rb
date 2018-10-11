@@ -3,7 +3,6 @@
 module Api
   module V1
     class TimeEntriesController < ApplicationController
-      skip_before_action :verify_authenticity_token
       before_action :set_time_entry, only: %i[show update destroy]
 
       def index

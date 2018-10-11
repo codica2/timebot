@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class DashboardInfo < BaseService
   include ServiceHelper
 
-  attr_reader :start_date, :end_date
-
-  def initialize(start_date, end_date)
-    @start_date = start_date || Date.today.to_s
-    @end_date   = end_date || Date.today.to_s
-    @time_entries = TimeEntry.in_interval(start_date, end_date)
+  def initialize(filters)
+    @filters = {
+      date_from: filters[:filters][:date_from] || Time.zone.today.to_s,
+      date_to: filters[:filters][:date_to] || Time.zone.today.to_s
+    }
+    @time_entries = TimeEntry.includes(:project, :user).filter(@filters)
   end
 
   def call
@@ -21,28 +23,23 @@ class DashboardInfo < BaseService
 
   private
 
+  attr_reader :filters
+
   def date
-    {
-      start_of_week: start_date,
-      end_of_week: end_date
-    }
+    { start_of_week: filters[:date_from], end_of_week: filters[:date_to] }
   end
 
   def holidays
-    { holidays: Holiday.between_dates(start_date, end_date).pluck(:name, :date) }
+    { holidays: Holiday.filter(filters).pluck(:name, :date) }
   end
 
   def absent
-    absent = Absence.between_dates(start_date, end_date).group_by(&:date)
+    absent = Absence.includes(:user).filter(filters).group_by(&:date)
     result = absent.map do |key, value|
       {
         date: key,
         children: value.map do |abs|
-          {
-            name: User.find_by(id: abs.user_id).name,
-            reason: abs.reason,
-            comment: abs.reason
-          }
+          { name: abs.user.name, reason: abs.reason, comment: abs.reason }
         end
       }
     end
@@ -50,10 +47,7 @@ class DashboardInfo < BaseService
   end
 
   def hours
-    {
-      hours_to_work: hours_to_work,
-      hours_worked:  hours_worked
-    }
+    { hours_to_work: hours_to_work, hours_worked: hours_worked }
   end
 
   def hours_worked
@@ -62,7 +56,9 @@ class DashboardInfo < BaseService
 
   def hours_to_work
     users = @time_entries.pluck(:user_id).uniq
-    working_days = (start_date.to_date..end_date.to_date).select { |day| !day.saturday? && !day.sunday? }
+    working_days = (filters[:date_from].to_date..filters[:date_to].to_date).select do |day|
+      !day.saturday? && !day.sunday?
+    end
     (working_days.count - holidays['holidays']&.count.to_i) * 8 * (users.count - absent.count)
   end
 
@@ -81,49 +77,40 @@ class DashboardInfo < BaseService
   end
 
   def bar_chart
-    projects = @time_entries.map(&:project).uniq
     users = User.active
-    data = projects.map do |project|
+    data = @time_entries.group_by(&:project).map do |project_entries|
       {
-        name: project.name,
+        name: project_entries.first.name,
         data: users.map do |user|
-          minutes = @time_entries.select { |t| t.user_id == user.id && t.project_id == project.id }
-                                 .pluck(:minutes).sum
-          minutes.zero? ? nil : (minutes / 60.0).round
+          minutes = project_entries.last.select { |t| t.user_id == user.id }
+                                   .pluck(:minutes).sum
+          minutes.zero? ? 0 : (minutes / 60.0).round
         end
       }
     end
-    {
-      series: data,
-      xAxisData: users.pluck(:name)
-    }
+    { series: data, xAxisData: users.pluck(:name) }
   end
 
   def hours_by_roles
-    User.roles.map do |key, value|
-      total = @time_entries.joins(:user)
-                           .where(users: { role: value })
-                           .map { |p| p.minutes / 60.0 }.sum
+    @time_entries.group_by { |t| t.user.role }
+                 .map do |role_entries|
+      total = role_entries.last.map { |rt| rt.minutes / 60.0 }.sum.round(2)
       {
-        name: key.humanize,
-        y: total.round(2),
-        z: total.round(2)
+        name: role_entries.first,
+        y: total,
+        z: total
       }
     end
   end
 
   def hours_by_projects
-    Project.all.map do |project|
-      time_entries = project.time_entries.in_interval(start_date, end_date)
-      next if time_entries.blank?
-
-      total = time_entries.where(project_id: project.id).map { |p| p.minutes / 60.0 }.sum
+    @time_entries.group_by(&:project).map do |project_entries|
+      total = project_entries.last.map { |p| p.minutes / 60.0 }.sum.round(1)
       {
-        name: project.name,
-        y: total.round(1),
-        z: total.round(1)
+        name: project_entries.first.name,
+        y: total,
+        z: total
       }
     end
   end
-
 end

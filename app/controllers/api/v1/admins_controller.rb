@@ -4,7 +4,6 @@ module Api
   module V1
     class AdminsController < ApplicationController
       before_action :set_admin, only: %i[show update destroy]
-      skip_before_action :verify_authenticity_token
 
       def index
         render json: Admin.all
