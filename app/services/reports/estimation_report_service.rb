@@ -22,27 +22,29 @@ module Reports
     end
 
     def entities
-      TimeEntry.includes(:project).filter(filters).paginate(pagination).map do |time_entry|
-        {
-          id: time_entry.id,
-          project: time_entry.project.name,
-          details: time_entry.details,
-          created_at: time_entry.created_at,
-          trello_labels: formatted_labels(time_entry.trello_labels)[:labels],
-          estimate: formatted_labels(time_entry.trello_labels)[:estimate],
-          status: time_entry.trello_list_name,
-          total_time: time_entry.total_time,
-          collaborators: collaborators(time_entry)
+      grouped_entities_by_ticket.reduce([]) do |acum, (ticket, entries)|
+        acum << {
+          projects: entries.map { |t| { id: t.project.id, name: t.project.name } }.uniq,
+          details: ticket,
+          created_at: entries.last.created_at,
+          trello_labels: formatted_labels(entries.last.trello_labels)[:labels],
+          estimate: formatted_labels(entries.last.trello_labels)[:estimate],
+          status: entries.last.trello_list_name,
+          total_time: (entries.pluck(:minutes).sum / 60.0).round(1),
+          collaborators: entries.map { |t| { id: t.user.id, name: t.user.name } }.uniq
         }
       end
     end
 
-    def meta
-      { total_count: TimeEntry.count }
+    def grouped_entities_by_ticket
+      TimeEntry.includes(:project, :user)
+               .filter(filters)
+               .paginate(pagination)
+               .group_by { |t| t.ticket || t.details&.downcase }
     end
 
-    def collaborators(time_entry)
-      time_entry.collaborators.map { |c| { id: c.id, name: c.name } }
+    def meta
+      { total_count: TimeEntry.count }
     end
 
     def filtering_params
