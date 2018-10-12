@@ -6,7 +6,7 @@ module Api
       before_action :set_time_entry, only: %i[show update destroy]
 
       def index
-        time_entries = TimeEntry.includes(:project, :user, :team).filter(filtering_params).paginate(params)
+        time_entries = TimeEntry.includes(:project, user: [:team]).filter(filtering_params).paginate(params)
         render json: time_entries, include: %w[project user], meta: { total_count: time_entries.total_count }
       end
 
