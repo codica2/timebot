@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveEntry < BaseService
   include Message::Conditions
   attr_reader :user, :time_entry_id

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShowWorkedHours < BaseService
   include ServiceHelper
   include Message::Conditions

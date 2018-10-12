@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FinishDialog < BaseService
   attr_reader :user, :messages
 

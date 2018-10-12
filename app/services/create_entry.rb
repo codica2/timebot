@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateEntry < BaseService
   include ServiceHelper
 
@@ -31,7 +33,7 @@ class CreateEntry < BaseService
       return
     end
 
-    if projects.count == 0
+    if projects.count.zero?
       sender.send_message(user, 'No such project.')
       ShowProjects.call(user)
       return

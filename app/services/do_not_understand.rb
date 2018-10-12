@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DoNotUnderstand < BaseService
   attr_reader :user, :messages
 

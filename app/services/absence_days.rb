@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AbsenceDays < BaseService
   include ServiceHelper
 
