@@ -6,7 +6,7 @@ module Api
       before_action :set_project, only: %i[show update destroy]
 
       def index
-        projects = Project.filter(filtering_params).paginate(params)
+        projects = Project.includes(:team).filter(filtering_params).paginate(params)
         render json: projects, include: ['team'], meta: { total_count: projects.total_count }
       end
 

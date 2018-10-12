@@ -6,7 +6,7 @@ module Api
       before_action :set_absence, only: %i[show update destroy]
 
       def index
-        absences = Absence.filter(filtering_params).paginate(params)
+        absences = Absence.includes(user: [:team]).filter(filtering_params).paginate(params)
         render json: absences, include: ['user'], meta: { total_count: absences.total_count }
       end
 

@@ -6,8 +6,8 @@ module Api
       before_action :set_user, only: %i[show update destroy]
 
       def index
-        users = User.filter(filtering_params).paginate(params)
-        render json: users, meta: { total_count: users.total_count }
+        users = User.includes(:team).filter(filtering_params).paginate(params)
+        render json: users, include: ['team'], meta: { total_count: users.total_count }
       end
 
       def search
