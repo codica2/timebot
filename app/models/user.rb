@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :uid, uniqueness: true
   validates :role, :name, :uid, presence: true
 
+  scope :by_role, ->(role) { where(role: User.roles[role]) }
   scope :active, -> { where(is_active: true) }
   scope :by_name, ->(term) { where('lower(name) LIKE ?', "%#{term.downcase}%") }
   scope :active_status, ->(status) { where(is_active: status) if %w[true false].include? status }

@@ -50,7 +50,7 @@ module Api
       end
 
       def filtering_params
-        params.permit(:by_name, :active_status)
+        params.permit(:by_name, :active_status, :by_role)
       end
     end
   end
