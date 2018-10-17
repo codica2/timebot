@@ -39,7 +39,7 @@ module Api
       private
 
       def time_entry_params
-        params.require(:time_entry).permit(:user_id, :time, :minutes, :date, :details, :project_id)
+        params.require(:time_entry).permit(:user_id, :time, :date, :details, :project_id)
       end
 
       def set_time_entry

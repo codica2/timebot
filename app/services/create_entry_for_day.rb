@@ -46,11 +46,8 @@ class CreateEntryForDay < BaseService
       return
     end
 
-    minutes = parse_time(time)
-
     user.time_entries.create!(project_id: project.id,
-                              time:       format_time(minutes),
-                              minutes:    minutes,
+                              time:       time
                               details:    details,
                               date:       date)
 

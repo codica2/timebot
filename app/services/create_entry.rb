@@ -41,10 +41,8 @@ class CreateEntry < BaseService
 
     project = projects.count > 1 && project_number.present? ? projects[project_number - 1] : precise_match || projects.first
 
-    minutes = parse_time(time)
     user.time_entries.create!(project_id: project.id,
-                              time:       format_time(minutes),
-                              minutes:    minutes,
+                              time:       time
                               details:    details,
                               date:       Time.zone.today)
     message = "Set timesheet for #{Time.zone.today.strftime('%b %-d, %Y')} for #{project.name}: #{time}."

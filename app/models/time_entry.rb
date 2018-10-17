@@ -8,9 +8,9 @@ class TimeEntry < ApplicationRecord
   belongs_to :project
   has_one :team, through: :project
 
-  before_save :save_labels, :save_ticket_url
+  before_save :save_labels, :save_ticket_url, :calc_minutes, :format_time
 
-  validates :date, :minutes, presence: true
+  validates :date, :time, presence: true
 
   scope :today, -> { where(date: Time.zone.now.to_date) }
   scope :yesterday, -> { where(date: (1.day.ago.beginning_of_day..1.day.ago.end_of_day)) }
@@ -84,5 +84,14 @@ class TimeEntry < ApplicationRecord
       return nil
     end
     card.labels.map(&:name)
+  end
+
+  def calc_minutes
+    match_data = self.time.match(/^(\d?\d):([0-5]\d)$/)
+    self.minutes = match_data[1].to_i * 60 + match_data[2].to_i
+  end
+
+  def format_time
+    format('%2d:%02d', self.minutes / 60, self.minutes % 60)
   end
 end

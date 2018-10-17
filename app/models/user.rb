@@ -39,11 +39,4 @@ class User < ApplicationRecord
   def is_absent?(date)
     absences.find_by(date: date).present?
   end
-
-  private
-
-  def parse_time(time)
-    match_data = time.match(/^(\d?\d):([0-5]\d)$/)
-    match_data[1].to_i * 60 + match_data[2].to_i
-  end
 end
