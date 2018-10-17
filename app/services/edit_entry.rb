@@ -34,7 +34,7 @@ class EditEntry < BaseService
       new_date = Date.new((date_match[3] || Date.today.year).to_i, date_match[2].to_i, date_match[1].to_i)
     end
 
-    time_entry.update(time: time
+    time_entry.update(time: time,
                       project_id: project.id,
                       details: details,
                       date: new_date)

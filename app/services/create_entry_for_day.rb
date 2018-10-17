@@ -47,7 +47,7 @@ class CreateEntryForDay < BaseService
     end
 
     user.time_entries.create!(project_id: project.id,
-                              time:       time
+                              time:       time,
                               details:    details,
                               date:       date)
 
