@@ -1,0 +1,20 @@
+# frozen_string_literal: true
+
+module Api
+  module V1
+    module Reports
+      class UserReportsController < ApplicationController
+
+        def index
+          render ::Reports::UserReportService.call(filters: filtering_params)
+        end
+
+        private
+
+        def filtering_params
+          params.permit(:date_from, :date_to)
+        end
+      end
+    end
+  end
+end

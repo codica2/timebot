@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       scope :reports, module: :reports do
         resources :estimation_reports, only: [:index]
         resources :time_reports, only: [:index]
+        resources :user_reports, only: [:index]
       end
     end
   end
