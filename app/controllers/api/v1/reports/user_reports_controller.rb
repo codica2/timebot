@@ -23,7 +23,7 @@ module Api
         end
 
         def user_worked_time_filters
-          params.permit(:date_from, :date_to, by_users: [])
+          params.permit(:date_from, :date_to, by_users: [], by_projects: [])
         end
 
         def user_absence_filters

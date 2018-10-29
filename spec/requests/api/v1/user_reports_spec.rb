@@ -33,7 +33,7 @@ RSpec.describe 'UserReports API' do
     end
 
     it 'applies filters for user worked time report' do
-      params = { by_users: [user.id] }
+      params = { by_users: [user.id], by_projects: [project.id] }
       get '/api/v1/reports/user_reports/worked_time', headers: headers, params: params
 
       expect(json['data'].count).to eq 1
