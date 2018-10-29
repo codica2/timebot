@@ -12,6 +12,10 @@ module Api
           render ::Reports::UserWorkedTimeService.call(filters: user_worked_time_filters)
         end
 
+        def absence
+          render ::Reports::UserAbsenceService.call(filters: user_absence_filters)
+        end
+
         private
 
         def filtering_params
@@ -20,6 +24,10 @@ module Api
 
         def user_worked_time_filters
           params.permit(:date_from, :date_to, by_users: [])
+        end
+
+        def user_absence_filters
+          params.permit(:date_from, :date_to)
         end
       end
     end

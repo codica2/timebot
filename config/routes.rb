@@ -29,7 +29,10 @@ Rails.application.routes.draw do
         resources :estimation_reports, only: [:index]
         resources :time_reports, only: [:index]
         resources :user_reports, only: [:index] do
-          get :worked_time, on: :collection
+          collection do
+            get :worked_time
+            get :absence
+          end
         end
       end
     end

@@ -11,6 +11,10 @@ RSpec.describe 'UserReports API' do
   let!(:time_entry_2) { create(:time_entry, details: 'second', project_id: project.id, user_id: user.id) }
   let!(:time_entry_3) { create(:time_entry, details: 'third') }
 
+  let!(:illness_absence) { create_list :absence, 10, :illness, user_id: user.id }
+  let!(:vacation_absence) { create_list :absence, 5, :vacation, user_id: user.id }
+  let!(:other_absence) { create_list :absence, 2, user_id: user.id, date: Time.current - 2.days }
+
   describe 'GET /user_reports/' do
     it 'should generate user report' do
       get '/api/v1/reports/user_reports', headers: headers
@@ -34,6 +38,28 @@ RSpec.describe 'UserReports API' do
 
       expect(json['data'].count).to eq 1
       expect(json['data'].first['id']).to eq user.id
+    end
+  end
+
+  describe 'GET /user_reports/absence' do
+    it 'should generate a user absences report' do
+      get '/api/v1/reports/user_reports/absence', headers: headers
+
+      expect(json['data'].first['vacation']).to eq 5
+      expect(json['data'].first['illness']).to eq 10
+      expect(json['data'].first['other']).to eq 2
+    end
+
+    it 'applies filters for user absence report' do
+      params = {
+        date_from: Time.current - 1.days,
+        date_to: Time.current,
+      }
+      get '/api/v1/reports/user_reports/absence', headers: headers, params: params
+
+      expect(json['data'].first['vacation']).to eq 5
+      expect(json['data'].first['illness']).to eq 10
+      expect(json['data'].first['other']).to eq 0
     end
   end
 
