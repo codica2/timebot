@@ -26,7 +26,7 @@ module Reports
         acum << {
           projects: entries.map { |t| { id: t.project.id, name: t.project.name } }.uniq,
           details: ticket,
-          created_at: entries.last.created_at,
+          created_at: entries.last.created_at.strftime("%d %b, %Y at %H:%M"),
           trello_labels: formatted_labels(entries.last.trello_labels)[:labels],
           estimate: formatted_labels(entries.last.trello_labels)[:estimate],
           status: entries.last.trello_list_name,
