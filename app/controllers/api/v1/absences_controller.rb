@@ -35,6 +35,10 @@ module Api
         @absence.destroy
       end
 
+      def delete_multiple
+        Absence.where(id: params[:absence_ids]).destroy_all
+      end
+
       private
 
       def set_absence

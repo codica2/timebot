@@ -30,6 +30,10 @@ module ApiDoc
         action 'Delete a teams'
       end
 
+      document :destroy_multiple do
+        action 'Delete multiple teams'
+      end
+
       document :update do
         action 'Update a teams'
       end

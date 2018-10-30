@@ -57,6 +57,18 @@ RSpec.describe 'Users API' do
         expect(User.find_by(id: user.id)).to eq(nil)
       end
     end
+
+    describe 'DELETE /users/delete_multiple', :dox do
+      include ApiDoc::V1::Users::DestroyMultiple
+
+      it 'Delete users by ids', :dox do
+        params = { user_ids: users.pluck(:id) }
+        delete "/api/v1/users/delete_multiple", headers: headers, params: params
+
+        expect(response).to be_success
+        expect(User.count).to eq 1
+      end
+    end
   
     describe 'POST /users/', :dox do
       include ApiDoc::V1::Users::Create

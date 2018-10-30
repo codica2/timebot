@@ -39,6 +39,10 @@ module Api
         @user.destroy
       end
 
+      def delete_multiple
+        User.where(id: params[:user_ids]).destroy_all
+      end
+
       private
 
       def set_user

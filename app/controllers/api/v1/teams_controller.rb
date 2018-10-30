@@ -34,6 +34,10 @@ module Api
         @team.destroy
       end
 
+      def delete_multiple
+        Team.where(id: params[:team_ids]).destroy_all
+      end
+
       private
 
       def set_team

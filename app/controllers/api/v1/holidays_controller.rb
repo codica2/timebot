@@ -34,6 +34,10 @@ module Api
         @holiday.destroy
       end
 
+      def delete_multiple
+        Holiday.where(id: params[:holiday_ids]).destroy_all
+      end
+
       private
 
       def set_holiday

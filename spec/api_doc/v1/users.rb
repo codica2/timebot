@@ -26,6 +26,10 @@ module ApiDoc
         action 'Delete a user'
       end
 
+      document :destroy_multiple do
+        action 'Delete multiple users'
+      end
+
       document :update do
         action 'Update a user'
       end

@@ -45,6 +45,18 @@ RSpec.describe 'Absences API' do
         expect(Absence.find_by(id: absence.id)).to eq(nil)
       end
     end
+
+    describe 'DELETE /absences/delete_multiple', :dox do
+      include ApiDoc::V1::Absences::DestroyMultiple
+  
+      it 'Delete absences by ids', :dox do
+        params = { absence_ids: absences.pluck(:id) }
+        delete "/api/v1/absences/delete_multiple", headers: headers, params: params
+  
+        expect(response).to be_success
+        expect(Absence.count).to eq 0
+      end
+    end
   
     describe 'POST /absences/', :dox do
       include ApiDoc::V1::Absences::Create

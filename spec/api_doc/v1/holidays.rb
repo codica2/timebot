@@ -26,6 +26,10 @@ module ApiDoc
         action 'Delete a holiday'
       end
 
+      document :destroy_multiple do
+        action 'Delete multiple holidays'
+      end
+
       document :update do
         action 'Update a holiday'
       end

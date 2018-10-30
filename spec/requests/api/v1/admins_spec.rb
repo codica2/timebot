@@ -44,6 +44,18 @@ RSpec.describe 'Admins API' do
         expect(Admin.find_by(id: admin.id)).to eq(nil)
       end
     end
+
+    describe 'DELETE /admins/delete_multiple', :dox do
+      include ApiDoc::V1::Admins::DestroyMultiple
+  
+      it 'Delete admins by ids', :dox do
+        params = { admin_ids: admins.pluck(:id) }
+        delete "/api/v1/admins/delete_multiple", headers: headers, params: params
+  
+        expect(response).to be_success
+        expect(Admin.count).to eq 1
+      end
+    end
   
     describe 'POST /admins/', :dox do
       include ApiDoc::V1::Admins::Create

@@ -10,16 +10,30 @@ Rails.application.routes.draw do
       resources :projects, except: [:new, :edit] do
         collection do
           get :search
+          delete :delete_multiple
         end
       end
-      resources :time_entries, except: [:new, :edit]
       resources :users, except: [:new, :edit] do
-        get :search, on: :collection
+        collection do
+          get :search
+          delete :delete_multiple
+        end
       end
-      resources :teams, except: [:new, :edit]
-      resources :holidays, except: [:new, :edit]
-      resources :absences, except: [:new, :edit]
-      resources :admins, except: [:new, :edit]
+      resources :time_entries, except: [:new, :edit] do
+        delete :delete_multiple, on: :collection
+      end
+      resources :teams, except: [:new, :edit] do
+        delete :delete_multiple, on: :collection
+      end
+      resources :holidays, except: [:new, :edit] do
+        delete :delete_multiple, on: :collection
+      end
+      resources :absences, except: [:new, :edit] do
+        delete :delete_multiple, on: :collection
+      end
+      resources :admins, except: [:new, :edit] do
+        delete :delete_multiple, on: :collection
+      end
 
       scope :dashboard do
         get '/' => 'dashboard#index'

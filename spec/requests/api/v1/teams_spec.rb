@@ -44,6 +44,18 @@ RSpec.describe 'Teams API', type: :request do
         expect(Team.find_by(id: team.id)).to eq(nil)
       end
     end
+
+    describe 'DELETE /teams/delete_multiple', :dox do
+      include ApiDoc::V1::Teams::DestroyMultiple
+
+      it 'Delete teams by ids', :dox do
+        params = { team_ids: teams.pluck(:id) }
+        delete "/api/v1/teams/delete_multiple", headers: headers, params: params
+
+        expect(response).to be_success
+        expect(Team.count).to eq 0
+      end
+    end
   
     describe 'POST /teams/', :dox do
       include ApiDoc::V1::Teams::Create

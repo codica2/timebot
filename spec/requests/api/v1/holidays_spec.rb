@@ -44,6 +44,18 @@ RSpec.describe 'Holidays API' do
         expect(Holiday.find_by(id: holiday.id)).to eq(nil)
       end
     end
+
+    describe 'DELETE /holidays/delete_multiple', :dox do
+      include ApiDoc::V1::Holidays::DestroyMultiple
+  
+      it 'Delete holidays by ids', :dox do
+        params = { holiday_ids: holidays.pluck(:id) }
+        delete "/api/v1/holidays/delete_multiple", headers: headers, params: params
+  
+        expect(response).to be_success
+        expect(Holiday.count).to eq 0
+      end
+    end
   
     describe 'POST /holidays/', :dox do
       include ApiDoc::V1::Holidays::Create

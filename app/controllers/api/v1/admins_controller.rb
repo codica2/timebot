@@ -34,6 +34,10 @@ module Api
         @admin.destroy
       end
 
+      def delete_multiple
+        Admin.where(id: params[:admin_ids]).destroy_all
+      end
+
       private
 
       def set_admin

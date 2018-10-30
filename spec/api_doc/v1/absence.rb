@@ -26,6 +26,10 @@ module ApiDoc
         action 'Delete an absence'
       end
 
+      document :destroy_multiple do
+        action 'Delete multiple absences'
+      end
+
       document :update do
         action 'Update an absence'
       end

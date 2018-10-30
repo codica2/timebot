@@ -58,6 +58,18 @@ RSpec.describe 'Time Entries API', type: :request do
     end
   end
 
+  describe 'DELETE /time_entries/delete_multiple', :dox do
+    include ApiDoc::V1::TimeEntries::DestroyMultiple
+
+    it 'Delete time_entries by ids', :dox do
+      params = { time_entry_ids: time_entries.pluck(:id) }
+      delete "/api/v1/time_entries/delete_multiple", headers: headers, params: params
+
+      expect(response).to be_success
+      expect(TimeEntry.count).to eq 0
+    end
+  end
+
   describe 'POST /time_entries/', :dox do
     include ApiDoc::V1::TimeEntries::Create
 

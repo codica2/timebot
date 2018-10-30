@@ -36,6 +36,10 @@ module Api
         head :ok
       end
 
+      def delete_multiple
+        TimeEntry.where(id: params[:time_entry_ids]).destroy_all
+      end
+
       private
 
       def time_entry_params

@@ -26,6 +26,10 @@ module ApiDoc
         action 'Delete a time entry'
       end
 
+      document :destroy_multiple do
+        action 'Delete multiple time entries'
+      end
+
       document :update do
         action 'Update a time entry'
       end

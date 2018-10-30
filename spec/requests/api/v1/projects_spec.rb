@@ -54,6 +54,18 @@ RSpec.describe 'Projects API', type: :request do
     end
   end
 
+  describe 'DELETE /projects/delete_multiple', :dox do
+    include ApiDoc::V1::Projects::DestroyMultiple
+
+    it 'Delete projects by ids', :dox do
+      params = { project_ids: projects.pluck(:id) }
+      delete "/api/v1/projects/delete_multiple", headers: headers, params: params
+
+      expect(response).to be_success
+      expect(Project.count).to eq 1
+    end
+  end
+
   describe 'POST /projects/', :dox do
     include ApiDoc::V1::Projects::Create
 

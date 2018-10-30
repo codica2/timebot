@@ -40,6 +40,10 @@ module Api
         head :ok
       end
 
+      def delete_multiple
+        Project.where(id: params[:project_ids]).destroy_all
+      end
+
       private
 
       def project_params

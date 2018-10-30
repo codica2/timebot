@@ -26,6 +26,10 @@ module ApiDoc
         action 'Delete an admin'
       end
 
+      document :destroy_multiple do
+        action 'Delete multiple admins'
+      end
+
       document :update do
         action 'Update an admin'
       end

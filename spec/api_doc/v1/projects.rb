@@ -26,6 +26,10 @@ module ApiDoc
         action 'Delete a project'
       end
 
+      document :destroy_multiple do
+        action 'Delete multiple projects'
+      end
+
       document :update do
         action 'Update a project'
       end
