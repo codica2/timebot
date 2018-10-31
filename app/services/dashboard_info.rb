@@ -92,7 +92,7 @@ class DashboardInfo < BaseService
   end
 
   def hours_by_roles
-    @time_entries.group_by { |t| t.user.role }
+    @time_entries.group_by { |t| t.user.role&.humanize || 'other' }
                  .map do |role_entries|
       total = role_entries.last.map { |rt| rt.minutes / 60.0 }.sum.round(2)
       {
