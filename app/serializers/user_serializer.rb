@@ -11,4 +11,8 @@ class UserSerializer < ActiveModel::Serializer
     }
   end
 
+  def role
+    object.role.humanize
+  end
+
 end
