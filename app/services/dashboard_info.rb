@@ -51,7 +51,7 @@ class DashboardInfo < BaseService
   end
 
   def hours_worked
-    @time_entries.map { |p| p.minutes / 60.0 }.sum
+    @time_entries.map { |p| p.minutes / 60.0 }.sum.round(2)
   end
 
   def hours_to_work
@@ -84,7 +84,7 @@ class DashboardInfo < BaseService
         data: users.map do |user|
           minutes = project_entries.last.select { |t| t.user_id == user.id }
                                    .pluck(:minutes).sum
-          minutes.zero? ? 0 : (minutes / 60.0).round
+          minutes.zero? ? 0 : (minutes / 60.0).round(2)
         end
       }
     end
@@ -105,7 +105,7 @@ class DashboardInfo < BaseService
 
   def hours_by_projects
     @time_entries.group_by(&:project).map do |project_entries|
-      total = project_entries.last.map { |p| p.minutes / 60.0 }.sum.round(1)
+      total = project_entries.last.map { |p| p.minutes / 60.0 }.sum.round(2)
       {
         name: project_entries.first.name,
         y: total,
