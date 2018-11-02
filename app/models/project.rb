@@ -13,8 +13,9 @@ class Project < ApplicationRecord
 
   before_validation :generate_alias
 
-  scope :by_name, ->(term) { where('lower(name) LIKE ?', "%#{term.downcase}%") }
-  scope :by_alias, ->(term) { where('lower(alias) LIKE ?', "%#{term.downcase}%") }
+  scope :by_name, ->(term) { where('lower(name) LIKE ?', "#{term.downcase}%") }
+  scope :by_alias, ->(term) { where('lower(alias) LIKE ?', "#{term.downcase}%") }
+  scope :by_entries_number, -> { joins(:time_entries).group(:id).order("COUNT(time_entries.id) DESC") }
 
   def to_s
     string = "#{id}. *#{name}*"

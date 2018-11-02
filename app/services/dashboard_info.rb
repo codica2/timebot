@@ -77,7 +77,7 @@ class DashboardInfo < BaseService
   end
 
   def bar_chart
-    users = User.active
+    users = User.active.order(:name)
     data = @time_entries.group_by(&:project).map do |project_entries|
       {
         name: project_entries.first.name,

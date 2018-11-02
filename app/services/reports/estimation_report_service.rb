@@ -7,6 +7,7 @@ module Reports
     def initialize(options)
       @filters = options[:filters] || {}
       @pagination = options[:pagination] || {}
+      @time_entries = grouped_entities_by_ticket
     end
 
     def call
@@ -15,14 +16,14 @@ module Reports
 
     private
 
-    attr_reader :filters, :pagination
+    attr_reader :filters, :pagination, :time_entries
 
     def data
       { data: entities, meta: meta }
     end
 
     def entities
-      grouped_entities_by_ticket.reduce([]) do |acum, (ticket, entries)|
+      time_entries.reduce([]) do |acum, (ticket, entries)|
         acum << {
           projects: entries.map { |t| { id: t.project.id, name: t.project.name } }.uniq,
           details: ticket,
@@ -41,10 +42,11 @@ module Reports
                .filter(filters)
                .paginate(pagination)
                .group_by { |t| t.ticket || t.details&.downcase }
+               .each { |_k, v| v.sort! { |a, b| a.created_at <=> b.created_at } }
     end
 
     def meta
-      { total_count: TimeEntry.count }
+      { total_count: time_entries.count }
     end
 
     def filtering_params
