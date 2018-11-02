@@ -34,12 +34,12 @@ class DashboardInfo < BaseService
   end
 
   def absent
-    absent = Absence.includes(:user).filter(filters).group_by(&:date)
-    result = absent.map do |key, value|
+    absent = Absence.includes(:user).filter(filters).group_by(&:user)
+    result = absent.map do |user, absences|
       {
-        date: key,
-        children: value.map do |abs|
-          { name: abs.user.name, reason: abs.reason, comment: abs.reason }
+        user: user.name,
+        children: absences.map do |abs|
+          { date: abs.date, reason: abs.reason, comment: abs.comment }
         end
       }
     end
