@@ -13,7 +13,7 @@ module Filterable
     end
 
     def search(filtering_params)
-      { data: filter(filtering_params).limit(10).map { |u| { id: u.id, name: u.name } } }
+      { data: select(:id, :name).filter(filtering_params).limit(10) }
     end
   end
 end

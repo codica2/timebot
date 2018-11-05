@@ -11,7 +11,7 @@ module Api
       end
 
       def search
-        render json: User.search(filtering_params)
+        render json: User.active.search(filtering_params)
       end
 
       def show

@@ -97,7 +97,7 @@ RSpec.describe 'Projects API', type: :request do
     it 'should search projects by name', :dox do
       params = { by_name: 'aFric' }
       get '/api/v1/projects/search', params: params, headers: headers
-
+      
       expect(json['data'].first['name']).to eq 'Africar'
     end
   end

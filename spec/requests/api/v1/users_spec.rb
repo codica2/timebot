@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Users API' do
   include ApiDoc::V1::Users::Api
 
-  let!(:users) { create_list(:user, 5) }
-  let!(:user) { create :user, name: 'Valentin' }
+  let!(:users) { create_list :user, 5, :active }
+  let!(:user) { create :user, :active, name: 'Valentin' }
 
   let(:valid_params) { { user: attributes_for(:user) } }
 
@@ -41,7 +41,7 @@ RSpec.describe 'Users API' do
     it 'should search users by name', :dox do
       params = { by_name: 'Alen' }
       get '/api/v1/users/search', params: params, headers: headers
-      
+
       expect(json['data'].first['name']).to eq 'Valentin'
     end
   end
