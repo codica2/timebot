@@ -7,7 +7,7 @@ class Project < ApplicationRecord
   include Filterable
 
   has_many :time_entries, dependent: :nullify
-  belongs_to :team
+  belongs_to :team, optional: true
 
   validates :name, :alias, uniqueness: { case_sensitive: false }
 

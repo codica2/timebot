@@ -4,6 +4,8 @@ module Reports
   class UserAbsenceService < BaseService
     def initialize(filters)
       @filters = filters[:filters] || {}
+      @start_date = @filters[:date_from]&.to_date || Time.zone.today.beginning_of_week
+      @end_date   = @filters[:date_to]&.to_date || Time.zone.today.end_of_week
     end
 
     def call
@@ -19,7 +21,11 @@ module Reports
     end
 
     def users
-      Absence.select(sql_for_select).joins(:user).filter(filters).group('users.id')
+      Absence.between_dates(@start_date, @end_date)
+             .select(sql_for_select)
+             .joins(:user)
+             .filter(filters)
+             .group('users.id')
     end
 
     def sql_for_select

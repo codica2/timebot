@@ -5,7 +5,7 @@ module Reports
     def initialize(filters)
       @filters = filters[:filters] || {}
       @start_date = @filters[:date_from]&.to_date || Time.zone.today.beginning_of_week
-      @end_date   = @filters[:date_to]&.to_date || Time.zone.today
+      @end_date   = @filters[:date_to]&.to_date || Time.zone.today.end_of_week
     end
 
     def call

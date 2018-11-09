@@ -4,6 +4,8 @@ module Reports
   class UserWorkedTimeService < BaseService
     def initialize(filters)
       @filters = filters[:filters] || {}
+      @start_date = @filters[:date_from]&.to_date || Time.zone.today.beginning_of_week
+      @end_date   = @filters[:date_to]&.to_date || Time.zone.today.end_of_week
     end
 
     def call
@@ -19,7 +21,7 @@ module Reports
     end
 
     def users
-      TimeEntry.includes(:project, :user).filter(filters).group_by(&:user).map do |user, user_entries|
+      TimeEntry.in_interval(@start_date, @end_date).includes(:project, :user).filter(filters).group_by(&:user).map do |user, user_entries|
         {
           id: user.id,
           name: user.name,
