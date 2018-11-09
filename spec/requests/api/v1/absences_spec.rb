@@ -62,13 +62,15 @@ RSpec.describe 'Absences API' do
       include ApiDoc::V1::Absences::Create
       
       it 'Create absence', :dox do
-        users_number = absences.count
-        post('/api/v1/absences/', params: valid_params, headers: headers)
+        abs_number = absences.count
+        abs = { absences: [valid_params, valid_params] }
 
+        post('/api/v1/absences/', params: abs, headers: headers)
         expect(response).to be_success
         expect(json).to have_key('data')
-        expect(users_number).to be < Absence.count
+        expect(abs_number).to be < Absence.count
       end
+
     end
   
     describe 'PUT /absences/:id', :dox do
@@ -88,9 +90,10 @@ RSpec.describe 'Absences API' do
   context 'with invalid params' do
     describe 'POST /absences/' do
       it 'Create absence' do
-        post('/api/v1/absences/', params: invalid_params, headers: headers)
+        post('/api/v1/absences/', params: { absences: [invalid_params] }, headers: headers)
+
         expect(response).to have_http_status :unprocessable_entity
-        expect(json['comment'].first).to eq 'must not be nil'
+        expect(json.first['comment'].first).to eq 'must not be nil'
       end
     end
   end

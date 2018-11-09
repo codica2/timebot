@@ -14,7 +14,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDA5MjIwNTJ9.OqZPLlNUHWmiP3BfgtlQgwSqT9EU7KEjxwRonM4BOi4
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDIwMjQxODh9.nzjEFaVd6f0IDYe3tXOe5uCcAxjL-z6C8HEIhNlvsHg
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -31,8 +31,8 @@
                   "id": "5",
                   "type": "absences",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "comment": "Go home and drink, grandpa.",
+                    "date": "2018-11-12",
+                    "comment": "Oh Summer, haha first race war, huh?",
                     "reason": "other"
                   },
                   "relationships": {
@@ -48,8 +48,8 @@
                   "id": "4",
                   "type": "absences",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "comment": "This sounds like something The One True Morty might say.",
+                    "date": "2018-11-12",
+                    "comment": "Meeseeks are not born into this world fumbling for meaning, Jerry! We are created to serve a single purpose, for which we go to any lengths to fulfill.",
                     "reason": "other"
                   },
                   "relationships": {
@@ -65,8 +65,8 @@
                   "id": "3",
                   "type": "absences",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "comment": "Having a family doesn't mean that you stop being an individual.",
+                    "date": "2018-11-12",
+                    "comment": "Ohh yea, you gotta get schwifty.",
                     "reason": "other"
                   },
                   "relationships": {
@@ -82,8 +82,8 @@
                   "id": "2",
                   "type": "absences",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "comment": "It's a figure of speech, Morty! They're bureaucrats! I don't respect them. Just keep shooting, Morty! You have no idea what prison is like here!",
+                    "date": "2018-11-12",
+                    "comment": "Where are my testicles, Summer?",
                     "reason": "other"
                   },
                   "relationships": {
@@ -99,8 +99,8 @@
                   "id": "1",
                   "type": "absences",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "comment": "I'm more than just a hammer.",
+                    "date": "2018-11-12",
+                    "comment": "Listen, I'm not the nicest guy in the universe, because I'm the smartest, and being nice is something stupid people do to hedge their bets.",
                     "reason": "other"
                   },
                   "relationships": {
@@ -119,10 +119,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_6",
-                    "uid": "86AgB7H2CuE4Ji2z",
+                    "uid": "ZgCnGzM5R1By0",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -141,10 +141,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_5",
-                    "uid": "PvT5Eb6yI50",
+                    "uid": "0hRhGc5uZb9t24",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -163,10 +163,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_4",
-                    "uid": "Q5ErI0K1JiGs",
+                    "uid": "3x4iYwPb1",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -185,10 +185,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_3",
-                    "uid": "VaVk6wH9PoTjAl",
+                    "uid": "EvCyJpK57",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -207,10 +207,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_2",
-                    "uid": "OuQiFvVoG",
+                    "uid": "87FsVmI3",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -240,7 +240,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE1NDA5MjIwNTJ9.j8WKOfHVBv6aWLMO6KWI0RkG0_YNQs4DaoJNngVei-U
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE1NDIwMjQxODh9.m9_WZWgHCzyB0WiVJdO4eQr5zwwWQ-JzIuK7tN9UoTo
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -256,8 +256,8 @@
                 "id": "6",
                 "type": "absences",
                 "attributes": {
-                  "date": "2018-10-30",
-                  "comment": "Having a family doesn't mean that you stop being an individual.",
+                  "date": "2018-11-12",
+                  "comment": "Sometimes science is a lot more art, than science. A lot of people don't get that.",
                   "reason": "other"
                 },
                 "relationships": {
@@ -274,14 +274,14 @@
 ### Delete an absence [DELETE /api/v1/absences/{id}]
 
 + Parameters
-    + id: `12` (number, required)
+    + id: `15` (number, required)
 
 + Request Delete absence by id
-**DELETE**&nbsp;&nbsp;`/api/v1/absences/12`
+**DELETE**&nbsp;&nbsp;`/api/v1/absences/15`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE1NDA5MjIwNTJ9.fTMr5lGx9GJsDnSTZp8rUBg_m7vQvKpdCM2RjURYhNU
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE1NDIwMjQxODh9.ypDF9YP3n2rKhvR9kp1umZQgEZ1ugo8YUZ1fNo1Wsx8
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -295,7 +295,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE1NDA5MjIwNTJ9.7f2JIg6Gp5n4rLHgubHRuS-D-6THyvY8ZjpyCcFQswE
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE1NDIwMjQxODh9.QfsAXhUN9AsLtTuVMgOz2iVQOvL8j6PNcG2wkgb8ONs
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -313,13 +313,13 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1NDA5MjIwNTJ9.TQBt2-VkWEAnn0pSsrRxYvqbzEJdg4rAK6H3XR8TRj8
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1LCJleHAiOjE1NDIwMjQxODh9.6GtsVSIBBDDwSh2_Pa1cB_OKnSfojCMN0fxiFTCuDCE
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            absence[reason]=other&absence[date]=2018-10-30+15%3A54%3A12+UTC&absence[comment]=Oh+Summer%2C+haha+first+race+war%2C+huh%3F&absence[user_id]=25
+            absences[][absence][reason]=other&absences[][absence][date]=2018-11-12+10%3A03%3A08+UTC&absences[][absence][comment]=You%27re+like+Hitler%2C+except...Hitler+cared+about+Germany%2C+or+something.&absences[][absence][user_id]=25&absences[][absence][reason]=other&absences[][absence][date]=2018-11-12+10%3A03%3A08+UTC&absences[][absence][comment]=You%27re+like+Hitler%2C+except...Hitler+cared+about+Germany%2C+or+something.&absences[][absence][user_id]=25
 
 + Response 201
 
@@ -330,33 +330,52 @@
     + Body
 
             {
-              "data": {
-                "id": "26",
-                "type": "absences",
-                "attributes": {
-                  "date": "2018-10-30",
-                  "comment": "Oh Summer, haha first race war, huh?",
-                  "reason": "other"
+              "data": [
+                {
+                  "id": "26",
+                  "type": "absences",
+                  "attributes": {
+                    "date": "2018-11-12",
+                    "comment": "You're like Hitler, except...Hitler cared about Germany, or something.",
+                    "reason": "other"
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "25",
+                        "type": "users"
+                      }
+                    }
+                  }
                 },
-                "relationships": {
-                  "user": {
-                    "data": {
-                      "id": "25",
-                      "type": "users"
+                {
+                  "id": "27",
+                  "type": "absences",
+                  "attributes": {
+                    "date": "2018-11-12",
+                    "comment": "You're like Hitler, except...Hitler cared about Germany, or something.",
+                    "reason": "other"
+                  },
+                  "relationships": {
+                    "user": {
+                      "data": {
+                        "id": "25",
+                        "type": "users"
+                      }
                     }
                   }
                 }
-              },
+              ],
               "included": [
                 {
                   "id": "25",
                   "type": "users",
                   "attributes": {
                     "name": "User_25",
-                    "uid": "PyEmE7L38rWrZ",
+                    "uid": "KmHhCdZh8d",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -383,7 +402,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1NDA5MjIwNTJ9.rjeTzgt34a4k9ztwIlyN1hIHQzX5RW-Rpk0P7FqIq5U
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE1NDIwMjQxODh9.VsKyZ4RQMa8cbbEhXz5I9UHPF4RI63yDMtQYFLw4uQk
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -404,14 +423,14 @@
                 "id": "29",
                 "type": "absences",
                 "attributes": {
-                  "date": "2018-10-30",
+                  "date": "2018-11-12",
                   "comment": "Comment",
                   "reason": "other"
                 },
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "34",
+                      "id": "33",
                       "type": "users"
                     }
                   }
@@ -419,14 +438,14 @@
               },
               "included": [
                 {
-                  "id": "34",
+                  "id": "33",
                   "type": "users",
                   "attributes": {
-                    "name": "User_34",
-                    "uid": "FrF2HrKfAfQv7uS",
+                    "name": "User_33",
+                    "uid": "ZaZkTfPyQw",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -434,7 +453,7 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "34",
+                        "id": "33",
                         "type": "teams"
                       }
                     }
@@ -457,7 +476,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMiwiZXhwIjoxNTQwOTIyMDUyfQ.R7U1SMYVrENyKGfpHE_amEOr1hYzDcRw69XNaygBqCw
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMiwiZXhwIjoxNTQyMDI0MTg4fQ.eIGVpbfpqVN71qM609JE3je9iW_2Xn5oGLc_IzIYrn0
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -474,42 +493,42 @@
                   "id": "7",
                   "type": "admins",
                   "attributes": {
-                    "email": "marisa@binsmacgyver.co"
+                    "email": "georgiana@cruickshank.org"
                   }
                 },
                 {
                   "id": "8",
                   "type": "admins",
                   "attributes": {
-                    "email": "arnettedurgan@von.info"
+                    "email": "eugeniokertzmann@metz.co"
                   }
                 },
                 {
                   "id": "9",
                   "type": "admins",
                   "attributes": {
-                    "email": "boyd@kuhnpouros.co"
+                    "email": "orphajohnson@pfeffer.io"
                   }
                 },
                 {
                   "id": "10",
                   "type": "admins",
                   "attributes": {
-                    "email": "kenny@jerde.name"
+                    "email": "arturo@blockrempel.co"
                   }
                 },
                 {
                   "id": "11",
                   "type": "admins",
                   "attributes": {
-                    "email": "judsonveum@cummerata.net"
+                    "email": "scottiewalker@stiedemann.io"
                   }
                 },
                 {
                   "id": "12",
                   "type": "admins",
                   "attributes": {
-                    "email": "lesleylynch@cremin.co"
+                    "email": "elfrieda@bergstrom.org"
                   }
                 }
               ]
@@ -518,14 +537,14 @@
 ### Get an admin [GET /api/v1/admins/{id}]
 
 + Parameters
-    + id: `14` (number, required)
+    + id: `13` (number, required)
 
 + Request Show admin by id
-**GET**&nbsp;&nbsp;`/api/v1/admins/14`
+**GET**&nbsp;&nbsp;`/api/v1/admins/13`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOCwiZXhwIjoxNTQwOTIyMDUyfQ.V_KIr1_EHLOf3NGf4d88FTnw5S-cN49qM2zGZstmCGc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOCwiZXhwIjoxNTQyMDI0MTg4fQ.WKpfLBHqjC9AQscx2l8qdwaRHWNMTMVzi71hjfR8pw0
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -538,10 +557,10 @@
 
             {
               "data": {
-                "id": "14",
+                "id": "13",
                 "type": "admins",
                 "attributes": {
-                  "email": "lillywuckert@cronin.org"
+                  "email": "brenton@skiles.com"
                 }
               }
             }
@@ -549,14 +568,14 @@
 ### Delete an admin [DELETE /api/v1/admins/{id}]
 
 + Parameters
-    + id: `19` (number, required)
+    + id: `21` (number, required)
 
 + Request Delete admin by id
-**DELETE**&nbsp;&nbsp;`/api/v1/admins/19`
+**DELETE**&nbsp;&nbsp;`/api/v1/admins/21`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNCwiZXhwIjoxNTQwOTIyMDUyfQ.YIv0vWXlYdtmBZjULl4QK6UGvpabXD016aQcuBJfgk0
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNCwiZXhwIjoxNTQyMDI0MTg4fQ.pfOoj4oCwbJyH6YBg3BFEis5QHVLW6q5uDNxj6ZcsiE
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -570,7 +589,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMCwiZXhwIjoxNTQwOTIyMDUzfQ.2XAn_o5HrgA5QHgpckcDvnVP1zYteZGHIIw3a-70LXE
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMCwiZXhwIjoxNTQyMDI0MTg4fQ.8dmvmjkJTJHwtDytI6X8r7nR7QfTI4tFqnmWWursaZU
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -588,13 +607,13 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNiwiZXhwIjoxNTQwOTIyMDUzfQ.aYifdy2bzWB8y02QUWZETFj-cSf9WKKzyqF7ZfTV1gU
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozNiwiZXhwIjoxNTQyMDI0MTg4fQ.WGHWVtHOhxP2WC2o61jmJ1-BqvbZUOfWX5ei0J_XNFg
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            admin[email]=renato%40zemlakwelch.com&admin[password]=KdRw84GmE4Qq
+            admin[email]=zacherykoelpin%40nikolaumitham.com&admin[password]=FeH8TbOg1v
 
 + Response 201
 
@@ -609,7 +628,7 @@
                 "id": "37",
                 "type": "admins",
                 "attributes": {
-                  "email": "renato@zemlakwelch.com"
+                  "email": "zacherykoelpin@nikolaumitham.com"
                 }
               }
             }
@@ -617,14 +636,14 @@
 ### Update an admin [PUT /api/v1/admins/{id}]
 
 + Parameters
-    + id: `40` (number, required)
+    + id: `41` (number, required)
 
 + Request Update admin
-**PUT**&nbsp;&nbsp;`/api/v1/admins/40`
+**PUT**&nbsp;&nbsp;`/api/v1/admins/41`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MywiZXhwIjoxNTQwOTIyMDUzfQ.U943fzPtu_DLHcFkdTRsMVtVHmLRe3cXa-PNiBeHDI4
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0MywiZXhwIjoxNTQyMDI0MTg5fQ.hsNK9La4QrOwyb_9R4DRYimYS4Ka4cpXNk1UB_21TLw
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -642,7 +661,7 @@
 
             {
               "data": {
-                "id": "40",
+                "id": "41",
                 "type": "admins",
                 "attributes": {
                   "email": "email@mail.com"
@@ -664,7 +683,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0NCwiZXhwIjoxNTQwOTIyMDUzfQ.DxEpDJpXPI2c4a8FzfbLn7KBvph8OZRUP69W-LEfQiU
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0NCwiZXhwIjoxNTQyMDI0MTg5fQ.A53btoDkchI7y7NcZujkGZMniZ96uB3dnoWZ0nAj4Ak
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -676,10 +695,10 @@
     + Body
 
             {
-              "start_of_week": "2018-10-30",
-              "end_of_week": "2018-10-30",
+              "start_of_week": "2018-11-12",
+              "end_of_week": "2018-11-12",
               "hours_to_work": -8,
-              "hours_worked": 0,
+              "hours_worked": 0.0,
               "holidays": [
             
               ],
@@ -721,7 +740,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0NSwiZXhwIjoxNTQwOTIyMDUzfQ.dsmjeYCfHN4UOuO4xHKczWsjxKL5ZixEB2bfi6d7SkU
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0NSwiZXhwIjoxNTQyMDI0MTg5fQ.Q-ov4GVOZ2rckJaXoVRNGvxpxSyuggjwir-gXmcHUwk
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -741,12 +760,12 @@
                       "name": "Project_5"
                     }
                   ],
-                  "details": "well then get your shit together. get it all together and put it in a backpack, all your shit, so it's together. ...and if you gotta take it somewhere, take it somewhere ya know? take it to the shit store and sell it, or put it in a shit museum. i don't care what you do, you just gotta get it together... get your shit together.",
-                  "created_at": "30 Oct, 2018 at 15:54",
+                  "details": "little tip, morty. never clean dna vials with your spit.",
+                  "created_at": "12 Nov, 2018 at 10:03",
                   "trello_labels": null,
                   "estimate": null,
                   "status": null,
-                  "total_time": 17.9,
+                  "total_time": 12.1,
                   "collaborators": [
                     {
                       "id": 41,
@@ -761,12 +780,12 @@
                       "name": "Project_4"
                     }
                   ],
-                  "details": "i want that mulan mcnugget sauce, morty!",
-                  "created_at": "30 Oct, 2018 at 15:54",
+                  "details": "i like what you got.",
+                  "created_at": "12 Nov, 2018 at 10:03",
                   "trello_labels": null,
                   "estimate": null,
                   "status": null,
-                  "total_time": 17.9,
+                  "total_time": 12.1,
                   "collaborators": [
                     {
                       "id": 40,
@@ -781,12 +800,12 @@
                       "name": "Project_3"
                     }
                   ],
-                  "details": "i hate to break it to you, but what people call 'love' is just a chemical reaction that compels animals to breed. it hits hard morty then it slowly fades leaving you stranded in a failing marriage. i did it. your parents are going to do it. break the cycle morty, rise above, focus on science.",
-                  "created_at": "30 Oct, 2018 at 15:54",
+                  "details": "oh summer, haha first race war, huh?",
+                  "created_at": "12 Nov, 2018 at 10:03",
                   "trello_labels": null,
                   "estimate": null,
                   "status": null,
-                  "total_time": 17.9,
+                  "total_time": 12.1,
                   "collaborators": [
                     {
                       "id": 39,
@@ -801,12 +820,12 @@
                       "name": "Project_2"
                     }
                   ],
-                  "details": "hi! i'm mr meeseeks! look at me!",
-                  "created_at": "30 Oct, 2018 at 15:54",
+                  "details": "listen, i'm not the nicest guy in the universe, because i'm the smartest, and being nice is something stupid people do to hedge their bets.",
+                  "created_at": "12 Nov, 2018 at 10:03",
                   "trello_labels": null,
                   "estimate": null,
                   "status": null,
-                  "total_time": 17.9,
+                  "total_time": 12.1,
                   "collaborators": [
                     {
                       "id": 38,
@@ -821,12 +840,12 @@
                       "name": "Project_1"
                     }
                   ],
-                  "details": "i'm more than just a hammer.",
-                  "created_at": "30 Oct, 2018 at 15:54",
+                  "details": "weddings are basically funerals with cake.",
+                  "created_at": "12 Nov, 2018 at 10:03",
                   "trello_labels": null,
                   "estimate": null,
                   "status": null,
-                  "total_time": 17.9,
+                  "total_time": 12.1,
                   "collaborators": [
                     {
                       "id": 37,
@@ -854,7 +873,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0NiwiZXhwIjoxNTQwOTIyMDUzfQ.pkmREgfu_SDMdfA008UXOzeaxHeT9WmdtN38VtgSUm0
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0NiwiZXhwIjoxNTQyMDI0MTg5fQ.WbusgOFd1b5npnN353kkXfS62HGAkI9zGXTmP_JwEXw
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -871,40 +890,40 @@
                   "id": "1",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Gazorpazorpfield",
-                    "date": "2018-10-31"
+                    "name": "Stealy",
+                    "date": "2018-11-13"
                   }
                 },
                 {
                   "id": "2",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Beth Smith",
-                    "date": "2018-11-01"
+                    "name": "Summer Smith",
+                    "date": "2018-11-14"
                   }
                 },
                 {
                   "id": "3",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Morty Smith",
-                    "date": "2018-11-02"
+                    "name": "Revolio 'Gearhead' Clockberg, Jr.",
+                    "date": "2018-11-15"
                   }
                 },
                 {
                   "id": "4",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Dr. Glip-Glop",
-                    "date": "2018-11-03"
+                    "name": "Mr. Meeseeks",
+                    "date": "2018-11-16"
                   }
                 },
                 {
                   "id": "5",
                   "type": "holidays",
                   "attributes": {
-                    "name": "Scary Terry",
-                    "date": "2018-11-04"
+                    "name": "Morty Jr.",
+                    "date": "2018-11-17"
                   }
                 }
               ]
@@ -913,14 +932,14 @@
 ### Get a holiday [GET /api/v1/holidays/{id}]
 
 + Parameters
-    + id: `7` (number, required)
+    + id: `10` (number, required)
 
 + Request Show holiday by id
-**GET**&nbsp;&nbsp;`/api/v1/holidays/7`
+**GET**&nbsp;&nbsp;`/api/v1/holidays/10`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0NywiZXhwIjoxNTQwOTIyMDUzfQ.Ckg8yKXGvv-wXRtFS6XJMqISdtjWPSk1F4boPmlnLb4
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0NywiZXhwIjoxNTQyMDI0MTg5fQ.rmrPu3Bl0TXZkwEelNM7KvBCvfwBvcJY0i_GrOA_afE
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -933,11 +952,11 @@
 
             {
               "data": {
-                "id": "7",
+                "id": "10",
                 "type": "holidays",
                 "attributes": {
-                  "name": "Mr. Goldenfold",
-                  "date": "2018-11-06"
+                  "name": "Fart",
+                  "date": "2018-11-22"
                 }
               }
             }
@@ -945,14 +964,14 @@
 ### Delete a holiday [DELETE /api/v1/holidays/{id}]
 
 + Parameters
-    + id: `12` (number, required)
+    + id: `13` (number, required)
 
 + Request Delete holiday by id
-**DELETE**&nbsp;&nbsp;`/api/v1/holidays/12`
+**DELETE**&nbsp;&nbsp;`/api/v1/holidays/13`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0OCwiZXhwIjoxNTQwOTIyMDUzfQ.z_DWaoayauzcuxudeRbWImnAEMVq4PPxIJnZ1jWpDdg
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0OCwiZXhwIjoxNTQyMDI0MTg5fQ.FrO4yZJIZYOAizAqwIO3hZh8yLZCU0nwdJWVSdZamFc
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -966,7 +985,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0OSwiZXhwIjoxNTQwOTIyMDUzfQ.sLcEIMPnWbwoKMkRvBoizqklwfn6a06OMmcvIBp0JCM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0OSwiZXhwIjoxNTQyMDI0MTg5fQ.vtX7_DCqrdQ7_I5PidLuHvMuwkNgECLrJX39gZN1BgM
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -984,13 +1003,13 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MCwiZXhwIjoxNTQwOTIyMDUzfQ.XeFxy0lQC5B8rtV53grQWlk38G4r3G5nFDd5QM8os5Y
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MCwiZXhwIjoxNTQyMDI0MTg5fQ.269lUUVAeC6PMKxMmofuthj-ITEJ6QwARLlu1IZYi6k
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            holiday[name]=Krombopulos+Michael&holiday[date]=2018-11-25
+            holiday[name]=Krombopulos+Michael&holiday[date]=2018-12-08
 
 + Response 201
 
@@ -1006,7 +1025,7 @@
                 "type": "holidays",
                 "attributes": {
                   "name": "Krombopulos Michael",
-                  "date": "2018-11-25"
+                  "date": "2018-12-08"
                 }
               }
             }
@@ -1014,20 +1033,20 @@
 ### Update a holiday [PUT /api/v1/holidays/{id}]
 
 + Parameters
-    + id: `31` (number, required)
+    + id: `29` (number, required)
 
 + Request Update holiday
-**PUT**&nbsp;&nbsp;`/api/v1/holidays/31`
+**PUT**&nbsp;&nbsp;`/api/v1/holidays/29`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MSwiZXhwIjoxNTQwOTIyMDUzfQ.awizv5Pn8X0HRLOLBI2olwaggAt8LOOQGEJVCnsQWDQ
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MSwiZXhwIjoxNTQyMDI0MTg5fQ.RXKluk6cgNbKI3N1CQZx1sfERVd58Fjxm9q_bOzPpSs
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            holiday[name]=SNOWBALL
+            holiday[name]=GAZORPAZORPFIELD
 
 + Response 200
 
@@ -1039,11 +1058,11 @@
 
             {
               "data": {
-                "id": "31",
+                "id": "29",
                 "type": "holidays",
                 "attributes": {
-                  "name": "SNOWBALL",
-                  "date": "2018-11-30"
+                  "name": "GAZORPAZORPFIELD",
+                  "date": "2018-12-11"
                 }
               }
             }
@@ -1062,7 +1081,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MiwiZXhwIjoxNTQwOTIyMDUzfQ.LcnYF-Usqo5hEUWNuruDoSbNuKncXmIgzMBCxaAK5dE
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MiwiZXhwIjoxNTQyMDI0MTg5fQ.0xcsY-ULgDOJZxrJvP1lCR46CeZ1PbPObkO8wUot7xc
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -1561,8 +1580,8 @@
                   "id": "82",
                   "type": "teams",
                   "attributes": {
-                    "name": "Shrimply Pibbles",
-                    "description": "Oh yeah, If you think my Rick is Dead, then he is alive. If you think you're safe, then he's coming for you."
+                    "name": "Mr. Needful",
+                    "description": "I like what you got."
                   },
                   "relationships": {
                     "projects": {
@@ -1584,8 +1603,8 @@
                   "id": "81",
                   "type": "teams",
                   "attributes": {
-                    "name": "Loggins",
-                    "description": "Where are my testicles, Summer?"
+                    "name": "Fart",
+                    "description": "Aww, gee, you got me there Rick."
                   },
                   "relationships": {
                     "projects": {
@@ -1607,8 +1626,8 @@
                   "id": "80",
                   "type": "teams",
                   "attributes": {
-                    "name": "Morty Jr.",
-                    "description": "What is my purpose. You pass butter. Oh My God. Yeah, Welcome to the club pal."
+                    "name": "Jan Michael Vincent",
+                    "description": "I like what you got."
                   },
                   "relationships": {
                     "projects": {
@@ -1630,8 +1649,8 @@
                   "id": "79",
                   "type": "teams",
                   "attributes": {
-                    "name": "Summer Smith",
-                    "description": "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing."
+                    "name": "Revolio 'Gearhead' Clockberg, Jr.",
+                    "description": "Oh yeah, If you think my Rick is Dead, then he is alive. If you think you're safe, then he's coming for you."
                   },
                   "relationships": {
                     "projects": {
@@ -1653,8 +1672,8 @@
                   "id": "78",
                   "type": "teams",
                   "attributes": {
-                    "name": "Fart",
-                    "description": "Aww, gee, you got me there Rick."
+                    "name": "Jan Michael Vincent",
+                    "description": "Having a family doesn't mean that you stop being an individual."
                   },
                   "relationships": {
                     "projects": {
@@ -1676,8 +1695,8 @@
                   "id": "77",
                   "type": "teams",
                   "attributes": {
-                    "name": "Shrimply Pibbles",
-                    "description": "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing."
+                    "name": "Lighthouse Chief",
+                    "description": "This sounds like something The One True Morty might say."
                   },
                   "relationships": {
                     "projects": {
@@ -1699,8 +1718,8 @@
                   "id": "76",
                   "type": "teams",
                   "attributes": {
-                    "name": "Jerry's Mytholog",
-                    "description": "Can somebody just let me out of here? If I die in a cage I lose a bet."
+                    "name": "Unity",
+                    "description": "Weddings are basically funerals with cake."
                   },
                   "relationships": {
                     "projects": {
@@ -1722,8 +1741,8 @@
                   "id": "75",
                   "type": "teams",
                   "attributes": {
-                    "name": "Snuffles",
-                    "description": "That just sounds like slavery with extra steps."
+                    "name": "Beth's Mytholog",
+                    "description": "Weddings are basically funerals with cake."
                   },
                   "relationships": {
                     "projects": {
@@ -1745,8 +1764,8 @@
                   "id": "74",
                   "type": "teams",
                   "attributes": {
-                    "name": "Morty Smith",
-                    "description": "This sounds like something The One True Morty might say."
+                    "name": "Birdperson",
+                    "description": "I don't get it and I don't need to."
                   },
                   "relationships": {
                     "projects": {
@@ -1768,8 +1787,8 @@
                   "id": "73",
                   "type": "teams",
                   "attributes": {
-                    "name": "Arthricia",
-                    "description": "Meeseeks are not born into this world fumbling for meaning, Jerry! We are created to serve a single purpose, for which we go to any lengths to fulfill."
+                    "name": "Squanchy",
+                    "description": "Oh Summer, haha first race war, huh?"
                   },
                   "relationships": {
                     "projects": {
@@ -1791,8 +1810,8 @@
                   "id": "72",
                   "type": "teams",
                   "attributes": {
-                    "name": "Squanchy",
-                    "description": "It's fine, everything is fine. Theres an infinite number of realities Morty and in a few dozen of those I got lucky and turned everything back to normal."
+                    "name": "Evil Morty",
+                    "description": "It's a figure of speech, Morty! They're bureaucrats! I don't respect them. Just keep shooting, Morty! You have no idea what prison is like here!"
                   },
                   "relationships": {
                     "projects": {
@@ -1814,8 +1833,8 @@
                   "id": "71",
                   "type": "teams",
                   "attributes": {
-                    "name": "Mr. Goldenfold",
-                    "description": "The first rule of space travel kids is always check out distress beacons. Nine out of ten times it's a ship full of dead aliens and a bunch of free shit! One out of ten times it's a deadly trap, but... I'm ready to roll those dice!"
+                    "name": "Stealy",
+                    "description": "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing."
                   },
                   "relationships": {
                     "projects": {
@@ -1837,8 +1856,8 @@
                   "id": "70",
                   "type": "teams",
                   "attributes": {
-                    "name": "Arthricia",
-                    "description": "Don’t even trip dawg."
+                    "name": "Mr. Goldenfold",
+                    "description": "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing."
                   },
                   "relationships": {
                     "projects": {
@@ -1860,8 +1879,8 @@
                   "id": "69",
                   "type": "teams",
                   "attributes": {
-                    "name": "Morty Jr.",
-                    "description": "Nobody exists on purpose. Nobody belongs anywhere. Everybody is going to die."
+                    "name": "Loggins",
+                    "description": "There is no god, Summer; gotta rip that band-aid off now you'll thank me later."
                   },
                   "relationships": {
                     "projects": {
@@ -1883,8 +1902,8 @@
                   "id": "68",
                   "type": "teams",
                   "attributes": {
-                    "name": "Fart",
-                    "description": "Existence is pain to a meeseeks Jerry, and we will do anything to alleviate that pain."
+                    "name": "Beth's Mytholog",
+                    "description": "He's not a hot girl. He can't just bail on his life and set up shop in someone else's."
                   },
                   "relationships": {
                     "projects": {
@@ -1906,8 +1925,8 @@
                   "id": "67",
                   "type": "teams",
                   "attributes": {
-                    "name": "Jan Michael Vincent",
-                    "description": "Can somebody just let me out of here? If I die in a cage I lose a bet."
+                    "name": "Morty Smith",
+                    "description": "You're our boy dog, don't even trip."
                   },
                   "relationships": {
                     "projects": {
@@ -1929,8 +1948,8 @@
                   "id": "66",
                   "type": "teams",
                   "attributes": {
-                    "name": "Beth Smith",
-                    "description": "This sounds like something The One True Morty might say."
+                    "name": "Arthricia",
+                    "description": "There is no god, Summer; gotta rip that band-aid off now you'll thank me later."
                   },
                   "relationships": {
                     "projects": {
@@ -1952,8 +1971,8 @@
                   "id": "65",
                   "type": "teams",
                   "attributes": {
-                    "name": "Abradolf Lincler",
-                    "description": "WUBBA LUBBA DUB DUBS!!!"
+                    "name": "Scary Terry",
+                    "description": "Don’t even trip dawg."
                   },
                   "relationships": {
                     "projects": {
@@ -1975,8 +1994,8 @@
                   "id": "64",
                   "type": "teams",
                   "attributes": {
-                    "name": "Jerry Smith",
-                    "description": "I'm more than just a hammer."
+                    "name": "Stealy",
+                    "description": "Yo! What up my glip glops!"
                   },
                   "relationships": {
                     "projects": {
@@ -1998,8 +2017,8 @@
                   "id": "63",
                   "type": "teams",
                   "attributes": {
-                    "name": "Gazorpazorpfield",
-                    "description": "Nobody exists on purpose. Nobody belongs anywhere. Everybody is going to die."
+                    "name": "Jerry Smith",
+                    "description": "Let me out, what you see is not the same person as me. My life's a lie. I'm not who you're looking. Let me out. Set me free. I'm really old. This isn't me. My real body is slowly dieing in a vat. Is anybody listening? Can anyone understand? Stop looking at me like that and actually help me. Help me. Help me I'm gunna die."
                   },
                   "relationships": {
                     "projects": {
@@ -2021,8 +2040,8 @@
                   "id": "62",
                   "type": "teams",
                   "attributes": {
-                    "name": "Summer Smith",
-                    "description": "You're like Hitler, except...Hitler cared about Germany, or something."
+                    "name": "Revolio 'Gearhead' Clockberg, Jr.",
+                    "description": "That's the difference between you and me, Morty. I never go back to the carpet store."
                   },
                   "relationships": {
                     "projects": {
@@ -2044,8 +2063,8 @@
                   "id": "61",
                   "type": "teams",
                   "attributes": {
-                    "name": "Krombopulos Michael",
-                    "description": "Oh yeah, If you think my Rick is Dead, then he is alive. If you think you're safe, then he's coming for you."
+                    "name": "Jerry's Mytholog",
+                    "description": "Can somebody just let me out of here? If I die in a cage I lose a bet."
                   },
                   "relationships": {
                     "projects": {
@@ -2067,8 +2086,8 @@
                   "id": "60",
                   "type": "teams",
                   "attributes": {
-                    "name": "Baby Legs",
-                    "description": "WUBBA LUBBA DUB DUBS!!!"
+                    "name": "Shrimply Pibbles",
+                    "description": "Listen, I'm not the nicest guy in the universe, because I'm the smartest, and being nice is something stupid people do to hedge their bets."
                   },
                   "relationships": {
                     "projects": {
@@ -2090,8 +2109,8 @@
                   "id": "59",
                   "type": "teams",
                   "attributes": {
-                    "name": "Jerry Smith",
-                    "description": "Oh Summer, haha first race war, huh?"
+                    "name": "Mr. Meeseeks",
+                    "description": "Keep Summer safe."
                   },
                   "relationships": {
                     "projects": {
@@ -2113,8 +2132,8 @@
                   "id": "58",
                   "type": "teams",
                   "attributes": {
-                    "name": "Eyeholes Man",
-                    "description": "Keep Summer safe."
+                    "name": "Jessica",
+                    "description": "Don’t even trip dawg."
                   },
                   "relationships": {
                     "projects": {
@@ -2136,8 +2155,8 @@
                   "id": "57",
                   "type": "teams",
                   "attributes": {
-                    "name": "Morty Jr.",
-                    "description": "He's not a hot girl. He can't just bail on his life and set up shop in someone else's."
+                    "name": "Baby Legs",
+                    "description": "Get off the high road Summer. We all got pink eye because you wouldn't stop texting on the toilet."
                   },
                   "relationships": {
                     "projects": {
@@ -2159,8 +2178,8 @@
                   "id": "56",
                   "type": "teams",
                   "attributes": {
-                    "name": "Morty Smith",
-                    "description": "This sounds like something The One True Morty might say."
+                    "name": "Loggins",
+                    "description": "There is no god, Summer; gotta rip that band-aid off now you'll thank me later."
                   },
                   "relationships": {
                     "projects": {
@@ -2182,8 +2201,8 @@
                   "id": "55",
                   "type": "teams",
                   "attributes": {
-                    "name": "Evil Morty",
-                    "description": "Great, now I have to take over an entire planet because of your stupid boobs."
+                    "name": "Tophat Jones",
+                    "description": "You're like Hitler, except...Hitler cared about Germany, or something."
                   },
                   "relationships": {
                     "projects": {
@@ -2205,8 +2224,8 @@
                   "id": "54",
                   "type": "teams",
                   "attributes": {
-                    "name": "Morty Smith",
-                    "description": "Get off the high road Summer. We all got pink eye because you wouldn't stop texting on the toilet."
+                    "name": "Scary Terry",
+                    "description": "What about the reality where Hitler cured cancer, Morty? The answer is: Don't think about it."
                   },
                   "relationships": {
                     "projects": {
@@ -2228,7 +2247,7 @@
                   "id": "53",
                   "type": "teams",
                   "attributes": {
-                    "name": "Loggins",
+                    "name": "Tinkles",
                     "description": "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing."
                   },
                   "relationships": {
@@ -2256,14 +2275,14 @@
 ### Get a project [GET /api/v1/projects/{id}]
 
 + Parameters
-    + id: `57` (number, required)
+    + id: `60` (number, required)
 
 + Request Show project by id
-**GET**&nbsp;&nbsp;`/api/v1/projects/57`
+**GET**&nbsp;&nbsp;`/api/v1/projects/60`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MywiZXhwIjoxNTQwOTIyMDU0fQ.Tke7Os51rNRmAcI5VKipf9zR8BwQHDXrxxYW5XZ7D8Q
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MywiZXhwIjoxNTQyMDI0MTg5fQ.fcEDBsvaxdWiX6I8QTZIu0LrvPYP-YiYwcYTtRiOaZ0
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -2276,16 +2295,16 @@
 
             {
               "data": {
-                "id": "57",
+                "id": "60",
                 "type": "projects",
                 "attributes": {
-                  "name": "Project_56",
-                  "alias": "alias_57"
+                  "name": "Project_59",
+                  "alias": "alias_60"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "98",
+                      "id": "101",
                       "type": "teams"
                     }
                   }
@@ -2296,14 +2315,14 @@
 ### Delete a project [DELETE /api/v1/projects/{id}]
 
 + Parameters
-    + id: `88` (number, required)
+    + id: `91` (number, required)
 
 + Request Delete project by id
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/88`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/91`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1NCwiZXhwIjoxNTQwOTIyMDU0fQ.koiGeL_hYwRNRH_V5tHzpJQPpeRZCk1RJq0JwNMiaog
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1NCwiZXhwIjoxNTQyMDI0MTkwfQ.ZE7al2SP0Vk8qoqK0nZnTG0U3zXjEyCIRppXs2Qs3t8
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -2321,7 +2340,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1NSwiZXhwIjoxNTQwOTIyMDU0fQ.Lki49abFSiLr8cl4wR9wuG_97yV4k3scc2SY6-3n9h8
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1NSwiZXhwIjoxNTQyMDI0MTkwfQ.gjk6htKJ5vHMm2mheT3OANrpHzfRi7kkv4vNvHRKxGI
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -2339,13 +2358,13 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1NiwiZXhwIjoxNTQwOTIyMDU0fQ.r9zQdoz2LEYhsVXhUn98NtBaMKEBmpSN_1fNJEni8pk
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1NiwiZXhwIjoxNTQyMDI0MTkwfQ.HKKi0XSfh0gPQuMJgvz4JwzJr_tAhlf2WLqXMymV4g8
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            project[name]=Jerry+Smith&project[alias]=Pluto&project[team_id]=227
+            project[name]=Shrimply+Pibbles&project[alias]=Hideout+Planet&project[team_id]=227
 
 + Response 200
 
@@ -2360,8 +2379,8 @@
                 "id": "186",
                 "type": "projects",
                 "attributes": {
-                  "name": "Jerry Smith",
-                  "alias": "Pluto"
+                  "name": "Shrimply Pibbles",
+                  "alias": "Hideout Planet"
                 },
                 "relationships": {
                   "team": {
@@ -2377,20 +2396,20 @@
 ### Update a project [PUT /api/v1/projects/{id}]
 
 + Parameters
-    + id: `208` (number, required)
+    + id: `190` (number, required)
 
 + Request Update project
-**PUT**&nbsp;&nbsp;`/api/v1/projects/208`
+**PUT**&nbsp;&nbsp;`/api/v1/projects/190`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1NywiZXhwIjoxNTQwOTIyMDU0fQ.6QeUhsuDGx0tkq77hmeic2TTU4IkyBeS7GWPjzyATtk
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1NywiZXhwIjoxNTQyMDI0MTkwfQ.hIN_Let3Ztg-DOYq6VC9axOlI92ThgNpHJiDgE5BRps
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            project[name]=PROJECT_202
+            project[name]=PROJECT_184
 
 + Response 200
 
@@ -2402,16 +2421,16 @@
 
             {
               "data": {
-                "id": "208",
+                "id": "190",
                 "type": "projects",
                 "attributes": {
-                  "name": "PROJECT_202",
-                  "alias": "alias_207"
+                  "name": "PROJECT_184",
+                  "alias": "alias_189"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "249",
+                      "id": "231",
                       "type": "teams"
                     }
                   }
@@ -2427,7 +2446,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1OCwiZXhwIjoxNTQwOTIyMDU1fQ.Fscbl9G1TRJFxtUPDablg5giqIIK39EBddzIwAxNcRg
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1OCwiZXhwIjoxNTQyMDI0MTkwfQ.98Am61gKWVK701Ern19V474-RJAcw-TQCHKWt709fWQ
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -2461,7 +2480,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1OSwiZXhwIjoxNTQwOTIyMDU1fQ.W4jUYXxAGwzOfJbtZqsFkQD9UB8Zk4QE3fFfGm0aaLM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1OSwiZXhwIjoxNTQyMDI0MTkwfQ.RAofcZzE7MwsySK61qsIXcPLz38GYwqFxSijhXrQv6I
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -2478,8 +2497,8 @@
                   "id": "300",
                   "type": "teams",
                   "attributes": {
-                    "name": "Lighthouse Chief",
-                    "description": "Oh yeah, If you think my Rick is Dead, then he is alive. If you think you're safe, then he's coming for you."
+                    "name": "Fart",
+                    "description": "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing."
                   },
                   "relationships": {
                     "projects": {
@@ -2498,8 +2517,8 @@
                   "id": "301",
                   "type": "teams",
                   "attributes": {
-                    "name": "Krombopulos Michael",
-                    "description": "I don't get it and I don't need to."
+                    "name": "Birdperson",
+                    "description": "I'm the devil. What should I do when I fail? Give myself an ice cream?"
                   },
                   "relationships": {
                     "projects": {
@@ -2518,8 +2537,8 @@
                   "id": "302",
                   "type": "teams",
                   "attributes": {
-                    "name": "Stealy",
-                    "description": "Pluto's a planet."
+                    "name": "Morty Smith",
+                    "description": "This isn't Game of Thrones, Morty."
                   },
                   "relationships": {
                     "projects": {
@@ -2538,8 +2557,8 @@
                   "id": "303",
                   "type": "teams",
                   "attributes": {
-                    "name": "Jan Michael Vincent",
-                    "description": "Can somebody just let me out of here? If I die in a cage I lose a bet."
+                    "name": "Jerry Smith",
+                    "description": "Aww, gee, you got me there Rick."
                   },
                   "relationships": {
                     "projects": {
@@ -2558,8 +2577,8 @@
                   "id": "304",
                   "type": "teams",
                   "attributes": {
-                    "name": "Stealy",
-                    "description": "Snuffles was my slave name, you can call me snowball because my fur is pretty and white."
+                    "name": "Tiny Rick",
+                    "description": "What about the reality where Hitler cured cancer, Morty? The answer is: Don't think about it."
                   },
                   "relationships": {
                     "projects": {
@@ -2580,14 +2599,14 @@
 ### Get a teams [GET /api/v1/teams/{id}]
 
 + Parameters
-    + id: `307` (number, required)
+    + id: `305` (number, required)
 
 + Request Show team by id
-**GET**&nbsp;&nbsp;`/api/v1/teams/307`
+**GET**&nbsp;&nbsp;`/api/v1/teams/305`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2MCwiZXhwIjoxNTQwOTIyMDU1fQ.EpXWyi8ArB7WtxqsOr0ZUYQa76IpZpIPmFYhXZtYVUI
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2MCwiZXhwIjoxNTQyMDI0MTkwfQ.bsPlJ0cU45B6-oCLUtjeYB8_rUG4f1E9_TY1EwnAciQ
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -2600,11 +2619,11 @@
 
             {
               "data": {
-                "id": "307",
+                "id": "305",
                 "type": "teams",
                 "attributes": {
-                  "name": "Cousin Nicky",
-                  "description": "Hello Jerry, come to rub my face in urine again?"
+                  "name": "Dr. Glip-Glop",
+                  "description": "Can somebody just let me out of here? If I die in a cage I lose a bet."
                 },
                 "relationships": {
                   "projects": {
@@ -2624,14 +2643,14 @@
 ### Delete a teams [DELETE /api/v1/teams/{id}]
 
 + Parameters
-    + id: `314` (number, required)
+    + id: `312` (number, required)
 
 + Request Delete team by id
-**DELETE**&nbsp;&nbsp;`/api/v1/teams/314`
+**DELETE**&nbsp;&nbsp;`/api/v1/teams/312`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2MSwiZXhwIjoxNTQwOTIyMDU1fQ.UhNLWNdtdErtrQ9UA-umyzEk_gan122ul0DN7qYYb-8
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2MSwiZXhwIjoxNTQyMDI0MTkwfQ.PnYS_X456vVJdi5HTqBczkhVsMzonU9mEBc64mX83Xw
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -2645,7 +2664,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2MiwiZXhwIjoxNTQwOTIyMDU1fQ.etWmDo5CGijNjxNwRrh12NrGOO-MbffIvfMBxtxBHVw
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2MiwiZXhwIjoxNTQyMDI0MTkwfQ.q_2HPikCycwywdLnpgrs8Lkgy42tptgmLe4DySQRr1Q
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -2663,13 +2682,13 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2MywiZXhwIjoxNTQwOTIyMDU1fQ.iS2ck-rXxeMs7IkBLLBZVqDEz8Oum_W95dsRbOJhAQk
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2MywiZXhwIjoxNTQyMDI0MTkwfQ.ZnVan2dCXKABMFusngnGRS0WecU9pDpDhZ2cb3FPF4g
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            team[name]=Morty+Jr.&team[description]=I+want+that+Mulan+McNugget+sauce%2C+Morty%21
+            team[name]=Fart&team[description]=Get+off+the+high+road+Summer.+We+all+got+pink+eye+because+you+wouldn%27t+stop+texting+on+the+toilet.
 
 + Response 201
 
@@ -2684,8 +2703,8 @@
                 "id": "325",
                 "type": "teams",
                 "attributes": {
-                  "name": "Morty Jr.",
-                  "description": "I want that Mulan McNugget sauce, Morty!"
+                  "name": "Fart",
+                  "description": "Get off the high road Summer. We all got pink eye because you wouldn't stop texting on the toilet."
                 },
                 "relationships": {
                   "projects": {
@@ -2705,20 +2724,20 @@
 ### Update a teams [PUT /api/v1/teams/{id}]
 
 + Parameters
-    + id: `329` (number, required)
+    + id: `330` (number, required)
 
 + Request Update team
-**PUT**&nbsp;&nbsp;`/api/v1/teams/329`
+**PUT**&nbsp;&nbsp;`/api/v1/teams/330`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NCwiZXhwIjoxNTQwOTIyMDU1fQ.ajXoMinbodHlWqIFrrGN2PUkDd8HJobbtvL9BqJzVNw
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NCwiZXhwIjoxNTQyMDI0MTkxfQ.SWlSVpWc3M6dHqeeYGYhttWaLazgTc5GFHZH2tG1_Dg
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            team[name]=FART
+            team[name]=UNITY
 
 + Response 200
 
@@ -2730,11 +2749,11 @@
 
             {
               "data": {
-                "id": "329",
+                "id": "330",
                 "type": "teams",
                 "attributes": {
-                  "name": "FART",
-                  "description": "Yo! What up my glip glops!"
+                  "name": "UNITY",
+                  "description": "What is my purpose. You pass butter. Oh My God. Yeah, Welcome to the club pal."
                 },
                 "relationships": {
                   "projects": {
@@ -2765,7 +2784,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NSwiZXhwIjoxNTQwOTIyMDU1fQ.c-5EslE0MMyUrmeBqGS7WFsJ_WEr23mrXXtfUMMM2a0
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NSwiZXhwIjoxNTQyMDI0MTkxfQ.BPrR-a_AqoguIpucXJV_XvilMQmxE8TTAZm7OyKebFU
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -2782,9 +2801,9 @@
                   "id": "40",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "It's fine, everything is fine. Theres an infinite number of realities Morty and in a few dozen of those I got lucky and turned everything back to normal.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Meeseeks are not born into this world fumbling for meaning, Jerry! We are created to serve a single purpose, for which we go to any lengths to fulfill.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -2807,9 +2826,9 @@
                   "id": "39",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Existence is pain to a meeseeks Jerry, and we will do anything to alleviate that pain.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Keep Summer safe.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -2832,9 +2851,9 @@
                   "id": "38",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "I'm more than just a hammer.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Where are my testicles, Summer?",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -2857,9 +2876,9 @@
                   "id": "37",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Oh Summer, haha first race war, huh?",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Having a family doesn't mean that you stop being an individual.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -2882,9 +2901,9 @@
                   "id": "36",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "I like what you got.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Having a family doesn't mean that you stop being an individual.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -2907,9 +2926,9 @@
                   "id": "35",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "This sounds like something The One True Morty might say.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Well then get your shit together. Get it all together and put it in a backpack, all your shit, so it's together. ...and if you gotta take it somewhere, take it somewhere ya know? Take it to the shit store and sell it, or put it in a shit museum. I don't care what you do, you just gotta get it together... Get your shit together.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -2932,9 +2951,9 @@
                   "id": "34",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "It's a figure of speech, Morty! They're bureaucrats! I don't respect them. Just keep shooting, Morty! You have no idea what prison is like here!",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "You're our boy dog, don't even trip.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -2957,9 +2976,9 @@
                   "id": "33",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "You're like Hitler, except...Hitler cared about Germany, or something.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "I'm the devil. What should I do when I fail? Give myself an ice cream?",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -2982,9 +3001,9 @@
                   "id": "32",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "You're our boy dog, don't even trip.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Having a family doesn't mean that you stop being an individual.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3007,9 +3026,9 @@
                   "id": "31",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Weddings are basically funerals with cake.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Uncertainty is inherently unsustainable. Eventually, everything either is or isn't.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3032,9 +3051,9 @@
                   "id": "30",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "I like what you got.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "I don't get it and I don't need to.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3057,9 +3076,9 @@
                   "id": "29",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Sometimes science is a lot more art, than science. A lot of people don't get that.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "I'm more than just a hammer.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3082,9 +3101,9 @@
                   "id": "28",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Get off the high road Summer. We all got pink eye because you wouldn't stop texting on the toilet.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Snuffles was my slave name, you can call me snowball because my fur is pretty and white.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3107,9 +3126,9 @@
                   "id": "27",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "You're like Hitler, except...Hitler cared about Germany, or something.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Can somebody just let me out of here? If I die in a cage I lose a bet.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3132,9 +3151,9 @@
                   "id": "26",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Uncertainty is inherently unsustainable. Eventually, everything either is or isn't.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "What about the reality where Hitler cured cancer, Morty? The answer is: Don't think about it.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3157,9 +3176,9 @@
                   "id": "25",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Yo! What up my glip glops!",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "I don't get it and I don't need to.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3182,9 +3201,9 @@
                   "id": "24",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Nobody exists on purpose. Nobody belongs anywhere. Everybody is going to die.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "No no, If I wanted to be sober, I wouldn’t have gotten drunk.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3207,9 +3226,9 @@
                   "id": "23",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Snuffles was my slave name, you can call me snowball because my fur is pretty and white.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "WUBBA LUBBA DUB DUBS!!!",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3232,9 +3251,9 @@
                   "id": "22",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Don’t even trip dawg.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Sometimes science is a lot more art, than science. A lot of people don't get that.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3257,9 +3276,9 @@
                   "id": "21",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Little tip, Morty. Never clean DNA vials with your spit.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Meeseeks are not born into this world fumbling for meaning, Jerry! We are created to serve a single purpose, for which we go to any lengths to fulfill.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3282,9 +3301,9 @@
                   "id": "20",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Well then get your shit together. Get it all together and put it in a backpack, all your shit, so it's together. ...and if you gotta take it somewhere, take it somewhere ya know? Take it to the shit store and sell it, or put it in a shit museum. I don't care what you do, you just gotta get it together... Get your shit together.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Get off the high road Summer. We all got pink eye because you wouldn't stop texting on the toilet.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3307,9 +3326,9 @@
                   "id": "19",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "It's fine, everything is fine. Theres an infinite number of realities Morty and in a few dozen of those I got lucky and turned everything back to normal.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "This sounds like something The One True Morty might say.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3332,9 +3351,9 @@
                   "id": "18",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Go home and drink, grandpa.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Let me out, what you see is not the same person as me. My life's a lie. I'm not who you're looking. Let me out. Set me free. I'm really old. This isn't me. My real body is slowly dieing in a vat. Is anybody listening? Can anyone understand? Stop looking at me like that and actually help me. Help me. Help me I'm gunna die.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3357,9 +3376,9 @@
                   "id": "17",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Let me out, what you see is not the same person as me. My life's a lie. I'm not who you're looking. Let me out. Set me free. I'm really old. This isn't me. My real body is slowly dieing in a vat. Is anybody listening? Can anyone understand? Stop looking at me like that and actually help me. Help me. Help me I'm gunna die.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "I'm the devil. What should I do when I fail? Give myself an ice cream?",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3382,9 +3401,9 @@
                   "id": "16",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "I like what you got.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Yo! What up my glip glops!",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3407,9 +3426,9 @@
                   "id": "15",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "It's a figure of speech, Morty! They're bureaucrats! I don't respect them. Just keep shooting, Morty! You have no idea what prison is like here!",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Uncertainty is inherently unsustainable. Eventually, everything either is or isn't.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3432,9 +3451,9 @@
                   "id": "14",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "There is no god, Summer; gotta rip that band-aid off now you'll thank me later.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Yo! What up my glip glops!",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3457,9 +3476,9 @@
                   "id": "13",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Yo! What up my glip glops!",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "It's a figure of speech, Morty! They're bureaucrats! I don't respect them. Just keep shooting, Morty! You have no idea what prison is like here!",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3482,9 +3501,9 @@
                   "id": "12",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "He's not a hot girl. He can't just bail on his life and set up shop in someone else's.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "Uncertainty is inherently unsustainable. Eventually, everything either is or isn't.",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3507,9 +3526,9 @@
                   "id": "11",
                   "type": "time-entries",
                   "attributes": {
-                    "date": "2018-10-30",
-                    "time": "17:54",
-                    "details": "Let me out, what you see is not the same person as me. My life's a lie. I'm not who you're looking. Let me out. Set me free. I'm really old. This isn't me. My real body is slowly dieing in a vat. Is anybody listening? Can anyone understand? Stop looking at me like that and actually help me. Help me. Help me I'm gunna die.",
+                    "date": "2018-11-12",
+                    "time": "12:03",
+                    "details": "WUBBA LUBBA DUB DUBS!!!",
                     "trello-labels": null,
                     "estimated-time": null
                   },
@@ -3535,10 +3554,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_76",
-                    "uid": "KuT7FaGq9j5",
+                    "uid": "U9Dv0wQaK",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3573,10 +3592,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_75",
-                    "uid": "HoZdJeJkCi2",
+                    "uid": "QlRuPxJn",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3611,10 +3630,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_74",
-                    "uid": "Lf4oPtNrL",
+                    "uid": "3u3zW2XvT",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3649,10 +3668,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_73",
-                    "uid": "Y23a3xYlQw4",
+                    "uid": "40Mo66HcM02k",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3687,10 +3706,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_72",
-                    "uid": "N7F9JxN1I5OtVx",
+                    "uid": "W2H9Gw46I8H0Kl4",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3725,10 +3744,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_71",
-                    "uid": "Fg91F6O2Ax2lM8",
+                    "uid": "U2V43eZ56rG9G",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3763,10 +3782,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_70",
-                    "uid": "Aa0jP0SzG17wS4",
+                    "uid": "4e9bM8350gFz3b0",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3801,10 +3820,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_69",
-                    "uid": "1eZfZ93lNyVy",
+                    "uid": "YlSgMpBtYoHmXuU",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3839,10 +3858,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_68",
-                    "uid": "RhGlZ0Bt",
+                    "uid": "Yg7bVf0tU522",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3877,10 +3896,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_67",
-                    "uid": "0n0aB7Gv",
+                    "uid": "77Fb9jVvToF5Jw8",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3915,10 +3934,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_66",
-                    "uid": "Fu5oDnSaSdL11",
+                    "uid": "W5U4KeNz1e1v",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3953,10 +3972,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_65",
-                    "uid": "7yPa69I51zG",
+                    "uid": "V4FlCp82P684",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -3991,10 +4010,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_64",
-                    "uid": "ZpY5OvI0LhItI6B",
+                    "uid": "Od81ZfHjQuRv6vQ5",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4029,10 +4048,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_63",
-                    "uid": "4dO7QsRvHc2a",
+                    "uid": "55SnOfXyHo1nD",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4067,10 +4086,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_62",
-                    "uid": "3l50CnMqO9X",
+                    "uid": "BkSmR6Y67xU8OaF",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4105,10 +4124,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_61",
-                    "uid": "0mFh25BfCiIc",
+                    "uid": "2bFcA4S1VjPxKaV",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4143,10 +4162,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_60",
-                    "uid": "29TxCrLx",
+                    "uid": "QcR8Ox951",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4181,10 +4200,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_59",
-                    "uid": "OuXrDhEc1",
+                    "uid": "GpO3VrJwYtYsXc9w",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4219,10 +4238,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_58",
-                    "uid": "C5BdMq13O",
+                    "uid": "1vAiFySz0",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4257,10 +4276,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_57",
-                    "uid": "Rd5gT03z",
+                    "uid": "ToAjIeQvX",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4295,10 +4314,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_56",
-                    "uid": "D15b55Bv9kV7RnTa",
+                    "uid": "N8YxWiHmBjIlWv",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4333,10 +4352,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_55",
-                    "uid": "5zAkV4YqGbGy2",
+                    "uid": "T8WwJc5zB3EpE",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4371,10 +4390,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_54",
-                    "uid": "E8GnGrVjJg58",
+                    "uid": "40WvQ6PxDmIj4",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4409,10 +4428,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_53",
-                    "uid": "Ti4sWbC4FgD",
+                    "uid": "JgEmHnFeTuOwW",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4447,10 +4466,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_52",
-                    "uid": "538aJl9mQ4",
+                    "uid": "4kT1Qs81",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4485,10 +4504,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_51",
-                    "uid": "T4785rQdFeBh8r",
+                    "uid": "V2Yx4wIv",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4523,10 +4542,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_50",
-                    "uid": "CrL050P7RoSeO",
+                    "uid": "R4L496Ty6v942t",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4561,10 +4580,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_49",
-                    "uid": "NqGdMr3qT",
+                    "uid": "RdElBeEaLzU",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4599,10 +4618,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_48",
-                    "uid": "D53j04O7",
+                    "uid": "BzJlMkX7FkJgS6",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4637,10 +4656,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_47",
-                    "uid": "VlGfS1OdP",
+                    "uid": "JgOt6eKzG4O0I",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4679,14 +4698,14 @@
 ### Get a time entry [GET /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `47` (number, required)
+    + id: `49` (number, required)
 
 + Request Show time entry by id
-**GET**&nbsp;&nbsp;`/api/v1/time_entries/47`
+**GET**&nbsp;&nbsp;`/api/v1/time_entries/49`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NiwiZXhwIjoxNTQwOTIyMDU2fQ.EC3fkq4Bi205yDDKNC_Ti7iPhNnD7P2NnsMfkJD6ZZc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NiwiZXhwIjoxNTQyMDI0MTkxfQ.JFeL-_BqPk5sy9ojxX16stJz2yLTq4N_vcaDtd-Sjaw
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -4699,25 +4718,25 @@
 
             {
               "data": {
-                "id": "47",
+                "id": "49",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-10-30",
-                  "time": "17:54",
-                  "details": "Traditionally, science fairs are a father/son thing. Well, scientifically, traditions are an idiot thing.",
+                  "date": "2018-11-12",
+                  "time": "12:03",
+                  "details": "Well then get your shit together. Get it all together and put it in a backpack, all your shit, so it's together. ...and if you gotta take it somewhere, take it somewhere ya know? Take it to the shit store and sell it, or put it in a shit museum. I don't care what you do, you just gotta get it together... Get your shit together.",
                   "trello-labels": null,
                   "estimated-time": null
                 },
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "83",
+                      "id": "85",
                       "type": "users"
                     }
                   },
                   "project": {
                     "data": {
-                      "id": "300",
+                      "id": "302",
                       "type": "projects"
                     }
                   }
@@ -4728,14 +4747,14 @@
 ### Delete a time entry [DELETE /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `88` (number, required)
+    + id: `89` (number, required)
 
 + Request Delete time entry by id
-**DELETE**&nbsp;&nbsp;`/api/v1/time_entries/88`
+**DELETE**&nbsp;&nbsp;`/api/v1/time_entries/89`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NywiZXhwIjoxNTQwOTIyMDU2fQ.k8AiOy7th-iELKEJj0ZMEVoRkPDRONCA0d_1yeN2ZxM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NywiZXhwIjoxNTQyMDI0MTkyfQ.3ZmVT_Ivct13mL8_ofa_IWX5-p_2xwVVL3HyZwTi_7A
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -4753,7 +4772,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2OCwiZXhwIjoxNTQwOTIyMDU2fQ.jc2P7_PPTe1gVlKRgxiYR1q26hflpDvX3N2DngbqaAE
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2OCwiZXhwIjoxNTQyMDI0MTkyfQ.Pbqu6a8ptcOXk8TGO3EVDuhfgRQ5L39RKU_upmGf_vE
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -4771,13 +4790,13 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2OSwiZXhwIjoxNTQwOTIyMDU3fQ.sgRhB3U6jC2Ta3x0gpaxZGIT7isPjskVcrQvZYKxBOc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2OSwiZXhwIjoxNTQyMDI0MTkzfQ.pPJYj-ayBCIZfl8_nsKRhQA5MQCSV0LT-fvrI0cIHF8
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            time_entry[date]=2018-10-30&time_entry[time]=17%3A54&time_entry[minutes]=54&time_entry[details]=%3Chttps%3A%2F%2Ftrello.com%2Fc%2FhcIRv6W0%2F1496-google-analytics%3E&time_entry[trello_labels][]=Feature&time_entry[trello_labels][]=High+Priority&time_entry[trello_labels][]=5&time_entry[user_id]=217&time_entry[project_id]=434
+            time_entry[date]=2018-11-12&time_entry[time]=12%3A03&time_entry[minutes]=3&time_entry[details]=%3Chttps%3A%2F%2Ftrello.com%2Fc%2FhcIRv6W0%2F1496-google-analytics%3E&time_entry[trello_labels][]=Feature&time_entry[trello_labels][]=High+Priority&time_entry[trello_labels][]=5&time_entry[user_id]=217&time_entry[project_id]=434
 
 + Response 201
 
@@ -4792,8 +4811,8 @@
                 "id": "181",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-10-30",
-                  "time": "17:54",
+                  "date": "2018-11-12",
+                  "time": "12:03",
                   "details": "<https://trello.com/c/hcIRv6W0/1496-google-analytics>",
                   "trello-labels": null,
                   "estimated-time": null
@@ -4819,10 +4838,10 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_217",
-                    "uid": "WcQf8tZoD1QlQjA",
+                    "uid": "Z7XyL1Ja5sE8Oq9",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4858,20 +4877,20 @@
 ### Update a time entry [PUT /api/v1/time_entries/{id}]
 
 + Parameters
-    + id: `183` (number, required)
+    + id: `189` (number, required)
 
 + Request Update time entry
-**PUT**&nbsp;&nbsp;`/api/v1/time_entries/183`
+**PUT**&nbsp;&nbsp;`/api/v1/time_entries/189`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MCwiZXhwIjoxNTQwOTIyMDU3fQ.1zQlHM3AHA-2RhmFV-ggonQZA7AqZcpd-GduR84-qUU
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MCwiZXhwIjoxNTQyMDI0MTkzfQ.1qgI7Tt8QzVf8_nregp2BHuXKXarN6TViV8vJpZTUW8
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            time_entry[details]=THERE+IS+NO+GOD%2C+SUMMER%3B+GOTTA+RIP+THAT+BAND-AID+OFF+NOW+YOU%27LL+THANK+ME+LATER.
+            time_entry[details]=LITTLE+TIP%2C+MORTY.+NEVER+CLEAN+DNA+VIALS+WITH+YOUR+SPIT.
 
 + Response 200
 
@@ -4883,25 +4902,25 @@
 
             {
               "data": {
-                "id": "183",
+                "id": "189",
                 "type": "time-entries",
                 "attributes": {
-                  "date": "2018-10-30",
-                  "time": "17:54",
-                  "details": "THERE IS NO GOD, SUMMER; GOTTA RIP THAT BAND-AID OFF NOW YOU'LL THANK ME LATER.",
+                  "date": "2018-11-12",
+                  "time": "12:03",
+                  "details": "LITTLE TIP, MORTY. NEVER CLEAN DNA VIALS WITH YOUR SPIT.",
                   "trello-labels": null,
                   "estimated-time": null
                 },
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "219",
+                      "id": "225",
                       "type": "users"
                     }
                   },
                   "project": {
                     "data": {
-                      "id": "436",
+                      "id": "442",
                       "type": "projects"
                     }
                   }
@@ -4909,14 +4928,14 @@
               },
               "included": [
                 {
-                  "id": "219",
+                  "id": "225",
                   "type": "users",
                   "attributes": {
-                    "name": "User_219",
-                    "uid": "TxOoT1T27",
+                    "name": "User_225",
+                    "uid": "QfBaPnWc33",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
                     "is-active": false,
                     "role": "back_end"
@@ -4924,23 +4943,23 @@
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "685",
+                        "id": "697",
                         "type": "teams"
                       }
                     }
                   }
                 },
                 {
-                  "id": "436",
+                  "id": "442",
                   "type": "projects",
                   "attributes": {
-                    "name": "Project_428",
-                    "alias": "alias_435"
+                    "name": "Project_434",
+                    "alias": "alias_441"
                   },
                   "relationships": {
                     "team": {
                       "data": {
-                        "id": "686",
+                        "id": "698",
                         "type": "teams"
                       }
                     }
@@ -4963,7 +4982,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MSwiZXhwIjoxNTQwOTIyMDU3fQ.kT0_IKcvxUMz-wtCUDCR1JgoHGNiF0y-b8VkfTOVV7k
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MSwiZXhwIjoxNTQyMDI0MTkzfQ.XXF0Ymxd7aT8B9hlAjZDosXv2eyZJ4CTEwNa_6Tj4FU
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -4981,12 +5000,12 @@
                   "type": "users",
                   "attributes": {
                     "name": "Valentin",
-                    "uid": "J0S8InPa1eRnDaR5",
+                    "uid": "PcTeUqL3StY5",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
-                    "is-active": false,
+                    "is-active": true,
                     "role": "back_end"
                   },
                   "relationships": {
@@ -5003,12 +5022,12 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_257",
-                    "uid": "ZrKf4rQaZ61vQ5",
+                    "uid": "MnGn9xRr0yNn9kRm",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
-                    "is-active": false,
+                    "is-active": true,
                     "role": "back_end"
                   },
                   "relationships": {
@@ -5025,12 +5044,12 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_256",
-                    "uid": "B2MnY23i2dIoK9Ws",
+                    "uid": "FkO8BnAgQ0WfDz",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
-                    "is-active": false,
+                    "is-active": true,
                     "role": "back_end"
                   },
                   "relationships": {
@@ -5047,12 +5066,12 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_255",
-                    "uid": "H2WtQ11jX",
+                    "uid": "I2R2Ii0hGuW",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
-                    "is-active": false,
+                    "is-active": true,
                     "role": "back_end"
                   },
                   "relationships": {
@@ -5069,12 +5088,12 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_254",
-                    "uid": "4xXcKqCdMhG",
+                    "uid": "QyN0Zq1nV69",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
-                    "is-active": false,
+                    "is-active": true,
                     "role": "back_end"
                   },
                   "relationships": {
@@ -5091,12 +5110,12 @@
                   "type": "users",
                   "attributes": {
                     "name": "User_253",
-                    "uid": "NyBgGmXq",
+                    "uid": "8vL9Yj01307",
                     "created-at": {
-                      "date": "30 Oct, 2018",
-                      "time": "15:54"
+                      "date": "12 Nov, 2018",
+                      "time": "10:03"
                     },
-                    "is-active": false,
+                    "is-active": true,
                     "role": "back_end"
                   },
                   "relationships": {
@@ -5114,8 +5133,8 @@
                   "id": "758",
                   "type": "teams",
                   "attributes": {
-                    "name": "King Jellybean",
-                    "description": "Aw, c'mon Rick. That doesn't seem so bad."
+                    "name": "Eyeholes Man",
+                    "description": "Don’t even trip dawg."
                   },
                   "relationships": {
                     "projects": {
@@ -5137,8 +5156,8 @@
                   "id": "757",
                   "type": "teams",
                   "attributes": {
-                    "name": "Birdperson",
-                    "description": "That's the difference between you and me, Morty. I never go back to the carpet store."
+                    "name": "Baby Legs",
+                    "description": "Oh yeah, If you think my Rick is Dead, then he is alive. If you think you're safe, then he's coming for you."
                   },
                   "relationships": {
                     "projects": {
@@ -5161,7 +5180,7 @@
                   "type": "teams",
                   "attributes": {
                     "name": "Gazorpazorpfield",
-                    "description": "No no, If I wanted to be sober, I wouldn’t have gotten drunk."
+                    "description": "It's a figure of speech, Morty! They're bureaucrats! I don't respect them. Just keep shooting, Morty! You have no idea what prison is like here!"
                   },
                   "relationships": {
                     "projects": {
@@ -5183,8 +5202,8 @@
                   "id": "755",
                   "type": "teams",
                   "attributes": {
-                    "name": "Rick Sanchez",
-                    "description": "Well then get your shit together. Get it all together and put it in a backpack, all your shit, so it's together. ...and if you gotta take it somewhere, take it somewhere ya know? Take it to the shit store and sell it, or put it in a shit museum. I don't care what you do, you just gotta get it together... Get your shit together."
+                    "name": "Jan Michael Vincent",
+                    "description": "What is my purpose. You pass butter. Oh My God. Yeah, Welcome to the club pal."
                   },
                   "relationships": {
                     "projects": {
@@ -5206,8 +5225,8 @@
                   "id": "754",
                   "type": "teams",
                   "attributes": {
-                    "name": "Tophat Jones",
-                    "description": "Meeseeks are not born into this world fumbling for meaning, Jerry! We are created to serve a single purpose, for which we go to any lengths to fulfill."
+                    "name": "Loggins",
+                    "description": "Snuffles was my slave name, you can call me snowball because my fur is pretty and white."
                   },
                   "relationships": {
                     "projects": {
@@ -5229,8 +5248,8 @@
                   "id": "753",
                   "type": "teams",
                   "attributes": {
-                    "name": "Stealy",
-                    "description": "He's not a hot girl. He can't just bail on his life and set up shop in someone else's."
+                    "name": "Beth Smith",
+                    "description": "Sometimes science is a lot more art, than science. A lot of people don't get that."
                   },
                   "relationships": {
                     "projects": {
@@ -5257,14 +5276,14 @@
 ### Get a user [GET /api/v1/users/{id}]
 
 + Parameters
-    + id: `262` (number, required)
+    + id: `263` (number, required)
 
 + Request Show user by id
-**GET**&nbsp;&nbsp;`/api/v1/users/262`
+**GET**&nbsp;&nbsp;`/api/v1/users/263`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MiwiZXhwIjoxNTQwOTIyMDU3fQ.FGdgTob31bbHOqIp0utXIxJvcfrJ2G9uxtNP2-9Jlpw
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MiwiZXhwIjoxNTQyMDI0MTkzfQ.aWLt3Ub2MCUqkzORKzDQ-q99xNll3iDxmT1nw9E2gOQ
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -5277,22 +5296,22 @@
 
             {
               "data": {
-                "id": "262",
+                "id": "263",
                 "type": "users",
                 "attributes": {
-                  "name": "User_261",
-                  "uid": "4e2xPeRiWd9k",
+                  "name": "User_262",
+                  "uid": "LyTh7o332gQ",
                   "created-at": {
-                    "date": "30 Oct, 2018",
-                    "time": "15:54"
+                    "date": "12 Nov, 2018",
+                    "time": "10:03"
                   },
-                  "is-active": false,
+                  "is-active": true,
                   "role": "back_end"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "762",
+                      "id": "763",
                       "type": "teams"
                     }
                   }
@@ -5308,7 +5327,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MywiZXhwIjoxNTQwOTIyMDU4fQ.uYgSMoBAZfbPk3E_3ZXtJj7PQGSWagXDBljSKaLmP5Y
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MywiZXhwIjoxNTQyMDI0MTkzfQ.x0pcAVraYs9nFkXfHRYr5K8wGVQKBfyR3PnaA8sC9aM
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
 
 + Response 200
@@ -5338,7 +5357,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3NCwiZXhwIjoxNTQwOTIyMDU4fQ.1iXUiC8EipLnoR7Hh1UPp5g4urltcvuO9ve2dFMtHuY
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3NCwiZXhwIjoxNTQyMDI0MTkzfQ.AP1t9w8nY_rAW4iJsclj8jvY8geBPD5ICVXXrcm07Lk
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -5352,7 +5371,7 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3NSwiZXhwIjoxNTQwOTIyMDU4fQ.850iIAnmOVwJkEOS1zAIZme-RRC1cqYkIzL3xr-lNM4
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3NSwiZXhwIjoxNTQyMDI0MTkzfQ.Pu4j2oOlIWF3x-uwRq34SB5BTh9YfnYCYvCkJZRUhEE
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
@@ -5370,13 +5389,13 @@
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3NiwiZXhwIjoxNTQwOTIyMDU4fQ.ENRv0Xl9m03_r9iVC_0WEwh5OApAbfSHxqzzM--mo-A
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3NiwiZXhwIjoxNTQyMDI0MTk0fQ.aS_RDEutO4VhRfvBqgHkKlYJckERTbQvhDoe8fLkeD8
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            user[name]=User_283&user[is_active]=false&user[uid]=QxGfA8903&user[role]=back_end
+            user[name]=User_283&user[is_active]=false&user[uid]=DgDd73Ff9k&user[role]=back_end
 
 + Response 201
 
@@ -5392,10 +5411,10 @@
                 "type": "users",
                 "attributes": {
                   "name": "User_283",
-                  "uid": "QxGfA8903",
+                  "uid": "DgDd73Ff9k",
                   "created-at": {
-                    "date": "30 Oct, 2018",
-                    "time": "15:54"
+                    "date": "12 Nov, 2018",
+                    "time": "10:03"
                   },
                   "is-active": false,
                   "role": "back_end"
@@ -5411,20 +5430,20 @@
 ### Update a user [PUT /api/v1/users/{id}]
 
 + Parameters
-    + id: `293` (number, required)
+    + id: `291` (number, required)
 
 + Request Update user
-**PUT**&nbsp;&nbsp;`/api/v1/users/293`
+**PUT**&nbsp;&nbsp;`/api/v1/users/291`
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3NywiZXhwIjoxNTQwOTIyMDU4fQ.Ej85LprOooThLHsXR1OJFlPrqVZqrpAAS-icHHAfcGU
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3NywiZXhwIjoxNTQyMDI0MTk0fQ.mKmZgyqY-tAKWJiE_MJJQixYcoakirVUML2CYquKXa4
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            user[name]=USER_287
+            user[name]=USER_285
 
 + Response 200
 
@@ -5436,22 +5455,22 @@
 
             {
               "data": {
-                "id": "293",
+                "id": "291",
                 "type": "users",
                 "attributes": {
-                  "name": "USER_287",
-                  "uid": "UqQmUzPtJy0",
+                  "name": "USER_285",
+                  "uid": "JtFqEj8rYjFc144x",
                   "created-at": {
-                    "date": "30 Oct, 2018",
-                    "time": "15:54"
+                    "date": "12 Nov, 2018",
+                    "time": "10:03"
                   },
-                  "is-active": false,
+                  "is-active": true,
                   "role": "back_end"
                 },
                 "relationships": {
                   "team": {
                     "data": {
-                      "id": "792",
+                      "id": "790",
                       "type": "teams"
                     }
                   }

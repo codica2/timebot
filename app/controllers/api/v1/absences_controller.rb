@@ -15,11 +15,11 @@ module Api
       end
 
       def create
-        absence = Absence.new(absence_params)
-        if absence.save
-          render json: absence, include: ['user'], status: :created
+        absences = Absence.create(multiple_absences_params)
+        if absences.any? { |abs| abs.errors.any? }
+          render json: absences.map(&:errors), status: :unprocessable_entity
         else
-          render json: absence.errors, status: :unprocessable_entity
+          render json: absences, include: ['user'], status: :created
         end
       end
 
@@ -43,6 +43,12 @@ module Api
 
       def set_absence
         @absence = Absence.find(params[:id])
+      end
+
+      def multiple_absences_params
+        params[:absences].map do |param|
+          param.require(:absence).permit(:reason, :comment, :user_id, :date)
+        end
       end
 
       def absence_params
