@@ -2,8 +2,11 @@
 
 module Reports
   class TimeReportService < BaseService
-    def initialize(filters)
-      @filters = filters[:filters] || {}
+    def initialize(options)
+      @filters = options[:filters] || {}
+      @filters[:date_from] ||= Time.zone.today.beginning_of_week
+      @filters[:date_to] ||= Time.zone.today
+      @pagination = options[:pagination] || {}
     end
 
     def call
@@ -12,60 +15,26 @@ module Reports
 
     private
 
-    attr_reader :filters
+    attr_reader :filters, :pagination
 
     def data
-      { data: team_entities }
+      { data: time_entries, meta: meta }
     end
 
-    def team_entities
-      Team.includes(:projects).map do |team|
-        {
-          id: team.id,
-          name: team.name,
-          projects: projects(team)
-        }
-      end
+    def time_entries
+      time_entry_collection.paginate(pagination).as_json(
+        only: %i[id date time details trello_labels estimated_time],
+        methods: :status,
+        include: %i[user project]
+      )
     end
 
-    def projects(team)
-      team_project_time_entries(team.id).map do |project_time_entry|
-        {
-          id: project_time_entry.first.id,
-          name: project_time_entry.first.name,
-          time: time_worked(project_time_entry),
-          time_entries: time_entries(project_time_entry)
-        }
-      end
+    def meta
+      { total_count: time_entry_collection.count }
     end
 
-    def time_entries(entries)
-      entries.last.group_by(&:details).reduce([]) do |acum, entry|
-        acum << {
-          id: entries.first.id,
-          details: entry.first,
-          collaborators: user_names(entry),
-          total_time: time_worked(entry),
-          trello_labels: entry.flatten.last.trello_list_name
-        }
-      end
-    end
-
-    def team_project_time_entries(team_id)
-      TimeEntry.includes(:user, :project).joins(:team)
-               .where(teams: { id: team_id })
-               .filter(filters)
-               .limit(150)
-               .group_by(&:project)
-               .sort { |a, b| time_worked(b) <=> time_worked(a) }
-    end
-
-    def time_worked(entry)
-      (entry.last.map(&:minutes).sum / 60.0).round(1)
-    end
-
-    def user_names(entry)
-      entry.last.map(&:user).map(&:name).uniq.to_sentence
+    def time_entry_collection
+      @collection ||= TimeEntry.includes(:user, :project).filter(filters)
     end
   end
 end

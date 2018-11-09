@@ -14,8 +14,8 @@ RSpec.describe 'TimeReports API' do
     it 'should generate time report' do
       get '/api/v1/reports/time_reports', headers: headers
 
-      expect(json['data'].count).to eq 1
-      expect(json['data'].first['projects'].first['time_entries'].count).to eq 2
+      expect(json['data'].count).to eq 2
+      expect(json['data'].first['project']['id']).to eq time_entry_1.project.id
     end
   end
 

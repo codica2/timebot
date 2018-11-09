@@ -5,7 +5,7 @@ module Api
     module Reports
       class TimeReportsController < ApplicationController
         def index
-          render ::Reports::TimeReportService.call(filters: filtering_params)
+          render ::Reports::TimeReportService.call(filters: filtering_params, pagination: params)
         end
 
         private

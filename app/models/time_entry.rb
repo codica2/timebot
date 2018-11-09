@@ -49,21 +49,24 @@ class TimeEntry < ApplicationRecord
     return nil
   end
 
+  
   # needs refactoring
   def total_time
     search_param = ticket_url || details
     (TimeEntry.with_ticket(search_param).pluck(:minutes).sum / 60.0).round(1)
   end
-
+  
   # needs refactoring
   def collaborators
     search_param = ticket_url || details
     TimeEntry.includes(:user).with_ticket(search_param).map(&:user).uniq
   end
-
+  
   def estimated_time
     trello_labels.grep(/^\d+$/).first if trello_labels.present?
   end
+
+  alias status trello_list_name
 
   private
 
