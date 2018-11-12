@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       resources :users, except: [:new, :edit] do
         collection do
           get :search
+          post :sync_users
           delete :delete_multiple
         end
       end

@@ -10,7 +10,7 @@ class SlackClient
     users = client.users_list
 
     users.members.each do |user|
-      User.create(name: user.real_name, uid: user.id) unless User.find_by(uid: user.id)
+      User.find_or_create_by(uid: user.id) { |user| user.name = user.real_name  }
     end
   end
 end
