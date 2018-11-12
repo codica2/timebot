@@ -95,6 +95,8 @@ class TimeEntry < ApplicationRecord
   end
 
   def format_time
+    formatting = ->(time) { time.size > 1 ? time : "0#{time}" }
+    self.time = self.time.strip.split(':').map(&formatting).join(':')
     format('%2d:%02d', self.minutes / 60, self.minutes % 60)
   end
 end
