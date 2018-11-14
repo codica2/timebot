@@ -11,7 +11,7 @@ module Api
         private
 
         def filtering_params
-          params.permit(:date_from, :date_to)
+          params.permit(:date_from, :date_to, by_projects: [])
         end
       end
     end

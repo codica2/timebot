@@ -28,6 +28,6 @@ class Project < ApplicationRecord
   def generate_alias
     return if self.alias.present?
 
-    self.alias = name.downcase.tr(' ', '-')
+    self.alias = name.parameterize
   end
 end
