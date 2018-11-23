@@ -50,10 +50,4 @@ class EventHandler
       DoNotUnderstand.call(user, messages)
     end
   end
-
-  # private
-  #
-  # def fetch_public_channels
-  #   @public_channels = client.web_client.channels_list.channels.map(&:id)
-  # end
 end

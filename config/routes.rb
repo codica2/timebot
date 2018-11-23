@@ -48,6 +48,11 @@ Rails.application.routes.draw do
           end
         end
       end
+
+      scope :slack, module: :slack do
+        post '/submission' => 'slack#submission'
+        post '/command' => 'slack#command'
+      end
     end
   end
 end
