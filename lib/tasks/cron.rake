@@ -10,11 +10,11 @@ namespace :cron do
 
   desc 'Start conversation'
   task ask: :environment do
-    next if Holiday.is_holiday?
+    next if Holiday.holiday?
     sender = Message::Sender.new
 
     User.active.each do |user|
-      next if user.time_entries.where(date: Time.zone.today).present? || user.is_absent?(Time.zone.today)
+      next if user.time_entries.where(date: Time.zone.today).present? || user.absent?(Time.zone.today)
       sender.send_message(user, 'Hey mate, what did you do today?')
       user.update(is_speaking: true)
     end
@@ -22,7 +22,7 @@ namespace :cron do
 
   desc 'Canteen'
   task canteen: :environment do
-    next if Holiday.is_holiday?
+    next if Holiday.holiday?
     sender = Message::Sender.new
 
     users = User.where(uid: %w(U0D8LDKL6 U1CLQL5JN U0UP0JVAP))
@@ -30,14 +30,14 @@ namespace :cron do
     text = File.open(Rails.root.join('public', 'messages', 'canteen.txt').to_s, 'r').read
 
     users.each do |user|
-      next if user.is_absent?(Time.zone.today)
+      next if user.absent?(Time.zone.today)
       sender.send_message(user, text)
     end
   end
 
   desc 'Remind of setting timesheet'
   task remind: :environment do
-    next if Holiday.is_holiday?
+    next if Holiday.holiday?
     sender = Message::Sender.new
 
     text = "Hey mate! Please don't forget to fill in the timesheet!"
@@ -54,7 +54,7 @@ namespace :cron do
 
   desc 'Reminds to fill timesheet for blank days'
   task remind_about_blank_entries: :environment do
-    next if Holiday.is_holiday?
+    next if Holiday.holiday?
     sender = Message::Sender.new
     start_date = suitable_start_date(Time.zone.now.beginning_of_month.to_date)
 

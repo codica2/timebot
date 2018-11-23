@@ -5,8 +5,8 @@ class DashboardInfo < BaseService
 
   def initialize(filters)
     @filters = {
-      date_from: filters[:filters][:date_from] || Date.today.beginning_of_week.to_s,
-      date_to: filters[:filters][:date_to] || Date.today.end_of_week.to_s
+      date_from: filters[:filters][:date_from] || Time.zone.today.beginning_of_week.to_s,
+      date_to: filters[:filters][:date_to] || Time.zone.today.end_of_week.to_s
     }
     @time_entries = TimeEntry.includes(:project, :user).filter(@filters)
   end

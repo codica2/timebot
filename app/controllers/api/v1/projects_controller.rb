@@ -11,7 +11,7 @@ module Api
       end
 
       def search
-        render json: Project.by_entries_number.search(filtering_params)
+        render json: Project.order_by_entries_number.search(filtering_params)
       end
 
       def show

@@ -6,9 +6,8 @@ class UserSerializer < ActiveModel::Serializer
 
   def created_at
     {
-      date: object.created_at.strftime("%d %b, %Y"),
-      time: object.created_at.strftime("%H:%M")
+      date: object.created_at.strftime('%d %b, %Y'),
+      time: object.created_at.strftime('%H:%M')
     }
   end
-
 end

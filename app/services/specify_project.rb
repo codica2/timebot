@@ -17,9 +17,9 @@ class SpecifyProject < BaseService
 
     if match_data < 1 || (last_msg = user.last_message).nil?
       DoNotUnderstand.call(user, messages)
-    elsif last_msg.match(Message::Conditions::ENTER_TIME_REGEXP)
+    elsif last_msg.match?(Message::Conditions::ENTER_TIME_REGEXP)
       CreateEntry.call(user, last_msg, messages, match_data)
-    elsif last_msg.match(Message::Conditions::ENTER_TIME_FOR_DAY_REGEXP)
+    elsif last_msg.match?(Message::Conditions::ENTER_TIME_FOR_DAY_REGEXP)
       CreateEntryForDay.call(user, last_msg, match_data)
     else
       DoNotUnderstand.call(user, messages)

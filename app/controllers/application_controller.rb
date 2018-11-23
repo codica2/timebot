@@ -15,5 +15,4 @@ class ApplicationController < ActionController::Base
     @current_user = ::Auth::AuthorizeApiRequest.call(request.headers)
     raise ExceptionHandler::UnauthorizedRequestError, 'Unauthorized' if current_user.blank?
   end
-
 end

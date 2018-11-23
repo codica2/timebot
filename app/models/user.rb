@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-
   include Paginationable
   include Filterable
 
@@ -36,7 +35,7 @@ class User < ApplicationRecord
     absence.save
   end
 
-  def is_absent?(date)
+  def absent?(date)
     absences.find_by(date: date).present?
   end
 end

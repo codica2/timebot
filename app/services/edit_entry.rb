@@ -31,7 +31,7 @@ class EditEntry < BaseService
     new_date = time_entry.date
     if unparsed_new_date.present?
       date_match = unparsed_new_date.match(/(\d+)\.(\d+)\.?(\d+)?/)
-      new_date = Date.new((date_match[3] || Date.today.year).to_i, date_match[2].to_i, date_match[1].to_i)
+      new_date = Date.new((date_match[3] || Time.zone.today.year).to_i, date_match[2].to_i, date_match[1].to_i)
     end
 
     time_entry.update(time: time,

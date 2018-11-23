@@ -4,22 +4,13 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0'
 gem 'pg'
 gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-
-gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
 
 
 gem 'slack-ruby-client'
 gem 'eventmachine'
 gem 'faye-websocket'
 gem 'whenever', require: false
-gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-gem 'rubocop', require: false
 gem 'dotenv-rails'
 gem 'ruby-trello'
 gem 'active_model_serializers'
@@ -28,7 +19,7 @@ gem 'kaminari'
 
 # Auth
 gem 'jwt'
-gem 'devise'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -40,12 +31,11 @@ group :development, :test do
   gem 'capistrano3-puma'
   gem 'pry'
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'selenium-webdriver'
   gem 'faker', '~> 1.9', '>= 1.9.1'
-  gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'dox', require: false
+  gem 'rubocop', require: false
+  gem 'overcommit'
 end
 
 group :development do

@@ -2,8 +2,6 @@
 
 module Reports
   class EstimationReportService < BaseService
-    include ActiveAdmin::DashboardHelper
-
     def initialize(options)
       @filters = options[:filters] || {}
       @pagination = options[:pagination] || {}
@@ -47,11 +45,27 @@ module Reports
     end
 
     def time_entries
-      @collection ||= TimeEntry.includes(:project, :user).filter(filters)
+      @time_entries ||= TimeEntry.includes(:project, :user).filter(filters)
     end
 
     def filtering_params
       params.permit(:date_from, :with_ticket, :date_to, by_projects: [], by_users: [])
+    end
+
+    def formatted_labels(trello_labels)
+      return {} if trello_labels.blank?
+
+      labels = if trello_labels.is_a? Array
+                 trello_labels.flatten.compact.uniq
+               else
+                 trello_labels.split(',')
+               end
+      regexp = /^\d+$/
+      labels = {
+        estimate: labels.select { |l| l.match(regexp) },
+        labels:   labels.reject { |l| l.match(regexp) }
+      }
+      labels.each { |k, v| labels[k] = v.to_s.gsub(/[{}"\[\]\\]/, '') }
     end
   end
 end

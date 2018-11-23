@@ -34,7 +34,7 @@ module Reports
     end
 
     def time_entry_collection
-      @collection ||= TimeEntry.includes(:user, :project).filter(filters)
+      @time_entry_collection ||= TimeEntry.includes(:user, :project).filter(filters)
     end
   end
 end
