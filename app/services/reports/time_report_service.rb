@@ -22,9 +22,10 @@ module Reports
     end
 
     def time_entries
-      time_entry_collection.paginate(pagination).as_json(
+      entries = assign_trello_list_to(time_entry_collection)
+      entries.as_json(
         only: %i[id date time details trello_labels estimated_time],
-        methods: :status,
+        methods: %i[status],
         include: %i[user project]
       )
     end
@@ -35,6 +36,18 @@ module Reports
 
     def time_entry_collection
       @time_entry_collection ||= TimeEntry.includes(:user, :project).filter(filters)
+    end
+
+    def trello_ticket_ids
+      @trello_ticket_ids ||= time_entry_collection.map(&:trello_ticket_id).reject(&:blank?)
+    end
+
+    def trello_list
+      @trello_list ||= ::Reports::TrelloListService.call(trello_ticket_ids)
+    end
+
+    def assign_trello_list_to(collection)
+      collection.each { |te| te.status = trello_list[te.trello_ticket_id].try(:[], 'name') }
     end
   end
 end

@@ -12,6 +12,8 @@ class TimeEntry < ApplicationRecord
 
   validates :date, :time, presence: true
 
+  attr_accessor :status
+
   scope :in_interval, ->(start_date, end_date) { where(['date BETWEEN ? AND ?', start_date, end_date]) }
   scope :with_ticket, ->(ticket_url) { where('lower(details) LIKE ?', "%#{ticket_url.downcase}%") }
   scope :by_users, ->(users_id) { where(user_id: users_id) }
@@ -38,14 +40,6 @@ class TimeEntry < ApplicationRecord
     id.delete('/') if id.present?
   end
 
-  def trello_list_name
-    return if trello_ticket_id.blank?
-
-    Trello::Card.find(trello_ticket_id).list.name
-  rescue StandardError => _e
-    nil
-  end
-
   def total_time
     search_param = ticket_url || details
     (TimeEntry.with_ticket(search_param).pluck(:minutes).sum / 60.0).round(1)
@@ -54,8 +48,6 @@ class TimeEntry < ApplicationRecord
   def estimated_time
     trello_labels.grep(/^\d+$/).first if trello_labels.present?
   end
-
-  alias status trello_list_name
 
   private
 

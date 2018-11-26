@@ -27,7 +27,7 @@ module Reports
           created_at: entries.last.created_at.strftime('%d %b, %Y at %H:%M'),
           trello_labels: formatted_labels(entries.last.trello_labels)[:labels],
           estimate: formatted_labels(entries.last.trello_labels)[:estimate],
-          status: entries.last.trello_list_name,
+          status: trello_list[entries.last.trello_ticket_id].try(:[], 'name'),
           total_time: (entries.pluck(:minutes).sum / 60.0).round(1),
           collaborators: entries.map { |t| { id: t.user.id, name: t.user.name } }.uniq
         }
@@ -46,6 +46,14 @@ module Reports
 
     def time_entries
       @time_entries ||= TimeEntry.includes(:project, :user).filter(filters)
+    end
+
+    def trello_ticket_ids
+      @trello_ticket_ids ||= time_entries.map(&:trello_ticket_id).reject(&:blank?)
+    end
+
+    def trello_list
+      @trello_list ||= ::Reports::TrelloListService.call(trello_ticket_ids)
     end
 
     def filtering_params
