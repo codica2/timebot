@@ -39,10 +39,10 @@ class ShowWorkedHours < BaseService
 
   def init_dates(date_period)
     today = Time.zone.today
-    if date_period[0].match?(WORKED_HOURS_MONTH)
+    if date_period[0].match(WORKED_HOURS_MONTH)
       ["16.#{(today.day > 15 ? today : today - 1.month).strftime('%m.%Y')}",
        "15.#{(today.day > 15 ? today + 1.month : today).strftime('%m.%Y')}"]
-    elsif date_period[0].match?(WORKED_HOURS_PREV_MONTH)
+    elsif date_period[0].match(WORKED_HOURS_PREV_MONTH)
       ["16.#{(today.day > 15 ? today - 1.month : today - 2.months).strftime('%m.%Y')}",
        "15.#{(today.day > 15 ? today : today - 1.month).strftime('%m.%Y')}"]
     else
