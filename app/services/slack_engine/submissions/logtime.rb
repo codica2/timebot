@@ -2,7 +2,7 @@
 
 module SlackEngine
   module Submissions
-    class LogTime
+    class Logtime
       def initialize(params)
         @params = params.with_indifferent_access
         @client = Slack::Web::Client.new

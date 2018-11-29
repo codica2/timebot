@@ -2,6 +2,6 @@
 
 module SlackEngine
   module CollbackConstants
-    LOG_TIME = 'log_time'
+    LOGTIME = 'logtime'
   end
 end

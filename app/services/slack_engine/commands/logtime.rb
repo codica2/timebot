@@ -2,7 +2,7 @@
 
 module SlackEngine
   module Commands
-    class LogTime
+    class Logtime
       def initialize(params)
         @trigger_id = params[:trigger_id]
         @client = Slack::Web::Client.new
@@ -18,7 +18,7 @@ module SlackEngine
 
       def dialog
         {
-          callback_id: SlackEngine::CollbackConstants::LOG_TIME,
+          callback_id: SlackEngine::CollbackConstants::LOGTIME,
           title: 'Log time',
           submit_label: 'Add',
           elements: elements
