@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShowWorkedHours < BaseService
   include ServiceHelper
   include Message::Conditions
@@ -14,7 +16,7 @@ class ShowWorkedHours < BaseService
     begin
       @start_date = get_date(@start_date)
       @end_date   = get_date(@end_date)
-    rescue
+    rescue StandardError => _e
       sender.send_message(user, "Invalid date period: #{start_date} - #{end_date}")
       return
     end
@@ -41,7 +43,7 @@ class ShowWorkedHours < BaseService
       ["16.#{(today.day > 15 ? today : today - 1.month).strftime('%m.%Y')}",
        "15.#{(today.day > 15 ? today + 1.month : today).strftime('%m.%Y')}"]
     elsif date_period[0].match(WORKED_HOURS_PREV_MONTH)
-      ["16.#{(today.day > 15 ? today - 1.month : today - 2.month).strftime('%m.%Y')}",
+      ["16.#{(today.day > 15 ? today - 1.month : today - 2.months).strftime('%m.%Y')}",
        "15.#{(today.day > 15 ? today : today - 1.month).strftime('%m.%Y')}"]
     else
       [date_period[1], date_period[2]]
@@ -58,13 +60,13 @@ class ShowWorkedHours < BaseService
   end
 
   def estimated_hours_worked
-    if end_date == start_date
-      working_days = [start_date]
-    elsif end_date > Time.zone.today
-      working_days = (start_date..Time.zone.today)
-    else
-      working_days = (start_date..end_date)
-    end
+    working_days = if end_date == start_date
+                     [start_date]
+                   elsif end_date > Time.zone.today
+                     (start_date..Time.zone.today)
+                   else
+                     (start_date..end_date)
+                   end
     working_days = working_days.select { |day| !day.saturday? && !day.sunday? }
     holidays = Holiday.pluck(:date)
     absence = user.absences.pluck(:date)
@@ -72,13 +74,11 @@ class ShowWorkedHours < BaseService
   end
 
   def difference
-    if (hours = estimated_hours_worked)
-      (hours_worked - hours).round(2)
-    end
+    hours = estimated_hours_worked
+    (hours_worked - hours).round(2) if hours
   end
 
   def total_time(time_entries)
     (time_entries.map(&:minutes).select(&:present?).inject(&:+).to_f / 60.0).round(2)
   end
-
 end

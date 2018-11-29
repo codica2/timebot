@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveEntry < BaseService
   include Message::Conditions
   attr_reader :user, :time_entry_id
@@ -18,8 +20,8 @@ class RemoveEntry < BaseService
 
     id_given? ? TimeEntry.find(time_entry_id).destroy : last_entry.destroy
 
-    id_given? ? sender.send_message(user, "Entry with ID #{time_entry_id} successfully removed.")
-              : sender.send_message(user, "Your last entry (#{last_entry.description}) was successfully removed.")
+    message = id_given? ? "Entry with ID #{time_entry_id} successfully removed." : "Your last entry (#{last_entry.description}) was successfully removed."
+    sender.send_message(user, message)
   end
 
   def id_given?

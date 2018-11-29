@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EditEntry < BaseService
   include ServiceHelper
 
@@ -24,18 +26,15 @@ class EditEntry < BaseService
       return
     end
 
-    minutes = parse_time(time)
-
     project = find_project_by_name(project_name)
 
     new_date = time_entry.date
     if unparsed_new_date.present?
       date_match = unparsed_new_date.match(/(\d+)\.(\d+)\.?(\d+)?/)
-      new_date = Date.new((date_match[3] || Date.today.year).to_i, date_match[2].to_i, date_match[1].to_i)
+      new_date = Date.new((date_match[3] || Time.zone.today.year).to_i, date_match[2].to_i, date_match[1].to_i)
     end
 
-    time_entry.update(time: format_time(minutes),
-                      minutes: minutes,
+    time_entry.update(time: time,
                       project_id: project.id,
                       details: details,
                       date: new_date)

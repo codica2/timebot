@@ -8,9 +8,8 @@ class SlackClient
 
   def sync_users
     users = client.users_list
-
-    users.members.each do |user|
-      User.create(name: user.real_name, uid: user.id) unless User.find_by(uid: user.id)
+    users.members.each do |member|
+      User.find_or_create_by(uid: member.id) { |user| user.name = member.real_name }
     end
   end
 end

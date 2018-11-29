@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180828152514) do
+ActiveRecord::Schema.define(version: 20180926110804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,10 +74,8 @@ ActiveRecord::Schema.define(version: 20180828152514) do
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "team_lead_id"
-    t.integer  "project_manager_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "time_entries", force: :cascade do |t|
@@ -102,6 +100,7 @@ ActiveRecord::Schema.define(version: 20180828152514) do
     t.boolean  "is_active",    default: true
     t.integer  "team_id"
     t.string   "last_message"
+    t.integer  "role"
     t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
 

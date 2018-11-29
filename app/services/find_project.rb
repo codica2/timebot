@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FindProject < BaseService
   include ServiceHelper
 
@@ -21,8 +23,8 @@ class FindProject < BaseService
     answer = '```'
     answer += "Search results: \n"
     projects.map do |project|
-      answer += "#{project.name.ljust(20)}"
-      answer += "Alias: #{project.alias if project.alias.present?}"
+      answer += project.name.ljust(20).to_s
+      answer += "Alias: #{project.alias if project.alias.presence}"
       answer += "\n"
     end
     answer += '```'

@@ -1,30 +1,62 @@
-Rails:
-  Enabled: true
-
 AllCops:
+  TargetRubyVersion: 2.3.1
   Exclude:
-    - 'test/**/*'
     - 'db/**/*'
-    - 'tmp/**/*'
+    - 'bin/*'
     - 'config/**/*'
+    - 'public/**/*'
+    - 'spec/**/*'
+    - 'tmp/**/*'
+    - 'lib/**/*'
+    - 'Rakefile'
+    - 'Capfile'
+    - 'Gemfile'
+    - 'config.ru'
 
-Metrics/LineLength:
-  Max: 120
-
-Metrics/AbcSize:
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
 
-Metrics/MethodLength:
-  Max: 30
-
-Metrics/CyclomaticComplexity:
+Style/ClassAndModuleChildren:
   Enabled: false
+
+Style/UnneededInterpolation:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/PerlBackrefs:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 200
+
+Metrics/ClassLength:
+  Max: 350
 
 Metrics/PerceivedComplexity:
-  Enabled: false
+  Max: 8
 
 Metrics/ModuleLength:
-  Max: 150
+  Max: 350
+
+Metrics/AbcSize:
+  Max: 100
+
+Metrics/MethodLength:
+  Max: 35
+
+Metrics/CyclomaticComplexity:
+  Max: 11
+
+Style/EvalWithLocation:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/InverseOf:
+  Enabled: false

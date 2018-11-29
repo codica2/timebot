@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShowHelp < BaseService
   attr_reader :user
 

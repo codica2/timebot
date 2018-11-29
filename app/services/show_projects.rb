@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShowProjects < BaseService
   attr_reader :user
 

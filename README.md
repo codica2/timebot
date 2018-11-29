@@ -1,59 +1,41 @@
-# Timebot
+# Slack Time-Tracking Bot
+![alt text](https://avatars.slack-edge.com/2018-03-06/324716744112_3a51435a7ae863004121_72.jpg)
 
-**Timebot** is a **Slack** bot for hold everyday survey. The bot asks developers how much did they work that day. It also asks on which project they have been working for.
+**Timebot** is a time-tracking system allowing to enter the number of hours spent on a particular project and monitor a development workflow as a whole. The information will reflex in each member’s timesheet, which can be later viewed and edited.
 
-If developer doesn't reply, the bot reminds him about the question. The developer can also log time for any day of the year (except the future days). If a developer didn't log time for previous day, the bot will remind him to report the time in the morning. If a project doesn't exist, a developer can create it. The bot can also provide a time report for a week and since the beginning of the month.
+### The Tech Stack
+- **Backend**
+  - `rails 5.0`
+  - `ruby 2.3.3`
+  - `PostgresQL`
+  - `gem 'ruby-trello' (Trello API)`
+  - `gem 'slack-ruby-client' (Slack API)`
+  - `JWT (JSON Web Token)`
+- **Frontend**
+  - `vue 2.5.1`
+  - `vue-router 3.0.1`
+  - `vuex 3.0.1`
 
-We are using Slack Realtime API for event listening. We also use ActiveAdmin as UI for admins.
 
-## Requirements
- - Rails 5
- - PostgreSQL
- - ActiveAdmin
- 
-## Testing
-1. Add `timebot_test` app in Slack or create new one
+### Сore Functionality:
+##### 1. Time tracking
+![](https://media.giphy.com/media/15a5Alt2zS3WGiEzI8/giphy.gif)
+##### 2. Reports by project
+![](https://media.giphy.com/media/9DgaunqIZocweTwrdj/giphy.gif)
+##### 4. Absences
+![](https://media.giphy.com/media/ZcWx6HuyaheQzfgVLM/giphy.gif)
+##### 5. Admin dashboard
+The administration panel is the inner side of our time tracking tool. It is particularly valuable for project managers as it fully reflects the overall performance statistics on individuals, teams, and projects at any chosen time period.
 
-2. Set `SLACK_TOKEN=xoxb-338593550772-QkhAKI3vlSMlUVaiWMg1vKZX` in your `.env` or your own `Bot User OAuth Access Token`
-
-3. Run `rake slack:start_bot`  
-
-## Deployment
-
-* Check `config/deploy/production.rb` and a `config/deploy.rb` files. 
-
-* Deploy with `cap production deploy` command.
-
-* After succesfull deployment, Capistrano won't return shell after executing task `slack:slack_start`. You can safely interrupt process with `Ctrl+C`, 
-Bot will still be connected to Slack.
-
-## Help notes
-
-* If Bot disconnected from Slack - you need to restart only slack client! For this purpose, run 
-```
-    cap production slack:slack_restart
-```
+![alt text](https://media.giphy.com/media/31SrMmtxmYB9W3C8nx/giphy.gif)
 
 ## License
+Timebot is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
 
-The MIT License (MIT)
+## About Codica
 
-Copyright (c) 2016 Codica
+[![Codica logo](https://www.codica.com/assets/images/logo/logo.svg)](https://www.codica.com)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Timebot is maintained and funded by Codica. The names and logos for Codica are trademarks of Codica.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+We love open source software! See [our other projects](https://github.com/codica2) or [hire us](https://www.codica.com/) to design, develop, and grow your product.

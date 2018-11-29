@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SetAbsence < BaseService
   attr_reader :user, :text
 
@@ -14,11 +16,11 @@ class SetAbsence < BaseService
     end_date   = parse_date(match_data[3]) if match_data[3]
     comment    = match_data[4]
 
-    if Absence.reasons.keys.include?(reason) && start_date <= end_date
+    if Absence.reasons.key?(reason) && start_date <= end_date
       (start_date..end_date).reject(&:day_off_holiday?).each do |date|
         unless user.add_absence(reason, date, comment)
           sender.send_message(user, 'Absence validation failed. Check `help` for the examples.')
-          return
+          return nil
         end
       end
       text = "Set #{reason} from #{start_date.strftime('%b %e, %Y')} to #{end_date.strftime('%b %e, %Y')}."
@@ -29,8 +31,5 @@ class SetAbsence < BaseService
     end
   end
 
-  private
-
-  Date.class_eval('def day_off_holiday?; saturday? || sunday? || Holiday.is_holiday?(self) end')
-
+  Date.class_eval('def day_off_holiday?; saturday? || sunday? || Holiday.holiday?(self) end')
 end
