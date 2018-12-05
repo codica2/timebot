@@ -11,7 +11,7 @@ module Api
         end
 
         def submission
-          SlackEngine::Processor.perform(params, adapter: :submission)
+          render SlackEngine::Processor.perform(params, adapter: :submission)
         end
       end
     end

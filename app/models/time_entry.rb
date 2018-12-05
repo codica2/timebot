@@ -12,6 +12,8 @@ class TimeEntry < ApplicationRecord
 
   validates :date, :time, presence: true
 
+  validate :future_date_validation
+
   attr_accessor :status
 
   scope :in_interval, ->(start_date, end_date) { where(['date BETWEEN ? AND ?', start_date, end_date]) }
@@ -79,5 +81,9 @@ class TimeEntry < ApplicationRecord
   def format_time
     self.time = time.to_time.strftime('%H:%M') # rubocop:disable Rails/Date
     format('%2d:%02d', minutes / 60, minutes % 60)
+  end
+
+  def future_date_validation
+    errors.add(:date, 'You can\'t log time for future') if date > Time.current
   end
 end
