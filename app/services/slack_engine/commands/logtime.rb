@@ -28,7 +28,7 @@ module SlackEngine
       def elements
         [
           {
-            label: 'Select project', type: 'select', name: 'project_id',
+            label: 'Select project', type: 'select', name: 'project',
             options: Project.order_by_entries_number.map { |p| { label: p.name, value: p.id } }
           },
           {

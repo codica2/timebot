@@ -10,8 +10,11 @@ module SlackEngine
 
       def perform
         time_entry = TimeEntry.create(time_params)
-
-        @client.chat_postMessage(channel: params[:user][:id], text: message(time_entry), as_user: true)
+        if time_entry.errors.any?
+          { json: { errors: errors(time_entry) } }
+        else
+          @client.chat_postMessage(channel: params[:user][:id], text: success_message(time_entry), as_user: true) && { json: {} }
+        end
       end
 
       private
@@ -22,13 +25,14 @@ module SlackEngine
         date = params.dig(:submission, :date).to_date
         week_number = params.dig(:submission, :week).to_i
         params[:submission][:user_id] = User.find_by(uid: params[:user][:id])&.id
+        params[:submission][:project_id] = params[:submission][:project]
         time_params = params[:submission].slice(:time, :details, :user_id, :project_id)
         time_params[:date] = date - week_number.week
         time_params
       end
 
-      def message(time_entry)
-        time_entry.errors.any? ? error_message(time_entry) : success_message(time_entry)
+      def errors(time_entry)
+        time_entry.errors.messages.map { |name, message| { name: name.to_s, error: message.first } }
       end
 
       def success_message(time_entry)
