@@ -5,6 +5,8 @@
 > To find project, write `find project SEARCH_QUERY`
 > For example, `find project time`
 
+>`/logtime` - shows dialog form for time logging
+
 > To enter time, write `PROJECT_NAME HOURS:MINUTES COMMENT`.
 > For example, `management 5:30 some comment`,
 
