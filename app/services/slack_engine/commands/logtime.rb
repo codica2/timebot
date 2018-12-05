@@ -5,7 +5,7 @@ module SlackEngine
     class Logtime
       def initialize(params)
         @trigger_id = params[:trigger_id]
-        @client = Slack::Web::Client.new
+        @client = Slack::Web::Client.new(token: ENV.fetch('TIMEBOT_APP_TOKEN'))
       end
 
       def perform
@@ -30,6 +30,10 @@ module SlackEngine
           {
             label: 'Select project', type: 'select', name: 'project_id',
             options: Project.order_by_entries_number.map { |p| { label: p.name, value: p.id } }
+          },
+          {
+            label: 'Week', type: 'select', name: 'week', value: 0,
+            options: [{ label: 'Current', value: 0 }, { label: 'Previous', value: 1 }]
           },
           {
             label: 'Select date', type: 'select', name: 'date', value: Time.current.strftime('%Y-%m-%d'),

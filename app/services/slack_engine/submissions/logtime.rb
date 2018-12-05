@@ -19,8 +19,12 @@ module SlackEngine
       attr_reader :params, :user
 
       def time_params
+        date = params.dig(:submission, :date).to_date
+        week_number = params.dig(:submission, :week).to_i
         params[:submission][:user_id] = User.find_by(uid: params[:user][:id])&.id
-        params[:submission].slice(:date, :time, :details, :user_id, :project_id)
+        time_params = params[:submission].slice(:time, :details, :user_id, :project_id)
+        time_params[:date] = date - week_number.week
+        time_params
       end
 
       def message(time_entry)
