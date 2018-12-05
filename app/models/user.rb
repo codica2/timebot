@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :absences, dependent: :destroy
   belongs_to :team, optional: true
 
-  validates :name, uniqueness: true
   validates :uid, uniqueness: true
   validates :role, :name, :uid, presence: true
 
@@ -17,7 +16,7 @@ class User < ApplicationRecord
   scope :by_name, ->(term) { where('lower(name) LIKE ?', "%#{term.downcase}%") }
   scope :active_status, ->(status) { where(is_active: status) if %w[true false].include? status }
 
-  enum role: %i[pm front_end back_end QA ops marketing design]
+  enum role: %i[pm front_end back_end QA ops marketing design not_set]
 
   def total_time_for_range(start_date, end_date, project = nil)
     total = time_entries.where(['date BETWEEN ? AND ?', start_date, end_date])
