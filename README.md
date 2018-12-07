@@ -1,33 +1,142 @@
-# Slack Time-Tracking Bot
-![alt text](https://avatars.slack-edge.com/2018-03-06/324716744112_3a51435a7ae863004121_72.jpg)
+<h1 align="center">Slack Time-Tracking Bot</h1>
 
-**Timebot** is a time-tracking system allowing to enter the number of hours spent on a particular project and monitor a development workflow as a whole. The information will reflex in each member’s timesheet, which can be later viewed and edited.
+<p align="center">
+ <img width="110px" src="public/images/c-3po.jpg">
+</p>
 
-### The Tech Stack
-- **Backend**
+**Timebot** is a time-tracking system allowing to enter the number of hours spent on a particular project and monitor a development workflow as a whole. The information will reflect in each member’s timesheet, which can be later viewed and edited.
+
+## Сore Functionality
+##### 1. Time tracking
+
+<p align="center">
+ <img src="public/gifs/logtime_dialog.gif">
+</p>
+
+<h6 align="center">OR</h6>
+
+<p align="center">
+  <img src="public/gifs/logtime_simple.gif">
+</p>
+
+##### 2. Absences
+
+<p align="center">
+ <img src="public/gifs/abs.gif" >
+</p>
+
+##### 3. Reports
+
+<p align="center">
+ <img src="public/gifs/reports.gif" >
+</p>
+
+##### 4. Projects
+
+<p align="center">
+ <img src="public/gifs/projects.gif" >
+</p>
+
+## All available commands
+
+| Commands                                                                           | Description                                                  |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| `help`                                                                             | print help.                                                  |
+| `projects`                                                                         | print all available projects projects.                       |
+| `find project SEARCH_QUERY`                                                        | find specific project.                                       |
+| `PROJECT_NAME HOURS:MINUTES COMMENT`                                               | log time.                                                    |
+| `/logtime`                                                                         | log time via interective dialog.                             |
+| `edit NEW_DATE(OPTIONAL) TIME_ENTRY_ID HOURS:MINUTES COMMENT`                      | edit an existing time entry.                                 |
+| `update(OPTIONAL) DAY.MONTH.YEAR PROJECT_NAME HOURS:MINUTES COMMENT`               | create an entry for the specific date.                       |
+| `add project PROJECT_NAME`                                                         | add new project.                                             |
+| `show day`/`show week`/`show month`                                                | get report for this day/week/month.                          |
+| `show absence`/`show absence last year`                                            | display absences.                                            |
+| `set REASON DAY.MONTH.YEAR(OPTIONAL) - DAY.MONTH.YEAR(OPTIONAL) COMMENT(OPTIONAL)` | if you were/will be absent on some days.                     |
+
+## API Documentation
+The application also provides comprehensive API documentation for integrating client applications. [Full docs can be found here](https://gitlab.codica.com/codica2/timebot/blob/feature/readme/docs.md)
+
+## How to install for your team?
+### Requirements
   - `rails 5.0`
   - `ruby 2.3.3`
   - `PostgresQL`
-  - `gem 'ruby-trello' (Trello API)`
-  - `gem 'slack-ruby-client' (Slack API)`
-  - `JWT (JSON Web Token)`
-- **Frontend**
-  - `vue 2.5.1`
-  - `vue-router 3.0.1`
-  - `vuex 3.0.1`
 
+### Getting started
+**Step 1:** Clone the app
 
-### Сore Functionality:
-##### 1. Time tracking
-![](https://media.giphy.com/media/15a5Alt2zS3WGiEzI8/giphy.gif)
-##### 2. Reports by project
-![](https://media.giphy.com/media/9DgaunqIZocweTwrdj/giphy.gif)
-##### 4. Absences
-![](https://media.giphy.com/media/ZcWx6HuyaheQzfgVLM/giphy.gif)
-##### 5. Admin dashboard
-The administration panel is the inner side of our time tracking tool. It is particularly valuable for project managers as it fully reflects the overall performance statistics on individuals, teams, and projects at any chosen time period.
+```shell
+ git clone git@gitlab.codica.com:codica2/timebot.git
+ cd timebot
+```
+**Step 2** Add environment variables to **.env** (*create file if don't exist*)
+```
+ SECRET_KEY_BASE=`secret_key_base`
+ SLACK_TOKEN=`slack_token`
+ TIMEBOT_APP_TOKEN=`slack_timebot_app_token`
+ TRELLO_MEMBER_TOKEN=`member_token`
+```
+1. [How to get](#user-content--secret-key-base) `secret_key_base`
+2. [How to get](#user-content--adding-slack-bot-integration) `slack_token`
+3. [How to get](#user-content--building-slack-app) `slack_timebot_app_token`
+4. [How to get](#user-content--trello-integration) `member_token`
 
-![alt text](https://media.giphy.com/media/31SrMmtxmYB9W3C8nx/giphy.gif)
+**Step 3:**  Add config files:
+```shell
+ mv config/database.yml.example config/database.yml
+```
+**Step 4:**  Install the app's dependencies:
+
+```shell
+ bundle install && bundle exec rake db:create && bundle exec rake db:migrate
+```
+
+### Integretions
+---
+
+#### [](#slack_timebot_app_token) Building Slack App
+
+  1 Go to [Slack API](http://https://api.slack.com "Slack API")
+
+  2 Click **Start Building** button
+
+  3 In the dialog that opens, select the name of your application and the workspace in which your application should work.
+
+  4 After successful creation:
+  - Go to the slash command tab
+  - Press **Add new command** button
+  - Fill Command field with **/logtime**
+  - Fill Request URL with **https://your_domain_name.com/api/v1/slack/command**
+  - Press save
+
+  5 Go to Interactive Components tab
+  - Fill Request URL field with **https://your_domain_name.com/api/v1/slack/submission**
+  - Press save
+
+  6 Add Bot user on **Bot users** tab
+
+  7 Got to OAuth & Permissions tab
+
+  - Press **Install App to Workspace** button
+  - Copy `Bot User OAuth Access Token` and paste to **.env** `slack_timebot_app_token=`
+
+#### [](#slack_token) Adding Slack Bot integration
+
+  1 Choose your workspace
+
+  2 Add configuration
+
+  3 Choose a name for your slack bot
+
+  4 Get your `slack_token`
+
+#### [](#member_token) Trello integration
+
+  [Hot to get trello token read here](https://developers.trello.com/v1.0/reference#introduction)
+
+#### [](#secret_key_base) Secret key base
+
+  Just run `rake secret`
 
 ## License
 Timebot is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
