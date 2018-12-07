@@ -30,4 +30,5 @@ config/messages.yml
 .env
 .vscode/
 config/secrets.yml
+config/deploy.rb
 package-lock.json
