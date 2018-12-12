@@ -13,7 +13,7 @@ module Filterable
     end
 
     def search(filtering_params)
-      { data: select(:id, :name).filter(filtering_params).limit(10) }
+      { data: select(:id, :name).filter(filtering_params).order(name: :asc) }
     end
   end
 end
