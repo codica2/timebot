@@ -47,7 +47,7 @@ module Api
       private
 
       def project_params
-        params.require(:project).permit(:name, :alias, :team_id)
+        params.require(:project).permit(:name, :alias, :team_id, :active)
       end
 
       def set_project
