@@ -25,7 +25,7 @@ set :deploy_to, '/home/dev/www/timebot'
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/database.yml', 'config/messages.yml', 'config/puma.rb', '.ruby-version', '.ruby-gemset', '.env'
+append :linked_files, 'config/secrets.yml', 'config/database.yml', 'config/messages.yml', 'config/puma.rb', '.ruby-version', '.ruby-gemset', '.env'
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/sockets', 'tmp/cache', 'public/assets'
