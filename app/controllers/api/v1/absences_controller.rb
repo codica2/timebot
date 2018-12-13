@@ -56,7 +56,7 @@ module Api
       end
 
       def filtering_params
-        params.permit(:by_user, :by_reason, :date_from, :date_to)
+        params.permit(:by_user, :by_reason, :date_from, :date_to, :by_active_users)
       end
     end
   end
