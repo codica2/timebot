@@ -15,6 +15,7 @@ class Absence < ApplicationRecord
   scope :date_to, ->(date) { where('date <= ?', date) }
   scope :by_user, ->(user_id) { where(user_id: user_id) }
   scope :by_reason, ->(reason) { where(reason: reason) }
+  scope :by_active_users, ->(status) { joins(:user).where(users: { is_active: status }) }
 
   def presence_of_comment
     errors.add(:comment, 'must not be nil') if other? && comment.nil?
