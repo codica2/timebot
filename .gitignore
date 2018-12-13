@@ -29,5 +29,5 @@ public/messages/fact.txt
 config/messages.yml
 .env
 .vscode/
-config/secrets.yml
 package-lock.json
+config/secrets.yml
