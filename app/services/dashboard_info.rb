@@ -63,15 +63,19 @@ class DashboardInfo < BaseService
   end
 
   def pie_chart
+    roles = hours_by_roles
+    projects = hours_by_projects.compact
     {
       users_chart: {
         title: 'Users',
-        data: hours_by_roles
+        data: roles,
+        colors: projects_colors(roles)
       },
       projects_chart: {
         title: 'Projects',
         innerSize: '75%',
-        data: hours_by_projects.compact
+        colors: projects_colors(projects),
+        data: projects
       }
     }
   end
@@ -88,7 +92,11 @@ class DashboardInfo < BaseService
         end
       }
     end
-    { series: data, xAxisData: users.pluck(:name) }
+    {
+      series: data,
+      xAxisData: users.pluck(:name),
+      colors: projects_colors(data)
+    }
   end
 
   def hours_by_roles
@@ -112,5 +120,13 @@ class DashboardInfo < BaseService
         z: total
       }
     end
+  end
+
+  def projects_colors(projects)
+    projects.pluck(:name).map { |name| colorize(name) }
+  end
+
+  def colorize(object)
+    "##{format('%06x', (object.hash & 0xffffff))}"
   end
 end
