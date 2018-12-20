@@ -126,7 +126,7 @@ class DashboardInfo < BaseService
     projects.pluck(:name).map { |name| colorize(name) }
   end
 
-  def colorize(object)
-    "##{format('%06x', (object.hash & 0xffffff))}"
+  def colorize(string)
+    "##{Digest::MD5.hexdigest(string).first(6)}"
   end
 end
