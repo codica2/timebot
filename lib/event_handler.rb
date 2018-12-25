@@ -46,6 +46,8 @@ class EventHandler
       FindProject.call(user, data.text)
     elsif message_is_absence_days
       AbsenceDays.call(user, data.text)
+    elsif message_is_new_notification
+      CreateNotification.call(user, data.text)
     else
       DoNotUnderstand.call(user, messages)
     end

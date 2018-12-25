@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :time_entries, dependent: :destroy
   has_many :absences, dependent: :destroy
+  has_many :user_notifications, dependent: :destroy
+  has_many :notifications, through: :user_notifications
   belongs_to :team, optional: true
 
   validates :uid, uniqueness: true

@@ -21,6 +21,10 @@ gem 'kaminari'
 gem 'jwt'
 gem 'bcrypt'
 
+# Background processing
+gem 'sidekiq'
+gem 'redis'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'database_cleaner'

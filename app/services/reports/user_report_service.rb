@@ -25,10 +25,10 @@ module Reports
         worked = hours_worked(user)
         to_work = hours_to_work(user)
         {
-          name:          user.name,
-          hours_worked:  worked,
+          name: user.name,
+          hours_worked: worked,
           hours_to_work: to_work,
-          difference:    worked - to_work
+          difference: worked - to_work
         }
       end
 
