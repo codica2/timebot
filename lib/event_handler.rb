@@ -48,6 +48,8 @@ class EventHandler
       AbsenceDays.call(user, data.text)
     elsif message_is_new_notification
       CreateNotification.call(user, data.text)
+    elsif message_is_show_notifications
+      ShowNotifications.call(user)
     else
       DoNotUnderstand.call(user, messages)
     end

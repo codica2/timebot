@@ -15,6 +15,7 @@ module Message
     ABSENCE_DAYS = /^ *(?:show absence(?: last year)?)|(?<alias>sa(?:ly)?) *$/
     SPECIFY_PROJECT = /^\d+.{0,2} *$/
     NOTIFICATION_REGEXP = /^notification\s+(<@.*>)\s+(\d?\d\.\d?\d(?:\.(?:\d\d)?\d\d)?)\s+((?:[0-1][0-9]|[2][0-3]):[0-5][0-9])\s+(.*)/
+    SHOW_NOTIFICATIONS_REGEXP = /^(show\s+notifications|sn)$/
 
     def message_is_request_for_project
       data.text.casecmp('projects').zero?
@@ -82,6 +83,10 @@ module Message
 
     def message_is_new_notification
       data.text =~ NOTIFICATION_REGEXP
+    end
+
+    def message_is_show_notifications
+      data.text =~ SHOW_NOTIFICATIONS_REGEXP
     end
   end
 end
