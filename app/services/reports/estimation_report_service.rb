@@ -71,7 +71,7 @@ module Reports
       regexp = /^\d+$/
       labels = {
         estimate: labels.select { |l| l.match(regexp) },
-        labels:   labels.reject { |l| l.match(regexp) }
+        labels: labels.reject { |l| l.match(regexp) }
       }
       labels.each { |k, v| labels[k] = v.to_s.gsub(/[{}"\[\]\\]/, '') }
     end

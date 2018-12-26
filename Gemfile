@@ -21,6 +21,11 @@ gem 'kaminari'
 gem 'jwt'
 gem 'bcrypt'
 
+# Background processing
+gem 'sidekiq'
+gem 'redis'
+gem 'tzinfo'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'database_cleaner'
@@ -29,6 +34,7 @@ group :development, :test do
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano-rvm'
   gem 'capistrano3-puma'
+  gem 'capistrano-sidekiq'
   gem 'pry'
   gem 'rspec-rails'
   gem 'faker', '~> 1.9', '>= 1.9.1'

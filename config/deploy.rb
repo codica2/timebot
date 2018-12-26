@@ -23,6 +23,8 @@ set :deploy_to, '/home/dev/www/timebot'
 
 # Default value for :pty is false
 # set :pty, true
+set :sidekiq_config, "#{current_path}/config/sidekiq.yml"
+set :sidekiq_env, 'production'
 
 # Default value for :linked_files is []
 append :linked_files, 'config/secrets.yml', 'config/database.yml', 'config/messages.yml', 'config/puma.rb', '.ruby-version', '.ruby-gemset', '.env'

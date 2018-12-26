@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181212142838) do
+ActiveRecord::Schema.define(version: 20181225093651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 20181212142838) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "creator_id"
+    t.string   "message"
+    t.datetime "notify_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_notifications_on_creator_id", using: :btree
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",                null: false
@@ -90,6 +99,16 @@ ActiveRecord::Schema.define(version: 20181212142838) do
     t.integer  "project_id"
     t.text     "trello_labels", default: [],              array: true
     t.string   "ticket"
+  end
+
+  create_table "user_notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "notification_id"
+    t.boolean  "delivered",       default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["notification_id"], name: "index_user_notifications_on_notification_id", using: :btree
+    t.index ["user_id"], name: "index_user_notifications_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
