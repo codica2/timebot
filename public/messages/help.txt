@@ -37,3 +37,10 @@
 > Valid reasons: Vacation, Illness, Other. Note: when using Other as reason, the comment is required.
 > To display it - `show absence`/`show absence last year`
 > Aliases: `sa`, `saly`.
+
+> To add new notification, write `notification @Sergey Volkov @Max Rublia @Rostislav Korin dd.mm.yyyy hh:mm comment`.
+> For example, `notification @Sergey Volkov @Max Rublia @Rostislav Korin 28.12.2018 16:00 buy pepsi`.
+> `ntf` is alias for `notification`.
+
+> To get your notifications, write `show notifications`.
+> Alias: `sn`.
