@@ -19,7 +19,7 @@ class ShowNotifications < BaseService
              notifications.map do |notification|
                recipients_for_slack = notification.users.pluck(:uid).map { |uid| "<@#{uid}>" }.join(' ')
 
-               m = ":bell: You have notification from <@#{user.uid}>\n"
+               m = ":bell: You have notification from <@#{notification.creator.uid}>\n"
                m += ":timex: #{tz.utc_to_local(notification.notify_at).strftime('%d.%m.%Y %H:%M')}\n"
                m += "\n"
                m += ":busts_in_silhouette: #{recipients_for_slack}\n"
