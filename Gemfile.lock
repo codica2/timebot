@@ -77,6 +77,9 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano-sidekiq (1.0.2)
+      capistrano (>= 3.9.0)
+      sidekiq (>= 3.4)
     capistrano3-puma (3.1.1)
       capistrano (~> 3.7)
       capistrano-bundler
@@ -314,6 +317,7 @@ DEPENDENCIES
   capistrano-bundler (>= 1.1.0)
   capistrano-rails (~> 1.2)
   capistrano-rvm
+  capistrano-sidekiq
   capistrano3-puma
   database_cleaner
   dotenv-rails
@@ -340,6 +344,7 @@ DEPENDENCIES
   slack-ruby-client
   spring
   spring-watcher-listen (~> 2.0.0)
+  tzinfo
   tzinfo-data
   web-console
   whenever

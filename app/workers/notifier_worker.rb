@@ -8,8 +8,9 @@ class NotifierWorker
     sender = Message::Sender.new
     recipients_for_slack = notification.users.pluck(:uid).map { |uid| "<@#{uid}>" }.join(' ')
 
+    tz = TZInfo::Timezone.get('Europe/Kiev')
     m = ":bell: Hey don't forget about notification from <@#{notification.creator.uid}>\n"
-    m += ":timex: #{notification.notify_at.localtime.strftime('%d.%m.%Y %H:%M')}\n"
+    m += ":timex: #{tz.utc_to_local(notification.notify_at).strftime('%d.%m.%Y %H:%M')}\n"
     m += "\n"
     m += ":busts_in_silhouette: #{recipients_for_slack}\n"
     m += "\n"

@@ -24,7 +24,7 @@ class CreateNotification < BaseService
   private
 
   def notify_at_is_valid?
-    notify_at.utc > Time.current
+    notify_at > Time.current
   end
 
   def invalid_notify_at
@@ -39,7 +39,8 @@ class CreateNotification < BaseService
     date = parse_date(text[2])
     hours, minutes = text[3].split(':')
 
-    Time.new(date.year, date.month, date.day, hours, minutes)
+    tz = TZInfo::Timezone.get('Europe/Kiev')
+    tz.local_to_utc(Time.zone.local(date.year, date.month, date.day, hours, minutes))
   end
 
   def message
@@ -55,8 +56,9 @@ class CreateNotification < BaseService
   end
 
   def notification_created
+    tz = TZInfo::Timezone.get('Europe/Kiev')
     m = ":bell: You have a new notification from <@#{user.uid}>\n"
-    m += ":timex: #{notify_at.strftime('%d.%m.%Y %H:%M')}\n"
+    m += ":timex: #{tz.utc_to_local(notify_at).strftime('%d.%m.%Y %H:%M')}\n"
     m += "\n"
     m += ":busts_in_silhouette: #{recipients_for_slack}\n"
     m += "\n"
