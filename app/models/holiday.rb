@@ -11,6 +11,6 @@ class Holiday < ApplicationRecord
   scope :date_to, ->(date) { where('date <= ?', date) }
 
   def self.holiday?(date = Time.zone.today)
-    Holiday.all.map { |holy| holy.date.strftime('%m-%d') }.include? date.strftime('%m-%d')
+    Holiday.all.map { |holy| holy.date.strftime('%y-%m-%d') }.include? date.strftime('%y-%m-%d')
   end
 end
