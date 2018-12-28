@@ -21,7 +21,7 @@ module Reports
     end
 
     def user_hours
-      users = User.active.map do |user|
+      users = User.includes(:absences).where(absences: { reason: %w[other] }).active.map do |user|
         worked = hours_worked(user)
         to_work = hours_to_work(user)
         {
