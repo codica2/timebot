@@ -21,7 +21,7 @@ module Reports
     end
 
     def user_hours
-      users = User.includes(:absences).where(absences: { reason: %w[illness vacation] }).active.map do |user|
+      users = User.includes(:absences).active.map do |user|
         worked = hours_worked(user)
         to_work = hours_to_work(user)
         {
@@ -44,7 +44,7 @@ module Reports
       working_days = @end_date >= Time.zone.today ? (@start_date..Time.zone.today) : (@start_date..@end_date)
       working_days = working_days.select { |day| !day.saturday? && !day.sunday? }
       holidays = Holiday.pluck(:date)
-      absence = user.absences.pluck(:date)
+      absence = user.absences.where.not(reason: 'other').pluck(:date)
       (working_days - holidays - absence).count * 8
     end
   end
