@@ -91,7 +91,7 @@ The application also provides comprehensive API documentation for integrating cl
  bundle install && bundle exec rake db:create && bundle exec rake db:migrate
 ```
 
-### Integretions
+### Integrations
 ---
 
 #### [](#slack_timebot_app_token) Building Slack App
